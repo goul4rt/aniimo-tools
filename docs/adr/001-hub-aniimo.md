@@ -218,12 +218,13 @@ Primeiros passos, em ordem:
 - [x] Validar os payloads da wiki (buildId `5ae23614-…`, `/item/001/basic-form/_payload.json`, locale `/pt`)
 - [x] Validar o hotlink de `Wiki_Aniimo_10051.png` no CDN (200 sem referer)
 - [x] Criar o projeto Astro + Tailwind
-- [ ] Criar o repositório público `aniimo-tools` no GitHub e fazer o push
-- [ ] Conectar à Cloudflare Pages; criar o CNAME `aniimo` em ogoulart.dev; confirmar https://aniimo.ogoulart.dev com a página "em breve"
+- [x] Criar o repositório público [goul4rt/aniimo-tools](https://github.com/goul4rt/aniimo-tools) e fazer o push
+- [x] Conectar à Cloudflare Pages (projeto `aniimo-tools`, deploy por push em `main`, no ar em aniimo-tools.pages.dev)
+- [ ] Criar o CNAME `aniimo` → `aniimo-tools.pages.dev` (proxied) em ogoulart.dev; confirmar https://aniimo.ogoulart.dev
 - [x] Escrever `fetch-wiki.ts`
 - [x] Escrever `normalize.ts` e gerar `aniimos.json`
 - [x] Configurar `update-data.yml` com cron diário e commit só quando houver mudança
-- [ ] Confirmar a primeira execução da Action (o CDN da wiki, ESA, pode bloquear IPs de datacenter)
+- [x] Confirmar a primeira execução da Action (22/09: 416 payloads, sem bloqueio do ESA, "sem mudanças")
 - [ ] Construir /aniilog e /aniilog/[slug]
 - [ ] Montar `elementos.json` conferindo os 81 confrontos com a wiki oficial; construir /tipos
 - [ ] Construir /codigos a partir de `codigos.json`
@@ -236,7 +237,7 @@ O que ganhamos: custo zero de infraestrutura, um site rápido e indexável, uma 
 | Risco | Probabilidade | Mitigação |
 |---|---|---|
 | A wiki oficial muda o formato dos payloads e quebra o pipeline | Alta ao longo dos meses | A guarda do `normalize.ts` aborta sem sobrescrever; o site continua com os dados anteriores; o GitHub avisa por e-mail |
-| O CDN da wiki (ESA) bloqueia os runners do GitHub | Média | Descobrir na primeira execução; alternativas: outro horário, rodar localmente |
+| O CDN da wiki (ESA) bloqueia os runners do GitHub | Baixa (primeira execução passou em 22/09) | Descobrir na primeira execução; alternativas: outro horário, rodar localmente |
 | Takedown ou pedido da Pawprint | Baixa, maior se monetizar | Protocolo de 48 horas; site sobrevive só com dados factuais |
 | O jogo esfria e a comunidade some | Média | Investimento pequeno e incremental; a base de código serve para outro jogo de criaturas |
 | Dados errados publicados | Média | Wiki oficial como fonte única; `coletadoEm` em cada registro; canal de relato de erro |
