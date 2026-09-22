@@ -1,0 +1,24 @@
+{
+  "name": "aniimo-tools",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "data": "node scripts/fetch-wiki.ts && node scripts/normalize.ts"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.3.4",
+    "devalue": "^6.0.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "allowScripts": {
+    "esbuild": true
+  }
+}

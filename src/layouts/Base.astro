@@ -1,0 +1,27 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Ferramentas de Aniimo em português, com dados abertos.' } = Astro.props;
+---
+
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body class="flex min-h-screen flex-col bg-slate-950 text-slate-100 antialiased">
+    <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-12">
+      <slot />
+    </main>
+    <footer class="border-t border-slate-800 px-4 py-6 text-center text-sm text-slate-400">
+      Fan-site não-oficial. Aniimo e todos os assets são © Pawprint Studio. Sem afiliação.
+    </footer>
+  </body>
+</html>

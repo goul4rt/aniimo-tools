@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import aniimos from '../../data/aniimos.json';
+
+const formas = aniimos.reduce((n, a) => n + a.formas.length, 0);
+---
+
+<Base title="Aniimo Tools · em breve">
+  <h1 class="text-3xl font-bold">Aniimo Tools</h1>
+  <p class="mt-4 text-slate-300">
+    Hub de ferramentas de Aniimo em português: Aniilog, tabela de tipos e códigos de resgate. Em breve.
+  </p>
+  <p class="mt-2 text-slate-400">{aniimos.length} Aniimo e {formas} formas já catalogados a partir da wiki oficial.</p>
+</Base>

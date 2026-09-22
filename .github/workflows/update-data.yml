@@ -1,0 +1,33 @@
+name: update-data
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # 06h BRT
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: update-data
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22 # >= 22.18 roda .ts sem tsx
+          cache: npm
+      - run: npm ci
+      # Falha aqui = data/ intacto, site segue com os dados anteriores, GitHub avisa por e-mail.
+      - run: npm run data
+      - name: Commit se data/ mudou
+        run: |
+          git diff --quiet data/ && { echo "sem mudanças"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git commit -m "data: atualização diária da wiki"
+          git push
