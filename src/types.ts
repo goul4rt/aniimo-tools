@@ -22,6 +22,7 @@ export type Forma = {
   stats: { hp: number; patk: number; matk: number; pdef: number; mdef: number; haste: number; total: number };
   skills: Habilidade[];
   traits: Habilidade[];
+  locais: Texto[]; // seção Habitats da wiki; vazio quando a página não tem
   imagem: string;
 };
 

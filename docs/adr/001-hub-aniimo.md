@@ -108,7 +108,7 @@ Três fases: a Fase 1 coloca o site no ar em uma semana, a Fase 2 faz o jogador 
 
 | Fase | Ferramenta | Rota | Dados | Esforço |
 |---|---|---|---|---|
-| 1 | Aniilog PT-BR: busca e filtros por elemento, papel e estágio; página por Aniimo com stats, skills, traits, evoluções e formas | `/aniilog`, `/aniilog/[slug]` | aniimos.json | Médio |
+| 1 | Aniilog PT-BR: busca e filtros por elemento, papel e estágio; página por Aniimo com stats, skills, traits, evoluções, formas e onde encontrar | `/aniilog`, `/aniilog/[slug]` | aniimos.json | Médio |
 | 1 | Tabela de tipos interativa | `/tipos` | elementos.json (81 confrontos, conferidos à mão) | Baixo |
 | 1 | Códigos de resgate com botão de copiar e status ativo/expirado | `/codigos` | codigos.json (manual) | Muito baixo |
 | 2 | Rastreador de coleção, incluindo Prismana; exporta e importa | `/colecao` | aniimos.json + localStorage | Baixo |
@@ -171,6 +171,7 @@ type Forma = {
   stats: { hp; patk; matk; pdef; mdef; haste; total };
   skills: Habilidade[];  // inline: { id, nome, desc, icone, grupo, poder?, custo? }
   traits: Habilidade[];
+  locais: { pt: string; en: string }[]; // seção Habitats; pode ser vazio
   imagem: string;        // URL do CDN oficial
 };
 ```
@@ -263,7 +264,8 @@ Mudanças em relação ao texto original, decididas depois de inspecionar os pay
 - **Slug PT congelado por id** (nova D11).
 - **Um registro por id com `formas[]` completas**, sem diff contra a forma base.
 - **Skills e traits inline**; sem `skills.json`/`traits.json` até alguma ferramenta precisar. O id vem do nome do ícone. Habilidades de travessia (CLIMB/GLIDE, sem ícone) ficam fora por enquanto.
-- **Sem `locais` e sem Resonance** no esquema por ora. Depois descobrimos que a seção `Habitats` existe em parte das páginas e é a fonte para `locais`. A Resonance é uma tabela HTML e vai precisar de parser na Fase 2.
+- **`locais` vêm da seção `Habitats`** (EN+PT), presente em 160 das 208 formas; vazio quando a página não tem.
+- **Sem Resonance** no esquema por ora: é uma tabela HTML e vai precisar de parser na Fase 2.
 - **`raw/` fora do git:** evita cerca de 5 MB de ruído diário (`viewCount`) e a redistribuição integral das páginas.
 - **Índice pelo sitemap**, não por navegação entre páginas.
 - **Preact adiado** até a primeira ilha (D2).

@@ -126,6 +126,28 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          },
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          },
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          },
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10051.png"
       },
       {
@@ -239,6 +261,16 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1005304_Feature_10503_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          },
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005101.png"
@@ -355,10 +387,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005104.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "002",
@@ -488,6 +526,24 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          },
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          },
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10052.png"
       },
       {
@@ -601,6 +657,16 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1005304_Feature_10503_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          },
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005201.png"
@@ -717,10 +783,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005204.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "003",
@@ -892,6 +964,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10053.png"
       },
       {
@@ -1052,6 +1130,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005301.png"
       },
       {
@@ -1210,6 +1289,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1005304_Feature_10503_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005302.png"
@@ -1371,6 +1456,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005303.png"
       },
       {
@@ -1530,10 +1621,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005304.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "004",
@@ -1691,6 +1783,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10055.png"
       },
       {
@@ -1836,10 +1929,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "005",
@@ -1940,10 +2034,28 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          },
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          },
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10011.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "006",
@@ -2102,6 +2214,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10012.png"
       },
       {
@@ -2247,6 +2365,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1001200_Feature_10175_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1001201.png"
@@ -2396,10 +2520,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1001202.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "007",
@@ -2547,6 +2677,24 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          },
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10181.png"
       },
       {
@@ -2677,6 +2825,16 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1018401_Feature_11873_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          },
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018101.png"
@@ -2811,10 +2969,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          },
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "008",
@@ -2986,6 +3154,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10184.png"
       },
       {
@@ -3144,6 +3318,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1018401_Feature_11873_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018401.png"
@@ -3306,10 +3486,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018403.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "009",
@@ -3496,6 +3682,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10185.png"
       },
       {
@@ -3669,6 +3861,16 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1018502_Feature_11874_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          },
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018501.png"
@@ -3846,6 +4048,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018502.png"
       },
       {
@@ -4021,10 +4229,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018503.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "010",
@@ -4183,6 +4397,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10187.png"
       },
       {
@@ -4328,6 +4548,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1018700_Feature_118701_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018701.png"
@@ -4477,10 +4703,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          },
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018703.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "011",
@@ -4594,6 +4830,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10211.png"
       },
       {
@@ -4691,6 +4933,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1021106_Feature_121102_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021101.png"
@@ -4792,6 +5040,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021102.png"
       },
       {
@@ -4889,6 +5143,24 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1021106_Feature_121102_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          },
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021103.png"
@@ -4990,6 +5262,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021104.png"
       },
       {
@@ -5087,6 +5360,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1021106_Feature_121102_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021105.png"
@@ -5188,10 +5467,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          },
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021106.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "012",
@@ -5333,6 +5622,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10212.png"
       },
       {
@@ -5460,6 +5755,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1021106_Feature_121102_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021201.png"
@@ -5591,6 +5892,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021202.png"
       },
       {
@@ -5718,6 +6025,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1021106_Feature_121102_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021203.png"
@@ -5849,6 +6162,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021204.png"
       },
       {
@@ -5976,6 +6290,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1021106_Feature_121102_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021205.png"
@@ -6107,10 +6427,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021206.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "013",
@@ -6226,6 +6552,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          },
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10041.png"
       },
       {
@@ -6325,6 +6665,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1004102_Feature_10402_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004101.png"
@@ -6429,10 +6775,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004102.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "014",
@@ -6549,6 +6901,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          },
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10042.png"
       },
       {
@@ -6648,6 +7014,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1004102_Feature_10402_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004201.png"
@@ -6752,10 +7124,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004202.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "015",
@@ -6915,6 +7293,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10043.png"
       },
       {
@@ -7060,6 +7439,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1004102_Feature_10402_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004301.png"
@@ -7209,6 +7594,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004302.png"
       },
       {
@@ -7356,10 +7747,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "016",
@@ -7489,10 +7886,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10045.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "017",
@@ -7622,6 +8025,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10261.png"
       },
       {
@@ -7737,6 +8150,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026101.png"
       },
       {
@@ -7849,6 +8268,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1026201_Feature_12603_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026102.png"
@@ -7966,10 +8391,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026105.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "018",
@@ -8141,6 +8572,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10262.png"
       },
       {
@@ -8299,6 +8736,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1026201_Feature_12603_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026201.png"
@@ -8460,6 +8903,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026202.png"
       },
       {
@@ -8618,6 +9062,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1026201_Feature_12603_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026204.png"
@@ -8780,10 +9230,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026205.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "019",
@@ -8912,10 +9368,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10263.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "020",
@@ -9045,6 +9502,28 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          },
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          },
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10201.png"
       },
       {
@@ -9159,10 +9638,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          },
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020101.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "021",
@@ -9335,6 +9824,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10203.png"
       },
       {
@@ -9493,6 +9988,16 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1020300_Feature_12074_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          },
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020301.png"
@@ -9655,10 +10160,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020302.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "022",
@@ -9802,6 +10313,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10207.png"
       },
       {
@@ -9934,10 +10446,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020701.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "023",
@@ -10068,6 +10581,24 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          },
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          },
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10161.png"
       },
       {
@@ -10180,6 +10711,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1016101_Feature_116101_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1016101.png"
@@ -10296,6 +10833,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1016102.png"
       },
       {
@@ -10410,10 +10953,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1016103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "024",
@@ -10571,6 +11120,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10162.png"
       },
       {
@@ -10713,6 +11268,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1016101_Feature_116101_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1016201.png"
@@ -10859,6 +11420,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1016202.png"
       },
       {
@@ -11003,10 +11570,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Estreito Argênteo",
+            "en": "The Argent Strait"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1016203.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "025",
@@ -11148,10 +11721,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "026",
@@ -11252,6 +11826,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10331.png"
       },
       {
@@ -11336,6 +11924,16 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1033302_Feature_133303_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          },
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1033101.png"
@@ -11424,6 +12022,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          },
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          },
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1033102.png"
       },
       {
@@ -11510,10 +12122,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1033103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "027",
@@ -11642,6 +12260,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10333.png"
       },
       {
@@ -11756,6 +12380,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1033302_Feature_133303_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1033301.png"
@@ -11874,6 +12504,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          },
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          },
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1033302.png"
       },
       {
@@ -11990,10 +12634,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1033303.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "028",
@@ -12152,6 +12797,24 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          },
+          {
+            "pt": "Campos de Nimbo",
+            "en": "Nimbus Fields"
+          },
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10231.png"
       },
       {
@@ -12295,6 +12958,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1023102_Feature_12371_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1023101.png"
@@ -12442,6 +13111,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1023102.png"
       },
       {
@@ -12587,10 +13262,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1023103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "029",
@@ -12777,6 +13462,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10232.png"
       },
       {
@@ -12952,6 +13638,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1023201.png"
       },
       {
@@ -13127,6 +13814,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1023202.png"
       },
       {
@@ -13302,10 +13990,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1023203.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "030",
@@ -13435,10 +14133,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10233.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "031",
@@ -13569,10 +14268,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10441.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "032",
@@ -13731,10 +14436,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10443.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "033",
@@ -13836,6 +14547,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          },
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10321.png"
       },
       {
@@ -13922,10 +14643,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "034",
@@ -14084,6 +14811,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10323.png"
       },
       {
@@ -14229,6 +14962,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1032402_Feature_132402_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032301.png"
@@ -14378,6 +15117,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032302.png"
       },
       {
@@ -14524,10 +15269,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032303.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "035",
@@ -14671,6 +15422,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10324.png"
       },
       {
@@ -14803,10 +15560,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032402.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "036",
@@ -14923,6 +15681,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10471.png"
       },
       {
@@ -15023,6 +15787,16 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1047503_Feature_147102_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          },
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1047101.png"
@@ -15126,6 +15900,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          },
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1047102.png"
       },
       {
@@ -15227,10 +16011,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
+          },
+          {
+            "pt": "Floresta de Estrelas Cadentes",
+            "en": "Forest of Falling Stars"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1047103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "037",
@@ -15374,6 +16168,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10475.png"
       },
       {
@@ -15506,6 +16306,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1047501.png"
       },
       {
@@ -15637,6 +16438,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1047502.png"
       },
       {
@@ -15768,10 +16570,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1047503.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "038",
@@ -15872,10 +16675,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          },
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10351.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "039",
@@ -16017,10 +16830,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mar de Flores",
+            "en": "Sea of Flowers"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10352.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "040",
@@ -16150,6 +16969,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10031.png"
       },
       {
@@ -16263,6 +17088,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1003200_Feature_10372_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003101.png"
@@ -16380,10 +17211,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "041",
@@ -16555,6 +17396,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10032.png"
       },
       {
@@ -16713,6 +17560,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1003200_Feature_10372_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Bosque Nebuloso",
+            "en": "The Mistwoods"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003201.png"
@@ -16875,6 +17728,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003202.png"
       },
       {
@@ -17035,10 +17894,20 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          },
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003203.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "042",
@@ -17167,6 +18036,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          },
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10131.png"
       },
       {
@@ -17282,10 +18161,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1013102.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "043",
@@ -17414,6 +18299,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          },
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10132.png"
       },
       {
@@ -17529,10 +18424,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1013202.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "044",
@@ -17704,6 +18605,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Serra do Canino",
+            "en": "Beast Fang Ridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10133.png"
       },
       {
@@ -17864,6 +18771,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1013301.png"
       },
       {
@@ -18024,10 +18932,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1013302.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "045",
@@ -18141,6 +19055,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10221.png"
       },
       {
@@ -18240,10 +19160,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1022102.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "046",
@@ -18400,6 +19326,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10222.png"
       },
       {
@@ -18543,6 +19475,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1022100_Feature_12222_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1022201.png"
@@ -18689,10 +19627,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1022202.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "047",
@@ -18823,10 +19762,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10511.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "048",
@@ -18985,10 +19930,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Mata dos Coriscos",
+            "en": "Blitzwood"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10512.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "049",
@@ -19089,6 +20040,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10171.png"
       },
       {
@@ -19175,10 +20132,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017101.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "050",
@@ -19280,6 +20243,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10172.png"
       },
       {
@@ -19366,10 +20335,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017201.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "051",
@@ -19513,6 +20483,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10173.png"
       },
       {
@@ -19645,10 +20616,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "052",
@@ -19792,6 +20764,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10174.png"
       },
       {
@@ -19923,6 +20901,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017401.png"
       },
       {
@@ -20054,10 +21033,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "053",
@@ -20158,10 +21143,24 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "新月海湾",
+            "en": "新月海湾"
+          },
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          },
+          {
+            "pt": "夕阳海原",
+            "en": "夕阳海原"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10191.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "054",
@@ -20262,10 +21261,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10192.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "055",
@@ -20424,6 +21429,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10194.png"
       },
       {
@@ -20569,6 +21575,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1019401_Feature_119403_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Ossada de Baleeco",
+            "en": "Echoback Landing"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1019401.png"
@@ -20718,10 +21730,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1019402.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "056",
@@ -20851,6 +21864,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10451.png"
       },
       {
@@ -20966,10 +21985,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1045101.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "057",
@@ -21141,6 +22166,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10453.png"
       },
       {
@@ -21299,6 +22330,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1045300_Feature_145301_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1045301.png"
@@ -21461,10 +22498,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1045302.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "058",
@@ -21608,6 +22646,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Passagem Berília",
+            "en": "Berylline Causeway"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10454.png"
       },
       {
@@ -21740,10 +22784,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1045401.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "059",
@@ -21857,10 +22902,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10291.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "060",
@@ -22017,6 +23068,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Prado do Sopé",
+            "en": "Driftwise Meadow"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10293.png"
       },
       {
@@ -22162,10 +23219,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1029301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "061",
@@ -22295,6 +23353,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10021.png"
       },
       {
@@ -22408,6 +23472,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1002102_Feature_102101_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002101.png"
@@ -22524,10 +23594,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002102.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "062",
@@ -22684,6 +23760,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10026.png"
       },
       {
@@ -22829,6 +23906,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002601.png"
       },
       {
@@ -22973,6 +24051,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002602.png"
       },
       {
@@ -23117,10 +24196,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002603.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "063",
@@ -23277,6 +24362,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10027.png"
       },
       {
@@ -23420,6 +24511,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1002102_Feature_102101_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002701.png"
@@ -23566,10 +24663,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002702.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "064",
@@ -23681,6 +24784,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10024.png"
       },
       {
@@ -23780,10 +24889,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002401.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "065",
@@ -23898,6 +25013,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10022.png"
       },
       {
@@ -23997,10 +25118,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002201.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "066",
@@ -24142,6 +25269,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10023.png"
       },
       {
@@ -24271,10 +25404,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Terras Altas Carmesim",
+            "en": "Russet Highlands"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "067",
@@ -24431,6 +25570,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10025.png"
       },
       {
@@ -24576,10 +25716,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002503.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "068",
@@ -24693,10 +25834,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10501.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "069",
@@ -24853,6 +26000,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10503.png"
       },
       {
@@ -24998,10 +26151,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Bosque Torre Branca",
+            "en": "Rosetower Woods"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1050301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "070",
@@ -25116,10 +26275,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10281.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "071",
@@ -25221,10 +26386,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10282.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "072",
@@ -25382,6 +26553,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10283.png"
       },
       {
@@ -25527,10 +26704,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1028301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "073",
@@ -25644,10 +26827,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10284.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "074",
@@ -25789,10 +26973,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10285.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "075",
@@ -25893,10 +27078,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10431.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "076",
@@ -26025,10 +27216,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Ponte Terrestre Zeferina",
+            "en": "Zephyrus Landbridge"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10433.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "077",
@@ -26142,10 +27339,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10141.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "078",
@@ -26259,10 +27462,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10142.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "079",
@@ -26434,6 +27643,12 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10143.png"
       },
       {
@@ -26592,6 +27807,12 @@
             },
             "icone": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/1014302_Feature_11431_Icon.png",
             "grupo": "trait"
+          }
+        ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
           }
         ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1014301.png"
@@ -26754,10 +27975,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1014302.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "080",
@@ -26871,10 +28098,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10481.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "081",
@@ -27016,10 +28249,16 @@
             "grupo": "trait"
           }
         ],
+        "locais": [
+          {
+            "pt": "Costa Florada",
+            "en": "Tideblossom Coast"
+          }
+        ],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10483.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "082",
@@ -27148,10 +28387,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10122.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "10001",
@@ -27265,10 +28505,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10213.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "10002",
@@ -27397,10 +28638,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10474.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "10003",
@@ -27557,6 +28799,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10033.png"
       },
       {
@@ -27702,10 +28945,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003305.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "11001",
@@ -27849,6 +29093,7 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_69993.png"
       },
       {
@@ -27980,10 +29225,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_6999301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "99996",
@@ -28140,10 +29386,11 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10371.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   },
   {
     "id": "99998",
@@ -28300,9 +29547,10 @@
             "grupo": "trait"
           }
         ],
+        "locais": [],
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10361.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:33:24.052Z"
+    "coletadoEm": "2026-09-22T23:44:34.658Z"
   }
 ]

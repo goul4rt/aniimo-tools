@@ -2,7 +2,7 @@
 // Aborta sem escrever se o resultado parecer quebrado (guarda contra mudança de formato da wiki).
 // Uso: node scripts/normalize.ts
 import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
-import type { Aniimo, Elemento, Forma, Habilidade, Papel } from '../src/types.ts';
+import type { Aniimo, Elemento, Forma, Habilidade, Papel, Texto } from '../src/types.ts';
 
 const OUT = 'data/aniimos.json';
 const ELEMENTOS: Elemento[] = ['fire', 'water', 'grass', 'electric', 'ice', 'rock', 'wind', 'holy', 'dark'];
@@ -57,6 +57,15 @@ function habilidades(en: Raw, pt: Raw, arquivo: string) {
   return { skills, traits };
 }
 
+// Seção "Habitats" (nem toda página tem): lista de capsules com o nome da região, na mesma ordem em EN e PT.
+function habitats(en: Raw, pt: Raw): Texto[] {
+  const i = en.directories[0].components.findIndex((c: Raw) => c.props?.title === 'Habitats');
+  if (i < 0) return [];
+  const nomes = (d: Raw) => (d.directories[0].components[i].children ?? []).map((c: Raw) => c.props.title as string);
+  const [a, b] = [nomes(en), nomes(pt)];
+  return a.map((e: string, k: number) => ({ pt: b[k] ?? e, en: e }));
+}
+
 // Agrupa as formas por id.
 const porId = new Map<string, { chave: string; en: Raw; pt: Raw }[]>();
 for (const arquivo of readdirSync('raw/en').filter((f) => !f.startsWith('_'))) {
@@ -88,6 +97,7 @@ const registros = [...porId].sort(([a], [b]) => a.localeCompare(b)).map(([id, li
         pdef: f.physicalDefense, mdef: f.magicDefense, haste: f.haste, total: f.attributeValue,
       },
       ...habilidades(en, pt, `${id}/${chave}`),
+      locais: habitats(en, pt),
       imagem: f.noGenderImage || f.maleImage,
     };
   });
