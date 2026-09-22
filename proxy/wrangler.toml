@@ -1,0 +1,5 @@
+name = "aniimo-proxy"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+workers_dev = false
+routes = [{ pattern = "aniimo.ogoulart.dev", custom_domain = true }]
