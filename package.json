@@ -10,7 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "data": "node scripts/fetch-wiki.ts && node scripts/normalize.ts"
+    "data": "node scripts/fetch-wiki.ts && node scripts/normalize.ts",
+    "itens": "node scripts/fetch-aniidex.ts"
   },
   "dependencies": {
     "@resvg/resvg-js": "^2.6.2",

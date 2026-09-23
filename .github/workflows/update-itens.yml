@@ -1,0 +1,35 @@
+name: update-itens
+
+on:
+  schedule:
+    - cron: '0 9 * * 1' # segunda, 06h BRT
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: update-data # mesmo grupo do update-data: os dois nunca commitam ao mesmo tempo
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120 # ~3.500 páginas a ~1 por segundo: ~1h
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: node scripts/fetch-aniidex.test.ts
+      # Falha aqui (site fora, formato mudou, >5% de erros) = data/itens.json intacto, GitHub avisa por e-mail.
+      - run: npm run itens
+      - name: Commit se data/itens.json mudou
+        run: |
+          git diff --quiet data/itens.json && { echo "sem mudanças"; exit 0; }
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/itens.json
+          git commit -m "data: atualização semanal dos itens (Aniidex)"
+          git pull --rebase
+          git push

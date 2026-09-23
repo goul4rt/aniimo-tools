@@ -1,0 +1,117 @@
+---
+// Página escondida: o "_" no nome tira do build. Para publicar, renomeie para itens.astro e registre em src/paginas.ts, no menu (Base.astro) e na home.
+import Base from '../layouts/Base.astro';
+import dados from '../../data/itens.json';
+
+type Fonte = { tipo: string | null; onde: string; custo: { qtd: number; moeda: string }[] };
+type Item = { nome: string; raridade: number; raridadeNome: string; categoria: string; funcao: string | null; descricao: string | null; info: Record<string, string>; fontes: Fonte[]; outras: { titulo: string; linhas: string[] }[] };
+const itens = dados.itens as Item[];
+
+// Raridade pelo número (1–6), que é estável; o nome em inglês fica de reserva se aparecer um nível novo.
+const RARIDADE: Record<number, string> = { 1: 'Comum', 2: 'Incomum', 3: 'Raro', 4: 'Épico', 5: 'Lendário', 6: 'Prismático' };
+const niveis = [...new Set(itens.map((i) => i.raridade))].sort();
+const categorias = [...new Set(itens.map((i) => i.categoria))].filter(Boolean).sort();
+// Rótulos que o Aniidex usa, em português; o que não estiver aqui aparece como veio.
+const PT: Record<string, string> = {
+  'Sells for': 'Vende por', 'Requires Farm Lvl': 'Nível da fazenda', 'Growth Time': 'Tempo de crescimento',
+  'Used For': 'Serve para', Chest: 'Baú', Gathering: 'Coleta', Crafting: 'Criação',
+};
+const pt = (s: string) => PT[s] ?? s;
+const fonteTxt = (f: Fonte) => [f.tipo && `${pt(f.tipo)}:`, f.onde, f.custo.length ? `(${f.custo.map((c) => `${c.qtd.toLocaleString('pt-BR')} ${c.moeda}`).join(' + ')})` : ''].filter(Boolean).join(' ');
+
+// Compacto e embutido: o navegador filtra e desenha 60 por vez (3.000+ cards de uma vez travariam o celular).
+const lista = itens.map((i) => [i.nome, categorias.indexOf(i.categoria), i.raridade, i.funcao ?? '', i.descricao ?? '',
+  Object.entries(i.info).map(([k, v]) => [pt(k), v]), i.fontes.map(fonteTxt), i.outras.map((o) => [pt(o.titulo), o.linhas])]);
+---
+
+<Base title="Itens · Aniimo Tools" description={`Os ${itens.length} itens de Aniimo: raridade, para que servem e onde conseguir cada um, com busca e filtros.`}>
+  <h1 class="text-4xl">Itens</h1>
+  <p class="mt-1 max-w-2xl text-muted">
+    {itens.length.toLocaleString('pt-BR')} itens com raridade, para que servem e onde conseguir. Os nomes estão em inglês, como no jogo em inglês.
+  </p>
+
+  <form id="filtros" class="mt-6 grid gap-3 sm:grid-cols-[minmax(0,1fr)_16rem]" onsubmit="return false">
+    <input name="q" type="search" placeholder="Buscar item, efeito ou onde conseguir…" autocomplete="off" aria-label="Buscar" class="campo" />
+    <select name="cat" aria-label="Categoria" class="campo">
+      <option value="">Todas as categorias</option>
+      {categorias.map((c, i) => <option value={i}>{c}</option>)}
+    </select>
+    <fieldset class="flex flex-wrap gap-1 sm:col-span-2">
+      <legend class="sr-only">Raridade</legend>
+      {[['', 'Todas'], ...niveis.map((n) => [String(n), RARIDADE[n] ?? itens.find((i) => i.raridade === n)!.raridadeNome])].map(([v, r]) => (
+        <label class="flex h-9 cursor-pointer items-center gap-1.5 rounded-full border border-danube-100 bg-white px-3 text-sm font-semibold text-casal has-checked:border-casal has-checked:ring-2 has-checked:ring-casal/25 has-focus-visible:outline-2 hover:border-danube">
+          <input type="radio" name="rar" value={v} checked={v === ''} class="sr-only" />
+          {v && <span class={`rar-${v} h-2.5 w-2.5 rounded-full`}></span>}{r}
+        </label>
+      ))}
+    </fieldset>
+  </form>
+  <p id="contagem" class="mt-4 text-sm text-muted" aria-live="polite"></p>
+
+  <ul id="lista" class="mt-3 grid gap-3 md:grid-cols-2 lg:grid-cols-3"></ul>
+  <button id="mais" type="button" class="btn mx-auto mt-6 flex" hidden>Mostrar mais</button>
+
+  <p class="mt-8 text-xs text-danube-700">
+    Dados do <a class="underline" href={dados.fonte}>Aniidex</a>, usados com permissão e atualizados toda semana.
+    Viu algo errado? <a class="underline" href="https://github.com/goul4rt/aniimo-tools/issues/new">Avise</a>.
+  </p>
+
+  <script type="application/json" id="dados" set:html={JSON.stringify({ lista, categorias, RARIDADE }).replaceAll('<', '\\u003c')} />
+</Base>
+
+<style is:global>
+  .rar-1 { background: #9AA7B2; } .rar-2 { background: #2F8F6B; } .rar-3 { background: #4A7DAB; }
+  .rar-4 { background: #8B5CF6; } .rar-5 { background: #D08A1F; }
+  .rar-6 { background: linear-gradient(135deg, #7FD6F5, #A7B8F7 45%, #F48DB8 80%, #FFB37A); }
+</style>
+
+<script>
+  import { umaVez } from '../scripts/evento.ts';
+  import { esc } from '../scripts/seletor.ts';
+  type L = [string, number, number, string, string, [string, string][], string[], [string, string[]][]];
+  const D = JSON.parse(document.getElementById('dados')!.textContent!) as { lista: L[]; categorias: string[]; RARIDADE: Record<string, string> };
+  const semAcento = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
+  const busca = D.lista.map((i) => semAcento([i[0], D.categorias[i[1]], i[3], ...i[6], ...i[7].flatMap((o) => o[1])].join(' ')));
+  const form = document.getElementById('filtros') as HTMLFormElement;
+  const ul = document.getElementById('lista')!;
+  const mais = document.getElementById('mais') as HTMLButtonElement;
+  const PAGINA = 60;
+  let achados: number[] = [];
+  let mostrados = 0;
+
+  const card = ([nome, cat, rar, funcao, desc, info, fontes, outras]: L) => `
+    <li class="card relative flex flex-col gap-2 overflow-hidden p-4 pl-5">
+      <span class="rar-${rar} absolute inset-y-0 left-0 w-1.5"></span>
+      <div class="flex items-start justify-between gap-2">
+        <h2 class="font-display text-lg leading-tight font-semibold">${esc(nome)}</h2>
+        <span class="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-muted"><span class="rar-${rar} h-2.5 w-2.5 rounded-full"></span>${esc(D.RARIDADE[rar] ?? '')}</span>
+      </div>
+      <span class="w-fit rounded-full bg-danube-50 px-2.5 py-0.5 text-xs font-semibold text-danube-700">${esc(D.categorias[cat] ?? '')}</span>
+      ${funcao ? `<p class="text-sm leading-relaxed whitespace-pre-line">${esc(funcao)}</p>` : ''}
+      ${desc ? `<p class="text-sm leading-relaxed text-muted italic">${esc(desc)}</p>` : ''}
+      ${info.length ? `<p class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted">${info.map(([k, v]) => `<span>${esc(k)} <strong class="font-mono text-ink">${esc(v)}</strong></span>`).join('')}</p>` : ''}
+      ${outras.map(([t, linhas]) => `<div class="text-sm"><p class="rotulo text-xs">${esc(t)}</p><ul class="mt-1 space-y-0.5">${linhas.map((l) => `<li>${esc(l)}</li>`).join('')}</ul></div>`).join('')}
+      ${fontes.length ? `<details class="mt-auto border-t border-line pt-2 text-sm">
+        <summary class="cursor-pointer font-semibold text-casal">Onde conseguir (${fontes.length})</summary>
+        <ul class="mt-1.5 space-y-1 text-muted">${fontes.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>
+      </details>` : ''}
+    </li>`;
+
+  function desenha(reset: boolean) {
+    if (reset) { ul.innerHTML = ''; mostrados = 0; }
+    ul.insertAdjacentHTML('beforeend', achados.slice(mostrados, mostrados + PAGINA).map((i) => card(D.lista[i])).join(''));
+    mostrados = Math.min(achados.length, mostrados + PAGINA);
+    mais.hidden = mostrados >= achados.length;
+  }
+  function filtra() {
+    const f = new FormData(form);
+    const q = semAcento(String(f.get('q')));
+    const cat = String(f.get('cat')), rar = String(f.get('rar'));
+    achados = D.lista.flatMap((i, k) => (!q || busca[k].includes(q)) && (!cat || i[1] === Number(cat)) && (!rar || i[2] === Number(rar)) ? [k] : []);
+    document.getElementById('contagem')!.textContent = achados.length ? `${achados.length.toLocaleString('pt-BR')} itens` : 'Nenhum item com esses filtros.';
+    desenha(true);
+  }
+  form.addEventListener('input', () => { filtra(); umaVez('itens_filtrado'); });
+  mais.addEventListener('click', () => desenha(false));
+  filtra();
+</script>
