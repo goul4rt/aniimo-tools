@@ -115,7 +115,7 @@ Três fases: a Fase 1 coloca o site no ar em uma semana, a Fase 2 faz o jogador 
 | 2 | Montador de time: cobertura de elementos, fraquezas em comum e equilíbrio de papéis | `/time` | aniimos.json, elementos.json | Médio |
 | 2 | Planejador de Resonance (evolução sem dados oficiais) | `/evolucao` | resonance.json (manual, conferido pela Action contra a wiki) | Médio |
 | 3 | API JSON pública com página de documentação e atribuição | `/api/v1/*.json` | Os mesmos JSONs, publicados como estáticos | Baixo |
-| 3 | Bot de Discord PT-BR (`/aniimo <nome>`) consumindo a API | Externo | API | Médio |
+| 3 | Bot de Discord PT-BR (`/aniimo <nome>`) consumindo a API | Worker `aniimo-bot` (HTTP interactions) | API | Médio |
 | 3 | Comparador de stats entre formas e builds | `/comparar` | aniimos.json | Médio |
 
 Fora do escopo, e por quê:
@@ -232,7 +232,8 @@ Primeiros passos, em ordem:
 - [x] Fase 3 (parcial): API estática em /api/v1 com CORS e documentação em /api
 - [x] Planejador de Resonance (/evolucao). A wiki só publica os estágios 6–7 (nível 55/65, 1×/2× Cristal de Onifonte), iguais nas 208 formas; o `normalize.ts` confere isso todo dia contra `data/resonance.json`. Estágios 1–5, estrelas e créditos vêm da comunidade (2 fontes; créditos de 1). Requisitos de evolução não existem na wiki (condições vazias) e ficaram de fora
 - [x] Comparador de stats (/comparar, até 3, salvo na URL)
-- [ ] Bot de Discord
+- [x] Bot de Discord (`bot/`): Worker de HTTP interactions, sem servidor, `/aniimo <nome>` com autocomplete, consumindo a API. No ar em aniimo-bot.extremeplays4.workers.dev
+- [ ] Ativar o bot: criar a aplicação no Discord, configurar `DISCORD_PUBLIC_KEY` e o endpoint e registrar o comando (passos no README)
 - [ ] Divulgar nos canais em português do Discord oficial, em comunidades BR no Reddit e em grupos de Telegram/WhatsApp; pedir relatos de erro nos dados
 
 ## Consequências, riscos e gatilhos de revisão
