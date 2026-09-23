@@ -1,13 +1,13 @@
-// Eventos de uso (PostHog). Sem PostHog carregado vira no-op, então dá para chamar em qualquer lugar.
-type PH = { capture: (nome: string, props?: Record<string, unknown>) => void };
-const ph = () => (window as unknown as { posthog?: PH }).posthog;
+// Eventos de uso (Umami). Sem o script carregado vira no-op, então dá para chamar em qualquer lugar.
+type Umami = { track: (nome: string, dados?: Record<string, unknown>) => void };
+const umami = () => (window as unknown as { umami?: Umami }).umami;
 
-export const evento = (nome: string, props?: Record<string, unknown>) => ph()?.capture(nome, props);
+export const evento = (nome: string, dados?: Record<string, unknown>) => umami()?.track(nome, dados);
 
 // Para ações repetitivas (arrastar na tier list, marcar na coleção): conta uma vez por visita à página.
 const jaFoi = new Set<string>();
-export const umaVez = (nome: string, props?: Record<string, unknown>) => {
+export const umaVez = (nome: string, dados?: Record<string, unknown>) => {
   if (jaFoi.has(nome)) return;
   jaFoi.add(nome);
-  evento(nome, props);
+  evento(nome, dados);
 };
