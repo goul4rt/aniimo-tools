@@ -150,6 +150,15 @@ for (const a of aniimos) {
     if (!Number.isInteger(f.estagio)) erros.push(`${onde}: estágio ${f.estagio}`);
   }
 }
+// A parte oficial de data/resonance.json (manual) tem que continuar batendo com a wiki, forma a forma.
+const resonance = JSON.parse(readFileSync('data/resonance.json', 'utf8'));
+const esperado = resonance.estagios.filter((e: Raw) => e.nivelOficial).map((e: Raw) => `LV ${e.estagio}@${e.nivel}x${e.onifonte}`).join(' ');
+for (const [id, lista] of porId) for (const { chave, en } of lista) {
+  const html = section(en, 'Aniimo Training')?.components?.[0]?.children?.[0]?.props?.modelValue ?? '';
+  const achado = [...html.matchAll(/(LV \d+)<\/td><td[^>]*>Reach level (\d+)[\s\S]*?x(\d+)</g)].map((m: string[]) => `${m[1]}@${m[2]}x${m[3]}`).join(' ');
+  if (achado !== esperado) erros.push(`${id}/${chave}: Resonance na wiki "${achado}" ≠ data/resonance.json "${esperado}"`);
+}
+
 if (erros.length) {
   console.error(`normalize abortado, ${OUT} não foi alterado:\n- ${erros.join('\n- ')}`);
   process.exit(1);

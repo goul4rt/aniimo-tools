@@ -1,0 +1,123 @@
+---
+import Base from '../layouts/Base.astro';
+import r from '../../data/resonance.json';
+import { STAT } from '../rotulos.ts';
+
+// Linha do tempo da Resonance: em cada estágio, as estrelas (Star-Up) e depois a ascensão para o próximo.
+type Passo = { rotulo: string; tipo: 'estrela' | 'ascensao'; estagio: number; pos?: number };
+const passos: Passo[] = [];
+for (const e of r.estagios) {
+  if (e.estagio > 1) passos.push({ rotulo: `Estágio ${e.estagio}`, tipo: 'ascensao', estagio: e.estagio });
+  for (let p = 1; p <= e.estrelas; p++) passos.push({ rotulo: `Estágio ${e.estagio}, ${p}★`, tipo: 'estrela', estagio: e.estagio, pos: p });
+}
+// Posições do select: "0" = recém-obtido (estágio 1, 0 estrelas); "i" = depois do passo i.
+const posicoes = ['Estágio 1, 0★', ...passos.map((p) => p.rotulo)];
+const data = new Date(r.conferidoEm + 'T12:00').toLocaleDateString('pt-BR');
+---
+
+<Base title="Planejador de Resonance · Aniimo Tools" description="Quanto Dewdrop, pedras elementais e Cristal de Onifonte você precisa para levar um Aniimo até o estágio de Resonance que quiser.">
+  <h1 class="text-3xl font-bold">Planejador de Resonance</h1>
+  <p class="mt-1 max-w-2xl text-slate-400">
+    Escolha onde seu Aniimo está e aonde quer chegar. Os custos de Resonance são iguais para todos os Aniimo;
+    as pedras elementais são as do elemento dele.
+  </p>
+
+  <div class="mt-6 grid gap-3 sm:grid-cols-2 sm:max-w-xl">
+    <label class="text-sm text-slate-400">Agora
+      <select id="de" class="mt-1 w-full rounded bg-slate-900 px-3 py-2 text-slate-100 ring-1 ring-slate-700">
+        {posicoes.map((p, i) => <option value={i}>{p}</option>)}
+      </select>
+    </label>
+    <label class="text-sm text-slate-400">Meta
+      <select id="ate" class="mt-1 w-full rounded bg-slate-900 px-3 py-2 text-slate-100 ring-1 ring-slate-700">
+        {posicoes.map((p, i) => <option value={i} selected={i === posicoes.length - 1}>{p}</option>)}
+      </select>
+    </label>
+  </div>
+
+  <div id="resultado" class="mt-6 grid gap-4 md:grid-cols-2"></div>
+
+  <details class="mt-8 max-w-2xl text-sm text-slate-400">
+    <summary class="cursor-pointer text-slate-300">Tabela completa</summary>
+    <table class="mt-3 w-full text-left">
+      <thead class="text-slate-500"><tr><th class="py-1">Estágio</th><th>Nível</th><th>Ascensão</th><th>Estrelas (Dewdrop)</th></tr></thead>
+      <tbody>
+        {r.estagios.map((e) => (
+          <tr class="border-t border-slate-800">
+            <td class="py-1">{e.estagio}</td>
+            <td>{e.nivel ?? '—'}{e.nivelOficial && <span title="Valor da wiki oficial"> ✓</span>}</td>
+            <td>{e.dewdrop ? `${e.dewdrop} Dewdrop, ${e.pedras} pedras${e.onifonte ? `, ${e.onifonte} Onifonte` : ''}` : '—'}</td>
+            <td>{r.estrelas.custoDewdrop.slice(0, e.estrelas).join(' + ') || '—'}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+    <p class="mt-2">✓ = confirmado na wiki oficial.</p>
+  </details>
+
+  <div class="mt-6 max-w-2xl text-xs text-slate-500">
+    <p>
+      {r.nota} Conferido em {data}: <a class="underline" href={r.fontes.oficial}>wiki oficial</a>,
+      {r.fontes.comunidade.map((f, i) => <>{i > 0 && ', '}<a class="underline" href={f}>{new URL(f).hostname}</a></>)}.
+    </p>
+    <ul class="mt-2 list-disc pl-4">{r.divergencias.map((d) => <li>{d}</li>)}</ul>
+    <p class="mt-2">
+      A wiki oficial não publica requisitos de evolução (nível ou itens), então eles ainda não entram aqui.
+      Sabe os custos no jogo? <a class="underline" href="https://github.com/goul4rt/aniimo-tools/issues/new">Avise</a>.
+    </p>
+  </div>
+
+  <script type="application/json" id="dados" set:html={JSON.stringify({ passos, r, STAT }).replaceAll('<', '\\u003c')} />
+</Base>
+
+<script>
+  type Passo = { rotulo: string; tipo: 'estrela' | 'ascensao'; estagio: number; pos?: number };
+  type Estagio = { estagio: number; nivel?: number; dewdrop?: number; pedras?: number; onifonte?: number; creditos?: number };
+  const { passos, r, STAT } = JSON.parse(document.getElementById('dados')!.textContent!) as {
+    passos: Passo[]; r: { estrelas: { custoDewdrop: number[]; ganho: Record<string, number>[] }; estagios: Estagio[] };
+    STAT: Record<string, string>;
+  };
+  const de = document.getElementById('de') as HTMLSelectElement;
+  const ate = document.getElementById('ate') as HTMLSelectElement;
+  const fmt = (n: number) => n.toLocaleString('pt-BR');
+
+  function calcula() {
+    const [a, b] = [Number(de.value), Number(ate.value)];
+    const out = document.getElementById('resultado')!;
+    if (b <= a) { out.innerHTML = '<p class="text-slate-400">Escolha uma meta depois da posição atual.</p>'; return; }
+    const t = { dewdrop: 0, pedras: 0, onifonte: 0, creditos: 0, estrelas: 0 };
+    let nivel = 0;
+    const ganhos: Record<string, number> = {};
+    for (const p of passos.slice(a, b)) {
+      if (p.tipo === 'estrela') {
+        t.dewdrop += r.estrelas.custoDewdrop[p.pos! - 1];
+        t.estrelas++;
+        for (const [k, v] of Object.entries(r.estrelas.ganho[p.pos! - 1])) ganhos[k] = (ganhos[k] ?? 0) + v;
+      } else {
+        const e = r.estagios.find((x) => x.estagio === p.estagio)!;
+        t.dewdrop += e.dewdrop ?? 0; t.pedras += e.pedras ?? 0; t.onifonte += e.onifonte ?? 0; t.creditos += e.creditos ?? 0;
+        nivel = Math.max(nivel, e.nivel ?? 0);
+      }
+    }
+    const linha = (rotulo: string, v: number, extra = '') => (v ? `<li class="flex justify-between gap-4"><span>${rotulo}${extra}</span><strong class="tabular-nums">${fmt(v)}</strong></li>` : '');
+    out.innerHTML = `
+      <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-slate-800">
+        <h2 class="font-semibold">Materiais</h2>
+        <ul class="mt-2 space-y-1 text-sm">
+          ${linha('Dewdrop Crystal (da região)', t.dewdrop)}
+          ${linha('Pedras elementais (do elemento do Aniimo)', t.pedras)}
+          ${linha('Cristal de Onifonte', t.onifonte)}
+          ${linha('Créditos', t.creditos, ' <span class="text-xs text-slate-500">(1 fonte)</span>')}
+        </ul>
+        ${nivel ? `<p class="mt-3 text-sm text-amber-300">O Aniimo precisa estar no nível ${nivel}.</p>` : ''}
+      </div>
+      <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-slate-800">
+        <h2 class="font-semibold">Ganho de ${t.estrelas} estrela${t.estrelas === 1 ? '' : 's'}</h2>
+        <ul class="mt-2 space-y-1 text-sm">${Object.keys(STAT).filter((k) => ganhos[k]).map((k) =>
+          linha(STAT[k], ganhos[k]).replace('tabular-nums">', 'tabular-nums">+')).join('')}</ul>
+      </div>`;
+  }
+  de.addEventListener('change', calcula);
+  ate.addEventListener('change', calcula);
+  calcula();
+</script>

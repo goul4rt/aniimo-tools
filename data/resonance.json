@@ -1,0 +1,110 @@
+{
+  "conferidoEm": "2026-09-22",
+  "fontes": {
+    "oficial": "https://wiki.aniimo.com/pt/item/001/basic-form",
+    "comunidade": [
+      "https://aniimotools.dev/systems/resonance/",
+      "https://www.aniimoverse.com/guides/resonance"
+    ]
+  },
+  "nota": "A wiki oficial só publica os estágios 6 e 7 (nível exigido e Cristal de Onifonte), iguais para todas as 208 formas. O resto vem da comunidade, onde as duas fontes concordam; créditos vêm de uma fonte só.",
+  "estrelas": {
+    "custoDewdrop": [
+      20,
+      25,
+      30,
+      40,
+      50,
+      60
+    ],
+    "ganho": [
+      {
+        "atk": 10,
+        "brk": 5
+      },
+      {
+        "pdef": 5,
+        "mdef": 5
+      },
+      {
+        "hp": 320,
+        "regen": 8
+      },
+      {
+        "pdef": 5,
+        "mdef": 5
+      },
+      {
+        "atk": 10,
+        "brk": 5
+      },
+      {
+        "hp": 320,
+        "regen": 8
+      }
+    ]
+  },
+  "estagios": [
+    {
+      "estagio": 1,
+      "estrelas": 1
+    },
+    {
+      "estagio": 2,
+      "estrelas": 2,
+      "nivel": 35,
+      "dewdrop": 20,
+      "pedras": 2,
+      "creditos": 100
+    },
+    {
+      "estagio": 3,
+      "estrelas": 3,
+      "nivel": 35,
+      "dewdrop": 25,
+      "pedras": 4,
+      "creditos": 230
+    },
+    {
+      "estagio": 4,
+      "estrelas": 4,
+      "nivel": 40,
+      "dewdrop": 30,
+      "pedras": 6,
+      "creditos": 390
+    },
+    {
+      "estagio": 5,
+      "estrelas": 5,
+      "nivel": 50,
+      "dewdrop": 40,
+      "pedras": 8,
+      "creditos": 580
+    },
+    {
+      "estagio": 6,
+      "estrelas": 6,
+      "nivel": 55,
+      "nivelOficial": true,
+      "dewdrop": 50,
+      "pedras": 10,
+      "onifonte": 1,
+      "creditos": 800
+    },
+    {
+      "estagio": 7,
+      "estrelas": 0,
+      "nivel": 65,
+      "nivelOficial": true,
+      "dewdrop": 60,
+      "pedras": 10,
+      "onifonte": 2,
+      "creditos": 1050
+    }
+  ],
+  "divergencias": [
+    "Estágio 6: a comunidade diz nível 60; a wiki oficial diz 55 (usamos 55).",
+    "O cristal dos estágios 6 e 7 aparece como \"Phenomena Crystal\" no aniimoverse; o nome oficial é Omnisource Crystal (Cristal de Onifonte).",
+    "Créditos da ascensão: só o aniimotools informa."
+  ]
+}

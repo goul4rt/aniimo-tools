@@ -113,7 +113,7 @@ Três fases: a Fase 1 coloca o site no ar em uma semana, a Fase 2 faz o jogador 
 | 1 | Códigos de resgate com botão de copiar e status ativo/expirado | `/codigos` | codigos.json (manual) | Muito baixo |
 | 2 | Rastreador de coleção, incluindo Prismana; exporta e importa | `/colecao` | aniimos.json + localStorage | Baixo |
 | 2 | Montador de time: cobertura de elementos, fraquezas em comum e equilíbrio de papéis | `/time` | aniimos.json, elementos.json | Médio |
-| 2 | Planejador de evolução e Resonance | `/evolucao` | aniimos.json + parser da Resonance, itens.json | Médio |
+| 2 | Planejador de Resonance (evolução sem dados oficiais) | `/evolucao` | resonance.json (manual, conferido pela Action contra a wiki) | Médio |
 | 3 | API JSON pública com página de documentação e atribuição | `/api/v1/*.json` | Os mesmos JSONs, publicados como estáticos | Baixo |
 | 3 | Bot de Discord PT-BR (`/aniimo <nome>`) consumindo a API | Externo | API | Médio |
 | 3 | Comparador de stats entre formas e builds | `/comparar` | aniimos.json | Médio |
@@ -230,7 +230,7 @@ Primeiros passos, em ordem:
 - [x] Construir /codigos a partir de `codigos.json` (2 fontes; recompensa só quando concordam)
 - [x] Fase 2 (parcial): /colecao (localStorage + exportar/importar) e /time (4 slots, time salvo na URL para compartilhar)
 - [x] Fase 3 (parcial): API estática em /api/v1 com CORS e documentação em /api
-- [ ] Planejador de evolução e Resonance: depende do parser da tabela HTML da Resonance e de itens.json
+- [x] Planejador de Resonance (/evolucao). A wiki só publica os estágios 6–7 (nível 55/65, 1×/2× Cristal de Onifonte), iguais nas 208 formas; o `normalize.ts` confere isso todo dia contra `data/resonance.json`. Estágios 1–5, estrelas e créditos vêm da comunidade (2 fontes; créditos de 1). Requisitos de evolução não existem na wiki (condições vazias) e ficaram de fora
 - [x] Comparador de stats (/comparar, até 3, salvo na URL)
 - [ ] Bot de Discord
 - [ ] Divulgar nos canais em português do Discord oficial, em comunidades BR no Reddit e em grupos de Telegram/WhatsApp; pedir relatos de erro nos dados
