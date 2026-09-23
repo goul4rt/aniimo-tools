@@ -16,10 +16,10 @@ export type Habilidade = {
 export type Forma = {
   chave: string;  // segmento da rota na wiki: "basic-form", "highland-form"
   nome: Texto;
-  estagio: number; // 1–4 como na wiki; varia entre formas do mesmo id
+  estagio: number; // 1 Lumin, 2 Gamma, 3 Nova, 4 sem nome oficial; varia entre formas do mesmo id
   elementos: Elemento[];
   papeis: Papel[];
-  stats: { hp: number; patk: number; matk: number; pdef: number; mdef: number; haste: number; total: number };
+  stats: { hp: number; atk: number; brk: number; pdef: number; mdef: number; regen: number; total: number };
   skills: Habilidade[];
   traits: Habilidade[];
   locais: Texto[]; // seção Habitats da wiki; vazio quando a página não tem

@@ -1,14 +1,29 @@
 ---
 import Base from '../layouts/Base.astro';
-import aniimos from '../../data/aniimos.json';
+import { aniimos } from '../data.ts';
+import codigos from '../../data/codigos.json';
 
 const formas = aniimos.reduce((n, a) => n + a.formas.length, 0);
+const ativos = codigos.codigos.filter((c) => c.ativo).length;
+const cards = [
+  ['/aniilog/', 'Aniilog', `${aniimos.length} Aniimo e ${formas} formas: stats, skills, traços e onde encontrar.`],
+  ['/tipos/', 'Tabela de tipos', 'Escolha o elemento do inimigo e veja quem ataca bem e quem resiste.'],
+  ['/codigos/', 'Códigos de resgate', `${ativos} códigos ativos, com botão de copiar.`],
+];
 ---
 
-<Base title="Aniimo Tools · em breve">
+<Base title="Aniimo Tools · ferramentas de Aniimo em português">
   <h1 class="text-3xl font-bold">Aniimo Tools</h1>
-  <p class="mt-4 text-slate-300">
-    Hub de ferramentas de Aniimo em português: Aniilog, tabela de tipos e códigos de resgate. Em breve.
+  <p class="mt-2 max-w-2xl text-slate-300">
+    Ferramentas de Aniimo em português, com os nomes oficiais do jogo e dados atualizados todo dia a partir da wiki oficial.
   </p>
-  <p class="mt-2 text-slate-400">{aniimos.length} Aniimo e {formas} formas já catalogados a partir da wiki oficial.</p>
+  <div class="mt-8 grid gap-4 sm:grid-cols-3">
+    {cards.map(([href, titulo, texto]) => (
+      <a href={href} class="rounded-lg bg-slate-900 p-5 ring-1 ring-slate-800 hover:ring-slate-500">
+        <h2 class="text-lg font-semibold">{titulo}</h2>
+        <p class="mt-1 text-sm text-slate-400">{texto}</p>
+      </a>
+    ))}
+  </div>
+  <p class="mt-8 text-sm text-slate-500">Em breve: rastreador de coleção, montador de time e API pública.</p>
 </Base>

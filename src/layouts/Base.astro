@@ -6,6 +6,13 @@ interface Props {
   description?: string;
 }
 const { title, description = 'Ferramentas de Aniimo em português, com dados abertos.' } = Astro.props;
+// Canonical sempre no domínio próprio: o mesmo conteúdo também responde em aniimo-tools.pages.dev.
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const nav = [
+  ['/aniilog/', 'Aniilog'],
+  ['/tipos/', 'Tipos'],
+  ['/codigos/', 'Códigos'],
+];
 ---
 
 <html lang="pt-BR">
@@ -13,15 +20,27 @@ const { title, description = 'Ferramentas de Aniimo em português, com dados abe
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
   </head>
   <body class="flex min-h-screen flex-col bg-slate-950 text-slate-100 antialiased">
-    <main class="mx-auto w-full max-w-3xl flex-1 px-4 py-12">
+    <header class="border-b border-slate-800">
+      <nav class="mx-auto flex max-w-5xl items-center gap-5 px-4 py-3 text-sm">
+        <a href="/" class="font-bold text-base">Aniimo Tools</a>
+        {nav.map(([href, label]) => (
+          <a href={href} class:list={['hover:text-white', Astro.url.pathname.startsWith(href) ? 'text-white' : 'text-slate-400']}>{label}</a>
+        ))}
+      </nav>
+    </header>
+    <main class="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
       <slot />
     </main>
     <footer class="border-t border-slate-800 px-4 py-6 text-center text-sm text-slate-400">
       Fan-site não-oficial. Aniimo e todos os assets são © Pawprint Studio. Sem afiliação.
+      · <a href="/creditos/" class="underline hover:text-white">Créditos e dados</a>
     </footer>
   </body>
 </html>

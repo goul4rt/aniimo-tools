@@ -93,8 +93,9 @@ const registros = [...porId].sort(([a], [b]) => a.localeCompare(b)).map(([id, li
       elementos: f.attributes.map((x: string) => x.replace('attributes-', '')),
       papeis: f.position.map((x: string) => x.replace('position-', '')),
       stats: {
-        hp: f.hp, patk: f.physicalAttack, matk: f.magicAttack,
-        pdef: f.physicalDefense, mdef: f.magicDefense, haste: f.haste, total: f.attributeValue,
+        // Chaves internas da wiki ≠ nome exibido no jogo: magicAttack é BREAK e haste é REGEN.
+        hp: f.hp, atk: f.physicalAttack, brk: f.magicAttack,
+        pdef: f.physicalDefense, mdef: f.magicDefense, regen: f.haste, total: f.attributeValue,
       },
       ...habilidades(en, pt, `${id}/${chave}`),
       locais: habitats(en, pt),

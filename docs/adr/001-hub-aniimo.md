@@ -23,10 +23,10 @@ O problema a resolver: não existe um hub de ferramentas de Aniimo em português
 
 Mecânicas do jogo que geram dados para ferramentas, conforme a wiki oficial:
 
-- Aniilog (dex) com 6 stats base mais o total: HP, ATK físico, ATK mágico, DEF física, DEF mágica, Haste.
+- Aniilog (dex) com 6 stats base mais o total: HP, ATK, BREAK, P.DEF, M.DEF, REGEN (em PT: PV, ATQ, QUEBRA, DEF F., DEF M., REGEN.). Na wiki, as chaves internas de BREAK e REGEN são `magicAttack` e `haste`.
 - 9 elementos (fire, water, grass, electric, ice, rock, wind, holy, dark) com multiplicadores 1,6× (super-efetivo) e 0,625× (resistido).
 - 5 papéis de combate (dps, break, sup, heal, energy). Um Aniimo pode ter mais de um.
-- Estágios evolutivos 1 a 4, e cada estágio é um id próprio na wiki. A comunidade chama os três primeiros de Lumin → Gamma → Nova, mas a wiki não usa esses nomes. O estágio pode variar entre formas do mesmo id.
+- Estágios evolutivos 1 a 4 (1–3 = Lumin → Gamma → Nova, nomes oficiais; o 4 não tem nome), e cada estágio é um id próprio na wiki. O estágio pode variar entre formas do mesmo id.
 - Formas regionais e variantes raras (Prismana, Umbral, Sparkling). A forma pode mudar o elemento.
 - Cerca de 256 skills, traits, Resonance e a Homeland com 385 receitas.
 
@@ -168,7 +168,7 @@ type Forma = {
   estagio: number;       // 1–4
   elementos: Elemento[]; // "fire" | "water" | "grass" | "electric" | "ice" | "rock" | "wind" | "holy" | "dark"
   papeis: Papel[];       // "dps" | "break" | "sup" | "heal" | "energy"
-  stats: { hp; patk; matk; pdef; mdef; haste; total };
+  stats: { hp; atk; brk; pdef; mdef; regen; total }; // nomes exibidos no jogo
   skills: Habilidade[];  // inline: { id, nome, desc, icone, grupo, poder?, custo? }
   traits: Habilidade[];
   locais: { pt: string; en: string }[]; // seção Habitats; pode ser vazio
@@ -220,14 +220,14 @@ Primeiros passos, em ordem:
 - [x] Criar o projeto Astro + Tailwind
 - [x] Criar o repositório público [goul4rt/aniimo-tools](https://github.com/goul4rt/aniimo-tools) e fazer o push
 - [x] Conectar à Cloudflare Pages (projeto `aniimo-tools`, deploy por push em `main`, no ar em aniimo-tools.pages.dev)
-- [ ] Criar o CNAME `aniimo` → `aniimo-tools.pages.dev` (proxied) em ogoulart.dev; confirmar https://aniimo.ogoulart.dev
+- [x] Servir https://aniimo.ogoulart.dev. O token do wrangler não tem escopo de DNS, então um Worker (`proxy/`) com custom domain repassa para o Pages. Trocar por custom domain direto no Pages quando existir o CNAME
 - [x] Escrever `fetch-wiki.ts`
 - [x] Escrever `normalize.ts` e gerar `aniimos.json`
 - [x] Configurar `update-data.yml` com cron diário e commit só quando houver mudança
 - [x] Confirmar a primeira execução da Action (22/09: 416 payloads, sem bloqueio do ESA, "sem mudanças")
-- [ ] Construir /aniilog e /aniilog/[slug]
-- [ ] Montar `elementos.json` conferindo os 81 confrontos com a wiki oficial; construir /tipos
-- [ ] Construir /codigos a partir de `codigos.json`
+- [x] Construir /aniilog e /aniilog/[slug]
+- [x] Montar `elementos.json` e construir /tipos. A wiki oficial não publica a tabela: matriz da comunidade cruzada em 3 fontes, com 6 divergências exibidas na página. Falta conferir no jogo
+- [x] Construir /codigos a partir de `codigos.json` (2 fontes; recompensa só quando concordam)
 - [ ] Divulgar nos canais em português do Discord oficial, em comunidades BR no Reddit e em grupos de Telegram/WhatsApp; pedir relatos de erro nos dados
 
 ## Consequências, riscos e gatilhos de revisão
@@ -258,9 +258,10 @@ Este ADR deve ser revisado quando qualquer um destes acontecer:
 
 Mudanças em relação ao texto original, decididas depois de inspecionar os payloads reais da wiki:
 
-- **Stats:** a wiki traz `hp, physicalAttack, magicAttack, physicalDefense, magicDefense, haste` + total. Não existe BREAK/REGEN como stat; o esquema espelha a fonte.
+- **Stats:** os 6 stats do texto original estavam certos. A wiki guarda BREAK e REGEN nas chaves internas `magicAttack` e `haste`, mas os rótulos oficiais (i18n da wiki) são BREAK/QUEBRA e REGEN. O esquema usa os nomes exibidos: `hp, atk, brk, pdef, mdef, regen, total`.
 - **Papéis e elementos são arrays** na fonte (`papeis[]`, `elementos[]`). As chaves dos papéis são `dps, break, sup, heal, energy`, e a do elemento é `holy`, não `light`.
-- **Estágio:** é um número de 1 a 4 e fica por forma, porque varia entre formas (ex.: 10003). Lumin/Gamma/Nova não vêm da wiki.
+- **Estágio:** é um número de 1 a 4 e fica por forma, porque varia entre formas (ex.: 10003). 1–3 = Lumin/Gamma/Nova segundo a i18n oficial.
+- **Rótulos PT oficiais** (elementos, papéis, stats, estágios) vêm do i18n da wiki (`/_i18n/{hash}/pt/messages.json`) e ficam em `src/rotulos.ts`.
 - **Nomes PT oficiais** existem no locale `/pt` (D6). O pipeline coleta EN e PT e faz o merge por id.
 - **Slug PT congelado por id** (nova D11).
 - **Um registro por id com `formas[]` completas**, sem diff contra a forma base.

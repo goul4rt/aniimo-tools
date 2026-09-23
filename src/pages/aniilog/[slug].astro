@@ -1,0 +1,100 @@
+---
+import Base from '../../layouts/Base.astro';
+import Elemento from '../../components/Elemento.astro';
+import Hab from '../../components/Hab.astro';
+import { aniimos, porSlug } from '../../data.ts';
+import { ESTAGIO, PAPEL, STAT } from '../../rotulos.ts';
+import type { Aniimo, Habilidade } from '../../types.ts';
+
+export function getStaticPaths() {
+  return aniimos.map((a) => ({ params: { slug: a.slug }, props: { a } }));
+}
+
+const { a } = Astro.props as { a: Aniimo };
+// De onde este Aniimo evolui: quem o lista em evoluiPara.
+const vemDe = aniimos.filter((x) => x.evoluiPara.includes(a.slug));
+const evolui = a.evoluiPara.map((s) => porSlug.get(s)!).filter(Boolean);
+const GRUPO: Record<string, string> = { combat: 'Combate', innate: 'Inata', mobility: 'Mobilidade' };
+// ponytail: escala fixa das barras; o maior stat individual na wiki hoje fica perto de 150
+const MAX_STAT = 160;
+const statKeys = ['hp', 'atk', 'brk', 'pdef', 'mdef', 'regen'] as const;
+const porGrupo = (hs: Habilidade[]) => Object.entries(Object.groupBy(hs, (h) => h.grupo));
+const data = new Date(a.coletadoEm).toLocaleDateString('pt-BR');
+---
+
+<Base
+  title={`${a.nome.pt} (${a.nome.en}) · Aniilog`}
+  description={`${a.nome.pt} (${a.nome.en}), Aniimo #${a.id}: stats, skills, traits, formas e onde encontrar. ${a.desc.pt}`}
+>
+  <a href="/aniilog/" class="text-sm text-slate-400 hover:text-white">← Aniilog</a>
+
+  <header class="mt-4">
+    <p class="text-sm text-slate-500">#{a.id}</p>
+    <h1 class="text-3xl font-bold">{a.nome.pt}</h1>
+    <p class="text-slate-400">{a.nome.en}</p>
+    <p class="mt-3 max-w-2xl text-slate-300">{a.desc.pt}</p>
+    {(vemDe.length > 0 || evolui.length > 0) && (
+      <p class="mt-3 text-sm text-slate-400">
+        {vemDe.length > 0 && <>Evolui de {vemDe.map((x, i) => <>{i > 0 && ', '}<a class="underline hover:text-white" href={`/aniilog/${x.slug}/`}>{x.nome.pt}</a></>)}. </>}
+        {evolui.length > 0 && <>Evolui para {evolui.map((x, i) => <>{i > 0 && ', '}<a class="underline hover:text-white" href={`/aniilog/${x.slug}/`}>{x.nome.pt}</a></>)}.</>}
+      </p>
+    )}
+  </header>
+
+  {a.formas.length > 1 && (
+    <nav class="mt-6 flex flex-wrap gap-2 text-sm" aria-label="Formas">
+      {a.formas.map((f) => <a href={`#${f.chave}`} class="rounded bg-slate-800 px-2 py-1 hover:bg-slate-700">{f.nome.pt}</a>)}
+    </nav>
+  )}
+
+  {a.formas.map((f) => (
+    <section id={f.chave} class="mt-8 scroll-mt-4 rounded-lg bg-slate-900 p-4 ring-1 ring-slate-800">
+      <div class="grid gap-6 md:grid-cols-[16rem_1fr]">
+        <div class="aspect-square overflow-hidden rounded bg-slate-800">
+          <img src={f.imagem} alt={`${a.nome.pt}, ${f.nome.pt}`} loading="lazy" decoding="async" class="h-full w-full object-contain" onerror="this.remove()" />
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold">{f.nome.pt}</h2>
+          <p class="text-sm text-slate-400">{ESTAGIO[f.estagio] ?? `Estágio ${f.estagio}`} · {f.papeis.map((p) => PAPEL[p]).join(', ')}</p>
+          <div class="mt-2 flex flex-wrap gap-1">{f.elementos.map((e) => <Elemento e={e} />)}</div>
+
+          <table class="mt-4 w-full max-w-md text-sm">
+            <tbody>
+              {statKeys.map((k) => (
+                <tr>
+                  <th class="w-16 py-0.5 text-left font-normal text-slate-400">{STAT[k]}</th>
+                  <td class="w-10 text-right tabular-nums">{f.stats[k]}</td>
+                  <td class="pl-3"><div class="h-2 rounded bg-sky-500" style={`width:${Math.min(100, (f.stats[k] / MAX_STAT) * 100)}%`}></div></td>
+                </tr>
+              ))}
+              <tr><th class="py-0.5 text-left font-normal text-slate-400">{STAT.total}</th><td class="text-right font-semibold tabular-nums">{f.stats.total}</td><td></td></tr>
+            </tbody>
+          </table>
+
+          {f.locais.length > 0 && (
+            <p class="mt-4 text-sm"><span class="text-slate-400">Onde encontrar:</span> {f.locais.map((l) => l.pt).join(', ')}</p>
+          )}
+        </div>
+      </div>
+
+      {f.traits.length > 0 && (
+        <>
+          <h3 class="mt-6 font-semibold">Traços</h3>
+          <ul class="mt-2 space-y-3">{f.traits.map((h) => <Hab h={h} />)}</ul>
+        </>
+      )}
+      {porGrupo(f.skills).map(([g, hs]) => (
+        <>
+          <h3 class="mt-6 font-semibold">Skills · {GRUPO[g] ?? g}</h3>
+          <ul class="mt-2 space-y-3">{hs!.map((h) => <Hab h={h} />)}</ul>
+        </>
+      ))}
+    </section>
+  ))}
+
+  <p class="mt-8 text-xs text-slate-500">
+    Dados da <a class="underline" href={`https://wiki.aniimo.com/pt/item/${a.id}/${a.formas[0].chave}`}>wiki oficial</a>, atualizados em {data}.
+    Achou um erro? <a class="underline" href="https://github.com/goul4rt/aniimo-tools/issues/new">Avise</a>.
+  </p>
+</Base>
+

@@ -1,0 +1,8 @@
+---
+import { COR, ELEMENTO } from '../rotulos.ts';
+import type { Elemento } from '../types.ts';
+
+const { e } = Astro.props as { e: Elemento };
+---
+
+<span class:list={['rounded px-1.5 py-0.5 text-xs font-medium', COR[e]]}>{ELEMENTO[e]}</span>

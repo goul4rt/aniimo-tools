@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import Elemento from '../components/Elemento.astro';
+import tabela from '../../data/elementos.json';
+import { ELEMENTO } from '../rotulos.ts';
+import type { Elemento as E } from '../types.ts';
+
+const ataque = tabela.ataque as Record<E, { forte: E[]; fraco: E[] }>;
+const els = Object.keys(ataque) as E[];
+const mult = (a: E, d: E) => (ataque[a].forte.includes(d) ? 'forte' : ataque[a].fraco.includes(d) ? 'fraco' : 'normal');
+const divergente = (a: E, d: E) => tabela.divergencias.find((x) => x.ataque === a && x.defesa === d);
+const TXT = { forte: '1,6×', fraco: '0,625×', normal: '1×' };
+const COR = { forte: 'bg-green-700', fraco: 'bg-red-900', normal: 'bg-slate-800' };
+
+// Para cada inimigo: quem bate forte nele, quem aguenta os golpes dele, e quem ele atropela.
+const painel = (e: E) => ({
+  bate: els.filter((a) => mult(a, e) === 'forte'),
+  aguenta: ataque[e].fraco,
+  sofre: ataque[e].forte,
+});
+---
+
+<Base title="Tabela de tipos · Aniimo Tools" description="Tabela de tipos de Aniimo em português: os 9 elementos, quem ataca bem, quem resiste e os 81 confrontos.">
+  <h1 class="text-3xl font-bold">Tabela de tipos</h1>
+  <p class="mt-1 text-slate-400">Super-efetivo causa 1,6×; resistido causa 0,625×. Não há imunidades, e atacar o próprio elemento costuma ser resistido.</p>
+
+  <label class="mt-6 block text-sm text-slate-400" for="inimigo">Elemento do inimigo</label>
+  <select id="inimigo" class="mt-1 w-full rounded bg-slate-900 px-3 py-2 ring-1 ring-slate-700 sm:w-64">
+    {els.map((e) => <option value={e}>{ELEMENTO[e]}</option>)}
+  </select>
+
+  {els.map((e, i) => {
+    const p = painel(e);
+    return (
+      <div data-painel={e} hidden={i > 0} class="mt-4 grid gap-3 sm:grid-cols-3">
+        <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-slate-800">
+          <h2 class="font-semibold text-green-400">Ataque com (1,6×)</h2>
+          <div class="mt-2 flex flex-wrap gap-1">{p.bate.map((x) => <Elemento e={x} />)}</div>
+        </div>
+        <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-slate-800">
+          <h2 class="font-semibold text-sky-400">Resistem aos golpes dele (0,625×)</h2>
+          <div class="mt-2 flex flex-wrap gap-1">{p.aguenta.map((x) => <Elemento e={x} />)}</div>
+        </div>
+        <div class="rounded-lg bg-slate-900 p-4 ring-1 ring-slate-800">
+          <h2 class="font-semibold text-red-400">Evite usar (ele causa 1,6×)</h2>
+          <div class="mt-2 flex flex-wrap gap-1">{p.sofre.map((x) => <Elemento e={x} />)}</div>
+        </div>
+      </div>
+    );
+  })}
+
+  <h2 class="mt-10 text-xl font-semibold">Todos os 81 confrontos</h2>
+  <p class="mt-1 text-sm text-slate-400">Linha = quem ataca, coluna = quem defende. * = as fontes divergem, detalhes abaixo.</p>
+  <div class="mt-3 overflow-x-auto">
+    <table class="text-center text-xs">
+      <thead>
+        <tr>
+          <th class="p-1 text-left text-slate-500">ATQ ↓ DEF →</th>
+          {els.map((d) => <th class="p-1 font-medium">{ELEMENTO[d]}</th>)}
+        </tr>
+      </thead>
+      <tbody>
+        {els.map((a) => (
+          <tr>
+            <th class="p-1 text-left font-medium">{ELEMENTO[a]}</th>
+            {els.map((d) => {
+              const m = mult(a, d);
+              const div = divergente(a, d);
+              return (
+                <td class={`border border-slate-950 px-2 py-1 tabular-nums ${COR[m]}`} title={div ? `Divergência: ${div.nota}` : undefined}>
+                  {TXT[m]}{div && '*'}
+                </td>
+              );
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <ul class="mt-3 space-y-0.5 text-xs text-slate-400">
+    {tabela.divergencias.map((d) => <li>* {ELEMENTO[d.ataque as E]} → {ELEMENTO[d.defesa as E]}: {TXT[mult(d.ataque as E, d.defesa as E)]} aqui; {d.nota}</li>)}
+  </ul>
+  <p class="mt-4 text-xs text-slate-500">
+    A wiki oficial não publica esta tabela. Matriz da comunidade, conferida em {new Date(tabela.conferidoEm + 'T12:00').toLocaleDateString('pt-BR')} contra{' '}
+    {tabela.fontes.map((f, i) => <>{i > 0 && ', '}<a class="underline" href={f}>{new URL(f).hostname}</a></>)}.
+    Testou no jogo e viu diferente? <a class="underline" href="https://github.com/goul4rt/aniimo-tools/issues/new">Avise</a>.
+  </p>
+</Base>
+
+<script>
+  const sel = document.getElementById('inimigo') as HTMLSelectElement;
+  const paineis = document.querySelectorAll<HTMLElement>('[data-painel]');
+  const mostra = () => paineis.forEach((p) => (p.hidden = p.dataset.painel !== sel.value));
+  sel.addEventListener('change', mostra);
+  mostra(); // o navegador pode restaurar o select num valor diferente do painel inicial
+</script>

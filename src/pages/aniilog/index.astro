@@ -1,0 +1,88 @@
+---
+import Base from '../../layouts/Base.astro';
+import Elemento from '../../components/Elemento.astro';
+import { aniimos, base, elementos, estagios, papeis } from '../../data.ts';
+import { ELEMENTO, ESTAGIO, PAPEL } from '../../rotulos.ts';
+import type { Elemento as E } from '../../types.ts';
+
+// Apelidos que outras fontes usam para os mesmos elementos (ADR: nomenclatura da wiki + sinônimos na busca).
+const SINONIMOS: Partial<Record<E, string>> = { rock: 'earth terra', holy: 'light luz', electric: 'lightning raio' };
+const semAcento = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+
+const itens = aniimos.map((a) => {
+  const els = elementos(a);
+  const busca = [
+    a.id, a.nome.pt, a.nome.en,
+    ...a.formas.flatMap((f) => [f.nome.pt, f.nome.en]),
+    ...els.flatMap((e) => [e, ELEMENTO[e], SINONIMOS[e] ?? '']),
+    ...papeis(a).map((p) => PAPEL[p]),
+  ].join(' ');
+  return { a, els, busca: semAcento(busca), img: base(a).imagem };
+});
+---
+
+<Base title="Aniilog · Aniimo Tools" description={`Todos os ${aniimos.length} Aniimo com stats, skills, formas e onde encontrar, em português.`}>
+  <h1 class="text-3xl font-bold">Aniilog</h1>
+  <p class="mt-1 text-slate-400">{aniimos.length} Aniimo, nomes oficiais em português. Busque por nome em PT ou EN.</p>
+
+  <form id="filtros" class="mt-6 grid gap-3 sm:grid-cols-4" onsubmit="return false">
+    <input name="q" type="search" placeholder="Brasim, Emberpup, fogo…" autocomplete="off"
+      class="rounded bg-slate-900 px-3 py-2 ring-1 ring-slate-700 sm:col-span-4" />
+    <select name="el" class="rounded bg-slate-900 px-3 py-2 ring-1 ring-slate-700">
+      <option value="">Todos os elementos</option>
+      {Object.entries(ELEMENTO).map(([k, v]) => <option value={k}>{v}</option>)}
+    </select>
+    <select name="pa" class="rounded bg-slate-900 px-3 py-2 ring-1 ring-slate-700">
+      <option value="">Todas as funções</option>
+      {Object.entries(PAPEL).map(([k, v]) => <option value={k}>{v}</option>)}
+    </select>
+    <select name="es" class="rounded bg-slate-900 px-3 py-2 ring-1 ring-slate-700">
+      <option value="">Todos os estágios</option>
+      {Object.entries(ESTAGIO).map(([k, v]) => <option value={k}>{v}</option>)}
+    </select>
+    <p id="contagem" class="self-center text-sm text-slate-400" aria-live="polite"></p>
+  </form>
+
+  <ul id="lista" class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+    {itens.map(({ a, els, busca, img }) => (
+      <li data-busca={busca} data-el={els.join(' ')} data-pa={papeis(a).join(' ')} data-es={estagios(a).join(' ')}>
+        <a href={`/aniilog/${a.slug}/`} class="block h-full rounded-lg bg-slate-900 p-3 ring-1 ring-slate-800 hover:ring-slate-500">
+          <div class="aspect-square overflow-hidden rounded bg-slate-800">
+            <img src={img} alt={a.nome.pt} loading="lazy" decoding="async"
+              class="h-full w-full object-contain" onerror="this.remove()" />
+          </div>
+          <p class="mt-2 text-xs text-slate-500">#{a.id}</p>
+          <p class="font-semibold leading-tight">{a.nome.pt}</p>
+          <p class="text-xs text-slate-400">{a.nome.en}</p>
+          <div class="mt-2 flex flex-wrap gap-1">{els.map((e) => <Elemento e={e} />)}</div>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p id="vazio" class="mt-6 hidden text-slate-400">Nenhum Aniimo com esses filtros.</p>
+</Base>
+
+<script>
+  const form = document.getElementById('filtros') as HTMLFormElement;
+  const itens = [...document.querySelectorAll<HTMLLIElement>('#lista > li')];
+  const contagem = document.getElementById('contagem')!;
+  const vazio = document.getElementById('vazio')!;
+  const semAcento = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
+  const tem = (lista: string | undefined, v: string) => !v || (lista ?? '').split(' ').includes(v);
+
+  function filtra() {
+    const f = new FormData(form);
+    const q = semAcento(String(f.get('q')));
+    const [el, pa, es] = ['el', 'pa', 'es'].map((k) => String(f.get(k)));
+    let n = 0;
+    for (const li of itens) {
+      const ok = (!q || li.dataset.busca!.includes(q)) && tem(li.dataset.el, el) && tem(li.dataset.pa, pa) && tem(li.dataset.es, es);
+      li.hidden = !ok;
+      if (ok) n++;
+    }
+    contagem.textContent = `${n} de ${itens.length}`;
+    vazio.classList.toggle('hidden', n > 0);
+  }
+  form.addEventListener('input', filtra);
+  filtra();
+</script>

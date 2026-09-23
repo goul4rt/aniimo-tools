@@ -29,11 +29,11 @@
         ],
         "stats": {
           "hp": 67,
-          "patk": 90,
-          "matk": 40,
+          "atk": 90,
+          "brk": 40,
           "pdef": 60,
           "mdef": 57,
-          "haste": 68,
+          "regen": 68,
           "total": 382
         },
         "skills": [
@@ -166,11 +166,11 @@
         ],
         "stats": {
           "hp": 67,
-          "patk": 90,
-          "matk": 40,
+          "atk": 90,
+          "brk": 40,
           "pdef": 60,
           "mdef": 57,
-          "haste": 68,
+          "regen": 68,
           "total": 382
         },
         "skills": [
@@ -290,11 +290,11 @@
         ],
         "stats": {
           "hp": 67,
-          "patk": 90,
-          "matk": 40,
+          "atk": 90,
+          "brk": 40,
           "pdef": 60,
           "mdef": 57,
-          "haste": 68,
+          "regen": 68,
           "total": 382
         },
         "skills": [
@@ -396,7 +396,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005104.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "002",
@@ -429,11 +429,11 @@
         ],
         "stats": {
           "hp": 85,
-          "patk": 111,
-          "matk": 45,
+          "atk": 111,
+          "brk": 45,
           "pdef": 72,
           "mdef": 63,
-          "haste": 80,
+          "regen": 80,
           "total": 456
         },
         "skills": [
@@ -562,11 +562,11 @@
         ],
         "stats": {
           "hp": 85,
-          "patk": 111,
-          "matk": 45,
+          "atk": 111,
+          "brk": 45,
           "pdef": 72,
           "mdef": 63,
-          "haste": 80,
+          "regen": 80,
           "total": 456
         },
         "skills": [
@@ -686,11 +686,11 @@
         ],
         "stats": {
           "hp": 85,
-          "patk": 111,
-          "matk": 45,
+          "atk": 111,
+          "brk": 45,
           "pdef": 72,
           "mdef": 63,
-          "haste": 80,
+          "regen": 80,
           "total": 456
         },
         "skills": [
@@ -792,7 +792,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005204.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "003",
@@ -822,11 +822,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 119,
-          "matk": 52,
+          "atk": 119,
+          "brk": 52,
           "pdef": 80,
           "mdef": 75,
-          "haste": 90,
+          "regen": 90,
           "total": 511
         },
         "skills": [
@@ -988,11 +988,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 119,
-          "matk": 52,
+          "atk": 119,
+          "brk": 52,
           "pdef": 80,
           "mdef": 75,
-          "haste": 90,
+          "regen": 90,
           "total": 511
         },
         "skills": [
@@ -1149,11 +1149,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 119,
-          "matk": 52,
+          "atk": 119,
+          "brk": 52,
           "pdef": 80,
           "mdef": 75,
-          "haste": 90,
+          "regen": 90,
           "total": 511
         },
         "skills": [
@@ -1314,11 +1314,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 119,
-          "matk": 52,
+          "atk": 119,
+          "brk": 52,
           "pdef": 80,
           "mdef": 75,
-          "haste": 90,
+          "regen": 90,
           "total": 511
         },
         "skills": [
@@ -1479,11 +1479,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 119,
-          "matk": 52,
+          "atk": 119,
+          "brk": 52,
           "pdef": 80,
           "mdef": 75,
-          "haste": 90,
+          "regen": 90,
           "total": 511
         },
         "skills": [
@@ -1625,7 +1625,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005304.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "004",
@@ -1656,11 +1656,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 89,
-          "matk": 108,
+          "atk": 89,
+          "brk": 108,
           "pdef": 70,
           "mdef": 80,
-          "haste": 99,
+          "regen": 99,
           "total": 541
         },
         "skills": [
@@ -1802,11 +1802,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 89,
-          "matk": 108,
+          "atk": 89,
+          "brk": 108,
           "pdef": 70,
           "mdef": 80,
-          "haste": 99,
+          "regen": 99,
           "total": 541
         },
         "skills": [
@@ -1933,7 +1933,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1005503.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "005",
@@ -1965,11 +1965,11 @@
         ],
         "stats": {
           "hp": 81,
-          "patk": 106,
-          "matk": 46,
+          "atk": 106,
+          "brk": 46,
           "pdef": 58,
           "mdef": 58,
-          "haste": 80,
+          "regen": 80,
           "total": 429
         },
         "skills": [
@@ -2055,7 +2055,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10011.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "006",
@@ -2085,11 +2085,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 125,
-          "matk": 54,
+          "atk": 125,
+          "brk": 54,
           "pdef": 68,
           "mdef": 69,
-          "haste": 94,
+          "regen": 94,
           "total": 505
         },
         "skills": [
@@ -2238,11 +2238,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 125,
-          "matk": 54,
+          "atk": 125,
+          "brk": 54,
           "pdef": 68,
           "mdef": 69,
-          "haste": 94,
+          "regen": 94,
           "total": 505
         },
         "skills": [
@@ -2391,11 +2391,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 125,
-          "matk": 54,
+          "atk": 125,
+          "brk": 54,
           "pdef": 68,
           "mdef": 69,
-          "haste": 94,
+          "regen": 94,
           "total": 505
         },
         "skills": [
@@ -2529,7 +2529,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1001202.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "007",
@@ -2563,11 +2563,11 @@
         ],
         "stats": {
           "hp": 97,
-          "patk": 83,
-          "matk": 43,
+          "atk": 83,
+          "brk": 43,
           "pdef": 67,
           "mdef": 69,
-          "haste": 93,
+          "regen": 93,
           "total": 452
         },
         "skills": [
@@ -2713,11 +2713,11 @@
         ],
         "stats": {
           "hp": 97,
-          "patk": 83,
-          "matk": 43,
+          "atk": 83,
+          "brk": 43,
           "pdef": 67,
           "mdef": 69,
-          "haste": 93,
+          "regen": 93,
           "total": 452
         },
         "skills": [
@@ -2855,11 +2855,11 @@
         ],
         "stats": {
           "hp": 97,
-          "patk": 83,
-          "matk": 43,
+          "atk": 83,
+          "brk": 43,
           "pdef": 67,
           "mdef": 69,
-          "haste": 93,
+          "regen": 93,
           "total": 452
         },
         "skills": [
@@ -2982,7 +2982,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "008",
@@ -3012,11 +3012,11 @@
         ],
         "stats": {
           "hp": 113,
-          "patk": 119,
-          "matk": 51,
+          "atk": 119,
+          "brk": 51,
           "pdef": 79,
           "mdef": 81,
-          "haste": 88,
+          "regen": 88,
           "total": 531
         },
         "skills": [
@@ -3178,11 +3178,11 @@
         ],
         "stats": {
           "hp": 113,
-          "patk": 119,
-          "matk": 51,
+          "atk": 119,
+          "brk": 51,
           "pdef": 79,
           "mdef": 81,
-          "haste": 88,
+          "regen": 88,
           "total": 531
         },
         "skills": [
@@ -3344,11 +3344,11 @@
         ],
         "stats": {
           "hp": 113,
-          "patk": 119,
-          "matk": 51,
+          "atk": 119,
+          "brk": 51,
           "pdef": 79,
           "mdef": 81,
-          "haste": 88,
+          "regen": 88,
           "total": 531
         },
         "skills": [
@@ -3495,7 +3495,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018403.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "009",
@@ -3525,11 +3525,11 @@
         ],
         "stats": {
           "hp": 96,
-          "patk": 121,
-          "matk": 54,
+          "atk": 121,
+          "brk": 54,
           "pdef": 74,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 509
         },
         "skills": [
@@ -3706,11 +3706,11 @@
         ],
         "stats": {
           "hp": 96,
-          "patk": 121,
-          "matk": 54,
+          "atk": 121,
+          "brk": 54,
           "pdef": 74,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 509
         },
         "skills": [
@@ -3891,11 +3891,11 @@
         ],
         "stats": {
           "hp": 96,
-          "patk": 121,
-          "matk": 54,
+          "atk": 121,
+          "brk": 54,
           "pdef": 74,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 509
         },
         "skills": [
@@ -4072,11 +4072,11 @@
         ],
         "stats": {
           "hp": 96,
-          "patk": 121,
-          "matk": 54,
+          "atk": 121,
+          "brk": 54,
           "pdef": 74,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 509
         },
         "skills": [
@@ -4238,7 +4238,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018503.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "010",
@@ -4268,11 +4268,11 @@
         ],
         "stats": {
           "hp": 108,
-          "patk": 80,
-          "matk": 107,
+          "atk": 80,
+          "brk": 107,
           "pdef": 66,
           "mdef": 109,
-          "haste": 80,
+          "regen": 80,
           "total": 550
         },
         "skills": [
@@ -4421,11 +4421,11 @@
         ],
         "stats": {
           "hp": 108,
-          "patk": 80,
-          "matk": 107,
+          "atk": 80,
+          "brk": 107,
           "pdef": 66,
           "mdef": 109,
-          "haste": 80,
+          "regen": 80,
           "total": 550
         },
         "skills": [
@@ -4574,11 +4574,11 @@
         ],
         "stats": {
           "hp": 108,
-          "patk": 80,
-          "matk": 107,
+          "atk": 80,
+          "brk": 107,
           "pdef": 66,
           "mdef": 109,
-          "haste": 80,
+          "regen": 80,
           "total": 550
         },
         "skills": [
@@ -4716,7 +4716,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1018703.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "011",
@@ -4748,11 +4748,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 101,
-          "matk": 50,
+          "atk": 101,
+          "brk": 50,
           "pdef": 53,
           "mdef": 53,
-          "haste": 71,
+          "regen": 71,
           "total": 397
         },
         "skills": [
@@ -4853,11 +4853,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 101,
-          "matk": 50,
+          "atk": 101,
+          "brk": 50,
           "pdef": 53,
           "mdef": 53,
-          "haste": 71,
+          "regen": 71,
           "total": 397
         },
         "skills": [
@@ -4958,11 +4958,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 101,
-          "matk": 50,
+          "atk": 101,
+          "brk": 50,
           "pdef": 53,
           "mdef": 53,
-          "haste": 71,
+          "regen": 71,
           "total": 397
         },
         "skills": [
@@ -5063,11 +5063,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 101,
-          "matk": 50,
+          "atk": 101,
+          "brk": 50,
           "pdef": 53,
           "mdef": 53,
-          "haste": 71,
+          "regen": 71,
           "total": 397
         },
         "skills": [
@@ -5180,11 +5180,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 101,
-          "matk": 50,
+          "atk": 101,
+          "brk": 50,
           "pdef": 53,
           "mdef": 53,
-          "haste": 71,
+          "regen": 71,
           "total": 397
         },
         "skills": [
@@ -5280,11 +5280,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 101,
-          "matk": 50,
+          "atk": 101,
+          "brk": 50,
           "pdef": 53,
           "mdef": 53,
-          "haste": 71,
+          "regen": 71,
           "total": 397
         },
         "skills": [
@@ -5385,11 +5385,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 101,
-          "matk": 50,
+          "atk": 101,
+          "brk": 50,
           "pdef": 53,
           "mdef": 53,
-          "haste": 71,
+          "regen": 71,
           "total": 397
         },
         "skills": [
@@ -5480,7 +5480,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021106.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "012",
@@ -5510,11 +5510,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 118,
-          "matk": 52,
+          "atk": 118,
+          "brk": 52,
           "pdef": 70,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 504
         },
         "skills": [
@@ -5645,11 +5645,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 118,
-          "matk": 52,
+          "atk": 118,
+          "brk": 52,
           "pdef": 70,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 504
         },
         "skills": [
@@ -5780,11 +5780,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 118,
-          "matk": 52,
+          "atk": 118,
+          "brk": 52,
           "pdef": 70,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 504
         },
         "skills": [
@@ -5915,11 +5915,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 118,
-          "matk": 52,
+          "atk": 118,
+          "brk": 52,
           "pdef": 70,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 504
         },
         "skills": [
@@ -6050,11 +6050,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 118,
-          "matk": 52,
+          "atk": 118,
+          "brk": 52,
           "pdef": 70,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 504
         },
         "skills": [
@@ -6180,11 +6180,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 118,
-          "matk": 52,
+          "atk": 118,
+          "brk": 52,
           "pdef": 70,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 504
         },
         "skills": [
@@ -6315,11 +6315,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 118,
-          "matk": 52,
+          "atk": 118,
+          "brk": 52,
           "pdef": 70,
           "mdef": 70,
-          "haste": 94,
+          "regen": 94,
           "total": 504
         },
         "skills": [
@@ -6436,7 +6436,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1021206.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "013",
@@ -6468,11 +6468,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 70,
-          "matk": 50,
+          "atk": 70,
+          "brk": 50,
           "pdef": 66,
           "mdef": 76,
-          "haste": 60,
+          "regen": 60,
           "total": 402
         },
         "skills": [
@@ -6583,11 +6583,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 70,
-          "matk": 50,
+          "atk": 70,
+          "brk": 50,
           "pdef": 66,
           "mdef": 76,
-          "haste": 60,
+          "regen": 60,
           "total": 402
         },
         "skills": [
@@ -6691,11 +6691,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 70,
-          "matk": 50,
+          "atk": 70,
+          "brk": 50,
           "pdef": 66,
           "mdef": 76,
-          "haste": 60,
+          "regen": 60,
           "total": 402
         },
         "skills": [
@@ -6784,7 +6784,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004102.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "014",
@@ -6817,11 +6817,11 @@
         ],
         "stats": {
           "hp": 109,
-          "patk": 85,
-          "matk": 50,
+          "atk": 85,
+          "brk": 50,
           "pdef": 66,
           "mdef": 98,
-          "haste": 74,
+          "regen": 74,
           "total": 482
         },
         "skills": [
@@ -6932,11 +6932,11 @@
         ],
         "stats": {
           "hp": 109,
-          "patk": 85,
-          "matk": 50,
+          "atk": 85,
+          "brk": 50,
           "pdef": 66,
           "mdef": 98,
-          "haste": 74,
+          "regen": 74,
           "total": 482
         },
         "skills": [
@@ -7040,11 +7040,11 @@
         ],
         "stats": {
           "hp": 109,
-          "patk": 85,
-          "matk": 50,
+          "atk": 85,
+          "brk": 50,
           "pdef": 66,
           "mdef": 98,
-          "haste": 74,
+          "regen": 74,
           "total": 482
         },
         "skills": [
@@ -7133,7 +7133,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004202.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "015",
@@ -7164,11 +7164,11 @@
         ],
         "stats": {
           "hp": 120,
-          "patk": 95,
-          "matk": 50,
+          "atk": 95,
+          "brk": 50,
           "pdef": 72,
           "mdef": 110,
-          "haste": 88,
+          "regen": 88,
           "total": 535
         },
         "skills": [
@@ -7312,11 +7312,11 @@
         ],
         "stats": {
           "hp": 120,
-          "patk": 95,
-          "matk": 50,
+          "atk": 95,
+          "brk": 50,
           "pdef": 72,
           "mdef": 110,
-          "haste": 88,
+          "regen": 88,
           "total": 535
         },
         "skills": [
@@ -7465,11 +7465,11 @@
         ],
         "stats": {
           "hp": 120,
-          "patk": 95,
-          "matk": 50,
+          "atk": 95,
+          "brk": 50,
           "pdef": 72,
           "mdef": 110,
-          "haste": 88,
+          "regen": 88,
           "total": 535
         },
         "skills": [
@@ -7618,11 +7618,11 @@
         ],
         "stats": {
           "hp": 120,
-          "patk": 95,
-          "matk": 50,
+          "atk": 95,
+          "brk": 50,
           "pdef": 72,
           "mdef": 110,
-          "haste": 88,
+          "regen": 88,
           "total": 535
         },
         "skills": [
@@ -7756,7 +7756,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1004303.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "016",
@@ -7787,11 +7787,11 @@
         ],
         "stats": {
           "hp": 120,
-          "patk": 95,
-          "matk": 50,
+          "atk": 95,
+          "brk": 50,
           "pdef": 82,
           "mdef": 82,
-          "haste": 106,
+          "regen": 106,
           "total": 535
         },
         "skills": [
@@ -7895,7 +7895,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10045.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "017",
@@ -7928,11 +7928,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 84,
-          "matk": 43,
+          "atk": 84,
+          "brk": 43,
           "pdef": 69,
           "mdef": 82,
-          "haste": 93,
+          "regen": 93,
           "total": 451
         },
         "skills": [
@@ -8053,11 +8053,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 84,
-          "matk": 43,
+          "atk": 84,
+          "brk": 43,
           "pdef": 69,
           "mdef": 82,
-          "haste": 93,
+          "regen": 93,
           "total": 451
         },
         "skills": [
@@ -8173,11 +8173,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 84,
-          "matk": 43,
+          "atk": 84,
+          "brk": 43,
           "pdef": 69,
           "mdef": 82,
-          "haste": 93,
+          "regen": 93,
           "total": 451
         },
         "skills": [
@@ -8294,11 +8294,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 84,
-          "matk": 43,
+          "atk": 84,
+          "brk": 43,
           "pdef": 69,
           "mdef": 82,
-          "haste": 93,
+          "regen": 93,
           "total": 451
         },
         "skills": [
@@ -8400,7 +8400,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026105.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "018",
@@ -8430,11 +8430,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 110,
-          "matk": 50,
+          "atk": 110,
+          "brk": 50,
           "pdef": 80,
           "mdef": 96,
-          "haste": 87,
+          "regen": 87,
           "total": 518
         },
         "skills": [
@@ -8596,11 +8596,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 110,
-          "matk": 50,
+          "atk": 110,
+          "brk": 50,
           "pdef": 80,
           "mdef": 96,
-          "haste": 87,
+          "regen": 87,
           "total": 518
         },
         "skills": [
@@ -8761,11 +8761,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 110,
-          "matk": 50,
+          "atk": 110,
+          "brk": 50,
           "pdef": 80,
           "mdef": 96,
-          "haste": 87,
+          "regen": 87,
           "total": 518
         },
         "skills": [
@@ -8922,11 +8922,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 110,
-          "matk": 50,
+          "atk": 110,
+          "brk": 50,
           "pdef": 80,
           "mdef": 96,
-          "haste": 87,
+          "regen": 87,
           "total": 518
         },
         "skills": [
@@ -9088,11 +9088,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 110,
-          "matk": 50,
+          "atk": 110,
+          "brk": 50,
           "pdef": 80,
           "mdef": 96,
-          "haste": 87,
+          "regen": 87,
           "total": 518
         },
         "skills": [
@@ -9239,7 +9239,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1026205.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "019",
@@ -9269,11 +9269,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 110,
-          "matk": 50,
+          "atk": 110,
+          "brk": 50,
           "pdef": 77,
           "mdef": 103,
-          "haste": 80,
+          "regen": 80,
           "total": 520
         },
         "skills": [
@@ -9372,7 +9372,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10263.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "020",
@@ -9405,11 +9405,11 @@
         ],
         "stats": {
           "hp": 94,
-          "patk": 68,
-          "matk": 80,
+          "atk": 68,
+          "brk": 80,
           "pdef": 71,
           "mdef": 94,
-          "haste": 60,
+          "regen": 60,
           "total": 467
         },
         "skills": [
@@ -9541,11 +9541,11 @@
         ],
         "stats": {
           "hp": 94,
-          "patk": 68,
-          "matk": 80,
+          "atk": 68,
+          "brk": 80,
           "pdef": 71,
           "mdef": 94,
-          "haste": 60,
+          "regen": 60,
           "total": 467
         },
         "skills": [
@@ -9651,7 +9651,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020101.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "021",
@@ -9682,11 +9682,11 @@
         ],
         "stats": {
           "hp": 115,
-          "patk": 88,
-          "matk": 50,
+          "atk": 88,
+          "brk": 50,
           "pdef": 84,
           "mdef": 90,
-          "haste": 115,
+          "regen": 115,
           "total": 542
         },
         "skills": [
@@ -9848,11 +9848,11 @@
         ],
         "stats": {
           "hp": 115,
-          "patk": 88,
-          "matk": 50,
+          "atk": 88,
+          "brk": 50,
           "pdef": 84,
           "mdef": 90,
-          "haste": 115,
+          "regen": 115,
           "total": 542
         },
         "skills": [
@@ -10018,11 +10018,11 @@
         ],
         "stats": {
           "hp": 115,
-          "patk": 88,
-          "matk": 50,
+          "atk": 88,
+          "brk": 50,
           "pdef": 84,
           "mdef": 90,
-          "haste": 115,
+          "regen": 115,
           "total": 542
         },
         "skills": [
@@ -10169,7 +10169,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020302.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "022",
@@ -10199,11 +10199,11 @@
         ],
         "stats": {
           "hp": 106,
-          "patk": 80,
-          "matk": 100,
+          "atk": 80,
+          "brk": 100,
           "pdef": 83,
           "mdef": 110,
-          "haste": 71,
+          "regen": 71,
           "total": 550
         },
         "skills": [
@@ -10332,11 +10332,11 @@
         ],
         "stats": {
           "hp": 106,
-          "patk": 80,
-          "matk": 100,
+          "atk": 80,
+          "brk": 100,
           "pdef": 83,
           "mdef": 110,
-          "haste": 71,
+          "regen": 71,
           "total": 550
         },
         "skills": [
@@ -10450,7 +10450,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1020701.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "023",
@@ -10484,11 +10484,11 @@
         ],
         "stats": {
           "hp": 76,
-          "patk": 64,
-          "matk": 84,
+          "atk": 64,
+          "brk": 84,
           "pdef": 93,
           "mdef": 65,
-          "haste": 72,
+          "regen": 72,
           "total": 454
         },
         "skills": [
@@ -10616,11 +10616,11 @@
         ],
         "stats": {
           "hp": 76,
-          "patk": 64,
-          "matk": 84,
+          "atk": 64,
+          "brk": 84,
           "pdef": 93,
           "mdef": 65,
-          "haste": 72,
+          "regen": 72,
           "total": 454
         },
         "skills": [
@@ -10736,11 +10736,11 @@
         ],
         "stats": {
           "hp": 76,
-          "patk": 64,
-          "matk": 84,
+          "atk": 64,
+          "brk": 84,
           "pdef": 93,
           "mdef": 65,
-          "haste": 72,
+          "regen": 72,
           "total": 454
         },
         "skills": [
@@ -10856,11 +10856,11 @@
         ],
         "stats": {
           "hp": 76,
-          "patk": 64,
-          "matk": 84,
+          "atk": 64,
+          "brk": 84,
           "pdef": 93,
           "mdef": 65,
-          "haste": 72,
+          "regen": 72,
           "total": 454
         },
         "skills": [
@@ -10962,7 +10962,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1016103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "024",
@@ -10993,11 +10993,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 80,
-          "matk": 104,
+          "atk": 80,
+          "brk": 104,
           "pdef": 109,
           "mdef": 77,
-          "haste": 85,
+          "regen": 85,
           "total": 550
         },
         "skills": [
@@ -11143,11 +11143,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 80,
-          "matk": 104,
+          "atk": 80,
+          "brk": 104,
           "pdef": 109,
           "mdef": 77,
-          "haste": 85,
+          "regen": 85,
           "total": 550
         },
         "skills": [
@@ -11293,11 +11293,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 80,
-          "matk": 104,
+          "atk": 80,
+          "brk": 104,
           "pdef": 109,
           "mdef": 77,
-          "haste": 85,
+          "regen": 85,
           "total": 550
         },
         "skills": [
@@ -11443,11 +11443,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 80,
-          "matk": 104,
+          "atk": 80,
+          "brk": 104,
           "pdef": 109,
           "mdef": 77,
-          "haste": 85,
+          "regen": 85,
           "total": 550
         },
         "skills": [
@@ -11579,7 +11579,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1016203.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "025",
@@ -11609,11 +11609,11 @@
         ],
         "stats": {
           "hp": 93,
-          "patk": 80,
-          "matk": 103,
+          "atk": 80,
+          "brk": 103,
           "pdef": 113,
           "mdef": 79,
-          "haste": 82,
+          "regen": 82,
           "total": 550
         },
         "skills": [
@@ -11725,7 +11725,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10163.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "026",
@@ -11757,11 +11757,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 100,
-          "matk": 41,
+          "atk": 100,
+          "brk": 41,
           "pdef": 60,
           "mdef": 67,
-          "haste": 98,
+          "regen": 98,
           "total": 435
         },
         "skills": [
@@ -11857,11 +11857,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 100,
-          "matk": 41,
+          "atk": 100,
+          "brk": 41,
           "pdef": 60,
           "mdef": 67,
-          "haste": 98,
+          "regen": 98,
           "total": 435
         },
         "skills": [
@@ -11953,11 +11953,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 100,
-          "matk": 41,
+          "atk": 100,
+          "brk": 41,
           "pdef": 60,
           "mdef": 67,
-          "haste": 98,
+          "regen": 98,
           "total": 435
         },
         "skills": [
@@ -12053,11 +12053,11 @@
         ],
         "stats": {
           "hp": 69,
-          "patk": 100,
-          "matk": 41,
+          "atk": 100,
+          "brk": 41,
           "pdef": 60,
           "mdef": 67,
-          "haste": 98,
+          "regen": 98,
           "total": 435
         },
         "skills": [
@@ -12131,7 +12131,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1033103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "027",
@@ -12161,11 +12161,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 113,
-          "matk": 50,
+          "atk": 113,
+          "brk": 50,
           "pdef": 70,
           "mdef": 89,
-          "haste": 115,
+          "regen": 115,
           "total": 517
         },
         "skills": [
@@ -12283,11 +12283,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 113,
-          "matk": 50,
+          "atk": 113,
+          "brk": 50,
           "pdef": 70,
           "mdef": 89,
-          "haste": 115,
+          "regen": 115,
           "total": 517
         },
         "skills": [
@@ -12405,11 +12405,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 113,
-          "matk": 50,
+          "atk": 113,
+          "brk": 50,
           "pdef": 70,
           "mdef": 89,
-          "haste": 115,
+          "regen": 115,
           "total": 517
         },
         "skills": [
@@ -12535,11 +12535,11 @@
         ],
         "stats": {
           "hp": 80,
-          "patk": 113,
-          "matk": 50,
+          "atk": 113,
+          "brk": 50,
           "pdef": 70,
           "mdef": 89,
-          "haste": 115,
+          "regen": 115,
           "total": 517
         },
         "skills": [
@@ -12638,7 +12638,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1033303.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "028",
@@ -12670,11 +12670,11 @@
         ],
         "stats": {
           "hp": 94,
-          "patk": 81,
-          "matk": 41,
+          "atk": 81,
+          "brk": 41,
           "pdef": 68,
           "mdef": 68,
-          "haste": 85,
+          "regen": 85,
           "total": 437
         },
         "skills": [
@@ -12833,11 +12833,11 @@
         ],
         "stats": {
           "hp": 94,
-          "patk": 81,
-          "matk": 41,
+          "atk": 81,
+          "brk": 41,
           "pdef": 68,
           "mdef": 68,
-          "haste": 85,
+          "regen": 85,
           "total": 437
         },
         "skills": [
@@ -12984,11 +12984,11 @@
         ],
         "stats": {
           "hp": 94,
-          "patk": 81,
-          "matk": 41,
+          "atk": 81,
+          "brk": 41,
           "pdef": 68,
           "mdef": 68,
-          "haste": 85,
+          "regen": 85,
           "total": 437
         },
         "skills": [
@@ -13135,11 +13135,11 @@
         ],
         "stats": {
           "hp": 94,
-          "patk": 81,
-          "matk": 41,
+          "atk": 81,
+          "brk": 41,
           "pdef": 68,
           "mdef": 68,
-          "haste": 85,
+          "regen": 85,
           "total": 437
         },
         "skills": [
@@ -13275,7 +13275,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1023103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "029",
@@ -13305,11 +13305,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 98,
-          "matk": 50,
+          "atk": 98,
+          "brk": 50,
           "pdef": 85,
           "mdef": 85,
-          "haste": 104,
+          "regen": 104,
           "total": 532
         },
         "skills": [
@@ -13481,11 +13481,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 98,
-          "matk": 50,
+          "atk": 98,
+          "brk": 50,
           "pdef": 85,
           "mdef": 85,
-          "haste": 104,
+          "regen": 104,
           "total": 532
         },
         "skills": [
@@ -13657,11 +13657,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 98,
-          "matk": 50,
+          "atk": 98,
+          "brk": 50,
           "pdef": 85,
           "mdef": 85,
-          "haste": 104,
+          "regen": 104,
           "total": 532
         },
         "skills": [
@@ -13833,11 +13833,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 98,
-          "matk": 50,
+          "atk": 98,
+          "brk": 50,
           "pdef": 85,
           "mdef": 85,
-          "haste": 104,
+          "regen": 104,
           "total": 532
         },
         "skills": [
@@ -14003,7 +14003,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1023203.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "030",
@@ -14034,11 +14034,11 @@
         ],
         "stats": {
           "hp": 111,
-          "patk": 92,
-          "matk": 50,
+          "atk": 92,
+          "brk": 50,
           "pdef": 85,
           "mdef": 85,
-          "haste": 115,
+          "regen": 115,
           "total": 538
         },
         "skills": [
@@ -14137,7 +14137,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10233.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "031",
@@ -14169,11 +14169,11 @@
         ],
         "stats": {
           "hp": 70,
-          "patk": 108,
-          "matk": 42,
+          "atk": 108,
+          "brk": 42,
           "pdef": 70,
           "mdef": 57,
-          "haste": 80,
+          "regen": 80,
           "total": 427
         },
         "skills": [
@@ -14277,7 +14277,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10441.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "032",
@@ -14307,11 +14307,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 120,
-          "matk": 49,
+          "atk": 120,
+          "brk": 49,
           "pdef": 83,
           "mdef": 67,
-          "haste": 91,
+          "regen": 91,
           "total": 510
         },
         "skills": [
@@ -14445,7 +14445,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10443.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "033",
@@ -14478,11 +14478,11 @@
         ],
         "stats": {
           "hp": 82,
-          "patk": 107,
-          "matk": 43,
+          "atk": 107,
+          "brk": 43,
           "pdef": 59,
           "mdef": 59,
-          "haste": 78,
+          "regen": 78,
           "total": 428
         },
         "skills": [
@@ -14574,11 +14574,11 @@
         ],
         "stats": {
           "hp": 82,
-          "patk": 107,
-          "matk": 43,
+          "atk": 107,
+          "brk": 43,
           "pdef": 59,
           "mdef": 59,
-          "haste": 78,
+          "regen": 78,
           "total": 428
         },
         "skills": [
@@ -14652,7 +14652,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "034",
@@ -14682,11 +14682,11 @@
         ],
         "stats": {
           "hp": 96,
-          "patk": 121,
-          "matk": 53,
+          "atk": 121,
+          "brk": 53,
           "pdef": 74,
           "mdef": 73,
-          "haste": 92,
+          "regen": 92,
           "total": 509
         },
         "skills": [
@@ -14835,11 +14835,11 @@
         ],
         "stats": {
           "hp": 96,
-          "patk": 121,
-          "matk": 53,
+          "atk": 121,
+          "brk": 53,
           "pdef": 74,
           "mdef": 73,
-          "haste": 92,
+          "regen": 92,
           "total": 509
         },
         "skills": [
@@ -14988,11 +14988,11 @@
         ],
         "stats": {
           "hp": 96,
-          "patk": 121,
-          "matk": 53,
+          "atk": 121,
+          "brk": 53,
           "pdef": 74,
           "mdef": 73,
-          "haste": 92,
+          "regen": 92,
           "total": 509
         },
         "skills": [
@@ -15140,11 +15140,11 @@
         ],
         "stats": {
           "hp": 96,
-          "patk": 121,
-          "matk": 53,
+          "atk": 121,
+          "brk": 53,
           "pdef": 74,
           "mdef": 73,
-          "haste": 92,
+          "regen": 92,
           "total": 509
         },
         "skills": [
@@ -15278,7 +15278,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032303.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "035",
@@ -15308,11 +15308,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 113,
-          "matk": 91,
+          "atk": 113,
+          "brk": 91,
           "pdef": 70,
           "mdef": 70,
-          "haste": 78,
+          "regen": 78,
           "total": 517
         },
         "skills": [
@@ -15446,11 +15446,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 113,
-          "matk": 91,
+          "atk": 113,
+          "brk": 91,
           "pdef": 70,
           "mdef": 70,
-          "haste": 78,
+          "regen": 78,
           "total": 517
         },
         "skills": [
@@ -15564,7 +15564,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1032402.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "036",
@@ -15597,11 +15597,11 @@
         ],
         "stats": {
           "hp": 74,
-          "patk": 72,
-          "matk": 91,
+          "atk": 72,
+          "brk": 91,
           "pdef": 68,
           "mdef": 65,
-          "haste": 85,
+          "regen": 85,
           "total": 455
         },
         "skills": [
@@ -15705,11 +15705,11 @@
         ],
         "stats": {
           "hp": 74,
-          "patk": 72,
-          "matk": 91,
+          "atk": 72,
+          "brk": 91,
           "pdef": 68,
           "mdef": 65,
-          "haste": 85,
+          "regen": 85,
           "total": 455
         },
         "skills": [
@@ -15816,11 +15816,11 @@
         ],
         "stats": {
           "hp": 74,
-          "patk": 72,
-          "matk": 91,
+          "atk": 72,
+          "brk": 91,
           "pdef": 68,
           "mdef": 65,
-          "haste": 85,
+          "regen": 85,
           "total": 455
         },
         "skills": [
@@ -15927,11 +15927,11 @@
         ],
         "stats": {
           "hp": 74,
-          "patk": 72,
-          "matk": 91,
+          "atk": 72,
+          "brk": 91,
           "pdef": 68,
           "mdef": 65,
-          "haste": 85,
+          "regen": 85,
           "total": 455
         },
         "skills": [
@@ -16024,7 +16024,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1047103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "037",
@@ -16054,11 +16054,11 @@
         ],
         "stats": {
           "hp": 87,
-          "patk": 90,
-          "matk": 107,
+          "atk": 90,
+          "brk": 107,
           "pdef": 80,
           "mdef": 76,
-          "haste": 100,
+          "regen": 100,
           "total": 540
         },
         "skills": [
@@ -16192,11 +16192,11 @@
         ],
         "stats": {
           "hp": 87,
-          "patk": 90,
-          "matk": 107,
+          "atk": 90,
+          "brk": 107,
           "pdef": 80,
           "mdef": 76,
-          "haste": 100,
+          "regen": 100,
           "total": 540
         },
         "skills": [
@@ -16324,11 +16324,11 @@
         ],
         "stats": {
           "hp": 87,
-          "patk": 90,
-          "matk": 107,
+          "atk": 90,
+          "brk": 107,
           "pdef": 80,
           "mdef": 76,
-          "haste": 100,
+          "regen": 100,
           "total": 540
         },
         "skills": [
@@ -16456,11 +16456,11 @@
         ],
         "stats": {
           "hp": 87,
-          "patk": 90,
-          "matk": 107,
+          "atk": 90,
+          "brk": 107,
           "pdef": 80,
           "mdef": 76,
-          "haste": 100,
+          "regen": 100,
           "total": 540
         },
         "skills": [
@@ -16574,7 +16574,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1047503.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "038",
@@ -16606,11 +16606,11 @@
         ],
         "stats": {
           "hp": 71,
-          "patk": 94,
-          "matk": 69,
+          "atk": 94,
+          "brk": 69,
           "pdef": 58,
           "mdef": 55,
-          "haste": 94,
+          "regen": 94,
           "total": 441
         },
         "skills": [
@@ -16688,7 +16688,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10351.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "039",
@@ -16718,11 +16718,11 @@
         ],
         "stats": {
           "hp": 84,
-          "patk": 111,
-          "matk": 81,
+          "atk": 111,
+          "brk": 81,
           "pdef": 68,
           "mdef": 65,
-          "haste": 110,
+          "regen": 110,
           "total": 519
         },
         "skills": [
@@ -16839,7 +16839,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10352.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "040",
@@ -16872,11 +16872,11 @@
         ],
         "stats": {
           "hp": 77,
-          "patk": 112,
-          "matk": 43,
+          "atk": 112,
+          "brk": 43,
           "pdef": 60,
           "mdef": 54,
-          "haste": 77,
+          "regen": 77,
           "total": 423
         },
         "skills": [
@@ -16993,11 +16993,11 @@
         ],
         "stats": {
           "hp": 77,
-          "patk": 112,
-          "matk": 43,
+          "atk": 112,
+          "brk": 43,
           "pdef": 60,
           "mdef": 54,
-          "haste": 77,
+          "regen": 77,
           "total": 423
         },
         "skills": [
@@ -17114,11 +17114,11 @@
         ],
         "stats": {
           "hp": 77,
-          "patk": 112,
-          "matk": 43,
+          "atk": 112,
+          "brk": 43,
           "pdef": 60,
           "mdef": 54,
-          "haste": 77,
+          "regen": 77,
           "total": 423
         },
         "skills": [
@@ -17224,7 +17224,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003103.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "041",
@@ -17254,11 +17254,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 125,
-          "matk": 52,
+          "atk": 125,
+          "brk": 52,
           "pdef": 77,
           "mdef": 70,
-          "haste": 91,
+          "regen": 91,
           "total": 505
         },
         "skills": [
@@ -17420,11 +17420,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 125,
-          "matk": 52,
+          "atk": 125,
+          "brk": 52,
           "pdef": 77,
           "mdef": 70,
-          "haste": 91,
+          "regen": 91,
           "total": 505
         },
         "skills": [
@@ -17586,11 +17586,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 125,
-          "matk": 52,
+          "atk": 125,
+          "brk": 52,
           "pdef": 77,
           "mdef": 70,
-          "haste": 91,
+          "regen": 91,
           "total": 505
         },
         "skills": [
@@ -17752,11 +17752,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 125,
-          "matk": 52,
+          "atk": 125,
+          "brk": 52,
           "pdef": 77,
           "mdef": 70,
-          "haste": 91,
+          "regen": 91,
           "total": 505
         },
         "skills": [
@@ -17907,7 +17907,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003203.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "042",
@@ -17939,11 +17939,11 @@
         ],
         "stats": {
           "hp": 71,
-          "patk": 88,
-          "matk": 38,
+          "atk": 88,
+          "brk": 38,
           "pdef": 56,
           "mdef": 57,
-          "haste": 67,
+          "regen": 67,
           "total": 377
         },
         "skills": [
@@ -18064,11 +18064,11 @@
         ],
         "stats": {
           "hp": 71,
-          "patk": 88,
-          "matk": 38,
+          "atk": 88,
+          "brk": 38,
           "pdef": 56,
           "mdef": 57,
-          "haste": 67,
+          "regen": 67,
           "total": 377
         },
         "skills": [
@@ -18170,7 +18170,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1013102.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "043",
@@ -18202,11 +18202,11 @@
         ],
         "stats": {
           "hp": 86,
-          "patk": 105,
-          "matk": 45,
+          "atk": 105,
+          "brk": 45,
           "pdef": 68,
           "mdef": 68,
-          "haste": 81,
+          "regen": 81,
           "total": 453
         },
         "skills": [
@@ -18327,11 +18327,11 @@
         ],
         "stats": {
           "hp": 86,
-          "patk": 105,
-          "matk": 45,
+          "atk": 105,
+          "brk": 45,
           "pdef": 68,
           "mdef": 68,
-          "haste": 81,
+          "regen": 81,
           "total": 453
         },
         "skills": [
@@ -18433,7 +18433,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1013202.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "044",
@@ -18463,11 +18463,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 118,
-          "matk": 53,
+          "atk": 118,
+          "brk": 53,
           "pdef": 72,
           "mdef": 76,
-          "haste": 98,
+          "regen": 98,
           "total": 512
         },
         "skills": [
@@ -18629,11 +18629,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 118,
-          "matk": 53,
+          "atk": 118,
+          "brk": 53,
           "pdef": 72,
           "mdef": 76,
-          "haste": 98,
+          "regen": 98,
           "total": 512
         },
         "skills": [
@@ -18790,11 +18790,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 118,
-          "matk": 53,
+          "atk": 118,
+          "brk": 53,
           "pdef": 72,
           "mdef": 76,
-          "haste": 98,
+          "regen": 98,
           "total": 512
         },
         "skills": [
@@ -18941,7 +18941,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1013302.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "045",
@@ -18973,11 +18973,11 @@
         ],
         "stats": {
           "hp": 85,
-          "patk": 85,
-          "matk": 87,
+          "atk": 85,
+          "brk": 87,
           "pdef": 60,
           "mdef": 60,
-          "haste": 73,
+          "regen": 73,
           "total": 450
         },
         "skills": [
@@ -19078,11 +19078,11 @@
         ],
         "stats": {
           "hp": 85,
-          "patk": 85,
-          "matk": 87,
+          "atk": 85,
+          "brk": 87,
           "pdef": 60,
           "mdef": 60,
-          "haste": 73,
+          "regen": 73,
           "total": 450
         },
         "skills": [
@@ -19169,7 +19169,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1022102.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "046",
@@ -19199,11 +19199,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 100,
-          "matk": 104,
+          "atk": 100,
+          "brk": 104,
           "pdef": 70,
           "mdef": 70,
-          "haste": 86,
+          "regen": 86,
           "total": 530
         },
         "skills": [
@@ -19350,11 +19350,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 100,
-          "matk": 104,
+          "atk": 100,
+          "brk": 104,
           "pdef": 70,
           "mdef": 70,
-          "haste": 86,
+          "regen": 86,
           "total": 530
         },
         "skills": [
@@ -19500,11 +19500,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 100,
-          "matk": 104,
+          "atk": 100,
+          "brk": 104,
           "pdef": 70,
           "mdef": 70,
-          "haste": 86,
+          "regen": 86,
           "total": 530
         },
         "skills": [
@@ -19631,7 +19631,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1022202.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "047",
@@ -19663,11 +19663,11 @@
         ],
         "stats": {
           "hp": 53,
-          "patk": 80,
-          "matk": 94,
+          "atk": 80,
+          "brk": 94,
           "pdef": 79,
           "mdef": 72,
-          "haste": 77,
+          "regen": 77,
           "total": 455
         },
         "skills": [
@@ -19771,7 +19771,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10511.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "048",
@@ -19801,11 +19801,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 82,
-          "matk": 108,
+          "atk": 82,
+          "brk": 108,
           "pdef": 80,
           "mdef": 80,
-          "haste": 88,
+          "regen": 88,
           "total": 548
         },
         "skills": [
@@ -19939,7 +19939,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10512.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "049",
@@ -19971,11 +19971,11 @@
         ],
         "stats": {
           "hp": 81,
-          "patk": 61,
-          "matk": 72,
+          "atk": 61,
+          "brk": 72,
           "pdef": 53,
           "mdef": 80,
-          "haste": 64,
+          "regen": 64,
           "total": 411
         },
         "skills": [
@@ -20063,11 +20063,11 @@
         ],
         "stats": {
           "hp": 81,
-          "patk": 61,
-          "matk": 72,
+          "atk": 61,
+          "brk": 72,
           "pdef": 53,
           "mdef": 80,
-          "haste": 64,
+          "regen": 64,
           "total": 411
         },
         "skills": [
@@ -20141,7 +20141,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017101.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "050",
@@ -20174,11 +20174,11 @@
         ],
         "stats": {
           "hp": 92,
-          "patk": 96,
-          "matk": 80,
+          "atk": 96,
+          "brk": 80,
           "pdef": 68,
           "mdef": 68,
-          "haste": 67,
+          "regen": 67,
           "total": 471
         },
         "skills": [
@@ -20266,11 +20266,11 @@
         ],
         "stats": {
           "hp": 92,
-          "patk": 96,
-          "matk": 80,
+          "atk": 96,
+          "brk": 80,
           "pdef": 68,
           "mdef": 68,
-          "haste": 67,
+          "regen": 67,
           "total": 471
         },
         "skills": [
@@ -20339,7 +20339,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017201.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "051",
@@ -20369,11 +20369,11 @@
         ],
         "stats": {
           "hp": 102,
-          "patk": 108,
-          "matk": 50,
+          "atk": 108,
+          "brk": 50,
           "pdef": 99,
           "mdef": 75,
-          "haste": 88,
+          "regen": 88,
           "total": 522
         },
         "skills": [
@@ -20502,11 +20502,11 @@
         ],
         "stats": {
           "hp": 102,
-          "patk": 108,
-          "matk": 50,
+          "atk": 108,
+          "brk": 50,
           "pdef": 99,
           "mdef": 75,
-          "haste": 88,
+          "regen": 88,
           "total": 522
         },
         "skills": [
@@ -20620,7 +20620,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "052",
@@ -20650,11 +20650,11 @@
         ],
         "stats": {
           "hp": 104,
-          "patk": 85,
-          "matk": 100,
+          "atk": 85,
+          "brk": 100,
           "pdef": 70,
           "mdef": 106,
-          "haste": 80,
+          "regen": 80,
           "total": 545
         },
         "skills": [
@@ -20787,11 +20787,11 @@
         ],
         "stats": {
           "hp": 104,
-          "patk": 85,
-          "matk": 100,
+          "atk": 85,
+          "brk": 100,
           "pdef": 70,
           "mdef": 106,
-          "haste": 80,
+          "regen": 80,
           "total": 545
         },
         "skills": [
@@ -20919,11 +20919,11 @@
         ],
         "stats": {
           "hp": 104,
-          "patk": 85,
-          "matk": 100,
+          "atk": 85,
+          "brk": 100,
           "pdef": 70,
           "mdef": 106,
-          "haste": 80,
+          "regen": 80,
           "total": 545
         },
         "skills": [
@@ -21042,7 +21042,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1017402.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "053",
@@ -21074,11 +21074,11 @@
         ],
         "stats": {
           "hp": 75,
-          "patk": 90,
-          "matk": 39,
+          "atk": 90,
+          "brk": 39,
           "pdef": 56,
           "mdef": 56,
-          "haste": 66,
+          "regen": 66,
           "total": 382
         },
         "skills": [
@@ -21160,7 +21160,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10191.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "054",
@@ -21192,11 +21192,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 109,
-          "matk": 44,
+          "atk": 109,
+          "brk": 44,
           "pdef": 68,
           "mdef": 68,
-          "haste": 79,
+          "regen": 79,
           "total": 458
         },
         "skills": [
@@ -21270,7 +21270,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10192.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "055",
@@ -21300,11 +21300,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 121,
-          "matk": 50,
+          "atk": 121,
+          "brk": 50,
           "pdef": 75,
           "mdef": 75,
-          "haste": 88,
+          "regen": 88,
           "total": 509
         },
         "skills": [
@@ -21448,11 +21448,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 121,
-          "matk": 50,
+          "atk": 121,
+          "brk": 50,
           "pdef": 75,
           "mdef": 75,
-          "haste": 88,
+          "regen": 88,
           "total": 509
         },
         "skills": [
@@ -21601,11 +21601,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 121,
-          "matk": 50,
+          "atk": 121,
+          "brk": 50,
           "pdef": 75,
           "mdef": 75,
-          "haste": 88,
+          "regen": 88,
           "total": 509
         },
         "skills": [
@@ -21734,7 +21734,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1019402.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "056",
@@ -21767,11 +21767,11 @@
         ],
         "stats": {
           "hp": 76,
-          "patk": 98,
-          "matk": 42,
+          "atk": 98,
+          "brk": 42,
           "pdef": 68,
           "mdef": 68,
-          "haste": 85,
+          "regen": 85,
           "total": 437
         },
         "skills": [
@@ -21888,11 +21888,11 @@
         ],
         "stats": {
           "hp": 76,
-          "patk": 98,
-          "matk": 42,
+          "atk": 98,
+          "brk": 42,
           "pdef": 68,
           "mdef": 68,
-          "haste": 85,
+          "regen": 85,
           "total": 437
         },
         "skills": [
@@ -21994,7 +21994,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1045101.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "057",
@@ -22024,11 +22024,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 114,
-          "matk": 52,
+          "atk": 114,
+          "brk": 52,
           "pdef": 80,
           "mdef": 80,
-          "haste": 100,
+          "regen": 100,
           "total": 516
         },
         "skills": [
@@ -22190,11 +22190,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 114,
-          "matk": 52,
+          "atk": 114,
+          "brk": 52,
           "pdef": 80,
           "mdef": 80,
-          "haste": 100,
+          "regen": 100,
           "total": 516
         },
         "skills": [
@@ -22356,11 +22356,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 114,
-          "matk": 52,
+          "atk": 114,
+          "brk": 52,
           "pdef": 80,
           "mdef": 80,
-          "haste": 100,
+          "regen": 100,
           "total": 516
         },
         "skills": [
@@ -22502,7 +22502,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1045302.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "058",
@@ -22532,11 +22532,11 @@
         ],
         "stats": {
           "hp": 91,
-          "patk": 114,
-          "matk": 52,
+          "atk": 114,
+          "brk": 52,
           "pdef": 101,
           "mdef": 54,
-          "haste": 104,
+          "regen": 104,
           "total": 516
         },
         "skills": [
@@ -22670,11 +22670,11 @@
         ],
         "stats": {
           "hp": 91,
-          "patk": 114,
-          "matk": 52,
+          "atk": 114,
+          "brk": 52,
           "pdef": 101,
           "mdef": 54,
-          "haste": 104,
+          "regen": 104,
           "total": 516
         },
         "skills": [
@@ -22788,7 +22788,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1045401.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "059",
@@ -22820,11 +22820,11 @@
         ],
         "stats": {
           "hp": 85,
-          "patk": 106,
-          "matk": 41,
+          "atk": 106,
+          "brk": 41,
           "pdef": 60,
           "mdef": 60,
-          "haste": 77,
+          "regen": 77,
           "total": 429
         },
         "skills": [
@@ -22911,7 +22911,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10291.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "060",
@@ -22941,11 +22941,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 125,
-          "matk": 50,
+          "atk": 125,
+          "brk": 50,
           "pdef": 70,
           "mdef": 70,
-          "haste": 90,
+          "regen": 90,
           "total": 505
         },
         "skills": [
@@ -23092,11 +23092,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 125,
-          "matk": 50,
+          "atk": 125,
+          "brk": 50,
           "pdef": 70,
           "mdef": 70,
-          "haste": 90,
+          "regen": 90,
           "total": 505
         },
         "skills": [
@@ -23223,7 +23223,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1029301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "061",
@@ -23256,11 +23256,11 @@
         ],
         "stats": {
           "hp": 60,
-          "patk": 52,
-          "matk": 60,
+          "atk": 52,
+          "brk": 60,
           "pdef": 68,
           "mdef": 48,
-          "haste": 51,
+          "regen": 51,
           "total": 339
         },
         "skills": [
@@ -23377,11 +23377,11 @@
         ],
         "stats": {
           "hp": 60,
-          "patk": 52,
-          "matk": 60,
+          "atk": 52,
+          "brk": 60,
           "pdef": 68,
           "mdef": 48,
-          "haste": 51,
+          "regen": 51,
           "total": 339
         },
         "skills": [
@@ -23497,11 +23497,11 @@
         ],
         "stats": {
           "hp": 60,
-          "patk": 52,
-          "matk": 60,
+          "atk": 52,
+          "brk": 60,
           "pdef": 68,
           "mdef": 48,
-          "haste": 51,
+          "regen": 51,
           "total": 339
         },
         "skills": [
@@ -23603,7 +23603,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002102.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "062",
@@ -23633,11 +23633,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 125,
-          "matk": 55,
+          "atk": 125,
+          "brk": 55,
           "pdef": 84,
           "mdef": 70,
-          "haste": 81,
+          "regen": 81,
           "total": 505
         },
         "skills": [
@@ -23779,11 +23779,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 125,
-          "matk": 55,
+          "atk": 125,
+          "brk": 55,
           "pdef": 84,
           "mdef": 70,
-          "haste": 81,
+          "regen": 81,
           "total": 505
         },
         "skills": [
@@ -23924,11 +23924,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 125,
-          "matk": 55,
+          "atk": 125,
+          "brk": 55,
           "pdef": 84,
           "mdef": 70,
-          "haste": 81,
+          "regen": 81,
           "total": 505
         },
         "skills": [
@@ -24069,11 +24069,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 125,
-          "matk": 55,
+          "atk": 125,
+          "brk": 55,
           "pdef": 84,
           "mdef": 70,
-          "haste": 81,
+          "regen": 81,
           "total": 505
         },
         "skills": [
@@ -24205,7 +24205,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002603.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "063",
@@ -24235,11 +24235,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 90,
-          "matk": 105,
+          "atk": 90,
+          "brk": 105,
           "pdef": 100,
           "mdef": 70,
-          "haste": 75,
+          "regen": 75,
           "total": 540
         },
         "skills": [
@@ -24386,11 +24386,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 90,
-          "matk": 105,
+          "atk": 90,
+          "brk": 105,
           "pdef": 100,
           "mdef": 70,
-          "haste": 75,
+          "regen": 75,
           "total": 540
         },
         "skills": [
@@ -24536,11 +24536,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 90,
-          "matk": 105,
+          "atk": 90,
+          "brk": 105,
           "pdef": 100,
           "mdef": 70,
-          "haste": 75,
+          "regen": 75,
           "total": 540
         },
         "skills": [
@@ -24672,7 +24672,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002702.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "064",
@@ -24702,11 +24702,11 @@
         ],
         "stats": {
           "hp": 78,
-          "patk": 65,
-          "matk": 76,
+          "atk": 65,
+          "brk": 76,
           "pdef": 74,
           "mdef": 51,
-          "haste": 63,
+          "regen": 63,
           "total": 407
         },
         "skills": [
@@ -24807,11 +24807,11 @@
         ],
         "stats": {
           "hp": 78,
-          "patk": 65,
-          "matk": 76,
+          "atk": 65,
+          "brk": 76,
           "pdef": 74,
           "mdef": 51,
-          "haste": 63,
+          "regen": 63,
           "total": 407
         },
         "skills": [
@@ -24898,7 +24898,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002401.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "065",
@@ -24931,11 +24931,11 @@
         ],
         "stats": {
           "hp": 94,
-          "patk": 78,
-          "matk": 92,
+          "atk": 78,
+          "brk": 92,
           "pdef": 88,
           "mdef": 61,
-          "haste": 76,
+          "regen": 76,
           "total": 489
         },
         "skills": [
@@ -25036,11 +25036,11 @@
         ],
         "stats": {
           "hp": 94,
-          "patk": 78,
-          "matk": 92,
+          "atk": 78,
+          "brk": 92,
           "pdef": 88,
           "mdef": 61,
-          "haste": 76,
+          "regen": 76,
           "total": 489
         },
         "skills": [
@@ -25127,7 +25127,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002201.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "066",
@@ -25157,11 +25157,11 @@
         ],
         "stats": {
           "hp": 104,
-          "patk": 87,
-          "matk": 102,
+          "atk": 87,
+          "brk": 102,
           "pdef": 98,
           "mdef": 68,
-          "haste": 84,
+          "regen": 84,
           "total": 543
         },
         "skills": [
@@ -25292,11 +25292,11 @@
         ],
         "stats": {
           "hp": 104,
-          "patk": 87,
-          "matk": 102,
+          "atk": 87,
+          "brk": 102,
           "pdef": 98,
           "mdef": 68,
-          "haste": 84,
+          "regen": 84,
           "total": 543
         },
         "skills": [
@@ -25413,7 +25413,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "067",
@@ -25443,11 +25443,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 125,
-          "matk": 50,
+          "atk": 125,
+          "brk": 50,
           "pdef": 70,
           "mdef": 85,
-          "haste": 80,
+          "regen": 80,
           "total": 505
         },
         "skills": [
@@ -25589,11 +25589,11 @@
         ],
         "stats": {
           "hp": 95,
-          "patk": 125,
-          "matk": 50,
+          "atk": 125,
+          "brk": 50,
           "pdef": 70,
           "mdef": 85,
-          "haste": 80,
+          "regen": 80,
           "total": 505
         },
         "skills": [
@@ -25720,7 +25720,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1002503.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "068",
@@ -25752,11 +25752,11 @@
         ],
         "stats": {
           "hp": 92,
-          "patk": 100,
-          "matk": 42,
+          "atk": 100,
+          "brk": 42,
           "pdef": 70,
           "mdef": 61,
-          "haste": 70,
+          "regen": 70,
           "total": 435
         },
         "skills": [
@@ -25843,7 +25843,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10501.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "069",
@@ -25873,11 +25873,11 @@
         ],
         "stats": {
           "hp": 104,
-          "patk": 124,
-          "matk": 50,
+          "atk": 124,
+          "brk": 50,
           "pdef": 83,
           "mdef": 70,
-          "haste": 75,
+          "regen": 75,
           "total": 506
         },
         "skills": [
@@ -26024,11 +26024,11 @@
         ],
         "stats": {
           "hp": 104,
-          "patk": 124,
-          "matk": 50,
+          "atk": 124,
+          "brk": 50,
           "pdef": 83,
           "mdef": 70,
-          "haste": 75,
+          "regen": 75,
           "total": 506
         },
         "skills": [
@@ -26160,7 +26160,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1050301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "070",
@@ -26193,11 +26193,11 @@
         ],
         "stats": {
           "hp": 83,
-          "patk": 68,
-          "matk": 79,
+          "atk": 68,
+          "brk": 79,
           "pdef": 52,
           "mdef": 74,
-          "haste": 56,
+          "regen": 56,
           "total": 412
         },
         "skills": [
@@ -26284,7 +26284,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10281.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "071",
@@ -26317,11 +26317,11 @@
         ],
         "stats": {
           "hp": 99,
-          "patk": 82,
-          "matk": 93,
+          "atk": 82,
+          "brk": 93,
           "pdef": 63,
           "mdef": 80,
-          "haste": 68,
+          "regen": 68,
           "total": 485
         },
         "skills": [
@@ -26395,7 +26395,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10282.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "072",
@@ -26426,11 +26426,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 91,
-          "matk": 104,
+          "atk": 91,
+          "brk": 104,
           "pdef": 70,
           "mdef": 89,
-          "haste": 75,
+          "regen": 75,
           "total": 539
         },
         "skills": [
@@ -26577,11 +26577,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 91,
-          "matk": 104,
+          "atk": 91,
+          "brk": 104,
           "pdef": 70,
           "mdef": 89,
-          "haste": 75,
+          "regen": 75,
           "total": 539
         },
         "skills": [
@@ -26713,7 +26713,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1028301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "073",
@@ -26745,11 +26745,11 @@
         ],
         "stats": {
           "hp": 99,
-          "patk": 81,
-          "matk": 102,
+          "atk": 81,
+          "brk": 102,
           "pdef": 80,
           "mdef": 54,
-          "haste": 70,
+          "regen": 70,
           "total": 486
         },
         "skills": [
@@ -26831,7 +26831,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10284.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "074",
@@ -26861,11 +26861,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 90,
-          "matk": 105,
+          "atk": 90,
+          "brk": 105,
           "pdef": 97,
           "mdef": 60,
-          "haste": 78,
+          "regen": 78,
           "total": 540
         },
         "skills": [
@@ -26977,7 +26977,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10285.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "075",
@@ -27009,11 +27009,11 @@
         ],
         "stats": {
           "hp": 77,
-          "patk": 87,
-          "matk": 50,
+          "atk": 87,
+          "brk": 50,
           "pdef": 67,
           "mdef": 67,
-          "haste": 100,
+          "regen": 100,
           "total": 448
         },
         "skills": [
@@ -27087,7 +27087,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10431.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "076",
@@ -27117,11 +27117,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 116,
-          "matk": 50,
+          "atk": 116,
+          "brk": 50,
           "pdef": 100,
           "mdef": 83,
-          "haste": 75,
+          "regen": 75,
           "total": 514
         },
         "skills": [
@@ -27225,7 +27225,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10433.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "077",
@@ -27257,11 +27257,11 @@
         ],
         "stats": {
           "hp": 83,
-          "patk": 68,
-          "matk": 37,
+          "atk": 68,
+          "brk": 37,
           "pdef": 63,
           "mdef": 63,
-          "haste": 90,
+          "regen": 90,
           "total": 404
         },
         "skills": [
@@ -27348,7 +27348,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10141.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "078",
@@ -27380,11 +27380,11 @@
         ],
         "stats": {
           "hp": 99,
-          "patk": 93,
-          "matk": 45,
+          "atk": 93,
+          "brk": 45,
           "pdef": 72,
           "mdef": 74,
-          "haste": 90,
+          "regen": 90,
           "total": 473
         },
         "skills": [
@@ -27471,7 +27471,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10142.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "079",
@@ -27501,11 +27501,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 115,
-          "matk": 50,
+          "atk": 115,
+          "brk": 50,
           "pdef": 75,
           "mdef": 75,
-          "haste": 90,
+          "regen": 90,
           "total": 515
         },
         "skills": [
@@ -27667,11 +27667,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 115,
-          "matk": 50,
+          "atk": 115,
+          "brk": 50,
           "pdef": 75,
           "mdef": 75,
-          "haste": 90,
+          "regen": 90,
           "total": 515
         },
         "skills": [
@@ -27833,11 +27833,11 @@
         ],
         "stats": {
           "hp": 110,
-          "patk": 115,
-          "matk": 50,
+          "atk": 115,
+          "brk": 50,
           "pdef": 75,
           "mdef": 75,
-          "haste": 90,
+          "regen": 90,
           "total": 515
         },
         "skills": [
@@ -27984,7 +27984,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1014302.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "080",
@@ -28016,11 +28016,11 @@
         ],
         "stats": {
           "hp": 102,
-          "patk": 76,
-          "matk": 44,
+          "atk": 76,
+          "brk": 44,
           "pdef": 68,
           "mdef": 76,
-          "haste": 93,
+          "regen": 93,
           "total": 459
         },
         "skills": [
@@ -28107,7 +28107,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10481.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "081",
@@ -28137,11 +28137,11 @@
         ],
         "stats": {
           "hp": 120,
-          "patk": 90,
-          "matk": 50,
+          "atk": 90,
+          "brk": 50,
           "pdef": 80,
           "mdef": 90,
-          "haste": 110,
+          "regen": 110,
           "total": 540
         },
         "skills": [
@@ -28258,7 +28258,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10483.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "082",
@@ -28288,11 +28288,11 @@
         ],
         "stats": {
           "hp": 88,
-          "patk": 92,
-          "matk": 90,
+          "atk": 92,
+          "brk": 90,
           "pdef": 75,
           "mdef": 75,
-          "haste": 118,
+          "regen": 118,
           "total": 538
         },
         "skills": [
@@ -28391,7 +28391,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10122.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "10001",
@@ -28421,11 +28421,11 @@
         ],
         "stats": {
           "hp": 90,
-          "patk": 130,
-          "matk": 56,
+          "atk": 130,
+          "brk": 56,
           "pdef": 78,
           "mdef": 78,
-          "haste": 108,
+          "regen": 108,
           "total": 540
         },
         "skills": [
@@ -28509,7 +28509,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10213.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "10002",
@@ -28539,11 +28539,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 108,
-          "matk": 55,
+          "atk": 108,
+          "brk": 55,
           "pdef": 81,
           "mdef": 90,
-          "haste": 88,
+          "regen": 88,
           "total": 522
         },
         "skills": [
@@ -28642,7 +28642,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10474.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "10003",
@@ -28672,11 +28672,11 @@
         ],
         "stats": {
           "hp": 99,
-          "patk": 130,
-          "matk": 50,
+          "atk": 130,
+          "brk": 50,
           "pdef": 66,
           "mdef": 70,
-          "haste": 105,
+          "regen": 105,
           "total": 520
         },
         "skills": [
@@ -28818,11 +28818,11 @@
         ],
         "stats": {
           "hp": 99,
-          "patk": 130,
-          "matk": 50,
+          "atk": 130,
+          "brk": 50,
           "pdef": 66,
           "mdef": 70,
-          "haste": 105,
+          "regen": 105,
           "total": 520
         },
         "skills": [
@@ -28949,7 +28949,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_1003305.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "11001",
@@ -28979,11 +28979,11 @@
         ],
         "stats": {
           "hp": 107,
-          "patk": 113,
-          "matk": 50,
+          "atk": 113,
+          "brk": 50,
           "pdef": 60,
           "mdef": 88,
-          "haste": 99,
+          "regen": 99,
           "total": 517
         },
         "skills": [
@@ -29111,11 +29111,11 @@
         ],
         "stats": {
           "hp": 107,
-          "patk": 113,
-          "matk": 50,
+          "atk": 113,
+          "brk": 50,
           "pdef": 60,
           "mdef": 88,
-          "haste": 99,
+          "regen": 99,
           "total": 517
         },
         "skills": [
@@ -29229,7 +29229,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_6999301.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "99996",
@@ -29259,11 +29259,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 116,
-          "matk": 64,
+          "atk": 116,
+          "brk": 64,
           "pdef": 72,
           "mdef": 72,
-          "haste": 90,
+          "regen": 90,
           "total": 514
         },
         "skills": [
@@ -29390,7 +29390,7 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10371.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   },
   {
     "id": "99998",
@@ -29420,11 +29420,11 @@
         ],
         "stats": {
           "hp": 100,
-          "patk": 116,
-          "matk": 64,
+          "atk": 116,
+          "brk": 64,
           "pdef": 72,
           "mdef": 72,
-          "haste": 90,
+          "regen": 90,
           "total": 514
         },
         "skills": [
@@ -29551,6 +29551,6 @@
         "imagem": "https://worldx-website-cdn.aniimo.com/official-website/worldx/wiki_stage/init/Wiki_Aniimo_10361.png"
       }
     ],
-    "coletadoEm": "2026-09-22T23:44:34.658Z"
+    "coletadoEm": "2026-09-22T23:57:32.010Z"
   }
 ]

@@ -1,0 +1,19 @@
+{
+  "conferidoEm": "2026-09-22",
+  "fontes": ["https://game8.co/games/Aniimo/archives/619365", "https://aniimotools.dev/codes/"],
+  "nota": "Recompensa só aparece quando as duas fontes concordam.",
+  "codigos": [
+    { "codigo": "aniimofreetoplay", "ativo": true, "recompensas": "Glimmer ×50, Growth Flower ×5, Aniipod Pro ×5" },
+    { "codigo": "aniimowelcome", "ativo": true, "recompensas": "Glimmer ×50, Growth Flower ×5, Aniipod Pro ×5" },
+    { "codigo": "aniimolaunch2026", "ativo": true, "recompensas": "Glimmer ×50, Growth Flower ×5, Aniipod Pro ×5" },
+    { "codigo": "aniimotogether", "ativo": true, "recompensas": "Growth Flower ×3, Credit ×10.000" },
+    { "codigo": "aniimoidyll", "ativo": true, "recompensas": "Credit ×10.000, Aniipod ×5" },
+    { "codigo": "aniimoopenworld", "ativo": true, "recompensas": "Credit ×10.000, Aniipod ×5" },
+    { "codigo": "anyoneaniimo", "ativo": true },
+    { "codigo": "aniimobonus", "ativo": true },
+    { "codigo": "twinewithaniimo", "ativo": true },
+    { "codigo": "Aniimo2026", "ativo": true },
+    { "codigo": "ANIIMOGIFT", "ativo": true },
+    { "codigo": "aniimoparty", "ativo": false, "recompensas": "Glimmer ×50" }
+  ]
+}
