@@ -86,6 +86,7 @@ const pecas = aniimos.flatMap((a) =>
 </style>
 
 <script>
+  import { evento, umaVez } from '../scripts/evento.ts';
   const CHAVE = 'aniimo-tier-v1';
   // Cores inspiradas no acento Twining do guia, da tier mais alta para a mais baixa.
   const CORES = ['#F48DB8', '#F7A28C', '#FFB37A', '#FFD37A', '#BFE3A0', '#7FD6F5', '#A7B8F7', '#C9D3DE'];
@@ -146,7 +147,7 @@ const pecas = aniimos.flatMap((a) =>
     return li;
   }
 
-  lista.addEventListener('input', salva);
+  lista.addEventListener('input', () => { salva(); umaVez('tier_renomeado'); });
   lista.addEventListener('click', (ev) => {
     const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-acao]');
     if (!b) return;
@@ -175,6 +176,7 @@ const pecas = aniimos.flatMap((a) =>
     linhas().forEach((li) => { [...zonaDe(li).children].forEach((p) => devolve(p as HTMLElement)); li.remove(); });
     PADRAO.forEach((nome, i) => criaTier({ nome, cor: CORES[i], itens: [] }));
     salva();
+    evento('tier_recomecado');
   });
 
   // ---------- banco + filtros ----------
@@ -212,6 +214,7 @@ const pecas = aniimos.flatMap((a) =>
     requestAnimationFrame(() => p.classList.add('arrastando'));
   });
   document.addEventListener('dragend', () => {
+    if (arrastada) umaVez('tier_usado', { como: 'arrastar' });
     arrastada?.classList.remove('arrastando');
     arrastada = null;
     document.querySelectorAll('.alvo').forEach((z) => z.classList.remove('alvo'));
@@ -249,6 +252,7 @@ const pecas = aniimos.flatMap((a) =>
   function moverPara(zona: HTMLElement, antes?: Element | null) {
     if (!selecionada) return;
     if (zona === banco) devolve(selecionada); else zona.insertBefore(selecionada, antes ?? null);
+    umaVez('tier_usado', { como: 'tocar' });
     selecionada.focus();
     seleciona(null);
     salva();

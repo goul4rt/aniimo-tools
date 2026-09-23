@@ -88,9 +88,10 @@ const painel = (e: E) => ({
 </Base>
 
 <script>
+  import { evento } from '../scripts/evento.ts';
   const sel = document.getElementById('inimigo') as HTMLSelectElement;
   const paineis = document.querySelectorAll<HTMLElement>('[data-painel]');
   const mostra = () => paineis.forEach((p) => (p.hidden = p.dataset.painel !== sel.value));
-  sel.addEventListener('change', mostra);
+  sel.addEventListener('change', () => { mostra(); evento('tipos_inimigo', { elemento: sel.value }); });
   mostra(); // o navegador pode restaurar o select num valor diferente do painel inicial
 </script>

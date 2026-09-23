@@ -44,6 +44,7 @@ const total = aniimos.reduce((n, a) => n + a.formas.length, 0);
 </Base>
 
 <script>
+  import { evento, umaVez } from '../scripts/evento.ts';
   const CHAVE = 'aniimo-colecao-v1';
   const caixas = [...document.querySelectorAll<HTMLInputElement>('#lista input[type=checkbox]')];
   const itens = [...document.querySelectorAll<HTMLLIElement>('#lista > li')];
@@ -79,11 +80,12 @@ const total = aniimos.reduce((n, a) => n + a.formas.length, 0);
   }
 
   aplica(carrega());
-  $('lista').addEventListener('change', () => { salva(); atualiza(); });
+  $('lista').addEventListener('change', () => { salva(); atualiza(); umaVez('colecao_marcada'); });
   $('busca').addEventListener('input', filtra);
   $('faltando').addEventListener('change', filtra);
 
   $('exportar').addEventListener('click', () => {
+    evento('colecao_exportada', { formas: caixas.filter((c) => c.checked).length });
     const dados = { versao: 1, exportadoEm: new Date().toISOString(), formas: caixas.filter((c) => c.checked).map((c) => c.value) };
     const a = document.createElement('a');
     a.href = URL.createObjectURL(new Blob([JSON.stringify(dados, null, 2)], { type: 'application/json' }));
@@ -105,6 +107,7 @@ const total = aniimos.reduce((n, a) => n + a.formas.length, 0);
       aplica(tem);
       salva();
       aviso(`${tem.size} formas importadas.`);
+      evento('colecao_importada', { formas: tem.size });
     } catch {
       aviso('Arquivo inválido: use um arquivo gerado pelo botão Exportar.');
     }

@@ -42,9 +42,11 @@ const data = new Date(dados.conferidoEm + 'T12:00').toLocaleDateString('pt-BR');
 </Base>
 
 <script>
+  import { evento } from '../scripts/evento.ts';
   document.querySelectorAll<HTMLButtonElement>('[data-copiar]').forEach((b) =>
     b.addEventListener('click', async () => {
       await navigator.clipboard.writeText(b.dataset.copiar!);
+      evento('codigo_copiado', { codigo: b.dataset.copiar });
       const r = b.querySelector<HTMLElement>('[data-rotulo]')!;
       r.textContent = 'Copiado';
       r.classList.replace('bg-danube-600', 'bg-ok');

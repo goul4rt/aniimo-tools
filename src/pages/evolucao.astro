@@ -71,6 +71,7 @@ const data = new Date(r.conferidoEm + 'T12:00').toLocaleDateString('pt-BR');
 </Base>
 
 <script>
+  import { umaVez } from '../scripts/evento.ts';
   type Passo = { rotulo: string; tipo: 'estrela' | 'ascensao'; estagio: number; pos?: number };
   type Estagio = { estagio: number; nivel?: number; dewdrop?: number; pedras?: number; onifonte?: number; creditos?: number };
   const { passos, r, STAT } = JSON.parse(document.getElementById('dados')!.textContent!) as {
@@ -117,7 +118,7 @@ const data = new Date(r.conferidoEm + 'T12:00').toLocaleDateString('pt-BR');
           linha(STAT[k], ganhos[k]).replace('tabular-nums">', 'tabular-nums">+')).join('')}</ul>
       </div>`;
   }
-  de.addEventListener('change', calcula);
-  ate.addEventListener('change', calcula);
+  de.addEventListener('change', () => { calcula(); umaVez('resonance_calculado'); });
+  ate.addEventListener('change', () => { calcula(); umaVez('resonance_calculado'); });
   calcula();
 </script>

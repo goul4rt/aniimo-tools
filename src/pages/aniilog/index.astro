@@ -63,6 +63,7 @@ const itens = aniimos.map((a) => {
 </Base>
 
 <script>
+  import { umaVez } from '../../scripts/evento.ts';
   const form = document.getElementById('filtros') as HTMLFormElement;
   const itens = [...document.querySelectorAll<HTMLLIElement>('#lista > li')];
   const contagem = document.getElementById('contagem')!;
@@ -83,6 +84,6 @@ const itens = aniimos.map((a) => {
     contagem.textContent = `${n} de ${itens.length}`;
     vazio.classList.toggle('hidden', n > 0);
   }
-  form.addEventListener('input', filtra);
+  form.addEventListener('input', () => { filtra(); umaVez('aniilog_filtrado'); });
   filtra();
 </script>

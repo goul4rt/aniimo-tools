@@ -154,6 +154,7 @@ const dados = {
 </Base>
 
 <script>
+  import { evento, umaVez } from '../scripts/evento.ts';
   import { chip, esc, pilulas, seletor } from '../scripts/seletor.ts';
   import { icone, type Icone } from '../scripts/icones.ts';
   import { nota, sugere, type Membro } from '../scripts/sugestao.ts';
@@ -269,9 +270,10 @@ const dados = {
     const nomes = time.filter(Boolean).map((m) => m!.a.nome).join(', ');
     const dados = { title: 'Meu time de Aniimo', text: `Meu time: ${nomes}`, url: location.href };
     if (navigator.share && matchMedia('(pointer: coarse)').matches) {
-      try { await navigator.share(dados); return; } catch (e) { if ((e as Error).name === 'AbortError') return; }
+      try { await navigator.share(dados); evento('time_compartilhado', { como: 'nativo' }); return; } catch (e) { if ((e as Error).name === 'AbortError') return; }
     }
     await navigator.clipboard.writeText(location.href);
+    evento('time_compartilhado', { como: 'link' });
     rotulo.textContent = 'Link copiado';
     setTimeout(() => (rotulo.textContent = 'Compartilhar time'), 1800);
   });
@@ -306,6 +308,7 @@ const dados = {
     const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-carregar]');
     if (!b) return;
     carregaTime(b.dataset.carregar!);
+    evento('time_pronto_carregado', { time: b.closest('article')!.querySelector('h3')!.textContent });
     document.getElementById('slots')!.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
   const nivel = document.getElementById('filtro-nivel')!;
@@ -328,6 +331,7 @@ const dados = {
   filtroEl.addEventListener('change', filtraProntos);
 
   limpar.addEventListener('click', () => {
+    evento('time_limpo');
     campos.forEach((c, i) => { c.define(''); preenche(i, undefined); });
     atualiza();
   });
@@ -340,6 +344,7 @@ const dados = {
       (!soColecao.checked || colecao.has(`${porSlug.get(m.slug)!.id}/${m.chave}`))
       && (modo === 'todas' || (modo === 'basicas' ? tipoForma(m) === 'basica' : tipoForma(m) !== 'prismana')));
     const opcoes = sugere(base, candidatas, livres.length, D.ataque, 40, 6);
+    evento('time_sugerir', { vagas: livres.length, formas: modo, so_colecao: soColecao.checked, opcoes: opcoes.length });
     const box = document.getElementById('sugestoes')!;
     box.innerHTML = opcoes.map((add, k) => {
       const n = nota([...base, ...add], D.ataque);
@@ -373,6 +378,7 @@ const dados = {
     box.onclick = (ev) => {
       const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-usar]');
       if (!b) return;
+      evento('time_sugestao_usada', { opcao: Number(b.dataset.usar) + 1 });
       opcoes[Number(b.dataset.usar)].forEach((m, j) => {
         campos[livres[j]].define(m.slug);
         preenche(livres[j], porSlug.get(m.slug), m.chave);

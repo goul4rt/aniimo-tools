@@ -35,6 +35,7 @@ const dados = {
 </Base>
 
 <script>
+  import { umaVez } from '../scripts/evento.ts';
   import { chip, esc, pilulas, seletor } from '../scripts/seletor.ts';
   type F = { chave: string; nome: string; elementos: string[]; stats: Record<string, number>; imagem: string };
   type A = { slug: string; nome: string; en: string; formas: F[] };
@@ -64,6 +65,7 @@ const dados = {
     const c = sel.map((m) => (m ? `${m.a.slug}:${m.f.chave}` : '')).join(',');
     history.replaceState(null, '', sel.some(Boolean) ? `?c=${c}` : location.pathname);
     const t = document.getElementById('tabela')!;
+    if (sel.filter(Boolean).length > 1) umaVez('comparar_usado');
     if (!sel.some(Boolean)) {
       t.innerHTML = '<p class="card p-6 text-center text-muted">Escolha pelo menos um Aniimo para ver os stats.</p>';
       return;
