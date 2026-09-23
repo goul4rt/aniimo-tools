@@ -1,0 +1,6639 @@
+{
+ "fonte": {
+  "repo": "https://github.com/ae-bii/aniimax",
+  "commit": "25857d170881c1792b32c6d9cded298c1d883345",
+  "licenca": "Copyright 2026-Present aebii\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+ },
+ "instalacoes": [
+  {
+   "nome": "Farmland",
+   "slug": "farmland",
+   "categoria": "Materials",
+   "tipo": "lavoura",
+   "niveis": {
+    "1": 1,
+    "2": 2,
+    "3": 5,
+    "4": 7,
+    "5": 9,
+    "6": 12,
+    "7": 16
+   },
+   "quantidade": [
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30,
+    32,
+    34,
+    36,
+    38,
+    40,
+    42
+   ],
+   "tamanho": 2
+  },
+  {
+   "nome": "Woodland",
+   "slug": "woodland",
+   "categoria": "Materials",
+   "tipo": "lavoura",
+   "niveis": {
+    "1": 2,
+    "2": 4,
+    "3": 7,
+    "4": 11,
+    "5": 14,
+    "6": 18
+   },
+   "quantidade": [
+    0,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21
+   ],
+   "tamanho": 4
+  },
+  {
+   "nome": "Mine",
+   "slug": "mine",
+   "categoria": "Materials",
+   "tipo": "coleta",
+   "habilidade": "Earth",
+   "personalidade": "Playful",
+   "niveis": {
+    "1": 3,
+    "2": 6,
+    "3": 9,
+    "4": 12,
+    "5": 15,
+    "6": 18
+   },
+   "quantidade": [
+    0,
+    0,
+    2,
+    2,
+    3,
+    3,
+    4,
+    4,
+    5,
+    5,
+    6,
+    6,
+    7,
+    7,
+    8,
+    8,
+    9,
+    9,
+    10,
+    10
+   ]
+  },
+  {
+   "nome": "Well",
+   "slug": "well",
+   "categoria": "Materials",
+   "tipo": "coleta",
+   "habilidade": "Water",
+   "personalidade": "Faithful",
+   "niveis": {
+    "1": 4,
+    "2": 8,
+    "3": 11,
+    "4": 13,
+    "5": 17
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    2
+   ]
+  },
+  {
+   "nome": "Tidewhisper Sandcastle",
+   "slug": "tidewhisper-sandcastle",
+   "categoria": "Aniimo Materials",
+   "tipo": "coleta",
+   "habilidade": "Leisure",
+   "personalidade": "Judicious",
+   "niveis": {
+    "1": 5,
+    "2": 8,
+    "3": 13
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "tamanho": 5
+  },
+  {
+   "nome": "Dewy House",
+   "slug": "dewy-house",
+   "categoria": "Aniimo Materials",
+   "tipo": "coleta",
+   "habilidade": "Leisure",
+   "personalidade": "Instinctive",
+   "niveis": {
+    "1": 6,
+    "2": 11
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "tamanho": 2
+  },
+  {
+   "nome": "Nimbus Bed",
+   "slug": "nimbus-bed",
+   "categoria": "Aniimo Materials",
+   "tipo": "coleta",
+   "habilidade": "Leisure",
+   "personalidade": "Judicious",
+   "niveis": {
+    "1": 10,
+    "2": 13,
+    "3": 16
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "nome": "Starfall Hammock",
+   "slug": "starfall-hammock",
+   "categoria": "Aniimo Materials",
+   "tipo": "coleta",
+   "habilidade": "Leisure",
+   "personalidade": "Faithful",
+   "niveis": {
+    "1": 12
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ],
+   "tamanho": 5
+  },
+  {
+   "nome": "Floral Windmill",
+   "slug": "floral-windmill",
+   "categoria": "Aniimo Materials",
+   "tipo": "coleta",
+   "habilidade": "Leisure",
+   "personalidade": "Nimble",
+   "niveis": {
+    "1": 18
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1
+   ],
+   "tamanho": 5
+  },
+  {
+   "nome": "Heat Furnace",
+   "slug": "heat-furnace",
+   "categoria": "Environment",
+   "tipo": "clima",
+   "niveis": {
+    "1": 7
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "tamanho": 2
+  },
+  {
+   "nome": "Cooling Unit",
+   "slug": "cooling-unit",
+   "categoria": "Environment",
+   "tipo": "clima",
+   "niveis": {
+    "1": 7
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "tamanho": 2
+  },
+  {
+   "nome": "Sunlamp",
+   "slug": "sunlamp",
+   "categoria": "Environment",
+   "tipo": "clima",
+   "niveis": {
+    "1": 9
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+   ],
+   "tamanho": 2
+  },
+  {
+   "nome": "Carousel Mill",
+   "slug": "carousel-mill",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Wind",
+   "personalidade": "Tenacious",
+   "niveis": {
+    "1": 2,
+    "2": 5,
+    "3": 9,
+    "4": 13,
+    "5": 16,
+    "6": 18
+   },
+   "quantidade": [
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+   ]
+  },
+  {
+   "nome": "Crafting Table",
+   "slug": "crafting-table",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Artisanship",
+   "personalidade": "Judicious",
+   "niveis": {
+    "1": 3,
+    "2": 5,
+    "3": 7,
+    "4": 9,
+    "5": 12,
+    "6": 15,
+    "7": 18,
+    "8": 20
+   },
+   "quantidade": [
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+   ]
+  },
+  {
+   "nome": "Claw Game Cooker",
+   "slug": "claw-game-cooker",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Fire",
+   "personalidade": "Practical",
+   "niveis": {
+    "1": 4,
+    "2": 5,
+    "3": 7,
+    "4": 9,
+    "5": 12,
+    "6": 16,
+    "7": 19
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+   ]
+  },
+  {
+   "nome": "Jukebox Dryer",
+   "slug": "jukebox-dryer",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Dark",
+   "personalidade": "Nimble",
+   "niveis": {
+    "1": 4,
+    "2": 5,
+    "3": 7,
+    "4": 10,
+    "5": 12,
+    "6": 14,
+    "7": 18
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    2
+   ]
+  },
+  {
+   "nome": "Simmering Pot",
+   "slug": "simmering-pot",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Fire",
+   "personalidade": "Tenacious",
+   "niveis": {
+    "1": 5,
+    "2": 7,
+    "3": 9,
+    "4": 12,
+    "5": 15,
+    "6": 18
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "nome": "Phonolfactory Table",
+   "slug": "phonolfactory-table",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Perfumery",
+   "personalidade": "Instinctive",
+   "niveis": {
+    "1": 6,
+    "2": 7,
+    "3": 10,
+    "4": 14,
+    "5": 17,
+    "6": 19
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "nome": "Bouncy Brew Keg",
+   "slug": "bouncy-brew-keg",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Water",
+   "personalidade": "Energetic",
+   "niveis": {
+    "1": 6,
+    "2": 9,
+    "3": 13,
+    "4": 17,
+    "5": 19
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "nome": "Blazing Stove",
+   "slug": "blazing-stove",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Fire",
+   "personalidade": "Nimble",
+   "niveis": {
+    "1": 8,
+    "2": 10,
+    "3": 13,
+    "4": 16,
+    "5": 18
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "nome": "Pickling Jar",
+   "slug": "pickling-jar",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Dark",
+   "personalidade": "Playful",
+   "niveis": {
+    "1": 8,
+    "2": 10,
+    "3": 13,
+    "4": 16,
+    "5": 19
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "nome": "Joy Wheel Loom",
+   "slug": "joy-wheel-loom",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Wind",
+   "personalidade": "Faithful",
+   "niveis": {
+    "1": 7,
+    "2": 10,
+    "3": 15,
+    "4": 19
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1,
+    1
+   ]
+  },
+  {
+   "nome": "Dance Pad Polisher",
+   "slug": "dance-pad-polisher",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Lightning",
+   "niveis": {
+    "1": 2,
+    "2": 5,
+    "3": 7
+   },
+   "quantidade": [
+    0,
+    1
+   ]
+  },
+  {
+   "nome": "Aniipod Maker",
+   "slug": "aniipod-maker",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Lightning",
+   "niveis": {
+    "1": 3,
+    "2": 6,
+    "3": 9
+   },
+   "quantidade": [
+    0,
+    0,
+    1
+   ]
+  },
+  {
+   "nome": "Woodworking Bench",
+   "slug": "woodworking-bench",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Artisanship",
+   "personalidade": "Energetic",
+   "niveis": {
+    "1": 6,
+    "2": 10,
+    "3": 14,
+    "4": 18
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    2
+   ]
+  },
+  {
+   "nome": "Chimney Kiln",
+   "slug": "chimney-kiln",
+   "categoria": "Materials Processing",
+   "tipo": "processador",
+   "habilidade": "Fire",
+   "personalidade": "Practical",
+   "niveis": {
+    "1": 6,
+    "2": 10,
+    "3": 14,
+    "4": 18
+   },
+   "quantidade": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
+    1,
+    1,
+    1,
+    2
+   ]
+  }
+ ],
+ "receitas": [
+  {
+   "id": "aniipod",
+   "nome": "Aniipod",
+   "instalacao": "Aniipod Maker",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "aniipods",
+   "preco": 1,
+   "custo": 0,
+   "workload": 1800,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rock",
+     12
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Lightning",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "aniipod_pro",
+   "nome": "Aniipod pro",
+   "instalacao": "Aniipod Maker",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "aniipods",
+   "preco": 1,
+   "custo": 0,
+   "workload": 2250,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "clay",
+     10
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Lightning",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "aniipod_mega",
+   "nome": "Aniipod mega",
+   "instalacao": "Aniipod Maker",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "aniipods",
+   "preco": 1,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "shell",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Lightning",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "soy_sauce_fried_rice",
+   "nome": "Soy sauce fried rice",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 1280,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "milled_rice",
+     1
+    ],
+    [
+     "soy_sauce",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "creamy_potato_soup",
+   "nome": "Creamy potato soup",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 750,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "potato",
+     15
+    ],
+    [
+     "fresh_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "cherry_blossom_rice_ball",
+   "nome": "Cherry blossom rice ball",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 1410,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "salted_cherry_blossom",
+     1
+    ],
+    [
+     "milled_rice",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "premium_potato_soup",
+   "nome": "Premium potato soup",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 1,
+   "modulo": "kitchen_module",
+   "nivelModulo": 3,
+   "moeda": "coins",
+   "preco": 880,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "potato",
+     15
+    ],
+    [
+     "fresh_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "tanghulu",
+   "nome": "Tanghulu",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 2260,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "strawberry",
+     8
+    ],
+    [
+     "rock_candy",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "soy_sauce_tofu",
+   "nome": "Soy sauce tofu",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 1470,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "tofu",
+     1
+    ],
+    [
+     "soy_sauce",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "sugar_roasted_chestnuts",
+   "nome": "Sugar roasted chestnuts",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 2470,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "chestnut",
+     7
+    ],
+    [
+     "rock_candy",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "steamed_vermicelli_roll",
+   "nome": "Steamed vermicelli roll",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 2510,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rice_drink",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "ginseng_chestnut_cake",
+   "nome": "Ginseng chestnut cake",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 2510,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "ginseng_powder",
+     1
+    ],
+    [
+     "chestnut",
+     7
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "walnut_cake",
+   "nome": "Walnut cake",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 3550,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "walnut",
+     6
+    ],
+    [
+     "rice_drink",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "jello",
+   "nome": "Jello",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 4790,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "petals",
+     6
+    ],
+    [
+     "maple_sugar_chunk",
+     1
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "strawberry_candy",
+   "nome": "Strawberry candy",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 6840,
+   "custo": 0,
+   "workload": 324,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "strawberry",
+     8
+    ],
+    [
+     "malt_sugar",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   },
+   "especial": true
+  },
+  {
+   "id": "rich_grape_compote",
+   "nome": "Rich grape compote",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 5050,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "grape_juice",
+     1
+    ],
+    [
+     "dried_grapes",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "premium_jello",
+   "nome": "Premium jello",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 4,
+   "modulo": "kitchen_module",
+   "nivelModulo": 6,
+   "moeda": "coins",
+   "preco": 5520,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "petals",
+     6
+    ],
+    [
+     "maple_sugar_chunk",
+     1
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "strawberry_cream_puff",
+   "nome": "Strawberry cream puff",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 5650,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "refined_flour",
+     1
+    ],
+    [
+     "strawberry",
+     16
+    ],
+    [
+     "coconut_oil",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "cranberry_chocolate",
+   "nome": "Cranberry chocolate",
+   "instalacao": "Blazing Stove",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 13480,
+   "custo": 0,
+   "workload": 405,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cocoa_spread",
+     1
+    ],
+    [
+     "dried_cranberries",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "wheat_tea",
+   "nome": "Wheat tea",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 330,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "wheat",
+     50
+    ],
+    [
+     "well_water",
+     10
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "toasted_rice_green_tea",
+   "nome": "Toasted rice green tea",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 740,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "milled_rice",
+     2
+    ],
+    [
+     "well_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "potato_kvass",
+   "nome": "Potato kvass",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 2640,
+   "custo": 0,
+   "workload": 270,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "potato",
+     15
+    ],
+    [
+     "rock_candy",
+     1
+    ],
+    [
+     "fresh_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 2
+   },
+   "especial": true
+  },
+  {
+   "id": "strawberry_juice",
+   "nome": "Strawberry juice",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 1180,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "strawberry",
+     8
+    ],
+    [
+     "fresh_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "apple_juice",
+   "nome": "Apple juice",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 1000,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "apple",
+     8
+    ],
+    [
+     "fresh_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "sugarcane_juice",
+   "nome": "Sugarcane juice",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 650,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "sugarcane",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "grape_juice",
+   "nome": "Grape juice",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 2390,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "grape",
+     9
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "ginseng_water",
+   "nome": "Ginseng water",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 2670,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "dried_ginseng",
+     1
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "grape_lemon_drink",
+   "nome": "Grape lemon drink",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 2970,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "grape",
+     9
+    ],
+    [
+     "lemon",
+     16
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "walnut_milk",
+   "nome": "Walnut milk",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 2270,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "walnut",
+     6
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "cranberry_juice",
+   "nome": "Cranberry juice",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 4060,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cranberry",
+     7
+    ],
+    [
+     "natural_mineral_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "coconut_cooler",
+   "nome": "Coconut cooler",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1650,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "coconut",
+     5
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "agave_drink",
+   "nome": "Agave drink",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 6610,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "agave_syrup",
+     1
+    ],
+    [
+     "natural_mineral_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "hot_cocoa",
+   "nome": "Hot cocoa",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 5330,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cocoa_powder",
+     1
+    ],
+    [
+     "natural_mineral_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "coconut_cocoa",
+   "nome": "Coconut cocoa",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 4930,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "coconut",
+     5
+    ],
+    [
+     "cocoa_powder",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "orange_flower_dew",
+   "nome": "Orange flower dew",
+   "instalacao": "Bouncy Brew Keg",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 4700,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "orange_flower",
+     8
+    ],
+    [
+     "natural_mineral_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "wheatmeal",
+   "nome": "Wheatmeal",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 70,
+   "custo": 0,
+   "workload": 54,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "wheat",
+     50
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "tofu",
+   "nome": "Tofu",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 230,
+   "custo": 0,
+   "workload": 54,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "soybean",
+     16
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "milled_rice",
+   "nome": "Milled rice",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 240,
+   "custo": 0,
+   "workload": 54,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rice",
+     18
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "lavender_powder",
+   "nome": "Lavender powder",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 650,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lavender",
+     7
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "rice_drink",
+   "nome": "Rice drink",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1860,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "milled_rice",
+     2
+    ],
+    [
+     "fresh_water",
+     16
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "ginseng_powder",
+   "nome": "Ginseng powder",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1160,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "ginseng",
+     3
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "refined_flour",
+   "nome": "Refined flour",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 1260,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "premium_wheat",
+     15
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "coconut_oil",
+   "nome": "Coconut oil",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 1580,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "coconut",
+     5
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "cocoa_powder",
+   "nome": "Cocoa powder",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 2470,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cocoa",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "coconut_milk",
+   "nome": "Coconut milk",
+   "instalacao": "Carousel Mill",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 3820,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "coconut",
+     5
+    ],
+    [
+     "natural_mineral_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "coarse_sifted_ore",
+   "nome": "Coarse sifted ore",
+   "instalacao": "Chimney Kiln",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "none",
+   "preco": 0,
+   "custo": 0,
+   "workload": 34,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "mineral_sand",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "sintered_ore_brick",
+   "nome": "Sintered ore brick",
+   "instalacao": "Chimney Kiln",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "none",
+   "preco": 0,
+   "custo": 0,
+   "workload": 34,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "coarse_sifted_ore",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "refined_ore",
+   "nome": "Refined ore",
+   "instalacao": "Chimney Kiln",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "none",
+   "preco": 0,
+   "custo": 0,
+   "workload": 41,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "sintered_ore_brick",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "microcrystalline_ore_plate",
+   "nome": "Microcrystalline ore plate",
+   "instalacao": "Chimney Kiln",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "none",
+   "preco": 0,
+   "custo": 0,
+   "workload": 41,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "refined_ore",
+     4
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "bread",
+   "nome": "Bread",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 280,
+   "custo": 0,
+   "workload": 108,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "wheatmeal",
+     2
+    ],
+    [
+     "well_water",
+     5
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "premium_bread",
+   "nome": "Premium bread",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 1,
+   "modulo": "kitchen_module",
+   "nivelModulo": 2,
+   "moeda": "coins",
+   "preco": 330,
+   "custo": 0,
+   "workload": 108,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "wheatmeal",
+     2
+    ],
+    [
+     "well_water",
+     5
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "roasted_soybeans",
+   "nome": "Roasted soybeans",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 450,
+   "custo": 0,
+   "workload": 108,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "soybean",
+     16
+    ],
+    [
+     "sea_salt",
+     10
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "maple_candy_roasted_potatoes",
+   "nome": "Maple candy roasted potatoes",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 850,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "potato",
+     8
+    ],
+    [
+     "maple_syrup",
+     9
+    ],
+    [
+     "sea_salt",
+     10
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "apple_tart",
+   "nome": "Apple tart",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 590,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "wheatmeal",
+     1
+    ],
+    [
+     "apple",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "rose_shortbread",
+   "nome": "Rose shortbread",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 1310,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rose_concentrate",
+     1
+    ],
+    [
+     "wheatmeal",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   },
+   "especial": true
+  },
+  {
+   "id": "lavender_cookies",
+   "nome": "Lavender cookies",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1040,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lavender_powder",
+     1
+    ],
+    [
+     "wheatmeal",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "apple_candy",
+   "nome": "Apple candy",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1980,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "apple",
+     8
+    ],
+    [
+     "rock_candy",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "grape_candy",
+   "nome": "Grape candy",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 2850,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "grape",
+     9
+    ],
+    [
+     "rock_candy",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "caramel_nut_chips",
+   "nome": "Caramel nut chips",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 3130,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "nuts",
+     1
+    ],
+    [
+     "maple_syrup",
+     9
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "maple_candy_star",
+   "nome": "Maple candy star",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 2810,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "maple_sugar_chunk",
+     1
+    ],
+    [
+     "star",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "coconut_cookie",
+   "nome": "Coconut cookie",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 3700,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "shredded_coconut",
+     1
+    ],
+    [
+     "refined_flour",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "flower_bread",
+   "nome": "Flower bread",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 7,
+   "moeda": "coins",
+   "preco": 4610,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "refined_flour",
+     1
+    ],
+    [
+     "dried_flowers",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "berry_chocolate_coconut_pudding",
+   "nome": "Berry chocolate coconut pudding",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 7,
+   "moeda": "coins",
+   "preco": 17890,
+   "custo": 0,
+   "workload": 567,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cocoa_spread",
+     1
+    ],
+    [
+     "strawberry",
+     16
+    ],
+    [
+     "coconut_milk",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "premium_berry_chocolate_coconut_pudding",
+   "nome": "Premium berry chocolate coconut pudding",
+   "instalacao": "Claw Game Cooker",
+   "tipo": "processador",
+   "nivel": 7,
+   "modulo": "kitchen_module",
+   "nivelModulo": 7,
+   "moeda": "coins",
+   "preco": 20270,
+   "custo": 0,
+   "workload": 567,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cocoa_spread",
+     1
+    ],
+    [
+     "strawberry",
+     16
+    ],
+    [
+     "coconut_milk",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "wood_sculpture",
+   "nome": "Wood sculpture",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 90,
+   "custo": 0,
+   "workload": 54,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "willow_wood",
+     19
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "bamboo_ware",
+   "nome": "Bamboo ware",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 190,
+   "custo": 0,
+   "workload": 54,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "bamboo",
+     10
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "river_washed_stones",
+   "nome": "River washed stones",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 300,
+   "custo": 0,
+   "workload": 108,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rock",
+     18
+    ],
+    [
+     "well_water",
+     5
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "premium_river_washed_stones",
+   "nome": "Premium river washed stones",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 2,
+   "modulo": "crafting_module",
+   "nivelModulo": 1,
+   "moeda": "coins",
+   "preco": 360,
+   "custo": 0,
+   "workload": 108,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rock",
+     18
+    ],
+    [
+     "well_water",
+     5
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "rose_freshener",
+   "nome": "Rose freshener",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 1270,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rose_incense",
+     1
+    ],
+    [
+     "bamboo",
+     13
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "pottery",
+   "nome": "Pottery",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 630,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "clay",
+     15
+    ],
+    [
+     "well_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "premium_rose_freshener",
+   "nome": "Premium rose freshener",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 3,
+   "modulo": "crafting_module",
+   "nivelModulo": 2,
+   "moeda": "coins",
+   "preco": 1420,
+   "custo": 0,
+   "workload": 203,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rose_incense",
+     1
+    ],
+    [
+     "bamboo",
+     13
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "bouquet",
+   "nome": "Bouquet",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1120,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rose",
+     8
+    ],
+    [
+     "lavender",
+     7
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "shell_ornament",
+   "nome": "Shell ornament",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1190,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "shell",
+     6
+    ],
+    [
+     "cotton_thread",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "lavender_sachet",
+   "nome": "Lavender sachet",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1580,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lavender_powder",
+     1
+    ],
+    [
+     "cotton_fabric",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "wind_chime",
+   "nome": "Wind chime",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 3180,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "copper_ore",
+     5
+    ],
+    [
+     "woolen_yarn",
+     1
+    ],
+    [
+     "star",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "star_wish_lantern",
+   "nome": "Star wish lantern",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 2140,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "copper_ore",
+     5
+    ],
+    [
+     "star",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "dream_catcher",
+   "nome": "Dream catcher",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 1730,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cotton_thread",
+     1
+    ],
+    [
+     "woolen_yarn",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "advanced_wind_chime",
+   "nome": "Advanced wind chime",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 5,
+   "modulo": "crafting_module",
+   "nivelModulo": 4,
+   "moeda": "coins",
+   "preco": 3600,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "copper_ore",
+     5
+    ],
+    [
+     "woolen_yarn",
+     1
+    ],
+    [
+     "star",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "rubber_duck",
+   "nome": "Rubber duck",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 1540,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "natural_rubber",
+     3
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "pearl_necklace",
+   "nome": "Pearl necklace",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 3210,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "pearl",
+     2
+    ],
+    [
+     "palm_rope",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "woven_toy",
+   "nome": "Woven toy",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 1580,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "palm_rope",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "porcelain",
+   "nome": "Porcelain",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 2960,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "quartz_ore",
+     4
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "dye",
+   "nome": "Dye",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 7,
+   "moeda": "coins",
+   "preco": 4280,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "petals",
+     6
+    ],
+    [
+     "scales",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "gemstone_dust",
+   "nome": "Gemstone dust",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 7,
+   "moeda": "coins",
+   "preco": 4600,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "gem",
+     2
+    ],
+    [
+     "scales",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "flowers_in_a_bottle",
+   "nome": "Flowers in a bottle",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 7,
+   "moeda": "coins",
+   "preco": 7700,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "dried_flowers",
+     1
+    ],
+    [
+     "porcelain",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   },
+   "especial": true
+  },
+  {
+   "id": "advanced_gemstone_dust",
+   "nome": "Advanced gemstone dust",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 7,
+   "modulo": "crafting_module",
+   "nivelModulo": 6,
+   "moeda": "coins",
+   "preco": 5210,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "gem",
+     2
+    ],
+    [
+     "scales",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "doll",
+   "nome": "Doll",
+   "instalacao": "Crafting Table",
+   "tipo": "processador",
+   "nivel": 8,
+   "moeda": "coins",
+   "preco": 11110,
+   "custo": 0,
+   "workload": 324,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "dyed_cotton_fabric",
+     1
+    ],
+    [
+     "wool_fabric",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "growth_bud",
+   "nome": "Growth bud",
+   "instalacao": "Dance Pad Polisher",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "aniimo_exp",
+   "preco": 1000,
+   "custo": 0,
+   "workload": 1200,
+   "rendimento": 3,
+   "insumos": [
+    [
+     "potato",
+     23
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Lightning",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "growth_flower",
+   "nome": "Growth flower",
+   "instalacao": "Dance Pad Polisher",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "aniimo_exp",
+   "preco": 5000,
+   "custo": 0,
+   "workload": 3000,
+   "rendimento": 2,
+   "insumos": [
+    [
+     "soybean",
+     16
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Lightning",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "growth_fruit",
+   "nome": "Growth fruit",
+   "instalacao": "Dance Pad Polisher",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "aniimo_exp",
+   "preco": 25000,
+   "custo": 0,
+   "workload": 5400,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rose",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Lightning",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "aromathyst",
+   "nome": "Aromathyst",
+   "instalacao": "Dewy House",
+   "tipo": "coleta",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 56,
+   "custo": 0,
+   "workload": 2250,
+   "rendimento": 4,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "quick_aromathyst",
+   "nome": "Quick aromathyst",
+   "instalacao": "Dewy House",
+   "tipo": "coleta",
+   "nivel": 2,
+   "modulo": "resource_detector",
+   "nivelModulo": 3,
+   "moeda": "coins",
+   "preco": 56,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 12,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 3
+   },
+   "produz": "aromathyst"
+  },
+  {
+   "id": "wheat",
+   "nome": "Wheat",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 1,
+   "custo": 0,
+   "tempo": 240,
+   "rendimento": 5,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "potato",
+   "nome": "Potato",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 8,
+   "custo": 1,
+   "tempo": 640,
+   "rendimento": 2,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "quick_wheat",
+   "nome": "Quick wheat",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 2,
+   "modulo": "ecological_module",
+   "nivelModulo": 1,
+   "moeda": "coins",
+   "preco": 1,
+   "custo": 0,
+   "tempo": 1200,
+   "rendimento": 42,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ],
+   "produz": "wheat"
+  },
+  {
+   "id": "rice",
+   "nome": "Rice",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 10,
+   "custo": 12,
+   "tempo": 2400,
+   "rendimento": 18,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "soybean",
+   "nome": "Soybean",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 11,
+   "custo": 12,
+   "tempo": 2400,
+   "rendimento": 16,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "rose",
+   "nome": "Rose",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 4,
+   "clima": "Cool",
+   "moeda": "coins",
+   "preco": 39,
+   "custo": 21,
+   "tempo": 2400,
+   "rendimento": 8,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "cotton",
+   "nome": "Cotton",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 44,
+   "custo": 21,
+   "tempo": 2400,
+   "rendimento": 7,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "quick_potato",
+   "nome": "Quick potato",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 4,
+   "modulo": "ecological_module",
+   "nivelModulo": 3,
+   "moeda": "coins",
+   "preco": 8,
+   "custo": 1,
+   "tempo": 2400,
+   "rendimento": 46,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ],
+   "produz": "potato"
+  },
+  {
+   "id": "strawberry",
+   "nome": "Strawberry",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 5,
+   "clima": "Cool",
+   "moeda": "coins",
+   "preco": 61,
+   "custo": 32,
+   "tempo": 2400,
+   "rendimento": 8,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "lavender",
+   "nome": "Lavender",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 5,
+   "clima": "Adequate",
+   "moeda": "coins",
+   "preco": 69,
+   "custo": 32,
+   "tempo": 2400,
+   "rendimento": 7,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "sugarcane",
+   "nome": "Sugarcane",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 5,
+   "clima": "Scorching",
+   "moeda": "coins",
+   "preco": 81,
+   "custo": 32,
+   "tempo": 2400,
+   "rendimento": 6,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "ginseng",
+   "nome": "Ginseng",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 6,
+   "clima": "Cool",
+   "moeda": "coins",
+   "preco": 280,
+   "custo": 56,
+   "tempo": 2400,
+   "rendimento": 3,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "grape",
+   "nome": "Grape",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 6,
+   "clima": "Adequate",
+   "moeda": "coins",
+   "preco": 93,
+   "custo": 56,
+   "tempo": 2400,
+   "rendimento": 9,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "premium_wheat",
+   "nome": "Premium wheat",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 52,
+   "custo": 0,
+   "tempo": 2400,
+   "rendimento": 15,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "quick_rice",
+   "nome": "Quick rice",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 6,
+   "modulo": "ecological_module",
+   "nivelModulo": 5,
+   "moeda": "coins",
+   "preco": 10,
+   "custo": 12,
+   "tempo": 2400,
+   "rendimento": 79,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Reaping",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ],
+   "produz": "rice"
+  },
+  {
+   "id": "cranberry",
+   "nome": "Cranberry",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 7,
+   "clima": "Freeze",
+   "moeda": "coins",
+   "preco": 210,
+   "custo": 97,
+   "tempo": 2400,
+   "rendimento": 7,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "agave",
+   "nome": "Agave",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 7,
+   "clima": "Scorching",
+   "moeda": "coins",
+   "preco": 240,
+   "custo": 97,
+   "tempo": 2400,
+   "rendimento": 6,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "quick_strawberry",
+   "nome": "Quick strawberry",
+   "instalacao": "Farmland",
+   "tipo": "lavoura",
+   "nivel": 7,
+   "modulo": "ecological_module",
+   "nivelModulo": 7,
+   "clima": "Cool",
+   "moeda": "coins",
+   "preco": 61,
+   "custo": 32,
+   "tempo": 2400,
+   "rendimento": 26,
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ],
+   "produz": "strawberry"
+  },
+  {
+   "id": "scales",
+   "nome": "Scales",
+   "instalacao": "Floral Windmill",
+   "tipo": "coleta",
+   "nivel": 1,
+   "clima": "Adequate",
+   "moeda": "coins",
+   "preco": 210,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 8,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 3
+   },
+   "naoVerificada": true
+  },
+  {
+   "id": "quick_scales",
+   "nome": "Quick scales",
+   "instalacao": "Floral Windmill",
+   "tipo": "coleta",
+   "nivel": 1,
+   "modulo": "resource_detector",
+   "nivelModulo": 8,
+   "clima": "Adequate",
+   "moeda": "coins",
+   "preco": 210,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 12,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 3
+   },
+   "naoVerificada": true,
+   "produz": "scales"
+  },
+  {
+   "id": "cotton_thread",
+   "nome": "Cotton thread",
+   "instalacao": "Joy Wheel Loom",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 410,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cotton",
+     7
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "woolen_yarn",
+   "nome": "Woolen yarn",
+   "instalacao": "Joy Wheel Loom",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 760,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "wool",
+     4
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "cotton_fabric",
+   "nome": "Cotton fabric",
+   "instalacao": "Joy Wheel Loom",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 610,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cotton_thread",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "palm_rope",
+   "nome": "Palm rope",
+   "instalacao": "Joy Wheel Loom",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 1150,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "palm_bark",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "wool_fabric",
+   "nome": "Wool fabric",
+   "instalacao": "Joy Wheel Loom",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 1190,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "woolen_yarn",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "dyed_cotton_fabric",
+   "nome": "Dyed cotton fabric",
+   "instalacao": "Joy Wheel Loom",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 6920,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cotton_fabric",
+     1
+    ],
+    [
+     "dye",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Wind",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "potato_chips",
+   "nome": "Potato chips",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 110,
+   "custo": 0,
+   "workload": 54,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "potato",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "dried_lemon_slices",
+   "nome": "Dried lemon slices",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 190,
+   "custo": 0,
+   "workload": 54,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lemon",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "dried_cherry_blossom",
+   "nome": "Dried cherry blossom",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 410,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cherry_blossom",
+     7
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "dried_bean_curd",
+   "nome": "Dried bean curd",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 330,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "tofu",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "dried_apple_slices",
+   "nome": "Dried apple slices",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 510,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "apple",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "dried_strawberries",
+   "nome": "Dried strawberries",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 690,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "strawberry",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "nuts",
+   "nome": "Nuts",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 1980,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "chestnut",
+     7
+    ],
+    [
+     "walnut",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "dried_ginseng",
+   "nome": "Dried ginseng",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 1120,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "ginseng",
+     3
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "dried_grapes",
+   "nome": "Dried grapes",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 1210,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "grape",
+     9
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "shredded_coconut",
+   "nome": "Shredded coconut",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 1470,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "coconut",
+     5
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "dried_cranberries",
+   "nome": "Dried cranberries",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 7,
+   "moeda": "coins",
+   "preco": 2080,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cranberry",
+     7
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "dried_flowers",
+   "nome": "Dried flowers",
+   "instalacao": "Jukebox Dryer",
+   "tipo": "processador",
+   "nivel": 7,
+   "moeda": "coins",
+   "preco": 1990,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "petals",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "rock",
+   "nome": "Rock",
+   "instalacao": "Mine",
+   "tipo": "coleta",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 7,
+   "custo": 0,
+   "workload": 900,
+   "rendimento": 6,
+   "subproduto": [
+    "mineral_sand",
+    3
+   ],
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Earth",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "clay",
+   "nome": "Clay",
+   "instalacao": "Mine",
+   "tipo": "coleta",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 22,
+   "custo": 0,
+   "workload": 2250,
+   "rendimento": 10,
+   "subproduto": [
+    "mineral_sand",
+    16
+   ],
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Earth",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "shell",
+   "nome": "Shell",
+   "instalacao": "Mine",
+   "tipo": "coleta",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 76,
+   "custo": 0,
+   "workload": 2250,
+   "rendimento": 6,
+   "subproduto": [
+    "mineral_sand",
+    32
+   ],
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Earth",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "copper_ore",
+   "nome": "Copper ore",
+   "instalacao": "Mine",
+   "tipo": "coleta",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 160,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 5,
+   "subproduto": [
+    "mineral_sand",
+    56
+   ],
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Earth",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "quartz_ore",
+   "nome": "Quartz ore",
+   "instalacao": "Mine",
+   "tipo": "coleta",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 300,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 4,
+   "subproduto": [
+    "mineral_sand",
+    86
+   ],
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Earth",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "gem",
+   "nome": "Gem",
+   "instalacao": "Mine",
+   "tipo": "coleta",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 850,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 2,
+   "subproduto": [
+    "mineral_sand",
+    122
+   ],
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Earth",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "wool",
+   "nome": "Wool",
+   "instalacao": "Nimbus Bed",
+   "tipo": "coleta",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 140,
+   "custo": 0,
+   "workload": 2250,
+   "rendimento": 4,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 2
+   },
+   "naoVerificada": true
+  },
+  {
+   "id": "quick_wool",
+   "nome": "Quick wool",
+   "instalacao": "Nimbus Bed",
+   "tipo": "coleta",
+   "nivel": 2,
+   "modulo": "resource_detector",
+   "nivelModulo": 5,
+   "moeda": "coins",
+   "preco": 140,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 6,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 3
+   },
+   "naoVerificada": true,
+   "produz": "wool"
+  },
+  {
+   "id": "petals",
+   "nome": "Petals",
+   "instalacao": "Nimbus Bed",
+   "tipo": "coleta",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 230,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 6,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 3
+   },
+   "naoVerificada": true
+  },
+  {
+   "id": "bamboo_joss_stick",
+   "nome": "Bamboo joss stick",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 470,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "bamboo",
+     15
+    ],
+    [
+     "aromathyst",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "rose_incense",
+   "nome": "Rose incense",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 790,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rose",
+     12
+    ],
+    [
+     "aromathyst",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "cherry_incense",
+   "nome": "Cherry incense",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 840,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "dried_cherry_blossom",
+     1
+    ],
+    [
+     "aromathyst",
+     4
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "lavender_incense",
+   "nome": "Lavender incense",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 1270,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lavender",
+     11
+    ],
+    [
+     "aromathyst",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "lemon_incense",
+   "nome": "Lemon incense",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 700,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lemon",
+     12
+    ],
+    [
+     "aromathyst",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "advanced_lemon_incense",
+   "nome": "Advanced lemon incense",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 3,
+   "modulo": "crafting_module",
+   "nivelModulo": 3,
+   "moeda": "coins",
+   "preco": 900,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lemon",
+     12
+    ],
+    [
+     "aromathyst",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "herbal_ginseng_aroma",
+   "nome": "Herbal ginseng aroma",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 2360,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "ginseng_powder",
+     1
+    ],
+    [
+     "aromathyst",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "soap",
+   "nome": "Soap",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 5500,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "coconut_oil",
+     1
+    ],
+    [
+     "petals",
+     6
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "premium_soap",
+   "nome": "Premium soap",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 5,
+   "modulo": "crafting_module",
+   "nivelModulo": 5,
+   "moeda": "coins",
+   "preco": 6320,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "coconut_oil",
+     1
+    ],
+    [
+     "petals",
+     6
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "orange_flower_incense",
+   "nome": "Orange flower incense",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 3640,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "orange_flower",
+     8
+    ],
+    [
+     "aromathyst",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "mixed_perfume",
+   "nome": "Mixed perfume",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 4850,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "dried_flowers",
+     1
+    ],
+    [
+     "natural_mineral_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "lotion",
+   "nome": "Lotion",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 7030,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "orange_flower",
+     8
+    ],
+    [
+     "coconut_oil",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 3
+   },
+   "especial": true
+  },
+  {
+   "id": "premium_mixed_perfume",
+   "nome": "Premium mixed perfume",
+   "instalacao": "Phonolfactory Table",
+   "tipo": "processador",
+   "nivel": 6,
+   "modulo": "crafting_module",
+   "nivelModulo": 7,
+   "moeda": "coins",
+   "preco": 5520,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "dried_flowers",
+     1
+    ],
+    [
+     "natural_mineral_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Perfumery",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "soy_sauce",
+   "nome": "Soy sauce",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 650,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "soybean",
+     16
+    ],
+    [
+     "sea_salt",
+     13
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "salted_cherry_blossom",
+   "nome": "Salted cherry blossom",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 780,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cherry_blossom",
+     7
+    ],
+    [
+     "sea_salt",
+     13
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "sweet_rice_drink",
+   "nome": "Sweet rice drink",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 2580,
+   "custo": 0,
+   "workload": 270,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "milled_rice",
+     1
+    ],
+    [
+     "fresh_water",
+     8
+    ],
+    [
+     "rock_candy",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "cider_vinegar",
+   "nome": "Cider vinegar",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 510,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "apple",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "premium_sweet_rice_wine",
+   "nome": "Premium sweet rice wine",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 2,
+   "modulo": "kitchen_module",
+   "nivelModulo": 4,
+   "moeda": "coins",
+   "preco": 2980,
+   "custo": 0,
+   "workload": 270,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "milled_rice",
+     1
+    ],
+    [
+     "fresh_water",
+     8
+    ],
+    [
+     "rock_candy",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "rice_vinegar",
+   "nome": "Rice vinegar",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 2510,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rice_drink",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "salted_lemon",
+   "nome": "Salted lemon",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 1110,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lemon",
+     16
+    ],
+    [
+     "sea_salt",
+     13
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "premium_salted_lemon",
+   "nome": "Premium salted lemon",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 3,
+   "modulo": "kitchen_module",
+   "nivelModulo": 5,
+   "moeda": "coins",
+   "preco": 1440,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "lemon",
+     16
+    ],
+    [
+     "sea_salt",
+     13
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "candied_strawberries",
+   "nome": "Candied strawberries",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 2090,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "maple_syrup",
+     18
+    ],
+    [
+     "strawberry",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "candied_orange_flower",
+   "nome": "Candied orange flower",
+   "instalacao": "Pickling Jar",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 6950,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "agave_syrup",
+     1
+    ],
+    [
+     "orange_flower",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Dark",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "plain_rice_porridge",
+   "nome": "Plain rice porridge",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 660,
+   "custo": 0,
+   "workload": 108,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "milled_rice",
+     2
+    ],
+    [
+     "well_water",
+     5
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "rose_concentrate",
+   "nome": "Rose concentrate",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 770,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rose",
+     12
+    ],
+    [
+     "well_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "rock_candy",
+   "nome": "Rock candy",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 1180,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "sugarcane",
+     6
+    ],
+    [
+     "fresh_water",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "strawberry_jam",
+   "nome": "Strawberry jam",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 650,
+   "custo": 0,
+   "workload": 68,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "strawberry",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "maple_candy_apple_jam",
+   "nome": "Maple candy apple jam",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "coins",
+   "preco": 950,
+   "custo": 0,
+   "workload": 135,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "maple_syrup",
+     9
+    ],
+    [
+     "apple",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "chestnut_puree",
+   "nome": "Chestnut puree",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 980,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "chestnut",
+     7
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "grape_jam",
+   "nome": "Grape jam",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 1120,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "grape",
+     9
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "ginseng_porridge",
+   "nome": "Ginseng porridge",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 2440,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "dried_ginseng",
+     1
+    ],
+    [
+     "milled_rice",
+     2
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   },
+   "especial": true
+  },
+  {
+   "id": "maple_sugar_chunk",
+   "nome": "Maple sugar chunk",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 1060,
+   "custo": 0,
+   "workload": 81,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "maple_syrup",
+     18
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "malt_sugar",
+   "nome": "Malt sugar",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 3440,
+   "custo": 0,
+   "workload": 243,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "premium_wheat",
+     15
+    ],
+    [
+     "milled_rice",
+     2
+    ],
+    [
+     "deep_rock_spring_water",
+     6
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "cocoa_spread",
+   "nome": "Cocoa spread",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 8350,
+   "custo": 0,
+   "workload": 324,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cocoa_powder",
+     1
+    ],
+    [
+     "malt_sugar",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "cranberry_jam",
+   "nome": "Cranberry jam",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 7350,
+   "custo": 0,
+   "workload": 324,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "cranberry",
+     7
+    ],
+    [
+     "malt_sugar",
+     1
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "agave_syrup",
+   "nome": "Agave syrup",
+   "instalacao": "Simmering Pot",
+   "tipo": "processador",
+   "nivel": 6,
+   "moeda": "coins",
+   "preco": 3080,
+   "custo": 0,
+   "workload": 162,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "agave",
+     6
+    ],
+    [
+     "fresh_water",
+     9
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Fire",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "star",
+   "nome": "Star",
+   "instalacao": "Starfall Hammock",
+   "tipo": "coleta",
+   "nivel": 1,
+   "clima": "Cool",
+   "moeda": "coins",
+   "preco": 390,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 2,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 3
+   },
+   "naoVerificada": true
+  },
+  {
+   "id": "sea_salt",
+   "nome": "Sea salt",
+   "instalacao": "Tidewhisper Sandcastle",
+   "tipo": "coleta",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 16,
+   "custo": 0,
+   "workload": 1800,
+   "rendimento": 10,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "quick_sea_salt",
+   "nome": "Quick sea salt",
+   "instalacao": "Tidewhisper Sandcastle",
+   "tipo": "coleta",
+   "nivel": 2,
+   "modulo": "resource_detector",
+   "nivelModulo": 2,
+   "moeda": "coins",
+   "preco": 16,
+   "custo": 0,
+   "workload": 2250,
+   "rendimento": 23,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 2
+   },
+   "produz": "sea_salt"
+  },
+  {
+   "id": "pearl",
+   "nome": "Pearl",
+   "instalacao": "Tidewhisper Sandcastle",
+   "tipo": "coleta",
+   "nivel": 3,
+   "clima": "Warm",
+   "moeda": "coins",
+   "preco": 450,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 2,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Leisure",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "well_water",
+   "nome": "Well water",
+   "instalacao": "Well",
+   "tipo": "coleta",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 12,
+   "custo": 0,
+   "workload": 1800,
+   "rendimento": 10,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 1
+   }
+  },
+  {
+   "id": "quick_well_water",
+   "nome": "Quick well water",
+   "instalacao": "Well",
+   "tipo": "coleta",
+   "nivel": 1,
+   "modulo": "resource_detector",
+   "nivelModulo": 1,
+   "moeda": "coins",
+   "preco": 12,
+   "custo": 0,
+   "workload": 1800,
+   "rendimento": 15,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 1
+   },
+   "produz": "well_water"
+  },
+  {
+   "id": "fresh_water",
+   "nome": "Fresh water",
+   "instalacao": "Well",
+   "tipo": "coleta",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 46,
+   "custo": 0,
+   "workload": 2250,
+   "rendimento": 8,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "quick_fresh_water",
+   "nome": "Quick fresh water",
+   "instalacao": "Well",
+   "tipo": "coleta",
+   "nivel": 3,
+   "modulo": "resource_detector",
+   "nivelModulo": 4,
+   "moeda": "coins",
+   "preco": 46,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 17,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   },
+   "produz": "fresh_water"
+  },
+  {
+   "id": "deep_rock_spring_water",
+   "nome": "Deep rock spring water",
+   "instalacao": "Well",
+   "tipo": "coleta",
+   "nivel": 4,
+   "moeda": "coins",
+   "preco": 150,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 6,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "quick_deep_rock_spring_water",
+   "nome": "Quick deep rock spring water",
+   "instalacao": "Well",
+   "tipo": "coleta",
+   "nivel": 4,
+   "modulo": "resource_detector",
+   "nivelModulo": 6,
+   "moeda": "coins",
+   "preco": 150,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 9,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   },
+   "produz": "deep_rock_spring_water"
+  },
+  {
+   "id": "natural_mineral_spring_water",
+   "nome": "Natural mineral spring water",
+   "instalacao": "Well",
+   "tipo": "coleta",
+   "nivel": 5,
+   "moeda": "coins",
+   "preco": 250,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 6,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   }
+  },
+  {
+   "id": "quick_natural_mineral_spring_water",
+   "nome": "Quick natural mineral spring water",
+   "instalacao": "Well",
+   "tipo": "coleta",
+   "nivel": 5,
+   "modulo": "resource_detector",
+   "nivelModulo": 7,
+   "moeda": "coins",
+   "preco": 250,
+   "custo": 0,
+   "workload": 2700,
+   "rendimento": 9,
+   "insumos": [],
+   "requisito": {
+    "habilidade": "Water",
+    "nivel": 3
+   },
+   "produz": "natural_mineral_spring_water"
+  },
+  {
+   "id": "willow_wood",
+   "nome": "Willow wood",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 1,
+   "moeda": "coins",
+   "preco": 3,
+   "custo": 1,
+   "tempo": 640,
+   "rendimento": 5,
+   "subproduto": [
+    "wood_block",
+    1
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Logging",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "bamboo",
+   "nome": "Bamboo",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 13,
+   "custo": 8,
+   "tempo": 2400,
+   "rendimento": 10,
+   "subproduto": [
+    "wood_block",
+    8
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Logging",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "lemon",
+   "nome": "Lemon",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 2,
+   "moeda": "coins",
+   "preco": 16,
+   "custo": 8,
+   "tempo": 2400,
+   "rendimento": 8,
+   "subproduto": [
+    "wood_block",
+    8
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "cherry_blossom",
+   "nome": "Cherry blossom",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 3,
+   "clima": "Warm",
+   "moeda": "coins",
+   "preco": 44,
+   "custo": 21,
+   "tempo": 2400,
+   "rendimento": 7,
+   "subproduto": [
+    "wood_block",
+    21
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Logging",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "apple",
+   "nome": "Apple",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 3,
+   "clima": "Cool",
+   "moeda": "coins",
+   "preco": 39,
+   "custo": 21,
+   "tempo": 2400,
+   "rendimento": 8,
+   "subproduto": [
+    "wood_block",
+    21
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Logging",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "maple_syrup",
+   "nome": "Maple syrup",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 3,
+   "clima": "Freeze",
+   "moeda": "coins",
+   "preco": 35,
+   "custo": 21,
+   "tempo": 2400,
+   "rendimento": 9,
+   "subproduto": [
+    "wood_block",
+    21
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Logging",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "quick_bamboo",
+   "nome": "Quick bamboo",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 3,
+   "modulo": "ecological_module",
+   "nivelModulo": 2,
+   "moeda": "coins",
+   "preco": 13,
+   "custo": 8,
+   "tempo": 2400,
+   "rendimento": 23,
+   "subproduto": [
+    "wood_block",
+    21
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Logging",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ],
+   "produz": "bamboo"
+  },
+  {
+   "id": "palm_bark",
+   "nome": "Palm bark",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 4,
+   "clima": "Scorching",
+   "moeda": "coins",
+   "preco": 120,
+   "custo": 47,
+   "tempo": 2400,
+   "rendimento": 6,
+   "subproduto": [
+    "wood_block",
+    47
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "chestnut",
+   "nome": "Chestnut",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 4,
+   "clima": "Warm",
+   "moeda": "coins",
+   "preco": 100,
+   "custo": 47,
+   "tempo": 2400,
+   "rendimento": 7,
+   "subproduto": [
+    "wood_block",
+    47
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "walnut",
+   "nome": "Walnut",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 4,
+   "clima": "Adequate",
+   "moeda": "coins",
+   "preco": 120,
+   "custo": 47,
+   "tempo": 2400,
+   "rendimento": 6,
+   "subproduto": [
+    "wood_block",
+    47
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "quick_lemon",
+   "nome": "Quick lemon",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 4,
+   "modulo": "ecological_module",
+   "nivelModulo": 4,
+   "moeda": "coins",
+   "preco": 16,
+   "custo": 8,
+   "tempo": 2400,
+   "rendimento": 42,
+   "subproduto": [
+    "wood_block",
+    47
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ],
+   "produz": "lemon"
+  },
+  {
+   "id": "natural_rubber",
+   "nome": "Natural rubber",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 5,
+   "clima": "Scorching",
+   "moeda": "coins",
+   "preco": 370,
+   "custo": 75,
+   "tempo": 2400,
+   "rendimento": 3,
+   "subproduto": [
+    "wood_block",
+    75
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Logging",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "coconut",
+   "nome": "Coconut",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 5,
+   "clima": "Scorching",
+   "moeda": "coins",
+   "preco": 220,
+   "custo": 75,
+   "tempo": 2400,
+   "rendimento": 5,
+   "subproduto": [
+    "wood_block",
+    75
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "quick_maple_syrup",
+   "nome": "Quick maple syrup",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 5,
+   "modulo": "ecological_module",
+   "nivelModulo": 6,
+   "clima": "Freeze",
+   "moeda": "coins",
+   "preco": 35,
+   "custo": 21,
+   "tempo": 2400,
+   "rendimento": 30,
+   "subproduto": [
+    "wood_block",
+    75
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Logging",
+     "habilidade": "Dark",
+     "nivel": 1,
+     "workload": 3
+    }
+   ],
+   "produz": "maple_syrup"
+  },
+  {
+   "id": "cocoa",
+   "nome": "Cocoa",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 6,
+   "clima": "Scorching",
+   "moeda": "coins",
+   "preco": 310,
+   "custo": 122,
+   "tempo": 2400,
+   "rendimento": 6,
+   "subproduto": [
+    "wood_block",
+    122
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "orange_flower",
+   "nome": "Orange flower",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 6,
+   "clima": "Adequate",
+   "moeda": "coins",
+   "preco": 230,
+   "custo": 122,
+   "tempo": 2400,
+   "rendimento": 8,
+   "subproduto": [
+    "wood_block",
+    122
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ]
+  },
+  {
+   "id": "quick_coconut",
+   "nome": "Quick coconut",
+   "instalacao": "Woodland",
+   "tipo": "lavoura",
+   "nivel": 6,
+   "modulo": "ecological_module",
+   "nivelModulo": 8,
+   "clima": "Scorching",
+   "moeda": "coins",
+   "preco": 220,
+   "custo": 75,
+   "tempo": 2400,
+   "rendimento": 8,
+   "subproduto": [
+    "wood_block",
+    122
+   ],
+   "insumos": [],
+   "passos": [
+    {
+     "passo": "Reclaiming",
+     "habilidade": "Earth",
+     "nivel": 1,
+     "workload": 5
+    },
+    {
+     "passo": "Sowing",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    },
+    {
+     "passo": "Collecting",
+     "habilidade": "Grass",
+     "nivel": 1,
+     "workload": 3
+    }
+   ],
+   "produz": "coconut"
+  },
+  {
+   "id": "rough_lumber",
+   "nome": "Rough lumber",
+   "instalacao": "Woodworking Bench",
+   "tipo": "processador",
+   "nivel": 1,
+   "moeda": "none",
+   "preco": 0,
+   "custo": 0,
+   "workload": 34,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "wood_block",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "standard_planks",
+   "nome": "Standard planks",
+   "instalacao": "Woodworking Bench",
+   "tipo": "processador",
+   "nivel": 2,
+   "moeda": "none",
+   "preco": 0,
+   "custo": 0,
+   "workload": 34,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "rough_lumber",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "laminated_beams",
+   "nome": "Laminated beams",
+   "instalacao": "Woodworking Bench",
+   "tipo": "processador",
+   "nivel": 3,
+   "moeda": "none",
+   "preco": 0,
+   "custo": 0,
+   "workload": 41,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "standard_planks",
+     8
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  },
+  {
+   "id": "densified_timber_component",
+   "nome": "Densified timber component",
+   "instalacao": "Woodworking Bench",
+   "tipo": "processador",
+   "nivel": 4,
+   "moeda": "none",
+   "preco": 0,
+   "custo": 0,
+   "workload": 41,
+   "rendimento": 1,
+   "insumos": [
+    [
+     "laminated_beams",
+     4
+    ]
+   ],
+   "requisito": {
+    "habilidade": "Artisanship",
+    "nivel": 2
+   }
+  }
+ ],
+ "custosRV": {
+  "2": {
+   "coins": 140,
+   "items": [
+    [
+     "wood_block",
+     3
+    ]
+   ]
+  },
+  "3": {
+   "coins": 800,
+   "items": [
+    [
+     "wood_block",
+     25
+    ]
+   ]
+  },
+  "4": {
+   "coins": 2900,
+   "items": [
+    [
+     "wood_block",
+     100
+    ],
+    [
+     "mineral_sand",
+     120
+    ]
+   ]
+  },
+  "5": {
+   "coins": 7300,
+   "items": [
+    [
+     "wood_block",
+     550
+    ],
+    [
+     "mineral_sand",
+     250
+    ]
+   ]
+  },
+  "6": {
+   "coins": 32000,
+   "items": [
+    [
+     "wood_block",
+     1300
+    ],
+    [
+     "mineral_sand",
+     700
+    ]
+   ]
+  },
+  "7": {
+   "coins": 69000,
+   "items": [
+    [
+     "rough_lumber",
+     290
+    ],
+    [
+     "coarse_sifted_ore",
+     360
+    ]
+   ]
+  },
+  "8": {
+   "coins": 180000,
+   "items": [
+    [
+     "rough_lumber",
+     1100
+    ],
+    [
+     "coarse_sifted_ore",
+     640
+    ]
+   ]
+  },
+  "9": {
+   "coins": 260000,
+   "items": [
+    [
+     "rough_lumber",
+     1520
+    ],
+    [
+     "coarse_sifted_ore",
+     800
+    ]
+   ]
+  },
+  "10": {
+   "coins": 510000,
+   "items": [
+    [
+     "rough_lumber",
+     2000
+    ],
+    [
+     "coarse_sifted_ore",
+     2400
+    ]
+   ]
+  },
+  "11": {
+   "coins": 680000,
+   "items": [
+    [
+     "standard_planks",
+     320
+    ],
+    [
+     "sintered_ore_brick",
+     350
+    ]
+   ]
+  },
+  "12": {
+   "coins": 1060000,
+   "items": [
+    [
+     "standard_planks",
+     910
+    ],
+    [
+     "sintered_ore_brick",
+     480
+    ]
+   ]
+  },
+  "13": {
+   "coins": 1930000,
+   "items": [
+    [
+     "standard_planks",
+     1230
+    ],
+    [
+     "sintered_ore_brick",
+     760
+    ]
+   ]
+  },
+  "14": {
+   "coins": 2620000,
+   "items": [
+    [
+     "standard_planks",
+     1590
+    ],
+    [
+     "sintered_ore_brick",
+     1060
+    ]
+   ]
+  },
+  "15": {
+   "coins": 3760000,
+   "items": [
+    [
+     "laminated_beams",
+     390
+    ],
+    [
+     "refined_ore",
+     150
+    ]
+   ]
+  },
+  "16": {
+   "coins": 4900000,
+   "items": [
+    [
+     "laminated_beams",
+     480
+    ],
+    [
+     "refined_ore",
+     310
+    ]
+   ]
+  },
+  "17": {
+   "coins": 8630000,
+   "items": [
+    [
+     "laminated_beams",
+     630
+    ],
+    [
+     "refined_ore",
+     380
+    ]
+   ]
+  },
+  "18": {
+   "coins": 11600000,
+   "items": [
+    [
+     "laminated_beams",
+     800
+    ],
+    [
+     "refined_ore",
+     520
+    ]
+   ]
+  },
+  "19": {
+   "coins": 17100000,
+   "items": [
+    [
+     "densified_timber_component",
+     400
+    ],
+    [
+     "microcrystalline_ore_plate",
+     220
+    ]
+   ]
+  },
+  "20": {
+   "coins": 20800000,
+   "items": [
+    [
+     "densified_timber_component",
+     490
+    ],
+    [
+     "microcrystalline_ore_plate",
+     270
+    ]
+   ]
+  }
+ },
+ "modulos": {
+  "ecological_module": [
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   2,
+   3,
+   3,
+   3,
+   4,
+   5,
+   5,
+   6,
+   6,
+   6,
+   7,
+   8,
+   8,
+   8
+  ],
+  "kitchen_module": [
+   0,
+   1,
+   1,
+   2,
+   2,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   4,
+   5,
+   5,
+   5,
+   6,
+   6,
+   6,
+   7,
+   7
+  ],
+  "resource_detector": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   1,
+   2,
+   2,
+   2,
+   3,
+   4,
+   5,
+   5,
+   6,
+   6,
+   7,
+   7,
+   8,
+   8
+  ],
+  "crafting_module": [
+   0,
+   0,
+   0,
+   0,
+   1,
+   1,
+   2,
+   2,
+   2,
+   3,
+   3,
+   4,
+   4,
+   4,
+   4,
+   4,
+   5,
+   6,
+   7,
+   7
+  ]
+ },
+ "aniimoMax": [
+  null,
+  8,
+  11,
+  14,
+  17,
+  20,
+  22,
+  24,
+  26,
+  28,
+  30,
+  32,
+  34,
+  36,
+  38,
+  40,
+  42,
+  43,
+  44,
+  45
+ ],
+ "semPersonalidade": [
+  "Dance Pad Polisher",
+  "Aniipod Maker"
+ ]
+}

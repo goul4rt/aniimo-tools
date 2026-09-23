@@ -1,0 +1,140 @@
+---
+import Base from '../layouts/Base.astro';
+import { icone } from '../scripts/icones.ts';
+import dados from '../../data/homeland.json';
+
+const receitas = dados.receitas.length;
+const instalacoes = dados.instalacoes.filter((f) => f.tipo !== 'clima').length;
+const ABAS = [['plano', 'Plano'], ['layout', 'Layout de clima'], ['receitas', 'Receitas'], ['rv', 'Níveis de RV']];
+---
+
+<Base title="Otimizador de Homeland · Aniimo Tools" description={`Otimizador de Homeland de Aniimo em português: o que cada instalação deve produzir para mais Home Coin por hora, a equipe de Aniimo, layout de clima e ${receitas} receitas. Com link para compartilhar.`}>
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div class="max-w-2xl">
+      <h1 class="text-4xl">Otimizador de Homeland</h1>
+      <p class="mt-1 text-muted">
+        Diga seu nível de RV e ele calcula o que cada uma das {instalacoes} instalações deve produzir para render o máximo, que equipe de Aniimo
+        isso pede e como posicionar as lavouras no clima certo. O link guarda tudo, então dá para compartilhar o seu Homeland.
+      </p>
+    </div>
+    <div class="flex flex-wrap gap-2">
+      <button id="copiar" type="button" data-umami-event="homeland_copiar_link" class="btn gap-2">Copiar link</button>
+      <button id="compartilhar" type="button" data-umami-event="homeland_compartilhar" class="btn btn-primario gap-2">
+        <Fragment set:html={icone('compartilhar')} />Compartilhar
+      </button>
+    </div>
+  </div>
+
+  <div role="tablist" aria-label="Seções" class="mt-6 flex max-w-full gap-1 overflow-x-auto rounded-full bg-danube-100 p-1 text-sm font-semibold sm:w-max">
+    {ABAS.map(([id, nome], i) => (
+      <button type="button" role="tab" id={`aba-${id}`} aria-controls={`painel-${id}`} aria-selected={i === 0 ? 'true' : 'false'} data-aba={id}
+        data-umami-event="homeland_aba" data-umami-event-aba={id}
+        class="shrink-0 cursor-pointer rounded-full px-4 py-2 whitespace-nowrap text-danube-700 aria-selected:bg-white aria-selected:text-ink">{nome}</button>
+    ))}
+  </div>
+
+  <!-- Configuração: vale para todas as abas -->
+  <form id="config" class="card mt-4 grid gap-4 p-4 sm:grid-cols-2 lg:grid-cols-4" onsubmit="return false">
+    <label class="flex flex-col gap-1.5">
+      <span class="rotulo text-xs">Nível do Homeland (RV)</span>
+      <select name="rv" class="campo">{Array.from({ length: 20 }, (_, i) => <option value={i + 1}>RV {i + 1}</option>)}</select>
+    </label>
+    <label class="flex flex-col gap-1.5">
+      <span class="rotulo text-xs">Nível das habilidades dos Aniimo</span>
+      <select name="nivel" class="campo">
+        <option value="0">O mínimo de cada receita</option>
+        <option value="1">Nv. 1</option><option value="2">Nv. 2</option><option value="3">Nv. 3</option><option value="4">Nv. 4</option>
+      </select>
+    </label>
+    <label class="flex flex-col gap-1.5">
+      <span class="rotulo text-xs">Objetivo</span>
+      <select name="objetivo" class="campo">
+        <option value="coins">Mais Home Coin</option>
+        <option value="aniipods">Mais Aniipods</option>
+        <option value="aniimo_exp">Mais EXP de Aniimo</option>
+      </select>
+    </label>
+    <fieldset class="flex flex-col justify-center gap-1.5 text-sm font-semibold text-casal">
+      <label class="flex cursor-pointer items-center gap-2"><input type="checkbox" name="personalidade" /> Personalidade certa (+20%)</label>
+      <label class="flex cursor-pointer items-center gap-2"><input type="checkbox" name="especiais" /> Tenho as receitas especiais</label>
+      <label class="flex cursor-pointer items-center gap-2"><input type="checkbox" name="naoVerificadas" /> Usar dados não verificados</label>
+    </fieldset>
+    <details class="sm:col-span-2 lg:col-span-4" id="avancado">
+      <summary class="cursor-pointer text-sm font-semibold text-casal">Ajustar instalações e módulos (o padrão é tudo no máximo do seu RV)</summary>
+      <div class="mt-3 flex flex-wrap items-center justify-between gap-2">
+        <p class="text-sm text-muted">Coloque quantas você tem e em que nível. Instalação que o RV ainda não libera fica travada.</p>
+        <button id="restaurar" type="button" data-umami-event="homeland_restaurar" class="btn h-9 text-sm">Voltar ao máximo do RV</button>
+      </div>
+      <div id="tabela-instalacoes" class="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="tabela-modulos" class="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4"></div>
+    </details>
+  </form>
+
+  <section id="painel-plano" role="tabpanel" aria-labelledby="aba-plano" data-painel="plano" class="mt-4 space-y-4">
+    <div id="resumo" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"></div>
+    <div class="grid gap-4 lg:grid-cols-[1fr_22rem]">
+      <div class="card overflow-hidden">
+        <h2 class="border-b border-line px-4 py-3 text-lg font-semibold">O que cada instalação produz</h2>
+        <div id="plano" class="overflow-x-auto"></div>
+      </div>
+      <div class="space-y-4">
+        <div class="card p-4"><h2 class="flex items-center gap-2 text-lg font-semibold"><Fragment set:html={icone('grupo', 'h-5 w-5 text-danube')} />Equipe de Aniimo</h2><div id="equipe" class="mt-3"></div></div>
+        <div class="card p-4"><h2 class="flex items-center gap-2 text-lg font-semibold"><Fragment set:html={icone('brilho', 'h-5 w-5 text-danube')} />Próximos passos</h2><div id="melhorias" class="mt-3"></div></div>
+      </div>
+    </div>
+    <div class="card p-4"><h2 class="text-lg font-semibold">O que vender</h2><div id="vendas" class="mt-3"></div></div>
+  </section>
+
+  <section id="painel-layout" role="tabpanel" aria-labelledby="aba-layout" data-painel="layout" hidden class="mt-4 space-y-4">
+    <div class="card p-4">
+      <p class="text-sm text-muted">
+        Algumas colheitas só crescem num clima (Quente, Escaldante, Fresco, Congelante ou Adequado). Cada prédio de clima é 2×2 e cobre um quadrado 9×9
+        ao redor dele. Posicione as lavouras e os prédios: os lotes cobertos entram no plano na hora.
+      </p>
+      <div class="mt-3 flex flex-wrap items-center gap-2">
+        <button id="auto" type="button" data-umami-event="homeland_layout_auto" class="btn btn-primario h-9 gap-2 text-sm"><Fragment set:html={icone('brilho')} />Montar layout automático</button>
+        <span id="auto-msg" class="text-xs text-muted" aria-live="polite"></span>
+      </div>
+      <div id="paleta" class="mt-3 flex flex-wrap gap-2"></div>
+      <p class="mt-2 text-xs text-danube-700">Clique no mapa para colocar. Arraste para mover. Clique num prédio de clima para trocar o modo. Use "Apagar" e clique na peça para remover.</p>
+    </div>
+    <div class="card overflow-x-auto p-2">
+      <svg id="mapa" class="block w-full min-w-[42rem] touch-none select-none" role="img" aria-label="Mapa do layout do Homeland"></svg>
+    </div>
+    <div class="grid gap-4 md:grid-cols-2">
+      <div class="card p-4"><h2 class="text-lg font-semibold">Cobertura</h2><div id="cobertura" class="mt-3"></div></div>
+      <div class="card p-4">
+        <div class="flex items-center justify-between gap-2"><h2 class="text-lg font-semibold">Peças</h2><button id="limpar-layout" type="button" data-umami-event="homeland_layout_limpar" class="btn h-9 text-sm">Limpar layout</button></div>
+        <ul id="pecas" class="mt-3 max-h-64 space-y-1 overflow-y-auto text-sm"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="painel-receitas" role="tabpanel" aria-labelledby="aba-receitas" data-painel="receitas" hidden class="mt-4 space-y-3">
+    <div class="flex flex-wrap gap-3">
+      <input id="busca-receita" type="search" placeholder="Buscar receita ou item" autocomplete="off" aria-label="Buscar receita" class="campo min-w-0 flex-1" />
+      <select id="filtro-instalacao" aria-label="Instalação" class="campo"></select>
+      <label class="flex items-center gap-2 text-sm font-semibold text-casal"><input id="so-liberadas" type="checkbox" /> Só as liberadas</label>
+    </div>
+    <div class="card overflow-x-auto"><table id="receitas" class="w-full text-sm"></table></div>
+  </section>
+
+  <section id="painel-rv" role="tabpanel" aria-labelledby="aba-rv" data-painel="rv" hidden class="mt-4">
+    <div class="card overflow-x-auto"><table id="niveis" class="w-full text-sm"></table></div>
+  </section>
+
+  <div class="mt-8 max-w-3xl space-y-2 text-xs text-danube-700">
+    <p>
+      Receitas, tempos, preços, requisitos e regras de eficiência vêm do <a class="underline" href="https://github.com/ae-bii/aniimax">aniimax</a>
+      (licença MIT, © aebii), que confere os números no jogo instalação por instalação. Nomes de instalações e itens estão em inglês, como nos dados de origem.
+    </p>
+    <p>
+      O plano assume que você coleta a produção a tempo e que os Aniimo não param por fome ou cansaço. Instalações com dados ainda não verificados
+      no jogo ficam de fora, a não ser que você marque a opção. Achou um número diferente no jogo? <a class="underline" href="https://github.com/goul4rt/aniimo-tools/issues/new">Avise</a>.
+    </p>
+  </div>
+</Base>
+
+<script>
+  import './../homeland/pagina.ts';
+</script>
