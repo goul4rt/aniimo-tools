@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Elemento from '../../components/Elemento.astro';
+import FiltroElemento from '../../components/FiltroElemento.astro';
 import { aniimos, base, elementos, estagios, papeis } from '../../data.ts';
 import { ELEMENTO, ESTAGIO, PAPEL } from '../../rotulos.ts';
 import type { Elemento as E } from '../../types.ts';
@@ -28,10 +29,7 @@ const itens = aniimos.map((a) => {
   <form id="filtros" class="mt-6 grid gap-3 sm:grid-cols-4" onsubmit="return false">
     <input name="q" type="search" placeholder="Brasim, Emberpup, fogo…" autocomplete="off"
       class="campo sm:col-span-4" />
-    <select name="el" class="campo">
-      <option value="">Todos os elementos</option>
-      {Object.entries(ELEMENTO).map(([k, v]) => <option value={k}>{v}</option>)}
-    </select>
+    <FiltroElemento class="sm:col-span-4" />
     <select name="pa" class="campo">
       <option value="">Todas as funções</option>
       {Object.entries(PAPEL).map(([k, v]) => <option value={k}>{v}</option>)}
@@ -40,7 +38,7 @@ const itens = aniimos.map((a) => {
       <option value="">Todos os estágios</option>
       {Object.entries(ESTAGIO).map(([k, v]) => <option value={k}>{v}</option>)}
     </select>
-    <p id="contagem" class="self-center text-sm text-muted" aria-live="polite"></p>
+    <p id="contagem" class="self-center text-sm text-muted sm:col-span-2" aria-live="polite"></p>
   </form>
 
   <ul id="lista" class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">

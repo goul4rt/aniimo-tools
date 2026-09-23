@@ -1,0 +1,13 @@
+---
+import { COR_HEX, ELEMENTO, mioloIcone } from '../rotulos.ts';
+import type { Elemento } from '../types.ts';
+
+// Círculo na cor do elemento com o ícone dentro. `nome` = acessível para leitor de tela (senão é decorativo).
+const { e, tam = 32, nome = false, class: cls } = Astro.props as { e: Elemento; tam?: number; nome?: boolean; class?: string };
+const [fundo, traco] = COR_HEX[e];
+---
+
+<span class:list={['inline-flex shrink-0 items-center justify-center rounded-full', cls]} style={`background:${fundo};width:${tam}px;height:${tam}px`}
+  role={nome ? 'img' : undefined} aria-label={nome ? ELEMENTO[e] : undefined} aria-hidden={nome ? undefined : 'true'} title={ELEMENTO[e]}>
+  <svg width={Math.round(tam * 0.55)} height={Math.round(tam * 0.55)} viewBox="0 0 24 24" fill="none" stroke={traco} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={mioloIcone(e)} />
+</span>

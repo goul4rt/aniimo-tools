@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import mascote from '../og/mascote.png';
+
+const atalhos = [['/aniilog/', 'Aniilog'], ['/tipos/', 'Tipos'], ['/time/', 'Montar time'], ['/times/', 'Times prontos'], ['/codigos/', 'Códigos'], ['/guias/', 'Guias']];
+---
+
+<Base title="Página não encontrada · Aniimo Tools" description="Essa página não existe ou mudou de endereço." erro>
+  <section class="card mx-auto max-w-3xl overflow-hidden">
+    <div class="relative grid place-items-center bg-casal-50 pt-10 pb-6">
+      <p class="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 text-center font-display text-[11rem] leading-none font-semibold text-casal-100 select-none" aria-hidden="true">404</p>
+      <img src={mascote.src} alt="" width="140" height="154" class="mascote relative h-[154px] w-[140px] [image-rendering:pixelated]" />
+    </div>
+    <div class="p-6 text-center sm:p-8">
+      <h1 class="text-3xl">Essa página se perdeu no mapa</h1>
+      <p class="mt-2 text-muted">Não achamos <code data-caminho class="rounded-md bg-danube-100 px-1.5 py-0.5 text-sm text-ink"></code>. O endereço pode estar errado ou ter mudado de lugar.</p>
+      <div class="mt-6 flex flex-wrap justify-center gap-2">
+        <a href="/" class="btn btn-primario">Voltar ao início</a>
+        <a href="/aniilog/" class="btn">Procurar no Aniilog</a>
+      </div>
+      <nav class="mt-6 flex flex-wrap justify-center gap-2 border-t border-line pt-5">{atalhos.map(([h, n]) => <a class="chip" href={h}>{n}</a>)}</nav>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* O mascote flutua devagar; quem pediu menos movimento no sistema vê ele parado. */
+  .mascote { animation: flutua 3.2s ease-in-out infinite; }
+  @keyframes flutua { 50% { transform: translateY(-8px); } }
+  @media (prefers-reduced-motion: reduce) { .mascote { animation: none; } }
+</style>
+
+<script>
+  // Mostra o endereço que a pessoa tentou abrir (textContent: nada do URL vira HTML).
+  const caminho = (() => { try { return decodeURIComponent(location.pathname); } catch { return location.pathname; } })();
+  document.querySelectorAll('[data-caminho]').forEach((el) => (el.textContent = caminho));
+  (window as unknown as { umami?: { track: (n: string, d: object) => void } }).umami?.track('pagina_404', { caminho: location.pathname });
+</script>

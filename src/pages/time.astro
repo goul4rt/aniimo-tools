@@ -1,25 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import { aniimos, porSlug } from '../data.ts';
+import { aniimos } from '../data.ts';
 import tabela from '../../data/elementos.json';
 import { ELEMENTO, PAPEL } from '../rotulos.ts';
 import { icone } from '../scripts/icones.ts';
-import prontos from '../../data/times.json';
-import type { Papel } from '../types.ts';
-
-// Times prontos: resolve cada membro na build; slug/forma que sumiu da wiki quebra a build em vez de publicar card vazio.
-const NIVEL: Record<string, string> = { iniciante: 'Iniciante', avancado: 'Avançado', endgame: 'Endgame' };
-const times = prontos.times.map((t) => ({
-  ...t,
-  membros: t.membros.map((m) => {
-    if (!('slug' in m) || !m.slug) return { ...m, a: undefined, f: undefined };
-    const a = porSlug.get(m.slug);
-    const f = a?.formas.find((x) => x.chave === (('forma' in m && m.forma) || a.formas[0].chave));
-    if (!a || !f) throw new Error(`data/times.json: "${t.nome}" cita ${m.slug}/${'forma' in m ? m.forma : ''}, que não existe`);
-    return { ...m, a, f };
-  }),
-}));
-const carregar = (t: (typeof times)[number]) => t.membros.map((m) => (m.a ? `${m.a.slug}:${m.f!.chave}` : '')).join(',');
 
 // Só o que o montador usa, embutido na página: o cálculo roda no navegador.
 const dados = {
@@ -35,7 +19,7 @@ const dados = {
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div>
       <h1 class="text-4xl">Montador de time</h1>
-      <p class="mt-1 text-muted">Escolha até 4 Aniimo, ou <a href="#prontos" data-umami-event="time_ir_prontos" class="font-semibold text-casal underline">comece de um time pronto</a>. O link da página guarda o time.</p>
+      <p class="mt-1 text-muted">Escolha até 4 Aniimo, ou <a href="/times/" data-umami-event="time_ir_prontos" class="font-semibold text-casal underline">comece de um time pronto</a>. O link da página guarda o time.</p>
     </div>
     <div class="flex flex-wrap gap-2">
       <button id="limpar" type="button" data-umami-event="time_limpar" class="btn" disabled>Limpar time</button>
@@ -61,7 +45,13 @@ const dados = {
     ))}
   </div>
 
-  <section class="mt-6 rounded-[20px] bg-casal-50 p-4 sm:p-5" aria-labelledby="titulo-sugestao">
+  <section id="analise" class="mt-6 grid gap-4 md:grid-cols-3"></section>
+  <p class="mt-6 text-xs text-danube-700">
+    A cobertura considera o elemento de cada Aniimo como o elemento dos ataques. Para Aniimo com dois elementos, conta como fraco se <em>algum</em> dos
+    elementos sofrer 1,6×. A tabela de tipos é da comunidade; veja em <a class="underline" href="/tipos/">Tipos</a>.
+  </p>
+
+  <section class="mt-8 rounded-[20px] bg-casal-50 p-4 sm:p-5" aria-labelledby="titulo-sugestao">
     <div class="flex flex-wrap items-center justify-between gap-3">
       <div class="max-w-2xl">
         <h2 id="titulo-sugestao" class="flex items-center gap-2 text-lg font-semibold">
@@ -86,76 +76,12 @@ const dados = {
     <div id="sugestoes" class="mt-4 grid gap-3 empty:hidden md:grid-cols-3" aria-live="polite"></div>
   </section>
 
-  <section id="analise" class="mt-8 grid gap-4 md:grid-cols-3"></section>
-  <p class="mt-6 text-xs text-danube-700">
-    A cobertura considera o elemento de cada Aniimo como o elemento dos ataques. Para Aniimo com dois elementos, conta como fraco se <em>algum</em> dos
-    elementos sofrer 1,6×. A tabela de tipos é da comunidade e tem divergências; veja em <a class="underline" href="/tipos/">Tipos</a>.
-  </p>
-
-  <section id="prontos" class="mt-12 scroll-mt-4" aria-labelledby="titulo-prontos">
-    <div class="flex flex-wrap items-end justify-between gap-3">
-      <div>
-        <h2 id="titulo-prontos" class="text-2xl font-semibold">Times prontos</h2>
-        <p class="mt-1 text-sm text-muted">Composições dos guias da comunidade. Carregue no montador para ver a análise e trocar quem você não tem.</p>
-      </div>
-      <div class="flex flex-wrap items-center gap-2">
-        <div id="filtro-nivel" role="group" aria-label="Nível" class="flex gap-1 rounded-full bg-danube-100 p-1 text-sm font-semibold">
-          {[['', 'Todos'], ...Object.entries(NIVEL)].map(([v, r], i) => (
-            <button type="button" data-nivel={v} data-umami-event="time_prontos_nivel" data-umami-event-nivel={r} aria-pressed={i === 0 ? 'true' : 'false'}
-              class="cursor-pointer rounded-full px-3.5 py-1.5 text-danube-700 aria-pressed:bg-white aria-pressed:text-ink">{r}</button>
-          ))}
-        </div>
-        <select id="filtro-el" aria-label="Elemento" class="campo h-10 text-sm">
-          <option value="">Todos os elementos</option>
-          {Object.entries(ELEMENTO).filter(([k]) => times.some((t) => t.elemento === k)).map(([k, v]) => <option value={k}>{v}</option>)}
-        </select>
-      </div>
-    </div>
-
-    <div id="lista-prontos" class="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
-      {times.map((t) => (
-        <article data-nivel={t.nivel} data-el={t.elemento} class="card flex flex-col gap-3 p-4">
-          <div class="flex items-start justify-between gap-2">
-            <h3 class="text-lg leading-tight font-semibold">{t.nome}</h3>
-            <span class="shrink-0 rounded-full bg-casal-50 px-2.5 py-0.5 text-[11px] font-semibold text-casal">{NIVEL[t.nivel]}</span>
-          </div>
-          <ul class="grid grid-cols-4 gap-2">
-            {t.membros.map((m) => (
-              <li class="min-w-0 text-center" title={m.a ? `${m.a.nome.pt} · ${m.f!.nome.pt}` : 'fora' in m ? `${m.fora}: ainda não está na wiki oficial` : 'Vaga livre'}>
-                {m.a ? (
-                  <img src={m.f!.imagem} alt="" width="64" height="64" loading="lazy" decoding="async"
-                    class:list={['mx-auto aspect-square w-full max-w-16 rounded-xl bg-danube-100 object-contain', m.f!.chave === 'prismana-form' && 'ring-2 ring-[#F48DB8]']} onerror="this.style.visibility='hidden'" />
-                ) : (
-                  <div class="mx-auto grid aspect-square w-full max-w-16 place-items-center rounded-xl border-2 border-dashed border-danube-200 text-lg font-semibold text-danube-200">{'fora' in m ? '?' : '+'}</div>
-                )}
-                <span class="mt-1 block truncate text-xs font-semibold text-ink">{m.a ? m.a.nome.pt : 'fora' in m ? m.fora : 'Livre'}</span>
-                <span class="flex items-center justify-center gap-0.5 text-[10px] font-semibold text-muted uppercase">
-                  {m.papel !== 'flex' && <Fragment set:html={icone(m.papel as Papel, 'h-3 w-3')} />}
-                  {m.papel === 'flex' ? 'qualquer' : PAPEL[m.papel as Papel]}
-                </span>
-              </li>
-            ))}
-          </ul>
-          <p class="text-sm leading-relaxed text-muted">{t.nota}</p>
-          <div class="mt-auto flex items-center justify-between gap-2 border-t border-line pt-3">
-            <a href={prontos.fontes[t.fonte]} class="text-xs text-danube-700 underline">{new URL(prontos.fontes[t.fonte]).hostname}</a>
-            <button type="button" data-carregar={carregar(t)} class="btn h-9 px-4 text-sm">Carregar</button>
-          </div>
-        </article>
-      ))}
-    </div>
-    <p id="prontos-vazio" hidden class="mt-3 text-sm text-muted">Nenhum time pronto com esses filtros.</p>
-    <p class="mt-4 text-xs text-danube-700">
-      Conferido em {new Date(prontos.conferidoEm + 'T12:00').toLocaleDateString('pt-BR')}. Anel rosa = forma Prismana; "?" = Aniimo que ainda não está na wiki oficial (o slot fica livre).
-    </p>
-  </section>
-
   <script type="application/json" id="dados" set:html={JSON.stringify(dados).replaceAll('<', '\\u003c')} />
 </Base>
 
 <script>
   import { evento, umaVez } from '../scripts/evento.ts';
-  import { chip, esc, pilulas, seletor } from '../scripts/seletor.ts';
+  import { chip, esc, iconeEl, pilulas, seletor } from '../scripts/seletor.ts';
   import { icone, type Icone } from '../scripts/icones.ts';
   import { nota, sugere, type Membro } from '../scripts/sugestao.ts';
   type F = { chave: string; nome: string; elementos: string[]; papeis: string[]; imagem: string; total: number };
@@ -212,8 +138,8 @@ const dados = {
       box('alvo', 'Cobertura ofensiva',
         `<p class="mt-1 text-sm text-muted">Causa 1,6× em <strong class="font-mono text-ink">${cobre.length}</strong> de 9 elementos.</p>
          <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-line"><div class="bg-twining h-full rounded-full" style="width:${(cobre.length / 9) * 100}%"></div></div>
-         <div class="mt-3 flex flex-wrap gap-1">${cobre.map(chip).join('')}</div>
-         ${naoCobre.length ? `<p class="mt-3 text-sm text-muted">Sem vantagem contra:</p><div class="mt-1 flex flex-wrap gap-1">${naoCobre.map(chip).join('')}</div>` : ''}`),
+         <ul class="mt-3 grid grid-cols-9 gap-1">${els.map((e) => `<li class="flex justify-center">${iconeEl(e, 30, !cobre.includes(e))}</li>`).join('')}</ul>
+         ${naoCobre.length ? `<p class="mt-3 text-sm text-muted">Sem vantagem contra ${naoCobre.map((e) => D.ELEMENTO[e]).join(', ')}.</p>` : '<p class="mt-3 text-sm font-semibold text-ok">Vantagem contra todos os elementos.</p>'}`),
       box('alerta', 'Fraquezas em comum',
         fraquezas.length
           ? `<ul class="mt-2 space-y-1.5 text-sm">${fraquezas.map((x) => `<li>${chip(x.e)} bate forte em <strong>${x.n}</strong> do time</li>`).join('')}</ul>`
@@ -295,42 +221,6 @@ const dados = {
     preenche(i, a, chave);
   });
   atualiza();
-
-  // Times prontos: carregar preenche os 4 slots (vazio = slot livre) e volta para o montador.
-  function carregaTime(t: string) {
-    t.split(',').slice(0, 4).forEach((p, i) => {
-      const [slug, chave] = p.split(':');
-      const a = porSlug.get(slug);
-      campos[i].define(a ? slug : '');
-      preenche(i, a, chave);
-    });
-    atualiza();
-  }
-  document.getElementById('lista-prontos')!.addEventListener('click', (ev) => {
-    const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-carregar]');
-    if (!b) return;
-    carregaTime(b.dataset.carregar!);
-    evento('time_pronto_carregado', { time: b.closest('article')!.querySelector('h3')!.textContent });
-    document.getElementById('slots')!.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-  const nivel = document.getElementById('filtro-nivel')!;
-  const filtroEl = document.getElementById('filtro-el') as HTMLSelectElement;
-  function filtraProntos() {
-    const n = nivel.querySelector('[aria-pressed=true]')!.getAttribute('data-nivel');
-    let vistos = 0;
-    document.querySelectorAll<HTMLElement>('#lista-prontos > article').forEach((c) => {
-      c.hidden = (!!n && c.dataset.nivel !== n) || (!!filtroEl.value && c.dataset.el !== filtroEl.value);
-      if (!c.hidden) vistos++;
-    });
-    document.getElementById('prontos-vazio')!.hidden = vistos > 0;
-  }
-  nivel.addEventListener('click', (ev) => {
-    const b = (ev.target as HTMLElement).closest('[data-nivel]');
-    if (!b) return;
-    nivel.querySelectorAll('[data-nivel]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-    filtraProntos();
-  });
-  filtroEl.addEventListener('change', () => { filtraProntos(); evento('time_prontos_elemento', { elemento: filtroEl.value || 'todos' }); });
 
   limpar.addEventListener('click', () => {
     campos.forEach((c, i) => { c.define(''); preenche(i, undefined); });

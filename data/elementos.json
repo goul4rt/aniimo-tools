@@ -1,7 +1,7 @@
 {
   "multiplicador": { "forte": 1.6, "fraco": 0.625 },
   "conferidoEm": "2026-09-22",
-  "fontes": ["https://aniimotools.dev/type-chart/", "https://game8.co/games/Aniimo/archives/618352", "https://games.gg/aniimo/guides/aniimo-type-chart/"],
+  "fontes": ["https://aniimotools.dev/type-chart/", "https://game8.co/games/Aniimo/archives/618352"],
   "nota": "Matriz da comunidade: a wiki oficial não publica a tabela. Base aniimotools, confirmada pelo game8 nos confrontos de trevas e rocha.",
   "ataque": {
     "fire":     { "forte": ["grass", "ice"],             "fraco": ["fire", "water", "rock", "holy"] },
@@ -13,13 +13,5 @@
     "wind":     { "forte": ["grass", "dark"],            "fraco": ["electric", "wind"] },
     "holy":     { "forte": ["wind", "dark"],             "fraco": ["electric", "holy"] },
     "dark":     { "forte": ["grass", "electric", "holy"], "fraco": ["water", "wind"] }
-  },
-  "divergencias": [
-    { "ataque": "ice", "defesa": "wind", "nota": "games.gg: 1,6×" },
-    { "ataque": "grass", "defesa": "wind", "nota": "games.gg: 0,625×" },
-    { "ataque": "dark", "defesa": "fire", "nota": "games.gg: 1,6×" },
-    { "ataque": "dark", "defesa": "electric", "nota": "games.gg: 1×" },
-    { "ataque": "rock", "defesa": "fire", "nota": "games.gg: 1×; troca por elétrico 1,6×" },
-    { "ataque": "rock", "defesa": "electric", "nota": "games.gg: 1,6×" }
-  ]
+  }
 }

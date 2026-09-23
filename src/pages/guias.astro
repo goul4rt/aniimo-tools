@@ -1,0 +1,200 @@
+---
+import Base from '../layouts/Base.astro';
+import tabela from '../../data/elementos.json';
+import { COR_HEX, ELEMENTO, mioloIcone } from '../rotulos.ts';
+import type { Elemento as E } from '../types.ts';
+
+// Diagrama de elementos desenhado a partir de data/elementos.json (a mesma matriz de /tipos): seta A → B = A causa 1,6× em B.
+const ataque = tabela.ataque as Record<E, { forte: E[] }>;
+const POS: Record<E, [number, number]> = {
+  holy: [220, 44], dark: [130, 124], wind: [310, 124],
+  grass: [40, 224], fire: [160, 224], ice: [280, 224], electric: [400, 224],
+  water: [160, 356], rock: [280, 356],
+};
+// Fundos claros somem como linha no fundo branco: nesses a seta usa um tom mais escuro.
+const LINHA: Partial<Record<E, string>> = { holy: '#D97706', ice: '#0891B2', electric: '#CA8A04', wind: '#0D9488' };
+const R = 24;
+const setas = Object.entries(ataque).flatMap(([a, { forte }]) => forte.map((b) => {
+  const [x1, y1] = POS[a as E], [x2, y2] = POS[b];
+  const d = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / d, uy = (y2 - y1) / d;
+  // Confronto nos dois sentidos (Sagrado ↔ Trevas): afasta as duas setas para não se sobreporem.
+  const off = ataque[b].forte.includes(a as E) ? 5 : 0, nx = -uy * off, ny = ux * off;
+  const ax = x1 + ux * (R + 3) + nx, ay = y1 + uy * (R + 3) + ny, bx = x2 - ux * (R + 3) + nx, by = y2 - uy * (R + 3) + ny;
+  const ponta = `${bx},${by} ${bx - ux * 10 - uy * 5},${by - uy * 10 + ux * 5} ${bx - ux * 10 + uy * 5},${by - uy * 10 - ux * 5}`;
+  return { a: a as E, b, cor: LINHA[a as E] ?? COR_HEX[a as E][0], ax, ay, bx: bx - ux * 6, by: by - uy * 6, ponta };
+}));
+const els = Object.keys(ataque) as E[];
+
+const secoes = [
+  ['onde', 'Onde encontrar'], ['formas', 'Formas e variantes'], ['umbra', 'Umbra e ovos'],
+  ['caca', 'Caça'], ['depois', 'Depois da captura'], ['elementos', 'Elementos'],
+];
+const variantes = [
+  ['Básica', 'A forma padrão da espécie, a mais comum.', 'Explorando o mapa.'],
+  ['Regional', 'Muda conforme a região ou o bioma. Às vezes só a cor e o visual; às vezes também o elemento, as skills e o jeito de jogar.', 'Na região certa, e em alguns casos com o clima certo.'],
+  ['Prismana', 'Ligada à energia Prismana. Costuma mudar bem mais o visual que uma forma regional e pode ou não mexer na gameplay.', 'Explorando e capturando.'],
+  ['Sparklin', 'O "shiny" de Aniimo: cores diferentes e efeito de brilho. É um sistema separado da Prismana.', 'Sorte, com muitas capturas.'],
+  ['Umbra', 'Visual diferente, status um pouco mais altos e o elemento Trevas somado aos que ele já tem.', 'Só por ovos, no Egg Haste.'],
+  ['Alfa', 'Maior que o normal e com moldura vermelha.', 'Capturando Aniimo ligados a bosses.'],
+];
+const checar = [
+  ['Forma', 'É a que você queria? Básica, regional, Prismana, Sparklin, Umbra ou Alfa.'],
+  ['Elemento', 'Uma forma regional ou Prismana pode ganhar um elemento que a básica não tem.'],
+  ['Personalidade', 'São as letras embaixo do nome. Ela dá buffs e dá para trocar depois com Psych Freit.'],
+  ['Potencial', 'Para build forte, procure um Perfeito, ou um Elite que possa ser melhorado mais tarde.'],
+];
+---
+
+<Base title="Guias rápidos · Aniimo Tools" description="Guias rápidos de Aniimo em português: onde encontrar cada espécie, formas regionais, Prismana, Sparklin, Umbra, Alfa, como caçar o exemplar certo e o diagrama de elementos.">
+  <h1 class="text-4xl">Guias rápidos</h1>
+  <p class="mt-1 max-w-2xl text-muted">O básico para achar, capturar e aproveitar um Aniimo. Baseado nas betas: nomes e números podem mudar no lançamento.</p>
+  <nav class="mt-5 flex flex-wrap gap-2" aria-label="Seções">
+    {secoes.map(([id, nome]) => <a class="chip" href={`#${id}`}>{nome}</a>)}
+  </nav>
+
+  <div class="mt-8 grid gap-6">
+    <section id="onde" class="card scroll-mt-4 p-6 sm:p-8">
+      <h2 class="text-2xl font-semibold">Onde encontrar Aniimo</h2>
+      <div class="mt-3 max-w-3xl space-y-3 leading-relaxed">
+        <p>
+          Quase todo Aniimo aparece explorando o mundo. Cada espécie tem seus lugares, e várias aparecem em mais de uma região:
+          gelo, montanhas, praias, o Mar de Flores, cavernas, florestas e outras áreas do mapa.
+        </p>
+        <p>
+          Só que a mesma espécie em outra região pode não ser o mesmo Aniimo. Algumas têm formas regionais. Em umas a diferença é só visual;
+          em outras muda o elemento, as skills e o jeito de jogar. Então, se você procura uma forma específica, saber o nome da espécie não basta.
+          Precisa saber onde ela aparece.
+        </p>
+        <p>
+          O clima também conta. A Nimb, por exemplo, tem formas ligadas a tempestade, a dia de sol e a platôs.
+          Para algumas formas você vai ter que esperar a condição certa no mapa, não só ir ao lugar certo.
+        </p>
+      </div>
+      <p class="mt-4 text-sm"><a class="underline" href="/aniilog/">Veja no Aniilog onde cada Aniimo aparece</a></p>
+    </section>
+
+    <section id="formas" class="card scroll-mt-4 p-6 sm:p-8">
+      <h2 class="text-2xl font-semibold">Formas e variantes</h2>
+      <p class="mt-2 max-w-3xl text-muted">Na Beta 3 eram uns 93 a 96 Aniimo na forma básica e cerca de 210 formas no total. Ou seja, mais da metade são formas alternativas.</p>
+      <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {variantes.map(([nome, oque, como]) => (
+          <div class="rounded-2xl bg-danube-50 p-4">
+            <h3 class="text-lg font-semibold">{nome}</h3>
+            <p class="mt-1 text-[15px] leading-relaxed">{oque}</p>
+            <p class="mt-2 text-sm text-muted"><span class="rotulo text-xs">Como</span> {como}</p>
+          </div>
+        ))}
+      </div>
+      <p class="mt-5 max-w-3xl leading-relaxed">
+        As variantes se somam. Dá para achar um Prismana que também é Sparklin, ou um Umbra Sparklin.
+        E não confunda: Prismana não é Sparklin, Umbra não é Sparklin e Alfa não é Prismana. Cada uma tem o próprio jeito de conseguir.
+      </p>
+    </section>
+
+    <section id="umbra" class="card scroll-mt-4 p-6 sm:p-8">
+      <h2 class="text-2xl font-semibold">Umbra e ovos</h2>
+      <div class="mt-3 max-w-3xl space-y-3 leading-relaxed">
+        <p>
+          Ovos são outra forma de conseguir Aniimo, e são o único caminho para os Umbra: eles não aparecem explorando o mapa.
+          No modo Egg Haste você pode ganhar ovos de Aniimo Umbra e chocar para ter a versão Umbra.
+        </p>
+        <p>
+          Nos Umbra mostrados até agora, a diferença é o visual, status um pouco mais fortes e o elemento Trevas a mais.
+          Um Umbra também pode vir Sparklin, porque são sistemas separados.
+        </p>
+      </div>
+    </section>
+
+    <section id="caca" class="card scroll-mt-4 p-6 sm:p-8">
+      <h2 class="text-2xl font-semibold">Caça: como capturar o exemplar certo</h2>
+      <p class="mt-3 max-w-3xl leading-relaxed">
+        Capturar é simples: achou o Aniimo, usa o sistema de captura. O trabalho começa quando você quer um exemplar específico,
+        com potencial alto, personalidade certa, uma forma regional ou uma variante rara. Aí a captura vira caça, e o primeiro que aparece raramente é o bom.
+      </p>
+      <ol class="mt-5 grid gap-3 md:grid-cols-2">
+        <li class="rounded-2xl bg-casal-50 p-4">
+          <h3 class="font-semibold text-casal-700">1. Suba a captura da região para 70%</h3>
+          <p class="mt-1 text-[15px] leading-relaxed">Com 70% você ganha a Insígnia de Prata da região, que aumenta a chance de achar Aniimo de potencial alto ali. Faça isso antes da caça em massa.</p>
+        </li>
+        <li class="rounded-2xl bg-casal-50 p-4">
+          <h3 class="font-semibold text-casal-700">2. Decida o que você procura</h3>
+          <p class="mt-1 text-[15px] leading-relaxed">Só a espécie? A forma regional? Potencial alto? Uma variante rara? Sabendo antes, você confere cada captura em segundos.</p>
+        </li>
+        <li class="rounded-2xl bg-casal-50 p-4">
+          <h3 class="font-semibold text-casal-700">3. Vá ao lugar e ao clima certos</h3>
+          <p class="mt-1 text-[15px] leading-relaxed">Confirme região, bioma, condições e formas regionais possíveis. Procurar uma variante no lugar errado é o jeito mais fácil de perder uma tarde.</p>
+        </li>
+        <li class="rounded-2xl bg-casal-50 p-4">
+          <h3 class="font-semibold text-casal-700">4. Capture vários e confira cada um</h3>
+          <p class="mt-1 text-[15px] leading-relaxed">A insígnia só melhora as chances; não garante nada. Olhe potencial, personalidade, elemento, forma, variante e skills, não só a aparência.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="depois" class="card scroll-mt-4 p-6 sm:p-8">
+      <h2 class="text-2xl font-semibold">Depois da captura</h2>
+      <p class="mt-2 max-w-3xl text-muted">Conseguiu o exemplar? Antes de gastar recurso nele, confira:</p>
+      <dl class="mt-4 grid gap-3 sm:grid-cols-2">
+        {checar.map(([t, d]) => (
+          <div class="rounded-2xl bg-danube-50 p-4">
+            <dt class="font-semibold">{t}</dt>
+            <dd class="mt-1 text-[15px] leading-relaxed">{d}</dd>
+          </div>
+        ))}
+      </dl>
+      <div class="mt-5 max-w-3xl space-y-3 leading-relaxed">
+        <p>
+          Depois, suba o nível. O limite é o nível do seu personagem, e a experiência vem das plantinhas, que saem de baús, exploração,
+          loja de créditos, fazenda e da devolução de Aniimo que você não vai usar.
+        </p>
+        <p>
+          Por fim, escolha as skills. Aniimo de dois elementos costumam ter mais opções, e misturar skills dos dois pode valer a pena.
+          Dá para salvar presets e trocar de conjunto rápido.
+        </p>
+        <p class="text-muted">
+          Daí para frente é build: Ressonância Estelar, Despertar de Potencial, itens carregáveis e runas.
+          Para os custos de Resonance, use o <a class="underline" href="/evolucao/">planejador</a>.
+        </p>
+      </div>
+    </section>
+
+    <section id="elementos" class="card scroll-mt-4 p-6 sm:p-8">
+      <h2 class="text-2xl font-semibold">Elementos</h2>
+      <p class="mt-2 max-w-3xl text-muted">Cada seta sai de quem ataca e aponta para quem leva 1,6×. Sagrado e Trevas são fortes um contra o outro.</p>
+      <div class="mt-4 grid items-center gap-6 lg:grid-cols-[minmax(0,1fr)_280px]">
+        <svg viewBox="0 0 440 400" class="mx-auto w-full max-w-lg" role="img" aria-labelledby="diag-titulo">
+          <title id="diag-titulo">Diagrama de elementos: quem causa dano super-efetivo em quem. A lista ao lado tem o mesmo conteúdo.</title>
+          {setas.map((s) => (
+            <g>
+              <line x1={s.ax} y1={s.ay} x2={s.bx} y2={s.by} stroke={s.cor} stroke-width="2.5" stroke-linecap="round" opacity="0.85" />
+              <polygon points={s.ponta} fill={s.cor} />
+            </g>
+          ))}
+          {els.map((e) => {
+            const [x, y] = POS[e];
+            return (
+              <g>
+                <circle cx={x} cy={y} r={R} fill={COR_HEX[e][0]} stroke="#fff" stroke-width="3" />
+                <svg x={x - 12} y={y - 12} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke={COR_HEX[e][1]} stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={mioloIcone(e)} />
+              </g>
+            );
+          })}
+        </svg>
+        <ul class="grid gap-1.5 text-sm">
+          {els.map((e) => (
+            <li class="flex items-baseline gap-2">
+              <span class="w-16 shrink-0 font-semibold" style={`color:${LINHA[e] ?? COR_HEX[e][0]}`}>{ELEMENTO[e]}</span>
+              <span class="text-muted">→ {ataque[e].forte.map((b) => ELEMENTO[b]).join(', ')}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p class="mt-4 text-sm"><a class="underline" href="/tipos/">Tabela completa com resistências e os 81 confrontos</a></p>
+    </section>
+  </div>
+
+  <p class="mt-8 max-w-3xl text-xs text-danube-700">
+    Guias montados com o que foi mostrado nas betas de Aniimo. Mecânicas, valores, nomes e formas de obtenção podem mudar até o lançamento oficial.
+    Viu algo diferente no jogo? <a class="underline" href="https://github.com/goul4rt/aniimo-tools/issues/new">Avise</a>.
+  </p>
+</Base>

@@ -6,7 +6,7 @@ import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
 import { aniimos } from '../../data.ts';
 import { PAGINAS, ogDe, type Pagina } from '../../paginas.ts';
-import { ELEMENTO, ESTAGIO, PAPEL, STAT } from '../../rotulos.ts';
+import { COR_HEX as COR, ELEMENTO, ESTAGIO, PAPEL, STAT } from '../../rotulos.ts';
 import type { Aniimo, Elemento } from '../../types.ts';
 
 // Caminhos a partir da raiz do projeto: na build este arquivo roda empacotado, longe de src/.
@@ -21,11 +21,6 @@ const MASCOTE = `data:image/png;base64,${readFileSync('src/og/mascote.png').toSt
 // Tema "menta": fundo casal-50, brilho pêssego e barra nas cores do mascote (folha → mel → laranja).
 const FUNDO = '#E3F1F0';
 const BARRA = 'linear-gradient(90deg, #8CC63F, #FFC857 50%, #F7931E)';
-// Mesmas cores dos chips de elemento do site (rotulos.ts), em hex.
-const COR: Record<Elemento, [string, string]> = {
-  fire: ['#EA580C', '#fff'], water: ['#0284C7', '#fff'], grass: ['#16A34A', '#fff'], electric: ['#EAB308', '#15393A'],
-  ice: ['#22D3EE', '#15393A'], rock: ['#92400E', '#fff'], wind: ['#14B8A6', '#15393A'], holy: ['#FDE68A', '#15393A'], dark: ['#5B21B6', '#fff'],
-};
 
 // Mini-hyperscript para os nós do satori (sem JSX num endpoint .ts).
 type No = { type: string; props: Record<string, unknown> };

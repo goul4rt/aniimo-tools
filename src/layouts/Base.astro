@@ -3,14 +3,17 @@ import '../styles/global.css';
 import { porSlug } from '../data.ts';
 import { PAGINAS, ogDe } from '../paginas.ts';
 import { UMAMI_ID } from '../metricas.ts';
+import { ArrowLeftRight, BookOpen, Bookmark, ChevronDown, CircleCheck, Gift, House, LayoutGrid, Library, ListOrdered, Menu, Sparkles, Users } from 'lucide-static';
 
 interface Props {
   title: string;
   description?: string;
+  /** Página de erro (404): fica fora do registro, sem canonical e com noindex; usa a imagem OG da home. */
+  erro?: boolean;
 }
-const { title, description = 'Ferramentas de Aniimo em português, com dados abertos.' } = Astro.props;
+const { title, description = 'Ferramentas de Aniimo em português, com dados abertos.', erro = false } = Astro.props;
 // Canonical sempre no domínio próprio: o mesmo conteúdo também responde em aniimo-tools.pages.dev.
-const rota = Astro.url.pathname;
+const rota = erro ? '/' : Astro.url.pathname;
 const canonical = new URL(rota, Astro.site);
 // Toda página precisa estar em src/paginas.ts (imagem OG + sitemap). Esquecer quebra a build aqui.
 const slug = rota.match(/^\/aniilog\/([^/]+)\/$/)?.[1];
@@ -26,28 +29,27 @@ const jsonLd = rota === '/'
       '@context': 'https://schema.org', '@type': 'BreadcrumbList',
       itemListElement: migalhas.map(([u, nome], i) => ({ '@type': 'ListItem', position: i + 1, name: nome, item: new URL(u, Astro.site).href })),
     };
-const nav = [
-  ['/aniilog/', 'Aniilog'],
-  ['/tipos/', 'Tipos'],
-  ['/codigos/', 'Códigos'],
-  ['/colecao/', 'Coleção'],
-  ['/time/', 'Time'],
-  ['/comparar/', 'Comparar'],
-  ['/tier/', 'Tier list'],
-  ['/homeland/', 'Homeland'],
-  ['/evolucao/', 'Resonance'],
-  ['/api/', 'API'],
+// Menu (variante D): os mais usados à vista; o resto num painel "Ferramentas" em grupos, com uma linha dizendo o que cada um faz.
+// No celular só aparece o ☰, e o painel inclui também os principais.
+const principais = [['/aniilog/', 'Aniilog', 'Todos os Aniimo, stats e formas', Library], ['/tipos/', 'Tipos', 'Quem bate forte em quem', LayoutGrid], ['/time/', 'Time', 'Cobertura, fraquezas e sugestão', Users]];
+const grupos: [string, string[][]][] = [
+  ['Batalha', [['/time/', 'Montar time', 'Cobertura e sugestão', Users], ['/times/', 'Times prontos', 'Da comunidade, prontos', Bookmark], ['/comparar/', 'Comparar', 'Stats lado a lado', ArrowLeftRight]]],
+  ['Coleção', [['/colecao/', 'Minha coleção', 'Marque o que você já tem', CircleCheck], ['/tier/', 'Tier list', 'Monte do SSS ao D', ListOrdered]]],
+  ['Guias e progresso', [['/guias/', 'Guias rápidos', 'Formas, caça e elementos', BookOpen], ['/homeland/', 'Homeland', 'Produção, equipe e layout', House], ['/evolucao/', 'Resonance', 'Custo até cada estágio', Sparkles]]],
 ];
+const naRota = (href: string) => rota.startsWith(href);
+const noPainel = grupos.some(([, itens]) => itens.some(([h]) => h !== '/time/' && naRota(h)));
+const miolo = (svg: string) => svg.slice(svg.indexOf('>') + 1, svg.lastIndexOf('</svg>'));
 ---
 
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/logo.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="canonical" href={canonical} />
+    {erro ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:type" content={aniimo ? 'article' : 'website'} />
@@ -79,17 +81,41 @@ const nav = [
     <header class="bg-casal">
       <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
         <a href="/" data-umami-event="nav" data-umami-event-destino="inicio" class="flex items-center gap-2.5 text-white hover:text-white">
-          <img src="/favicon.svg" alt="" width="32" height="32" />
+          <img src="/logo.png" alt="" width="36" height="36" />
           <span class="font-display text-xl font-semibold">Aniimo Tools</span>
         </a>
-        <div class="-mx-4 flex gap-0.5 overflow-x-auto px-4 text-sm font-semibold whitespace-nowrap sm:mx-0 sm:px-0">
-          {nav.map(([href, label]) => {
-            const atual = Astro.url.pathname.startsWith(href);
-            return (
-              <a href={href} aria-current={atual ? 'page' : undefined} data-umami-event="nav" data-umami-event-destino={label}
-                class:list={['rounded-full px-3.5 py-2 hover:bg-zumthor/15 hover:text-white', atual ? 'bg-zumthor/15 text-white' : 'text-zumthor/85']}>{label}</a>
-            );
-          })}
+        <div class="flex items-center gap-0.5 text-sm font-semibold whitespace-nowrap">
+          {principais.map(([href, label]) => (
+            <a href={href} aria-current={naRota(href) ? 'page' : undefined} data-umami-event="nav" data-umami-event-destino={label}
+              class:list={['hidden rounded-full px-3.5 py-2 hover:bg-zumthor/15 hover:text-white md:inline', naRota(href) ? 'bg-zumthor/15 text-white' : 'text-zumthor/85']}>{label}</a>
+          ))}
+          <details id="menu" class="group relative">
+            <summary data-umami-event="nav_menu" class:list={['flex cursor-pointer list-none items-center gap-1.5 rounded-full px-3.5 py-2 hover:bg-zumthor/15 hover:text-white group-open:bg-zumthor/15 group-open:text-white [&::-webkit-details-marker]:hidden', noPainel ? 'bg-zumthor/15 text-white' : 'text-zumthor/85']}>
+              <svg class="h-5 w-5 md:hidden" viewBox="0 0 24 24" set:html={miolo(Menu)} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" />
+              <span class="hidden md:inline">Ferramentas</span><span class="md:hidden">Menu</span>
+              <svg class="hidden h-4 w-4 transition-transform group-open:rotate-180 md:block" viewBox="0 0 24 24" set:html={miolo(ChevronDown)} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" />
+            </summary>
+            <div class="fixed inset-x-3 top-16 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto rounded-[20px] border border-line bg-white p-2 whitespace-normal text-ink shadow-[0_12px_32px_-8px_rgb(21_57_58/.3)] md:absolute md:inset-x-auto md:top-full md:right-0 md:mt-2 md:w-[740px]">
+              <div class="grid gap-1 md:grid-cols-3">
+                {[['Principais', [...principais.slice(0, 2), ['/codigos/', 'Códigos', 'Códigos de resgate ativos', Gift]]] as [string, string[][]], ...grupos].map(([grupo, itens], g) => (
+                  <div class:list={[g === 0 && 'md:hidden']}>
+                    <p class="px-3 pt-2 pb-1 text-[11px] font-bold tracking-wider text-danube uppercase">{grupo}</p>
+                    {itens.map(([href, label, desc, ic]) => (
+                      <a href={href} aria-current={naRota(href) ? 'page' : undefined} data-umami-event="nav" data-umami-event-destino={label}
+                        class="flex items-start gap-3 rounded-xl px-3 py-2 text-ink hover:bg-danube-50 hover:text-ink aria-[current=page]:bg-casal-50">
+                        <span class="grid h-8 w-8 shrink-0 place-items-center rounded-[10px] bg-casal-50 text-casal">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" set:html={miolo(ic)} fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" />
+                        </span>
+                        <span class="leading-tight"><span class="block text-sm font-semibold">{label}</span><span class="block text-xs font-normal text-muted">{desc}</span></span>
+                      </a>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </details>
+          <a href="/codigos/" aria-current={naRota('/codigos/') ? 'page' : undefined} data-umami-event="nav" data-umami-event-destino="Códigos"
+            class:list={['hidden rounded-full px-3.5 py-2 hover:bg-zumthor/15 hover:text-white md:inline', naRota('/codigos/') ? 'bg-zumthor/15 text-white' : 'text-zumthor/85']}>Códigos</a>
         </div>
       </nav>
     </header>
@@ -100,6 +126,7 @@ const nav = [
       <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-2 gap-y-2 px-4 py-5 text-sm text-muted sm:px-6">
         <span>Fan-site não-oficial. Aniimo e todos os assets são © Pawprint Studio. Sem afiliação.</span>
         <a href="/creditos/" data-umami-event="rodape_creditos" class="text-casal underline">Créditos e dados</a>
+        <a href="/api/" data-umami-event="rodape_api" class="text-casal underline">API</a>
         <a href="https://ko-fi.com/ogoul4rt" target="_blank" rel="noopener" data-umami-event="kofi"
           class="inline-flex items-center gap-1.5 rounded-full bg-[#F48DB8]/20 px-3 py-1 font-semibold text-casal no-underline hover:bg-[#F48DB8]/35 hover:text-casal sm:ml-auto">
           <svg class="h-4 w-4 text-[#C94B7F]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>
@@ -108,6 +135,10 @@ const nav = [
       </div>
     </footer>
     <script>
+      // Painel do menu: fecha ao clicar fora ou apertar Esc (o <details> sozinho só fecha clicando no botão).
+      const menu = document.getElementById('menu') as HTMLDetailsElement;
+      document.addEventListener('click', (ev) => { if (menu.open && !menu.contains(ev.target as Node)) menu.open = false; });
+      document.addEventListener('keydown', (ev) => { if (ev.key === 'Escape' && menu.open) { menu.open = false; menu.querySelector('summary')!.focus(); } });
       // Qualquer link para fora do site (wiki, fontes, GitHub…) vira "link_externo" com o destino, sem marcar um por um.
       document.addEventListener('click', (ev) => {
         const a = (ev.target as HTMLElement).closest?.<HTMLAnchorElement>('a[href^="http"]');

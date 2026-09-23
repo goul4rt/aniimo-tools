@@ -1,4 +1,5 @@
 ---
+import FiltroElemento from '../components/FiltroElemento.astro';
 import Base from '../layouts/Base.astro';
 import { aniimos } from '../data.ts';
 import { ELEMENTO, ESTAGIO } from '../rotulos.ts';
@@ -41,14 +42,11 @@ const pecas = aniimos.flatMap((a) =>
         <option value="regional">Formas regionais</option>
         <option value="">Todas as formas</option>
       </select>
-      <select name="el" aria-label="Elemento" class="campo">
-        <option value="">Todos os elementos</option>
-        {Object.entries(ELEMENTO).map(([k, v]) => <option value={k}>{v}</option>)}
-      </select>
       <select name="es" aria-label="Estágio" class="campo">
         <option value="">Todos os estágios</option>
         {Object.entries(ESTAGIO).map(([k, v]) => <option value={k}>{v}</option>)}
       </select>
+      <FiltroElemento class="sm:col-span-2 lg:col-span-4" />
     </form>
 
     <ul id="banco" data-zona="banco" class="card mt-3 flex min-h-28 flex-wrap content-start gap-2 p-3" aria-label="Aniimo fora da tier list">

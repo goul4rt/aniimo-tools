@@ -1,85 +1,107 @@
 ---
 import Base from '../layouts/Base.astro';
-import Elemento from '../components/Elemento.astro';
+import Icone from '../components/IconeElemento.astro';
 import tabela from '../../data/elementos.json';
-import { ELEMENTO } from '../rotulos.ts';
+import { COR_HEX, ELEMENTO } from '../rotulos.ts';
 import type { Elemento as E } from '../types.ts';
 
 const ataque = tabela.ataque as Record<E, { forte: E[]; fraco: E[] }>;
 const els = Object.keys(ataque) as E[];
 const mult = (a: E, d: E) => (ataque[a].forte.includes(d) ? 'forte' : ataque[a].fraco.includes(d) ? 'fraco' : 'normal');
-const divergente = (a: E, d: E) => tabela.divergencias.find((x) => x.ataque === a && x.defesa === d);
 const TXT = { forte: '1,6×', fraco: '0,625×', normal: '1×' };
-const COR = { forte: 'bg-casal-50 font-semibold text-casal-700', fraco: 'bg-[#FBEDEF] font-semibold text-[#8A2F3E]', normal: 'bg-danube-50 text-muted' };
+// Matriz neutra (não é bom nem ruim, depende de que lado você está): âmbar = 1,6×, cinza = 0,625×.
+const COR = { forte: 'bg-[#FBEFD9] font-bold text-[#8A5A12]', fraco: 'bg-[#E4E8EC] font-semibold text-[#4A5560]', normal: 'bg-danube-50 text-danube-600' };
 
-// Para cada inimigo: quem bate forte nele, quem aguenta os golpes dele, e quem ele atropela.
+// Para o elemento escolhido: em quem ele bate forte/fraco atacando, e de quem ele apanha forte/fraco defendendo.
 const painel = (e: E) => ({
-  bate: els.filter((a) => mult(a, e) === 'forte'),
-  aguenta: ataque[e].fraco,
-  sofre: ataque[e].forte,
+  forte: ataque[e].forte,
+  fraco: ataque[e].fraco,
+  sofre: els.filter((a) => ataque[a].forte.includes(e)),
+  resiste: els.filter((a) => ataque[a].fraco.includes(e)),
 });
+const BOM = 'bg-casal-50 text-casal-700', RUIM = 'bg-[#FBEDEF] text-[#8A2F3E]';
 ---
 
 <Base title="Tabela de tipos · Aniimo Tools" description="Tabela de tipos de Aniimo em português: os 9 elementos, quem ataca bem, quem resiste e os 81 confrontos.">
   <h1 class="text-4xl">Tabela de tipos</h1>
   <p class="mt-1 text-muted">Super-efetivo causa 1,6×; resistido causa 0,625×. Não há imunidades, e atacar o próprio elemento costuma ser resistido.</p>
 
-  <label class="rotulo mt-6 block" for="inimigo">Elemento do inimigo</label>
-  <select id="inimigo" class="mt-1 w-full campo sm:w-64">
-    {els.map((e) => <option value={e}>{ELEMENTO[e]}</option>)}
-  </select>
+  <div class="mt-6 grid grid-cols-5 gap-1 sm:flex sm:gap-2" role="group" aria-label="Escolha o elemento">
+    {els.map((e, i) => (
+      <button type="button" data-el={e} aria-pressed={i === 0 ? 'true' : 'false'}
+        class="group flex flex-col sm:w-16 items-center gap-1 rounded-2xl py-2 text-xs font-semibold text-muted hover:bg-white aria-pressed:bg-white aria-pressed:text-ink">
+        <span class="rounded-full p-0.5 ring-2 ring-transparent group-aria-pressed:ring-[var(--cor)]" style={`--cor:${COR_HEX[e][0]}`}><Icone e={e} tam={40} /></span>
+        {ELEMENTO[e]}
+      </button>
+    ))}
+  </div>
 
   {els.map((e, i) => {
     const p = painel(e);
+    const lado = (lista: E[], cls: string) => (
+      <ul class="flex flex-col items-center gap-1.5">
+        {lista.map((x) => <li class={`flex w-full items-center gap-1.5 rounded-full py-0.5 pr-2.5 pl-0.5 text-xs font-semibold ${cls}`}><Icone e={x} tam={22} />{ELEMENTO[x]}</li>)}
+      </ul>
+    );
+    const seta = (txt: string, dir: '←' | '→', cls: string) => <span class={`rounded-full px-2 py-0.5 text-center font-mono text-[11px] font-semibold whitespace-nowrap ${cls}`}>{dir === '←' && '← '}{txt}{dir === '→' && ' →'}</span>;
+    const fluxo = (esq: E[], se: any, sd: any, dir: E[], ce: string, cd: string) => (
+      <div class="mt-4 grid grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-center gap-2 sm:gap-4">
+        {lado(esq, ce)}
+        <div class="flex flex-col items-center gap-2">{se}<Icone e={e} tam={56} nome />{sd}</div>
+        {lado(dir, cd)}
+      </div>
+    );
     return (
-      <div data-painel={e} hidden={i > 0} class="mt-4 grid gap-3 sm:grid-cols-3">
-        <div class="rounded-2xl bg-casal-50 p-4">
-          <h2 class="font-semibold text-casal-700">Ataque com (1,6×)</h2>
-          <div class="mt-2 flex flex-wrap gap-1">{p.bate.map((x) => <Elemento e={x} />)}</div>
-        </div>
-        <div class="rounded-2xl bg-[#EDF3FA] p-4">
-          <h2 class="font-semibold text-danube-900">Resistem aos golpes dele (0,625×)</h2>
-          <div class="mt-2 flex flex-wrap gap-1">{p.aguenta.map((x) => <Elemento e={x} />)}</div>
-        </div>
-        <div class="rounded-2xl bg-[#FBEDEF] p-4">
-          <h2 class="font-semibold text-[#8A2F3E]">Evite usar (ele causa 1,6×)</h2>
-          <div class="mt-2 flex flex-wrap gap-1">{p.sofre.map((x) => <Elemento e={x} />)}</div>
-        </div>
+      <div data-painel={e} hidden={i > 0} class="mt-4 grid gap-4 md:grid-cols-2">
+        <section class="card p-5">
+          <h2 class="text-lg font-semibold">Atacando com {ELEMENTO[e]}</h2>
+          <p class="text-sm text-muted">À esquerda, quem resiste; à direita, quem leva dano extra.</p>
+          {fluxo(p.fraco, seta('0,625×', '←', RUIM), seta('1,6×', '→', BOM), p.forte, RUIM, BOM)}
+        </section>
+        <section class="card p-5">
+          <h2 class="text-lg font-semibold">Defendendo com {ELEMENTO[e]}</h2>
+          <p class="text-sm text-muted">À esquerda, quem causa pouco dano; à direita, quem causa dano extra.</p>
+          {fluxo(p.resiste, seta('0,625×', '→', BOM), seta('1,6×', '←', RUIM), p.sofre, BOM, RUIM)}
+        </section>
       </div>
     );
   })}
 
-  <h2 class="mt-10 text-xl font-semibold">Todos os 81 confrontos</h2>
-  <p class="mt-1 text-sm text-muted">Linha = quem ataca, coluna = quem defende. * = as fontes divergem, detalhes abaixo.</p>
-  <div class="card mt-3 overflow-x-auto p-3">
-    <table class="text-center text-xs">
-      <thead>
-        <tr>
-          <th class="p-1 text-left text-danube-700">ATQ ↓ DEF →</th>
-          {els.map((d) => <th class="p-1 font-medium">{ELEMENTO[d]}</th>)}
-        </tr>
-      </thead>
-      <tbody>
-        {els.map((a) => (
-          <tr>
-            <th class="p-1 text-left font-medium">{ELEMENTO[a]}</th>
-            {els.map((d) => {
-              const m = mult(a, d);
-              const div = divergente(a, d);
-              return (
-                <td class={`border-2 border-white rounded-lg px-2 py-1.5 font-mono tabular-nums ${COR[m]}`} title={div ? `Divergência: ${div.nota}` : undefined}>
-                  {TXT[m]}{div && '*'}
-                </td>
-              );
-            })}
-          </tr>
+  <section class="card mt-10 p-4 sm:p-6">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h2 class="text-xl font-semibold">Todos os 81 confrontos</h2>
+        <p class="text-sm text-muted">Linha ataca, coluna defende.</p>
+      </div>
+      <ul class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted" aria-label="Legenda">
+        {(['forte', 'normal', 'fraco'] as const).map((m) => (
+          <li class="flex items-center gap-1.5"><span class={`h-3 w-3 rounded ring-1 ring-black/10 ${COR[m]}`}></span>{{ forte: 'Super-efetivo', normal: 'Normal', fraco: 'Resistido' }[m]} {TXT[m]}</li>
         ))}
-      </tbody>
-    </table>
-  </div>
-  <ul class="mt-3 space-y-0.5 text-xs text-muted">
-    {tabela.divergencias.map((d) => <li>* {ELEMENTO[d.ataque as E]} → {ELEMENTO[d.defesa as E]}: {TXT[mult(d.ataque as E, d.defesa as E)]} aqui; {d.nota}</li>)}
-  </ul>
+      </ul>
+    </div>
+    <div class="mt-4 overflow-x-auto">
+      <table id="matriz" class="w-full min-w-[640px] table-fixed border-separate border-spacing-1 text-center text-[13px]">
+        <colgroup><col class="w-32" /></colgroup>
+        <thead>
+          <tr>
+            <th class="sticky left-0 z-10 bg-white p-1 text-xs font-semibold text-muted">Ataque</th>
+            {els.map((d) => <th data-d={d} class="rounded-lg p-1 text-[11px] font-semibold text-muted"><span class="flex flex-col items-center gap-1"><Icone e={d} tam={30} />{ELEMENTO[d]}</span></th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {els.map((a) => (
+            <tr>
+              <th data-a={a} class="sticky left-0 z-10 rounded-lg bg-white p-1 text-left text-sm font-semibold"><span class="flex items-center gap-2 whitespace-nowrap"><Icone e={a} tam={30} />{ELEMENTO[a]}</span></th>
+              {els.map((d) => {
+                const m = mult(a, d);
+                return <td data-a={a} data-d={d} class={`rounded-xl py-3.5 tabular-nums ${COR[m]}`} title={`${ELEMENTO[a]} atacando ${ELEMENTO[d]}: ${TXT[m]}`}>{TXT[m]}</td>;
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
   <p class="mt-4 text-xs text-danube-700">
     A wiki oficial não publica esta tabela. Matriz da comunidade, conferida em {new Date(tabela.conferidoEm + 'T12:00').toLocaleDateString('pt-BR')} contra{' '}
     {tabela.fontes.map((f, i) => <>{i > 0 && ', '}<a class="underline" href={f}>{new URL(f).hostname}</a></>)}.
@@ -89,9 +111,24 @@ const painel = (e: E) => ({
 
 <script>
   import { evento } from '../scripts/evento.ts';
-  const sel = document.getElementById('inimigo') as HTMLSelectElement;
+  const botoes = document.querySelectorAll<HTMLButtonElement>('[data-el]');
   const paineis = document.querySelectorAll<HTMLElement>('[data-painel]');
-  const mostra = () => paineis.forEach((p) => (p.hidden = p.dataset.painel !== sel.value));
-  sel.addEventListener('change', () => { mostra(); evento('tipos_inimigo', { elemento: sel.value }); });
-  mostra(); // o navegador pode restaurar o select num valor diferente do painel inicial
+  botoes.forEach((b) => b.addEventListener('click', () => {
+    botoes.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    paineis.forEach((p) => (p.hidden = p.dataset.painel !== b.dataset.el));
+    evento('tipos_elemento', { elemento: b.dataset.el! });
+  }));
+
+  // Mira na matriz: destaca a linha e a coluna da célula sob o mouse.
+  const matriz = document.getElementById('matriz')!;
+  const celulas = matriz.querySelectorAll<HTMLElement>('[data-a], [data-d]');
+  const mira = (a?: string, d?: string) => celulas.forEach((c) => c.classList.toggle('mira', !!a && (c.dataset.a === a || c.dataset.d === d)));
+  matriz.addEventListener('mouseover', (ev) => { const td = (ev.target as HTMLElement).closest('td'); mira(td?.dataset.a, td?.dataset.d); });
+  matriz.addEventListener('mouseleave', () => mira());
 </script>
+
+<style>
+  /* Linha e coluna em foco ficam contornadas; o resto da matriz não muda. */
+  #matriz .mira { box-shadow: inset 0 0 0 2px var(--color-danube-200); }
+  #matriz th.mira { color: var(--color-casal); font-weight: 700; }
+</style>

@@ -1,0 +1,22 @@
+---
+import Icone from './IconeElemento.astro';
+import { ELEMENTO } from '../rotulos.ts';
+import type { Elemento } from '../types.ts';
+
+// Filtro de elemento com ícones no lugar do <select>: rádios nativos (FormData e o evento "input" do form continuam funcionando).
+const { name = 'el', els = Object.keys(ELEMENTO) as Elemento[], class: cls } = Astro.props as { name?: string; els?: Elemento[]; class?: string };
+const item = 'flex h-10 cursor-pointer items-center justify-center rounded-full border border-danube-100 bg-white has-checked:border-casal has-checked:ring-2 has-checked:ring-casal/25 has-focus-visible:outline-2 has-focus-visible:outline-danube hover:border-danube';
+---
+
+<fieldset class:list={['flex flex-wrap gap-1', cls]}>
+  <legend class="sr-only">Elemento</legend>
+  <label class={`${item} px-3.5 text-sm font-semibold text-casal`}>
+    <input type="radio" name={name} value="" checked class="sr-only" />Todos
+  </label>
+  {els.map((e) => (
+    <label class={`${item} w-10`} title={ELEMENTO[e]}>
+      <input type="radio" name={name} value={e} class="sr-only" />
+      <Icone e={e} tam={30} /><span class="sr-only">{ELEMENTO[e]}</span>
+    </label>
+  ))}
+</fieldset>

@@ -2,13 +2,14 @@
 import Base from '../layouts/Base.astro';
 import { aniimos } from '../data.ts';
 import { STAT } from '../rotulos.ts';
+import tabela from '../../data/elementos.json';
 
 const dados = {
   aniimos: aniimos.map((a) => ({
     slug: a.slug, nome: a.nome.pt, en: a.nome.en,
     formas: a.formas.map((f) => ({ chave: f.chave, nome: f.nome.pt, elementos: f.elementos, stats: f.stats, imagem: f.imagem })),
   })),
-  STAT,
+  STAT, ataque: tabela.ataque,
 };
 ---
 
@@ -36,10 +37,11 @@ const dados = {
 
 <script>
   import { umaVez } from '../scripts/evento.ts';
-  import { chip, esc, pilulas, seletor } from '../scripts/seletor.ts';
+  import { chip, esc, iconeEl, pilulas, seletor } from '../scripts/seletor.ts';
   type F = { chave: string; nome: string; elementos: string[]; stats: Record<string, number>; imagem: string };
   type A = { slug: string; nome: string; en: string; formas: F[] };
-  const D = JSON.parse(document.getElementById('dados')!.textContent!) as { aniimos: A[]; STAT: Record<string, string> };
+  const D = JSON.parse(document.getElementById('dados')!.textContent!) as { aniimos: A[]; STAT: Record<string, string>; ataque: Record<string, { forte: string[] }> };
+  const els = Object.keys(D.ataque);
   const opcoes = D.aniimos.map((a) => ({
     slug: a.slug, nome: a.nome, en: a.en, imagem: a.formas[0].imagem,
     elementos: [...new Set(a.formas.flatMap((f) => f.elementos))],
@@ -93,9 +95,16 @@ const dados = {
         return `<td class="p-2 sm:p-3"><span class="font-mono tabular-nums ${melhor ? 'font-semibold text-ok' : 'text-ink'}">${v}${melhor ? '<span class="ml-1 text-xs" aria-label="maior">▲</span>' : ''}</span>${barra}</td>`;
       }).join('')}</tr>`;
     }).join('');
+    // Mesma regra do montador de time: forte se algum elemento dele causa 1,6×; fraco se algum elemento dele leva 1,6×.
+    const tipos = (rotulo: string, lista: (f: F) => string[]) => `<tr class="border-t border-line">
+      <th class="rotulo p-2 text-left text-[11px] sm:p-3 sm:text-xs">${rotulo}</th>${sel.map((m) => !m
+        ? '<td class="p-2 text-danube-200 sm:p-3">—</td>'
+        : `<td class="p-2 sm:p-3"><span class="flex flex-wrap gap-1">${lista(m.f).map((e) => iconeEl(e, 26)).join('') || '<span class="text-danube-200">—</span>'}</span></td>`).join('')}</tr>`;
+    const linhasTipo = tipos('Bate forte em', (f) => els.filter((d) => f.elementos.some((a) => D.ataque[a].forte.includes(d))))
+      + tipos('Leva 1,6× de', (f) => els.filter((a) => f.elementos.some((d) => D.ataque[a].forte.includes(d))));
     t.innerHTML = `<div class="card overflow-hidden"><table class="w-full table-fixed text-sm">
       <colgroup><col class="w-18 sm:w-28" /><col /><col /><col /></colgroup>
-      <thead><tr><th></th>${cab}</tr></thead><tbody>${linhas}</tbody></table></div>`;
+      <thead><tr><th></th>${cab}</tr></thead><tbody>${linhas}${linhasTipo}</tbody></table></div>`;
   }
 
   const campos = slots.map((s, i) =>

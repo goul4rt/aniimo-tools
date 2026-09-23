@@ -1,6 +1,6 @@
 // Combobox de Aniimo (padrão ARIA 1.2 "combobox + listbox"), no lugar do <datalist> nativo,
 // que no Chrome/macOS abre um popup escuro do sistema, só com o texto e sem imagem.
-import { COR, ELEMENTO } from '../rotulos.ts';
+import { COR, COR_HEX, ELEMENTO, mioloIcone } from '../rotulos.ts';
 import type { Elemento } from '../types.ts';
 import { evento } from './evento.ts';
 
@@ -10,7 +10,14 @@ export type Opcao = { slug: string; nome: string; en: string; imagem: string; el
 export const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
 const semAcento = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
 export const chip = (e: string) =>
-  `<span class="rounded-full px-2 py-px text-[11px] font-semibold ${COR[e as Elemento]}">${ELEMENTO[e as Elemento]}</span>`;
+  `<span class="inline-flex items-center gap-1 rounded-full py-px pr-2 pl-1 text-[11px] font-semibold ${COR[e as Elemento]}"><svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${mioloIcone(e as Elemento)}</svg>${ELEMENTO[e as Elemento]}</span>`;
+
+/** Círculo na cor do elemento com o ícone (versão HTML do IconeElemento.astro). `apagado` = fora da cobertura. */
+export const iconeEl = (e: string, tam = 32, apagado = false) => {
+  const [fundo, traco] = COR_HEX[e as Elemento];
+  return `<span title="${ELEMENTO[e as Elemento]}" class="inline-flex shrink-0 items-center justify-center rounded-full ${apagado ? 'opacity-25 grayscale' : ''}" style="background:${fundo};width:${tam}px;height:${tam}px">`
+    + `<svg width="${Math.round(tam * 0.55)}" height="${Math.round(tam * 0.55)}" viewBox="0 0 24 24" fill="none" stroke="${traco}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${mioloIcone(e as Elemento)}</svg></span>`;
+};
 
 let n = 0;
 

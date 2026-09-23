@@ -1,0 +1,104 @@
+---
+import Base from '../layouts/Base.astro';
+import FiltroElemento from '../components/FiltroElemento.astro';
+import Icone from '../components/IconeElemento.astro';
+import { porSlug } from '../data.ts';
+import { ELEMENTO, PAPEL } from '../rotulos.ts';
+import { icone } from '../scripts/icones.ts';
+import prontos from '../../data/times.json';
+import type { Elemento, Papel } from '../types.ts';
+
+// Times prontos: resolve cada membro na build; slug/forma que sumiu da wiki quebra a build em vez de publicar card vazio.
+const NIVEL: Record<string, string> = { iniciante: 'Iniciante', avancado: 'Avançado', endgame: 'Endgame' };
+const times = prontos.times.map((t) => ({
+  ...t,
+  membros: t.membros.map((m) => {
+    if (!('slug' in m) || !m.slug) return { ...m, a: undefined, f: undefined };
+    const a = porSlug.get(m.slug);
+    const f = a?.formas.find((x) => x.chave === (('forma' in m && m.forma) || a.formas[0].chave));
+    if (!a || !f) throw new Error(`data/times.json: "${t.nome}" cita ${m.slug}/${'forma' in m ? m.forma : ''}, que não existe`);
+    return { ...m, a, f };
+  }),
+}));
+const carregar = (t: (typeof times)[number]) => t.membros.map((m) => (m.a ? `${m.a.slug}:${m.f!.chave}` : '')).join(',');
+---
+
+<Base title="Times prontos · Aniimo Tools" description="Times prontos de Aniimo dos guias da comunidade, do iniciante ao endgame, com filtro por elemento e link para abrir no montador de time.">
+  <section aria-labelledby="titulo-prontos">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <h1 id="titulo-prontos" class="text-4xl">Times prontos</h1>
+        <p class="mt-1 text-muted">Composições dos guias da comunidade. Abra no montador para ver a cobertura e as fraquezas, e para trocar quem você não tem.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <div id="filtro-nivel" role="group" aria-label="Nível" class="flex gap-1 rounded-full bg-danube-100 p-1 text-sm font-semibold">
+          {[['', 'Todos'], ...Object.entries(NIVEL)].map(([v, r], i) => (
+            <button type="button" data-nivel={v} data-umami-event="time_prontos_nivel" data-umami-event-nivel={r} aria-pressed={i === 0 ? 'true' : 'false'}
+              class="cursor-pointer rounded-full px-2.5 py-1.5 text-danube-700 sm:px-3.5 aria-pressed:bg-white aria-pressed:text-ink">{r}</button>
+          ))}
+        </div>
+        <div id="filtro-el"><FiltroElemento name="el-prontos" els={(Object.keys(ELEMENTO) as Elemento[]).filter((k) => times.some((t) => t.elemento === k))} /></div>
+      </div>
+    </div>
+
+    <div id="lista-prontos" class="mt-4 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+      {times.map((t) => (
+        <article data-nivel={t.nivel} data-el={t.elemento} class="card flex flex-col gap-3 p-4">
+          <div class="flex items-start justify-between gap-2">
+            <h3 class="flex items-center gap-2 text-lg leading-tight font-semibold">{t.elemento && <Icone e={t.elemento as Elemento} tam={24} />}{t.nome}</h3>
+            <span class="shrink-0 rounded-full bg-casal-50 px-2.5 py-0.5 text-[11px] font-semibold text-casal">{NIVEL[t.nivel]}</span>
+          </div>
+          <ul class="grid grid-cols-4 gap-2">
+            {t.membros.map((m) => (
+              <li class="min-w-0 text-center" title={m.a ? `${m.a.nome.pt} · ${m.f!.nome.pt}` : 'fora' in m ? `${m.fora}: ainda não está na wiki oficial` : 'Vaga livre'}>
+                {m.a ? (
+                  <img src={m.f!.imagem} alt="" width="64" height="64" loading="lazy" decoding="async"
+                    class:list={['mx-auto aspect-square w-full max-w-16 rounded-xl bg-danube-100 object-contain', m.f!.chave === 'prismana-form' && 'ring-2 ring-[#F48DB8]']} onerror="this.style.visibility='hidden'" />
+                ) : (
+                  <div class="mx-auto grid aspect-square w-full max-w-16 place-items-center rounded-xl border-2 border-dashed border-danube-200 text-lg font-semibold text-danube-200">{'fora' in m ? '?' : '+'}</div>
+                )}
+                <span class="mt-1 block truncate text-xs font-semibold text-ink">{m.a ? m.a.nome.pt : 'fora' in m ? m.fora : 'Livre'}</span>
+                <span class="flex items-center justify-center gap-0.5 text-[10px] font-semibold text-muted uppercase">
+                  {m.papel !== 'flex' && <Fragment set:html={icone(m.papel as Papel, 'h-3 w-3')} />}
+                  {m.papel === 'flex' ? 'qualquer' : PAPEL[m.papel as Papel]}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p class="text-sm leading-relaxed text-muted">{t.nota}</p>
+          <div class="mt-auto flex items-center justify-between gap-2 border-t border-line pt-3">
+            <a href={prontos.fontes[t.fonte]} class="min-w-0 truncate text-xs text-danube-700 underline">{new URL(prontos.fontes[t.fonte]).hostname}</a>
+            <a href={`/time/?t=${carregar(t)}`} data-umami-event="time_pronto_carregado" data-umami-event-time={t.nome} class="btn h-9 shrink-0 px-4 text-sm whitespace-nowrap">Abrir no montador</a>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p id="prontos-vazio" hidden class="mt-3 text-sm text-muted">Nenhum time pronto com esses filtros.</p>
+    <p class="mt-4 text-xs text-danube-700">
+      Conferido em {new Date(prontos.conferidoEm + 'T12:00').toLocaleDateString('pt-BR')}. Anel rosa = forma Prismana; "?" = Aniimo que ainda não está na wiki oficial (o slot fica livre).
+    </p>
+  </section>
+</Base>
+
+<script>
+  import { evento } from '../scripts/evento.ts';
+  const nivel = document.getElementById('filtro-nivel')!;
+  const filtroEl = document.getElementById('filtro-el')!;
+  const elProntos = () => filtroEl.querySelector<HTMLInputElement>('input:checked')!.value;
+  function filtraProntos() {
+    const n = nivel.querySelector('[aria-pressed=true]')!.getAttribute('data-nivel');
+    let vistos = 0;
+    document.querySelectorAll<HTMLElement>('#lista-prontos > article').forEach((c) => {
+      c.hidden = (!!n && c.dataset.nivel !== n) || (!!elProntos() && c.dataset.el !== elProntos());
+      if (!c.hidden) vistos++;
+    });
+    document.getElementById('prontos-vazio')!.hidden = vistos > 0;
+  }
+  nivel.addEventListener('click', (ev) => {
+    const b = (ev.target as HTMLElement).closest('[data-nivel]');
+    if (!b) return;
+    nivel.querySelectorAll('[data-nivel]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    filtraProntos();
+  });
+  filtroEl.addEventListener('change', () => { filtraProntos(); evento('time_prontos_elemento', { elemento: elProntos() || 'todos' }); });
+</script>
