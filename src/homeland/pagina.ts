@@ -3,6 +3,7 @@ import dadosBrutos from '../../data/homeland.json';
 import { bloqueio, ciclo, melhorias, otimiza, padrao, type Config, type Dados, type Objetivo, type Plano, type Receita } from './otimizador.ts';
 import { ALTURA, LARGURA, TIPOS, cabe, climas, cobertos, cobertura, codifica, decodifica, ehClima, montaAuto, type Peca } from './layout.ts';
 import { chip } from '../scripts/seletor.ts';
+import { iconeInst, iconeNoMapa } from './icones.ts';
 import { evento, umaVez } from '../scripts/evento.ts';
 
 const d = dadosBrutos as unknown as Dados;
@@ -29,6 +30,8 @@ const CATEGORIA: Record<string, string> = { Materials: 'Materiais', 'Aniimo Mate
 const MOEDA: Record<Objetivo, string> = { coins: 'Home Coin', aniipods: 'Aniipods', aniimo_exp: 'EXP de Aniimo' };
 const nomeItem = (id: string) => d.receitas.find((r) => r.id === id)?.nome ?? id.replace(/_/g, ' ').replace(/^./, (c) => c.toUpperCase());
 const porNome = new Map(d.instalacoes.map((f) => [f.nome, f]));
+/** Item → instalação que o produz (para o ícone). */
+const origem = new Map(d.receitas.map((r) => [r.produz ?? r.id, r.instalacao]));
 const porSlugInst = new Map(d.instalacoes.map((f) => [f.slug, f]));
 
 // ---------- estado <-> link ----------
@@ -97,6 +100,7 @@ function montarConfig() {
     const travada = t.qtd === 0;
     const niveis = Object.keys(f.niveis).map(Number).filter((n) => n <= t.nivel);
     return `<div class="flex items-center gap-2 rounded-xl border border-line px-3 py-2 ${travada ? 'opacity-50' : ''}">
+      <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-casal-50 text-casal">${iconeInst(f.nome)}</span>
       <span class="min-w-0 flex-1 leading-tight"><span class="block truncate text-sm font-semibold">${f.nome}</span>
         <span class="block text-[11px] text-muted">${travada ? `libera no RV ${libera}` : CATEGORIA[f.categoria] ?? f.categoria}</span></span>
       <input type="number" min="0" max="${t.qtd}" value="${a.qtd}" data-qtd="${f.nome}" aria-label="Quantidade de ${f.nome}" ${travada ? 'disabled' : ''}
@@ -156,7 +160,8 @@ function mostrarPlano(p: Plano) {
   $('plano').innerHTML = p.linhas.length ? `<table class="w-full text-sm">
     <thead class="text-left"><tr class="rotulo text-[11px]"><th class="px-4 py-2">Instalação</th><th class="px-2 py-2">Produzir</th><th class="px-2 py-2 text-right">Por hora</th><th class="px-2 py-2 text-right">Ciclo</th><th class="px-4 py-2 text-right">Eficiência</th></tr></thead>
     <tbody>${p.linhas.map((l) => `<tr class="border-t border-line align-top">
-      <td class="px-4 py-2.5"><span class="font-semibold">${l.r.instalacao}</span> <span class="font-mono text-xs text-danube-700">×${l.unidades}</span></td>
+      <td class="px-4 py-2.5"><span class="flex items-center gap-2"><span class="grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-casal-50 text-casal">${iconeInst(l.r.instalacao)}</span>
+        <span><span class="font-semibold">${l.r.instalacao}</span> <span class="font-mono text-xs text-danube-700">×${l.unidades}</span></span></span></td>
       <td class="px-2 py-2.5"><span class="font-semibold text-ink">${l.r.nome}</span> ${l.r.clima ? climaTag(l.r.clima) : ''}
         ${l.r.insumos.length ? `<span class="block text-xs text-muted">usa ${l.r.insumos.map(([i, n]) => `${n} ${nomeItem(i)}`).join(' + ')}</span>` : ''}</td>
       <td class="px-2 py-2.5 text-right font-mono">${fmt(l.porHora, 1)}</td>
@@ -178,7 +183,7 @@ function mostrarPlano(p: Plano) {
 
   const sub = Object.entries(p.subprodutos).filter(([, v]) => v > 0);
   $('vendas').innerHTML = (p.vendas.length ? `<div class="grid gap-x-6 gap-y-1.5 sm:grid-cols-2 lg:grid-cols-3">${p.vendas.map((v) => `
-    <div class="flex items-baseline justify-between gap-3 border-b border-line py-1.5 text-sm"><span class="min-w-0 truncate font-semibold">${nomeItem(v.item)}</span>
+    <div class="flex items-baseline justify-between gap-3 border-b border-line py-1.5 text-sm"><span class="flex min-w-0 items-center gap-1.5 font-semibold"><span class="text-danube">${iconeInst(origem.get(v.item) ?? '')}</span><span class="truncate">${nomeItem(v.item)}</span></span>
       <span class="shrink-0 font-mono text-muted">${fmt(v.qtdHora, 1)}/h · <span class="font-semibold text-ink">${fmt(v.valorHora)}</span></span></div>`).join('')}</div>`
     : '<p class="text-sm text-muted">Nada à venda neste plano.</p>')
     + (sub.length ? `<p class="mt-3 text-xs text-muted">De brinde, para subir de RV: ${sub.map(([k, v]) => `<strong>${fmt(v, 1)}/h de ${nomeItem(k)}</strong>`).join(' e ')}.</p>` : '');
@@ -206,7 +211,7 @@ function montarPaleta() {
     return `<button type="button" data-ferramenta="${cod}" aria-pressed="${ferramenta === cod}" ${lim === 0 ? 'disabled' : ''}
       data-umami-event="homeland_layout_ferramenta" data-umami-event-peca="${cod}"
       class="cursor-pointer rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40 aria-pressed:border-casal aria-pressed:bg-casal aria-pressed:text-white border-danube-100 bg-white text-casal"
-      title="${t.lado}×${t.lado} tiles${lim === 0 ? ` · libera no RV ${libera}` : ''}">${t.nome} <span class="font-mono">${n}/${lim}</span></button>`;
+      title="${t.lado}×${t.lado} tiles${lim === 0 ? ` · libera no RV ${libera}` : ''}"><span class="inline-flex items-center gap-1.5">${iconeInst(t.nome, 'h-3.5 w-3.5')}${t.nome} <span class="font-mono">${n}/${lim}</span></span></button>`;
   }).join('') + `<button type="button" data-ferramenta="apagar" aria-pressed="${ferramenta === 'apagar'}" data-umami-event="homeland_layout_ferramenta" data-umami-event-peca="apagar"
     class="cursor-pointer rounded-full border border-[#F2C4CC] bg-white px-3 py-1.5 text-xs font-semibold text-[#8A2F3E] aria-pressed:bg-[#FBEDEF]">Apagar</button>`;
 }
@@ -232,10 +237,9 @@ function desenhar() {
     const t = TIPOS[p.tipo];
     const c = ehClima(p) ? p.modo! : cl.get(p);
     const cor = ehClima(p) ? CLIMA[p.modo!][1] : c === 'misto' ? '#FBEDEF' : c ? CLIMA[c][1] : '#FFFFFF';
-    const rotulo = ehClima(p) ? CLIMA[p.modo!][0].slice(0, 4) : t.nome.split(' ').map((w) => w[0]).join('');
     partes.push(`<g class="cursor-grab"><rect x="${p.x + 0.06}" y="${p.y + 0.06}" width="${t.lado - 0.12}" height="${t.lado - 0.12}" rx="0.3" fill="${cor}"
       stroke="${c === 'misto' ? '#C94B5F' : '#286464'}" stroke-width="0.1" ${ehClima(p) ? '' : 'fill-opacity="0.9"'}/>
-      <text x="${p.x + t.lado / 2}" y="${p.y + t.lado / 2 + 0.3}" text-anchor="middle" font-size="${Math.min(0.9, t.lado / 2.6)}" font-weight="700" fill="#15393A" font-family="Plus Jakarta Sans, sans-serif" pointer-events="none">${rotulo}</text></g>`);
+      ${iconeNoMapa(t.nome, p.x + t.lado * 0.2, p.y + t.lado * 0.2, t.lado * 0.6, '#15393A')}<title>${t.nome}${p.modo ? ` · ${CLIMA[p.modo][0]}` : ''}</title></g>`);
   }
   if (fantasma) {
     const t = TIPOS[fantasma.tipo], ok = cabe(pecas, fantasma) && usadas(fantasma.tipo) < limite(fantasma.tipo);
@@ -248,12 +252,12 @@ function desenhar() {
   const mistos = [...cl.values()].filter((c) => c === 'misto').length;
   const semClima = [...cl.values()].filter((c) => !c).length;
   $('cobertura').innerHTML = (Object.keys(cob).length
-    ? `<ul class="space-y-1.5 text-sm">${Object.entries(cob).map(([k, n]) => { const [inst, c] = k.split('|'); return `<li class="flex items-center gap-2">${climaTag(c)} <span class="font-semibold">${n}× ${inst}</span></li>`; }).join('')}</ul>`
+    ? `<ul class="space-y-1.5 text-sm">${Object.entries(cob).map(([k, n]) => { const [inst, c] = k.split('|'); return `<li class="flex items-center gap-2">${climaTag(c)} <span class="text-danube">${iconeInst(inst)}</span><span class="font-semibold">${n}× ${inst}</span></li>`; }).join('')}</ul>`
     : '<p class="text-sm text-muted">Nenhuma lavoura coberta por clima ainda. Coloque um prédio de clima e lavouras dentro do quadrado pontilhado.</p>')
     + (mistos ? `<p class="mt-2 text-xs font-semibold text-err">${mistos} lavoura(s) pegam dois climas ao mesmo tempo e não contam. Afaste um dos prédios.</p>` : '')
     + (semClima ? `<p class="mt-2 text-xs text-muted">${semClima} lavoura(s) fora de qualquer clima: plantam só o que não pede clima.</p>` : '')
     + `<p class="mt-3 border-t border-line pt-3 text-sm">Com este layout o plano rende <strong class="font-mono">${fmt(ganhoAtual)}</strong> ${MOEDA[cfg.objetivo]}/h. As lavouras que você não colocou aqui continuam no plano, só sem clima.</p>`;
-  $('pecas').innerHTML = pecas.length ? pecas.map((p, i) => `<li class="flex items-center gap-2"><span class="flex-1">${TIPOS[p.tipo].nome}${p.modo ? ` · ${CLIMA[p.modo][0]}` : ''} <span class="font-mono text-xs text-muted">(${p.x}, ${p.y})</span></span>
+  $('pecas').innerHTML = pecas.length ? pecas.map((p, i) => `<li class="flex items-center gap-2"><span class="text-danube">${iconeInst(TIPOS[p.tipo].nome)}</span><span class="flex-1">${TIPOS[p.tipo].nome}${p.modo ? ` · ${CLIMA[p.modo][0]}` : ''} <span class="font-mono text-xs text-muted">(${p.x}, ${p.y})</span></span>
     <button type="button" data-remover="${i}" class="cursor-pointer rounded-full px-2 text-xs font-semibold text-err hover:bg-[#FBEDEF]" aria-label="Remover">remover</button></li>`).join('')
     : '<li class="text-muted">Nenhuma peça.</li>';
 }
@@ -371,7 +375,7 @@ function mostrarReceitas() {
       const b = bloqueio(d, r, cfg);
       return `<tr class="border-t border-line align-top">
         <td class="px-4 py-2"><span class="font-semibold text-ink">${r.nome}</span> ${r.clima ? climaTag(r.clima) : ''}${r.especial ? ' <span class="text-[11px] font-semibold text-warn">especial</span>' : ''}${r.naoVerificada ? ' <span class="text-[11px] font-semibold text-muted">não verificado</span>' : ''}</td>
-        <td class="px-2 py-2 whitespace-nowrap">${r.instalacao} <span class="text-xs text-muted">Nv. ${r.nivel}</span></td>
+        <td class="px-2 py-2 whitespace-nowrap"><span class="inline-flex items-center gap-1.5"><span class="text-danube">${iconeInst(r.instalacao)}</span>${r.instalacao}</span> <span class="text-xs text-muted">Nv. ${r.nivel}</span></td>
         <td class="px-2 py-2 text-xs text-muted">${r.insumos.map(([i, n]) => `${n} ${nomeItem(i)}`).join(' + ') || (r.custo ? `semente: ${fmt(r.custo)}` : '—')}</td>
         <td class="px-2 py-2 text-right font-mono text-muted">${tempo(ciclo(d, r, cfg).segundos)}</td>
         <td class="px-2 py-2 text-right font-mono">${r.rendimento}${r.subproduto ? `<span class="block text-[11px] text-muted">+${r.subproduto[1]} ${nomeItem(r.subproduto[0])}</span>` : ''}</td>

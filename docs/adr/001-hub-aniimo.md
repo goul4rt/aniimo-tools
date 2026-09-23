@@ -63,7 +63,9 @@ A fonte de verdade é a wiki oficial; tudo o mais serve para cruzar, referenciar
 | dluzgames/aniimo-wiki | `data/all_aniimos.json` (~376 registros) e assets extraídos | JSON, PNG | Referência de esquema. Sem licença declarada; não redistribuir os assets |
 | NightmareFTW/NightmareFTW.github.io | `scripts/update-aniimo.js`: scraper dos payloads com cron diário | JS | Referência de arquitetura do pipeline |
 | wanghuan072/aniimo | Site Astro com aniimo.json e pipeline documentado | JSON, Astro | Referência de estrutura Astro |
-| Eisenrot/aniimo-homeland-optimizer | Otimizador da Homeland | Web | Fora do escopo: já resolve o problema |
+| Eisenrot/aniimo-homeland-optimizer | Otimizador da Homeland | Web | Sem licença declarada: não usar código nem dados |
+| ae-bii/aniimax | Receitas, tempos, preços, requisitos e regras de eficiência da Homeland, conferidos no jogo | CSV + JS | **MIT** (© aebii): base do `/homeland/` via `scripts/homeland.ts`, com a licença junto dos dados |
+| hideoutgacha, game8 | Otimizador e guias de Homeland | HTML | Termos proíbem copiar e extrair dados: só como referência de produto |
 | game8 e aniimotools | Códigos de resgate, tabela de tipos, contagens | HTML | Cruzamento manual dos dados inseridos à mão |
 
 Padrões de URL do CDN:
@@ -75,6 +77,8 @@ Padrões de URL do CDN:
 | Ícone de skill | `{prefixo}_Skill_{skillId}_Icon.png` (única fonte do id da skill) |
 | Ícone de trait | `{prefixo}_Feature_{id}_Icon.png` (única fonte do id do trait) |
 | Ícone de item | `0_Item_{id}_Icon.png` |
+
+Ícones de Homeland (verificado em 23/09/2026): o CDN oficial **não** tem ícones de itens nem de instalações de Homeland (`0_Item_{id}_Icon.png` dá 404 para os ids de Homeland; só existe o que a wiki usa, como `152100`). O site oficial também não tem. O dluzgames tem os ícones extraídos, mas sem licença, e extraído do cliente contraria o D5. Por isso o `/homeland/` usa ícones próprios (Lucide, ISC) por instalação. Se a Pawprint publicar os ícones no CDN, os ids por nome do dluzgames servem de referência para o hotlink.
 
 Os nomes dos elementos divergem entre fontes (Rock/Earth, Holy/Light, Electric/Lightning). O site usa as chaves da wiki oficial (`holy`, não `light`) e guarda os apelidos como sinônimos para a busca.
 
