@@ -233,7 +233,7 @@ Primeiros passos, em ordem:
 - [x] Planejador de Resonance (/evolucao). A wiki só publica os estágios 6–7 (nível 55/65, 1×/2× Cristal de Onifonte), iguais nas 208 formas; o `normalize.ts` confere isso todo dia contra `data/resonance.json`. Estágios 1–5, estrelas e créditos vêm da comunidade (2 fontes; créditos de 1). Requisitos de evolução não existem na wiki (condições vazias) e ficaram de fora
 - [x] Comparador de stats (/comparar, até 3, salvo na URL)
 - [x] Bot de Discord (`bot/`): Worker de HTTP interactions, sem servidor, `/aniimo <nome>` com autocomplete, consumindo a API. No ar em aniimo-bot.extremeplays4.workers.dev
-- [ ] Ativar o bot: criar a aplicação no Discord, configurar `DISCORD_PUBLIC_KEY` e o endpoint e registrar o comando (passos no README)
+- [x] Ativar o bot: segredo no Worker, endpoint aceito pelo Discord (PING verificado) e `/aniimo` registrado
 - [ ] Divulgar nos canais em português do Discord oficial, em comunidades BR no Reddit e em grupos de Telegram/WhatsApp; pedir relatos de erro nos dados
 
 ## Consequências, riscos e gatilhos de revisão
