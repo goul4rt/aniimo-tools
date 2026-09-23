@@ -1,0 +1,1862 @@
+{
+ "fonte": {
+  "site": "https://www.hideoutgacha.com/games/aniimo/homeland-layout",
+  "extraidoEm": "2026-09-23",
+  "permissao": "Uso permitido pelos mantenedores do Hideout Guides (informado ao projeto em 23/09/2026)."
+ },
+ "lote": {
+  "w": 20,
+  "h": 15
+ },
+ "grade": [
+  {
+   "col": 2,
+   "row": 0
+  },
+  {
+   "col": 1,
+   "row": 0
+  },
+  {
+   "col": 2,
+   "row": 1
+  },
+  {
+   "col": 1,
+   "row": 1
+  },
+  {
+   "col": 3,
+   "row": 0
+  },
+  {
+   "col": 3,
+   "row": 1
+  },
+  {
+   "col": 1,
+   "row": 2
+  },
+  {
+   "col": 2,
+   "row": 2
+  },
+  {
+   "col": 3,
+   "row": 2
+  },
+  {
+   "col": 0,
+   "row": 0
+  },
+  {
+   "col": 0,
+   "row": 1
+  },
+  {
+   "col": 0,
+   "row": 2
+  },
+  {
+   "col": 0,
+   "row": 3
+  },
+  {
+   "col": 1,
+   "row": 3
+  },
+  {
+   "col": 2,
+   "row": 3
+  },
+  {
+   "col": 3,
+   "row": 3
+  }
+ ],
+ "custoLote": [
+  0,
+  2000,
+  4000,
+  6000,
+  14000,
+  19000,
+  38000,
+  46000,
+  72000,
+  80000,
+  110000,
+  170000,
+  200000,
+  240000,
+  270000,
+  390000
+ ],
+ "liberaLote": [
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16
+ ],
+ "instalacoes": [
+  {
+   "slug": "aniipod-maker",
+   "nome": "Aniipod Maker",
+   "categoria": "Item Production",
+   "tamanho": {
+    "w": 4.5,
+    "h": 4.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "dance-pad-polisher",
+   "nome": "Dance Pad Polisher",
+   "categoria": "Item Production",
+   "tamanho": {
+    "w": 2.5,
+    "h": 2.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "blazing-stove",
+   "nome": "Blazing Stove",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 2.5,
+    "h": 1.75
+   },
+   "gira": true
+  },
+  {
+   "slug": "bouncy-brew-keg",
+   "nome": "Bouncy Brew Keg",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 3,
+    "h": 3
+   },
+   "gira": true
+  },
+  {
+   "slug": "carousel-mill",
+   "nome": "Carousel Mill",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 5.5,
+    "h": 5.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "chimney-kiln",
+   "nome": "Chimney Kiln",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 5.5,
+    "h": 5.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "claw-game-cooker",
+   "nome": "Claw Game Cooker",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 3.5,
+    "h": 3.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "crafting-table",
+   "nome": "Crafting Table",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 4,
+    "h": 4
+   },
+   "gira": true
+  },
+  {
+   "slug": "joy-wheel-loom",
+   "nome": "Joy Wheel Loom",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 4,
+    "h": 4
+   },
+   "gira": true
+  },
+  {
+   "slug": "jukebox-dryer",
+   "nome": "Jukebox Dryer",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 2.5,
+    "h": 2.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "phonolfactory-table",
+   "nome": "Phonolfactory Table",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 3.5,
+    "h": 3.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "pickling-jar",
+   "nome": "Pickling Jar",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 2.5,
+    "h": 2
+   },
+   "gira": true
+  },
+  {
+   "slug": "simmering-pot",
+   "nome": "Simmering Pot",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 1.5,
+    "h": 1.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "woodworking-bench",
+   "nome": "Woodworking Bench",
+   "categoria": "Materials Processing",
+   "tamanho": {
+    "w": 2,
+    "h": 1.5
+   },
+   "gira": true
+  },
+  {
+   "slug": "dewy-house",
+   "nome": "Dewy House",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 2,
+    "h": 2
+   },
+   "gira": true
+  },
+  {
+   "slug": "farmland",
+   "nome": "Farmland",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 2,
+    "h": 2
+   },
+   "gira": true
+  },
+  {
+   "slug": "floral-windmill",
+   "nome": "Floral Windmill",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 5,
+    "h": 5
+   },
+   "gira": true
+  },
+  {
+   "slug": "mine",
+   "nome": "Mine",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 5,
+    "h": 5
+   },
+   "gira": true
+  },
+  {
+   "slug": "nimbus-bed",
+   "nome": "Nimbus Bed",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 5,
+    "h": 5
+   },
+   "gira": true
+  },
+  {
+   "slug": "starfall-hammock",
+   "nome": "Starfall Hammock",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 5,
+    "h": 5
+   },
+   "gira": true
+  },
+  {
+   "slug": "tidewhisper-sandcastle",
+   "nome": "Tidewhisper Sandcastle",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 5,
+    "h": 5
+   },
+   "gira": true
+  },
+  {
+   "slug": "well",
+   "nome": "Well",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 2,
+    "h": 2
+   },
+   "gira": false
+  },
+  {
+   "slug": "woodland",
+   "nome": "Woodland",
+   "categoria": "Materials Production",
+   "tamanho": {
+    "w": 4,
+    "h": 4
+   },
+   "gira": true
+  },
+  {
+   "slug": "cooling-unit",
+   "nome": "Cooling Unit",
+   "categoria": "Auxiliary Facilities",
+   "tamanho": {
+    "w": 2,
+    "h": 2
+   },
+   "gira": true,
+   "influencia": {
+    "w": 9,
+    "h": 9
+   }
+  },
+  {
+   "slug": "heat-furnace",
+   "nome": "Heat Furnace",
+   "categoria": "Auxiliary Facilities",
+   "tamanho": {
+    "w": 1,
+    "h": 1
+   },
+   "gira": true,
+   "influencia": {
+    "w": 9,
+    "h": 9
+   }
+  },
+  {
+   "slug": "sunlamp",
+   "nome": "Sunlamp",
+   "categoria": "Auxiliary Facilities",
+   "tamanho": {
+    "w": 1,
+    "h": 1
+   },
+   "gira": true,
+   "influencia": {
+    "w": 9,
+    "h": 9
+   }
+  }
+ ],
+ "clima": {
+  "modos": {
+   "heat-furnace": [
+    "Warm",
+    "Scorching"
+   ],
+   "cooling-unit": [
+    "Cool",
+    "Freeze"
+   ],
+   "sunlamp": [
+    "Adequate"
+   ]
+  },
+  "escala": {
+   "Freeze": -2,
+   "Cool": -1,
+   "Warm": 1,
+   "Scorching": 2
+  },
+  "razao": [
+   1,
+   0.8,
+   0.5,
+   0.2
+  ],
+  "equipe": {
+   "heat-furnace": {
+    "Warm": {
+     "name": "Heating up",
+     "ability": "Fire",
+     "level": 1,
+     "workload": 0
+    },
+    "Scorching": {
+     "name": "Heating up",
+     "ability": "Fire",
+     "level": 1,
+     "workload": 0
+    }
+   },
+   "cooling-unit": {
+    "Cool": {
+     "name": "Frozen",
+     "ability": "Ice",
+     "level": 1,
+     "workload": 0
+    },
+    "Freeze": {
+     "name": "Frozen",
+     "ability": "Ice",
+     "level": 2,
+     "workload": 0
+    }
+   },
+   "sunlamp": {
+    "Adequate": {
+     "name": "Glowing",
+     "ability": "Light",
+     "level": 1,
+     "workload": 0
+    }
+   }
+  }
+ },
+ "habilidades": [
+  {
+   "nome": "Bailite",
+   "habilidades": {
+    "Earth": 3,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Baleetle",
+   "habilidades": {
+    "Earth": 1,
+    "Hauling": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Ice": 1,
+      "Earth": 1,
+      "Hauling": 1
+     },
+     "chance": 0.1
+    }
+   ]
+  },
+  {
+   "nome": "Besauce",
+   "habilidades": {
+    "Lightning": 3,
+    "Artisanship": 1
+   }
+  },
+  {
+   "nome": "Blazen",
+   "habilidades": {
+    "Lightning": 3,
+    "Artisanship": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Lightning": 4,
+      "Artisanship": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Bolty",
+   "habilidades": {
+    "Lightning": 1,
+    "Artisanship": 1
+   }
+  },
+  {
+   "nome": "Bonesky",
+   "habilidades": {
+    "Ice": 1,
+    "Hauling": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 1,
+      "Ice": 1,
+      "Hauling": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Bouldus",
+   "habilidades": {
+    "Earth": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Ice": 2,
+      "Earth": 3,
+      "Hauling": 3
+     },
+     "chance": 0.1
+    }
+   ]
+  },
+  {
+   "nome": "Bubbeep",
+   "habilidades": {
+    "Grass": 1,
+    "Water": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 1,
+      "Water": 1,
+      "Hauling": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Budclaw",
+   "habilidades": {
+    "Grass": 1,
+    "Earth": 1,
+    "Hauling": 1
+   }
+  },
+  {
+   "nome": "Budsquire",
+   "habilidades": {
+    "Grass": 1,
+    "Artisanship": 1
+   }
+  },
+  {
+   "nome": "Bulbly",
+   "habilidades": {
+    "Lightning": 1,
+    "Artisanship": 1
+   }
+  },
+  {
+   "nome": "Celestis",
+   "habilidades": {
+    "Dark": 1,
+    "Leisure": 1
+   }
+  },
+  {
+   "nome": "Chirpi",
+   "habilidades": {
+    "Wind": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Water": 1,
+      "Wind": 1
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Grass": 1,
+      "Wind": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Coraliz",
+   "habilidades": {
+    "Earth": 1,
+    "Water": 1,
+    "Hauling": 1
+   }
+  },
+  {
+   "nome": "Cornet",
+   "habilidades": {
+    "Wind": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Water": 2,
+      "Wind": 3
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Lightning": 3,
+      "Wind": 4
+     },
+     "chance": 0.01
+    },
+    {
+     "habilidades": {
+      "Grass": 2,
+      "Wind": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Cozite",
+   "habilidades": {
+    "Earth": 1,
+    "Hauling": 1
+   }
+  },
+  {
+   "nome": "Cubbo",
+   "habilidades": {
+    "Earth": 1,
+    "Hauling": 1
+   }
+  },
+  {
+   "nome": "Dazmand",
+   "habilidades": {
+    "Lightning": 3,
+    "Artisanship": 3
+   }
+  },
+  {
+   "nome": "Dewy",
+   "habilidades": {
+    "Dark": 1,
+    "Leisure": 1,
+    "Perfumery": 1
+   }
+  },
+  {
+   "nome": "Dreaple",
+   "habilidades": {
+    "Dark": 3,
+    "Leisure": 3
+   }
+  },
+  {
+   "nome": "Eklue",
+   "habilidades": {
+    "Wind": 3,
+    "Artisanship": 3
+   }
+  },
+  {
+   "nome": "Eko",
+   "habilidades": {
+    "Wind": 1,
+    "Artisanship": 1
+   }
+  },
+  {
+   "nome": "Emberpup",
+   "habilidades": {
+    "Fire": 1,
+    "Hauling": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Fire": 1,
+      "Earth": 1,
+      "Hauling": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Erlath",
+   "habilidades": {
+    "Water": 3
+   }
+  },
+  {
+   "nome": "Fahloo",
+   "habilidades": {
+    "Water": 1
+   }
+  },
+  {
+   "nome": "Fenmane",
+   "habilidades": {
+    "Lightning": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Lightning": 4,
+      "Light": 3,
+      "Hauling": 3,
+      "Artisanship": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Fennelun",
+   "habilidades": {
+    "Light": 3,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Fenrier",
+   "habilidades": {
+    "Ice": 2,
+    "Hauling": 2
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 1,
+      "Ice": 2,
+      "Hauling": 2
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Fentuft",
+   "habilidades": {
+    "Lightning": 1,
+    "Hauling": 1
+   }
+  },
+  {
+   "nome": "Flamerion",
+   "habilidades": {
+    "Fire": 3
+   }
+  },
+  {
+   "nome": "Flameruff",
+   "habilidades": {
+    "Fire": 2,
+    "Hauling": 2
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Fire": 2,
+      "Earth": 1,
+      "Hauling": 2
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Flutternym",
+   "habilidades": {
+    "Wind": 1,
+    "Leisure": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 1,
+      "Wind": 1,
+      "Leisure": 1
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Dark": 1,
+      "Wind": 1,
+      "Leisure": 1
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Earth": 1,
+      "Wind": 1,
+      "Leisure": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Fragrancier",
+   "habilidades": {
+    "Dark": 3,
+    "Leisure": 3,
+    "Perfumery": 3
+   }
+  },
+  {
+   "nome": "Fulmintis",
+   "habilidades": {
+    "Lightning": 3,
+    "Artisanship": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Lightning": 4,
+      "Light": 3,
+      "Artisanship": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Gachapus",
+   "habilidades": {
+    "Water": 3,
+    "Artisanship": 3
+   }
+  },
+  {
+   "nome": "Geoclaw",
+   "habilidades": {
+    "Ice": 3,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Geodeback",
+   "habilidades": {
+    "Earth": 2,
+    "Hauling": 2
+   }
+  },
+  {
+   "nome": "Glacy",
+   "habilidades": {
+    "Ice": 2,
+    "Water": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Light": 3,
+      "Water": 4,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Glameep",
+   "habilidades": {
+    "Grass": 3,
+    "Water": 2
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Grass": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Glynsera",
+   "habilidades": {
+    "Ice": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Light": 3,
+      "Ice": 4,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    },
+    {
+     "habilidades": {
+      "Dark": 2,
+      "Ice": 3,
+      "Hauling": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Gracewing",
+   "habilidades": {
+    "Wind": 3,
+    "Leisure": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 2,
+      "Wind": 3,
+      "Leisure": 3
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Dark": 2,
+      "Wind": 3,
+      "Leisure": 3
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Earth": 2,
+      "Wind": 3,
+      "Leisure": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Grizbo",
+   "habilidades": {
+    "Earth": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Earth": 4,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Helgon",
+   "habilidades": {
+    "Wind": 3,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Helion",
+   "habilidades": {
+    "Light": 3,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Helmut",
+   "habilidades": {
+    "Dark": 1,
+    "Hauling": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 1,
+      "Ice": 1,
+      "Hauling": 1
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Dark": 1,
+      "Ice": 1,
+      "Hauling": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Helmwhelp",
+   "habilidades": {
+    "Wind": 2,
+    "Hauling": 2
+   }
+  },
+  {
+   "nome": "Hexxin",
+   "habilidades": {
+    "Dark": 2,
+    "Grass": 1,
+    "Artisanship": 2
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 4,
+      "Grass": 3,
+      "Artisanship": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Hummin",
+   "habilidades": {
+    "Grass": 1
+   }
+  },
+  {
+   "nome": "Ignitis",
+   "habilidades": {
+    "Dark": 3,
+    "Artisanship": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Grass": 2,
+      "Artisanship": 3
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Dark": 4,
+      "Fire": 3,
+      "Artisanship": 4
+     },
+     "chance": 0.01
+    },
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Fire": 2,
+      "Artisanship": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Infergon",
+   "habilidades": {
+    "Fire": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Fire": 4,
+      "Wind": 3,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Inferlupa",
+   "habilidades": {
+    "Dark": 3,
+    "Fire": 2,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 4,
+      "Fire": 3,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Iris",
+   "habilidades": {
+    "Grass": 1,
+    "Leisure": 1
+   }
+  },
+  {
+   "nome": "Irisal",
+   "habilidades": {
+    "Grass": 3,
+    "Leisure": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 4,
+      "Leisure": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Irisalis",
+   "habilidades": {
+    "Grass": 4,
+    "Leisure": 4
+   }
+  },
+  {
+   "nome": "Jawling",
+   "habilidades": {
+    "Wind": 1,
+    "Hauling": 1
+   }
+  },
+  {
+   "nome": "Lavazar",
+   "habilidades": {
+    "Fire": 2,
+    "Earth": 1,
+    "Hauling": 2
+   }
+  },
+  {
+   "nome": "Leafy",
+   "habilidades": {
+    "Grass": 3,
+    "Water": 2,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Luminelle",
+   "habilidades": {
+    "Lightning": 3,
+    "Artisanship": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Lightning": 3,
+      "Water": 2,
+      "Artisanship": 3
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Lightning": 4,
+      "Light": 3,
+      "Artisanship": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Lunara",
+   "habilidades": {
+    "Light": 3,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Magmarex",
+   "habilidades": {
+    "Fire": 3,
+    "Earth": 2,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Fire": 4,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Malangel",
+   "habilidades": {
+    "Ice": 1,
+    "Artisanship": 1
+   }
+  },
+  {
+   "nome": "Malevsera",
+   "habilidades": {
+    "Ice": 3,
+    "Artisanship": 3
+   }
+  },
+  {
+   "nome": "Melloblum",
+   "habilidades": {
+    "Grass": 3,
+    "Artisanship": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 4,
+      "Light": 3,
+      "Artisanship": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Minespine",
+   "habilidades": {
+    "Earth": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Ice": 2,
+      "Wind": 3,
+      "Hauling": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Nimbi",
+   "habilidades": {
+    "Wind": 1,
+    "Leisure": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Lightning": 1,
+      "Wind": 1,
+      "Leisure": 1
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Ice": 1,
+      "Wind": 1,
+      "Leisure": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Panpanta",
+   "habilidades": {
+    "Water": 3,
+    "Leisure": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Water": 4,
+      "Leisure": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Pawney",
+   "habilidades": {
+    "Dark": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Ice": 2,
+      "Hauling": 3
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Dark": 4,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    },
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Artisanship": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Pebbling",
+   "habilidades": {
+    "Earth": 1,
+    "Hauling": 1
+   }
+  },
+  {
+   "nome": "Piopiota",
+   "habilidades": {
+    "Water": 3,
+    "Leisure": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 2,
+      "Water": 3,
+      "Leisure": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Pomawk",
+   "habilidades": {
+    "Grass": 3,
+    "Artisanship": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 3,
+      "Ice": 2,
+      "Artisanship": 3
+     },
+     "chance": 0.1
+    }
+   ]
+  },
+  {
+   "nome": "Pomegg",
+   "habilidades": {
+    "Grass": 1,
+    "Artisanship": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 1,
+      "Ice": 1,
+      "Artisanship": 1
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Grass": 1,
+      "Hauling": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Popapus",
+   "habilidades": {
+    "Water": 3,
+    "Artisanship": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Water": 3,
+      "Hauling": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Popota",
+   "habilidades": {
+    "Water": 2,
+    "Leisure": 2
+   }
+  },
+  {
+   "nome": "Pranky",
+   "habilidades": {
+    "Water": 2,
+    "Hauling": 2
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Ice": 1,
+      "Water": 2,
+      "Hauling": 2
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Lightning": 1,
+      "Hauling": 2
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Reefish",
+   "habilidades": {
+    "Earth": 1,
+    "Water": 1
+   }
+  },
+  {
+   "nome": "Rookey",
+   "habilidades": {
+    "Dark": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Ice": 2,
+      "Hauling": 3
+     },
+     "chance": 0.1
+    }
+   ]
+  },
+  {
+   "nome": "Scorchhowl",
+   "habilidades": {
+    "Fire": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Fire": 3,
+      "Earth": 2,
+      "Hauling": 3
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Lightning": 2,
+      "Fire": 3,
+      "Hauling": 3
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Fire": 4,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Sheldon",
+   "habilidades": {
+    "Water": 2,
+    "Leisure": 2
+   }
+  },
+  {
+   "nome": "Shelly",
+   "habilidades": {
+    "Water": 1,
+    "Leisure": 1
+   }
+  },
+  {
+   "nome": "Sherro",
+   "habilidades": {
+    "Water": 3,
+    "Leisure": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Lightning": 2,
+      "Water": 3,
+      "Leisure": 3
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Light": 3,
+      "Water": 4,
+      "Leisure": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Shrubclaw",
+   "habilidades": {
+    "Grass": 2,
+    "Earth": 3,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Skippy",
+   "habilidades": {
+    "Water": 1,
+    "Hauling": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Ice": 1,
+      "Water": 1,
+      "Hauling": 1
+     },
+     "chance": 0.1
+    }
+   ]
+  },
+  {
+   "nome": "Soleon",
+   "habilidades": {
+    "Light": 3,
+    "Hauling": 3
+   }
+  },
+  {
+   "nome": "Somniwing",
+   "habilidades": {
+    "Grass": 4,
+    "Wind": 3,
+    "Leisure": 4
+   }
+  },
+  {
+   "nome": "Sparkelf",
+   "habilidades": {
+    "Fire": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Fire": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Sparki",
+   "habilidades": {
+    "Fire": 2
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 2
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Squarrel",
+   "habilidades": {
+    "Fire": 1,
+    "Artisanship": 1
+   }
+  },
+  {
+   "nome": "Squashel",
+   "habilidades": {
+    "Fire": 2,
+    "Artisanship": 2
+   }
+  },
+  {
+   "nome": "Stellarys",
+   "habilidades": {
+    "Dark": 3,
+    "Leisure": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Water": 2,
+      "Leisure": 3
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Dark": 4,
+      "Ice": 3,
+      "Leisure": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Susuta",
+   "habilidades": {
+    "Water": 1,
+    "Leisure": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Earth": 1,
+      "Water": 1,
+      "Leisure": 1
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Thornblade",
+   "habilidades": {
+    "Grass": 3,
+    "Artisanship": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Lightning": 2,
+      "Grass": 3,
+      "Artisanship": 3
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Grass": 4,
+      "Water": 3,
+      "Artisanship": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Tromber",
+   "habilidades": {
+    "Wind": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Water": 2,
+      "Wind": 3
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Grass": 2,
+      "Wind": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Tubster",
+   "habilidades": {
+    "Wind": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Water": 2,
+      "Wind": 3
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Grass": 2,
+      "Wind": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Tuckin",
+   "habilidades": {
+    "Grass": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Grass": 3,
+      "Earth": 2,
+      "Hauling": 3
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Grass": 3,
+      "Artisanship": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Turbo",
+   "habilidades": {
+    "Wind": 3,
+    "Leisure": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Lightning": 2,
+      "Wind": 3,
+      "Leisure": 3
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Wind": 4,
+      "Leisure": 4
+     },
+     "chance": 0.01
+    },
+    {
+     "habilidades": {
+      "Ice": 2,
+      "Wind": 3,
+      "Leisure": 3
+     },
+     "chance": 1
+    }
+   ]
+  },
+  {
+   "nome": "Veilfloat",
+   "habilidades": {
+    "Lightning": 2,
+    "Artisanship": 2
+   }
+  },
+  {
+   "nome": "Waleetle",
+   "habilidades": {
+    "Earth": 3,
+    "Hauling": 3
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Ice": 2,
+      "Earth": 3,
+      "Hauling": 3
+     },
+     "chance": 0.1
+    },
+    {
+     "habilidades": {
+      "Dark": 3,
+      "Earth": 4,
+      "Hauling": 4
+     },
+     "chance": 0.01
+    }
+   ]
+  },
+  {
+   "nome": "Wisptis",
+   "habilidades": {
+    "Dark": 1,
+    "Artisanship": 1
+   },
+   "variantes": [
+    {
+     "habilidades": {
+      "Dark": 1,
+      "Grass": 1,
+      "Artisanship": 1
+     },
+     "chance": 1
+    },
+    {
+     "habilidades": {
+      "Dark": 1,
+      "Fire": 1,
+      "Artisanship": 1
+     },
+     "chance": 1
+    }
+   ]
+  }
+ ]
+}

@@ -3,6 +3,24 @@
 // consome precisa ser produzido pelas outras instalações do plano.
 // Regras de eficiência e dados: aniimax (MIT, https://github.com/ae-bii/aniimax), conferidos no jogo por eles.
 import { solve, type Coefficients } from 'yalps';
+import hideout from '../../data/homeland-hideout.json' with { type: 'json' };
+
+// Clima gradual (Hideout, decodificado do jogo): Congelante −2, Fresco −1, Quente +1, Escaldante +2. Uma colheita rende
+// 100% no clima que pede, 80% a um passo, 50% a dois e 20% a três ou mais; Adequado (luz do Sunlamp) é tudo ou nada.
+const ESCALA = hideout.clima.escala as Record<string, number>;
+const RAZAO = hideout.clima.razao;
+/** Quanto uma colheita que pede `pede` rende numa construção que recebe os climas `modos` (0 = não cresce). */
+export function razaoClima(pede: string, modos: string[]) {
+  if (!(pede in ESCALA)) return modos.includes(pede) ? 1 : 0;
+  let melhor = 0;
+  for (const m of modos) if (m in ESCALA) melhor = Math.max(melhor, RAZAO[Math.min(Math.abs(ESCALA[m] - ESCALA[pede]), RAZAO.length - 1)]);
+  return melhor;
+}
+/** Grupos de lotes cobertos ("Cool+Scorching") onde a receita rende algo, com a razão de cada um. */
+const gruposDe = (r: Receita, cfg: Config) => Object.entries(cfg.cobertos)
+  .filter(([k, n]) => n > 0 && k.startsWith(`${r.instalacao}|`))
+  .map(([k]) => { const grupo = k.slice(r.instalacao.length + 1); return { grupo, razao: razaoClima(r.clima!, grupo.split('+')) }; })
+  .filter((g) => g.razao > 0);
 
 export type Receita = {
   id: string; nome: string; instalacao: string; tipo: 'lavoura' | 'coleta' | 'processador';
@@ -35,7 +53,7 @@ export type Config = {
   personalidade: boolean;
   especiais: boolean;
   naoVerificadas: boolean;
-  /** Unidades cobertas por clima: "Farmland|Warm" → quantos lotes de Farmland ficam nesse clima. */
+  /** Lotes cobertos por clima: "Farmland|Cool+Scorching" → quantos lotes de Farmland pegam exatamente esses climas. */
   cobertos: Record<string, number>;
   objetivo: Objetivo;
 };
@@ -83,12 +101,12 @@ export function bloqueio(d: Dados, r: Receita, cfg: Config): string | null {
   if (r.especial && !cfg.especiais) return 'receita especial';
   if (r.naoVerificada && !cfg.naoVerificadas) return 'dado não verificado';
   if (cfg.nivelAniimo && r.requisito && r.requisito.nivel > cfg.nivelAniimo) return `Aniimo ${r.requisito.habilidade} Nv. ${r.requisito.nivel}`;
-  if (r.clima && !Object.entries(cfg.cobertos).some(([k, n]) => k === `${r.instalacao}|${r.clima}` && n > 0)) return `clima ${r.clima}`;
+  if (r.clima && !gruposDe(r, cfg).length) return `clima ${r.clima}`;
   return null;
 }
 
 /** `uso`: fração do tempo que as máquinas trabalham (o resto é espera por insumo). */
-export type Linha = { r: Receita; unidades: number; porHora: number; uso: number; segundos: number; eficiencia: number; nivel: number };
+export type Linha = { r: Receita; unidades: number; porHora: number; uso: number; segundos: number; eficiencia: number; nivel: number; grupo?: string; razao?: number };
 export type Plano = {
   ok: boolean;
   ganhoHora: number;
@@ -111,22 +129,26 @@ export type Opcoes = { relaxado?: boolean; tolerancia?: number; timeout?: number
 export function otimiza(d: Dados, cfg: Config, op: Opcoes = {}): Plano {
   const variaveis = new Map<string, Coefficients>();
   const usaveis = d.receitas.filter((r) => !bloqueio(d, r, cfg));
-  const porChave = new Map(usaveis.map((r) => [`x:${r.instalacao}/${r.id}`, r]));
   const porId = new Map(d.receitas.map((r) => [r.id, r]));
+  // Cada receita vira uma ou mais variantes: sem clima, uma só; com clima, uma por grupo de lotes onde ela rende (com a razão).
+  const variantes = usaveis.flatMap((r) => r.clima
+    ? gruposDe(r, cfg).map((g) => ({ r, chave: `${r.instalacao}/${r.id}@${g.grupo}`, ...g }))
+    : [{ r, chave: `${r.instalacao}/${r.id}`, grupo: undefined as string | undefined, razao: 1 }]);
+  const porChave = new Map(variantes.map((v) => [`x:${v.chave}`, v.r]));
 
-  // Duas variáveis por receita: x = máquinas/lotes dedicados (inteiro) e y = ciclos por hora (contínuo, até x × velocidade).
+  // Duas variáveis por variante: x = máquinas/lotes dedicados (inteiro) e y = ciclos por hora (contínuo, até x × velocidade).
   // A máquina pode ficar ociosa esperando insumo, como no jogo; o que ela não pode é passar da própria velocidade.
-  for (const r of usaveis) {
+  for (const { r, chave, grupo, razao } of variantes) {
     const { segundos } = ciclo(d, r, cfg);
-    const cx: Record<string, number> = { [`fac:${r.instalacao}`]: 1, [`cap:${r.instalacao}/${r.id}`]: -3600 / segundos };
-    if (r.clima) cx[`clima:${r.instalacao}|${r.clima}`] = 1;
-    variaveis.set(`x:${r.instalacao}/${r.id}`, cx);
-    const cy: Record<string, number> = { [`cap:${r.instalacao}/${r.id}`]: 1, [`item:${r.produz ?? r.id}`]: r.rendimento };
+    const cx: Record<string, number> = { [`fac:${r.instalacao}`]: 1, [`cap:${chave}`]: (-3600 / segundos) * razao };
+    if (grupo) cx[`clima:${r.instalacao}|${grupo}`] = 1;
+    variaveis.set(`x:${chave}`, cx);
+    const cy: Record<string, number> = { [`cap:${chave}`]: 1, [`item:${r.produz ?? r.id}`]: r.rendimento };
     for (const [ins, qtd] of r.insumos) cy[`item:${ins}`] = (cy[`item:${ins}`] ?? 0) - qtd;
     if (r.subproduto) cy[`item:${r.subproduto[0]}`] = (cy[`item:${r.subproduto[0]}`] ?? 0) + r.subproduto[1];
     // Semente só pesa quando o objetivo é moeda; nos outros objetivos o custo não entra na conta.
     if (r.custo && cfg.objetivo === 'coins') cy.ganho = -r.custo;
-    variaveis.set(`y:${r.instalacao}/${r.id}`, cy);
+    variaveis.set(`y:${chave}`, cy);
   }
   // Vender: tira do estoque do item e soma no objetivo (na moeda escolhida).
   for (const r of usaveis) {
@@ -169,12 +191,13 @@ export function otimiza(d: Dados, cfg: Config, op: Opcoes = {}): Plano {
   const linhas: Linha[] = [];
   const subprodutos: Record<string, number> = {};
   let custoSementesHora = 0;
-  for (const r of usaveis) {
-    const u = Math.round(valores.get(`x:${r.instalacao}/${r.id}`) ?? 0);
-    const ciclosHora = valores.get(`y:${r.instalacao}/${r.id}`) ?? 0;
+  for (const { r, chave, grupo, razao } of variantes) {
+    const u = Math.round(valores.get(`x:${chave}`) ?? 0);
+    const ciclosHora = valores.get(`y:${chave}`) ?? 0;
     if (!u || ciclosHora < 1e-6) continue;
     const cl = ciclo(d, r, cfg);
-    linhas.push({ r, unidades: u, porHora: ciclosHora * r.rendimento, uso: Math.min(1, (ciclosHora * cl.segundos) / (3600 * u)), ...cl });
+    const segundos = cl.segundos / razao;
+    linhas.push({ r, unidades: u, porHora: ciclosHora * r.rendimento, uso: Math.min(1, (ciclosHora * segundos) / (3600 * u)), ...cl, segundos, ...(grupo && { grupo, razao }) });
     if (r.subproduto) subprodutos[r.subproduto[0]] = (subprodutos[r.subproduto[0]] ?? 0) + ciclosHora * r.subproduto[1];
     custoSementesHora += r.custo * ciclosHora;
   }

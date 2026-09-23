@@ -1,7 +1,8 @@
 // Interface do Otimizador de Homeland. Estado inteiro no link (?rv=…&l=…), para compartilhar o Homeland.
 import dadosBrutos from '../../data/homeland.json';
 import { bloqueio, ciclo, melhorias, otimiza, padrao, type Config, type Dados, type Objetivo, type Plano, type Receita } from './otimizador.ts';
-import { ALTURA, LARGURA, TIPOS, cabe, climas, cobertos, cobertura, codifica, decodifica, ehClima, montaAuto, type Peca } from './layout.ts';
+import { ALTURA, LARGURA, LOTE, LOTES, TIPOS, cabe, climas, cobertos, cobertura, codifica, decodifica, ehClima, lados, lotesAbertos, montaAuto, type Peca } from './layout.ts';
+import { candidatos, equipeClima } from './equipe.ts';
 import { chip } from '../scripts/seletor.ts';
 import { iconeInst, iconeNoMapa } from './icones.ts';
 import { evento, umaVez } from '../scripts/evento.ts';
@@ -33,6 +34,10 @@ const porNome = new Map(d.instalacoes.map((f) => [f.nome, f]));
 /** Item → instalação que o produz (para o ícone). */
 const origem = new Map(d.receitas.map((r) => [r.produz ?? r.id, r.instalacao]));
 const porSlugInst = new Map(d.instalacoes.map((f) => [f.slug, f]));
+/** Nome EN → [nome oficial em PT, id], gerado no build a partir do Aniilog. */
+const NOMES_PT = JSON.parse($('nomes-pt').textContent!) as Record<string, [string, string]>;
+/** Coleção do jogador (mesma chave de /colecao/): "id/forma". Sem coleção salva, fica vazia. */
+const colecao = (() => { try { return new Set<string>(JSON.parse(localStorage.getItem('aniimo-colecao-v1') ?? '[]')); } catch { return new Set<string>(); } })();
 
 // ---------- estado <-> link ----------
 let cfg: Config = padrao(d, 5);
@@ -60,7 +65,7 @@ function lerLink() {
     const m = parte.match(/^([a-z_]+)\.(\d+)$/);
     if (m && m[1] in cfg.modulos) cfg.modulos[m[1]] = Math.min(Number(m[2]), padrao(d, rv).modulos[m[1]]);
   }
-  pecas = decodifica(q.get('l') ?? '');
+  pecas = decodifica(q.get('l') ?? '', rv);
   aba = ['plano', 'layout', 'receitas', 'rv'].includes(q.get('a') ?? '') ? q.get('a')! : 'plano';
 }
 
@@ -120,7 +125,10 @@ form.addEventListener('change', (ev) => {
   if (alvo.name === 'rv') {
     const velho = cfg;
     cfg = { ...padrao(d, Number(alvo.value)), nivelAniimo: velho.nivelAniimo, personalidade: velho.personalidade, especiais: velho.especiais, naoVerificadas: velho.naoVerificadas, objetivo: velho.objetivo };
+    pecas = decodifica(codifica(pecas), cfg.rv); // o que não cabe mais no terreno do novo RV sai
+    selecionada = null;
     montarConfig();
+    montarPaleta();
     evento('homeland_rv', { rv: cfg.rv });
   } else if (alvo.name === 'nivel') cfg.nivelAniimo = Number(alvo.value);
   else if (alvo.name === 'objetivo') { cfg.objetivo = alvo.value as Objetivo; evento('homeland_objetivo', { objetivo: cfg.objetivo }); }
@@ -152,7 +160,7 @@ function mostrarPlano(p: Plano) {
   $('resumo').innerHTML = [
     card(`${moeda} por hora`, fmt(p.ganhoHora), cfg.objetivo === 'coins' && p.custoSementesHora > 0 ? `já descontadas ${fmt(p.custoSementesHora)} em sementes` : ''),
     card('Por dia', fmt(p.ganhoHora * 24), 'coletando a tempo, sem pausas'),
-    card('Aniimo trabalhando', `${p.aniimoTotal}${max ? ` <span class="text-lg text-muted">/ ${max}</span>` : ''}`, max && p.aniimoTotal > max ? 'mais do que seu RV comporta: priorize as linhas de cima' : 'que o seu Homeland comporta'),
+    card('Aniimo trabalhando', `${p.aniimoTotal + pecas.filter(ehClima).length}${max ? ` <span class="text-lg text-muted">/ ${max}</span>` : ''}`, max && p.aniimoTotal + pecas.filter(ehClima).length > max ? 'mais do que seu RV comporta: priorize as linhas de cima' : 'que o seu Homeland comporta'),
     prox ? card(`Próximo: RV ${cfg.rv + 1}`, `${fmt(prox.coins)}`, `Home Coin + ${prox.items.map(([i, n]) => `${fmt(n)} ${nomeItem(i)}`).join(' e ')}${eta ? ` · ~${eta} de moedas neste ritmo` : ''}`)
       : card('RV máximo', '20', 'você já está no topo'),
   ].join('');
@@ -169,10 +177,24 @@ function mostrarPlano(p: Plano) {
       <td class="px-4 py-2.5 text-right font-mono ${l.eficiencia > 1 ? 'text-ok' : 'text-muted'}">${l.r.tipo === 'lavoura' ? '—' : `${fmt(l.eficiencia * 100)}%`}</td></tr>`).join('')}</tbody></table>`
     : '<p class="p-4 text-sm text-muted">Nada para produzir com essa configuração. Confira as instalações ou o objetivo.</p>';
 
-  $('equipe').innerHTML = p.equipe.length ? `<ul class="space-y-2">${p.equipe.map((e) => `
-    <li class="flex items-center gap-2 text-sm"><span class="font-mono font-semibold text-casal">×${e.quantos}</span>${habilidade(e.habilidade)}
-      <span class="font-semibold">Nv. ${e.nivel}</span><span class="min-w-0 flex-1 truncate text-xs text-muted" title="${e.instalacao}">${e.instalacao}${e.personalidade && cfg.personalidade ? ` · ${e.personalidade}` : ''}</span></li>`).join('')}</ul>
-    <p class="mt-3 text-xs text-muted">Nível = o que o plano assume. Nome da personalidade como aparece nos dados (em inglês). Um mesmo Aniimo pode cobrir mais de uma linha se tiver as duas habilidades.</p>`
+  // Prédios de clima colocados no mapa também ocupam um Aniimo (Heat Furnace: Fogo; Cooling Unit: Gelo; Sunlamp: Sagrado).
+  const deClima = pecas.filter(ehClima).map((pc) => {
+    const e = equipeClima[TIPOS[pc.tipo].slug][pc.modo!];
+    return { habilidade: e.ability, nivel: e.level, instalacao: `${TIPOS[pc.tipo].nome} (${CLIMA[pc.modo!][0]})`, quantos: 1, personalidade: undefined as string | undefined };
+  });
+  const equipe = [...p.equipe, ...deClima];
+  $('equipe').innerHTML = equipe.length ? `<ul class="space-y-3">${equipe.map((e) => {
+    const cands = candidatos(e.habilidade, e.nivel);
+    const nomes = cands.slice(0, 4).map((c) => {
+      const [pt, id] = NOMES_PT[c.nome] ?? [c.nome, ''];
+      const tem = id && [...colecao].some((k) => k.startsWith(`${id}/`));
+      return `<span class="${tem ? 'font-semibold text-ok' : ''}" title="${c.nome}${c.variante ? ` · variante rara (${fmt((c.chance ?? 0) * 100)}%)` : ''} · Nv. ${c.nivel}">${tem ? '✓ ' : ''}${pt}${c.variante ? '*' : ''}</span>`;
+    });
+    return `<li class="text-sm"><div class="flex items-center gap-2"><span class="font-mono font-semibold text-casal">×${e.quantos}</span>${habilidade(e.habilidade)}
+      <span class="font-semibold">Nv. ${e.nivel}</span><span class="min-w-0 flex-1 truncate text-xs text-muted" title="${e.instalacao}">${e.instalacao}${e.personalidade && cfg.personalidade ? ` · ${e.personalidade}` : ''}</span></div>
+      <p class="mt-0.5 pl-7 text-xs text-muted">${nomes.length ? `${nomes.join(', ')}${cands.length > 4 ? ` e mais ${cands.length - 4}` : ''}` : 'nenhum Aniimo conhecido com esse nível'}</p></li>`;
+  }).join('')}</ul>
+    <p class="mt-3 text-xs text-muted">Abaixo de cada linha, Aniimo que servem (✓ = está na sua <a class="underline" href="/colecao/">coleção</a>; * = só a variante rara). Habilidades de trabalho: Hideout Guides.</p>`
     : '<p class="text-sm text-muted">Nenhum Aniimo necessário.</p>';
 
   const mel = melhorias(d, cfg, p.ganhoHora).slice(0, 6);
@@ -191,139 +213,318 @@ function mostrarPlano(p: Plano) {
 
 // ---------- layout ----------
 const svg = $('mapa') as unknown as SVGSVGElement;
-const NS = 'http://www.w3.org/2000/svg';
 let ferramenta: string | null = 'fa';
+let selecionada: Peca | null = null;
 let fantasma: Peca | null = null;
-let arrasto: { p: Peca; dx: number; dy: number; moveu: boolean; ox: number; oy: number } | null = null;
+let arrasto: { p: Peca; dx: number; dy: number; moveu: boolean; antes: string } | null = null;
+let visao: 'abertos' | 'tudo' | 'lote' = 'abertos';
+let loteFoco = 1;
+let historico: string[] = [];
+let futuro: string[] = [];
+let caixa = { x: 0, y: 0, w: LARGURA, h: ALTURA };
 
+const CATEGORIAS: [string, string, string][] = [
+  ['Materials Production', 'Produção de materiais', '#FFE3C2'],
+  ['Materials Processing', 'Processamento', '#DCE7FF'],
+  ['Item Production', 'Produção de itens', '#E9E2FB'],
+  ['Auxiliary Facilities', 'Clima', '#D9F2DF'],
+];
+const COR_CATEGORIA = Object.fromEntries(CATEGORIAS.map(([k, , c]) => [k, c]));
 const limite = (tipo: string) => cfg.instalacoes[TIPOS[tipo].nome]?.qtd ?? 0;
 const usadas = (tipo: string) => pecas.filter((p) => p.tipo === tipo).length;
+const libera = (tipo: string) => Object.values(porNome.get(TIPOS[tipo].nome)?.niveis ?? {})[0];
+const loteDe = (p: Peca) => LOTES.find((l) => p.x >= l.x && p.x < l.x + l.w && p.y >= l.y && p.y < l.y + l.h);
 const ponto = (ev: PointerEvent) => {
   const r = svg.getBoundingClientRect();
-  return { x: ((ev.clientX - r.left) / r.width) * LARGURA, y: ((ev.clientY - r.top) / r.height) * ALTURA };
+  return { x: caixa.x + ((ev.clientX - r.left) / r.width) * caixa.w, y: caixa.y + ((ev.clientY - r.top) / r.height) * caixa.h };
 };
-const pecaEm = (x: number, y: number) => [...pecas].reverse().find((p) => x >= p.x && x < p.x + TIPOS[p.tipo].lado && y >= p.y && y < p.y + TIPOS[p.tipo].lado);
+const pecaEm = (x: number, y: number) => [...pecas].reverse().find((p) => { const { w, h } = lados(p); return x >= p.x && x < p.x + w && y >= p.y && y < p.y + h; });
 
-function montarPaleta() {
-  $('paleta').innerHTML = Object.entries(TIPOS).map(([cod, t]) => {
-    const lim = limite(cod), n = usadas(cod);
-    const libera = Object.values(porNome.get(t.nome)?.niveis ?? {})[0];
-    return `<button type="button" data-ferramenta="${cod}" aria-pressed="${ferramenta === cod}" ${lim === 0 ? 'disabled' : ''}
-      data-umami-event="homeland_layout_ferramenta" data-umami-event-peca="${cod}"
-      class="cursor-pointer rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-40 aria-pressed:border-casal aria-pressed:bg-casal aria-pressed:text-white border-danube-100 bg-white text-casal"
-      title="${t.lado}×${t.lado} tiles${lim === 0 ? ` · libera no RV ${libera}` : ''}"><span class="inline-flex items-center gap-1.5">${iconeInst(t.nome, 'h-3.5 w-3.5')}${t.nome} <span class="font-mono">${n}/${lim}</span></span></button>`;
-  }).join('') + `<button type="button" data-ferramenta="apagar" aria-pressed="${ferramenta === 'apagar'}" data-umami-event="homeland_layout_ferramenta" data-umami-event-peca="apagar"
-    class="cursor-pointer rounded-full border border-[#F2C4CC] bg-white px-3 py-1.5 text-xs font-semibold text-[#8A2F3E] aria-pressed:bg-[#FBEDEF]">Apagar</button>`;
+// Mudança no layout sempre passa por aqui: guarda o estado anterior para o Desfazer.
+function mudar(fn: () => void) {
+  historico.push(codifica(pecas));
+  if (historico.length > 100) historico.shift();
+  futuro = [];
+  fn();
+  mudouLayout();
 }
-$('paleta').addEventListener('click', (ev) => {
-  const b = (ev.target as HTMLElement).closest<HTMLButtonElement>('[data-ferramenta]');
-  if (!b || b.disabled) return;
-  ferramenta = ferramenta === b.dataset.ferramenta ? null : b.dataset.ferramenta!;
-  montarPaleta();
-});
-
-function desenhar() {
-  svg.setAttribute('viewBox', `0 0 ${LARGURA} ${ALTURA}`);
-  const cl = climas(pecas);
-  const partes: string[] = [
-    `<defs><pattern id="grade" width="1" height="1" patternUnits="userSpaceOnUse"><path d="M1 0H0V1" fill="none" stroke="#D4E6F4" stroke-width="0.04"/></pattern></defs>`,
-    `<rect width="${LARGURA}" height="${ALTURA}" fill="#F5FAFF"/><rect width="${LARGURA}" height="${ALTURA}" fill="url(#grade)"/>`,
-  ];
-  for (const p of pecas.filter(ehClima)) {
-    const c = cobertura(p), cor = CLIMA[p.modo!]?.[1] ?? '#ccc';
-    partes.push(`<rect x="${c.x1}" y="${c.y1}" width="${c.x2 - c.x1}" height="${c.y2 - c.y1}" fill="${cor}" fill-opacity="0.16" stroke="${cor}" stroke-width="0.08" stroke-dasharray="0.3 0.2"/>`);
-  }
-  for (const p of pecas) {
-    const t = TIPOS[p.tipo];
-    const c = ehClima(p) ? p.modo! : cl.get(p);
-    const cor = ehClima(p) ? CLIMA[p.modo!][1] : c === 'misto' ? '#FBEDEF' : c ? CLIMA[c][1] : '#FFFFFF';
-    partes.push(`<g class="cursor-grab"><rect x="${p.x + 0.06}" y="${p.y + 0.06}" width="${t.lado - 0.12}" height="${t.lado - 0.12}" rx="0.3" fill="${cor}"
-      stroke="${c === 'misto' ? '#C94B5F' : '#286464'}" stroke-width="0.1" ${ehClima(p) ? '' : 'fill-opacity="0.9"'}/>
-      ${iconeNoMapa(t.nome, p.x + t.lado * 0.2, p.y + t.lado * 0.2, t.lado * 0.6, '#15393A')}<title>${t.nome}${p.modo ? ` · ${CLIMA[p.modo][0]}` : ''}</title></g>`);
-  }
-  if (fantasma) {
-    const t = TIPOS[fantasma.tipo], ok = cabe(pecas, fantasma) && usadas(fantasma.tipo) < limite(fantasma.tipo);
-    partes.push(`<rect x="${fantasma.x}" y="${fantasma.y}" width="${t.lado}" height="${t.lado}" rx="0.3" fill="${ok ? '#2F8F6B' : '#C94B5F'}" fill-opacity="0.25" stroke="${ok ? '#2F8F6B' : '#C94B5F'}" stroke-width="0.1" pointer-events="none"/>`);
-  }
-  svg.innerHTML = partes.join('');
-
-  const cob = cobertos(pecas);
-  const ganhoAtual = ultimoGanho;
-  const mistos = [...cl.values()].filter((c) => c === 'misto').length;
-  const semClima = [...cl.values()].filter((c) => !c).length;
-  $('cobertura').innerHTML = (Object.keys(cob).length
-    ? `<ul class="space-y-1.5 text-sm">${Object.entries(cob).map(([k, n]) => { const [inst, c] = k.split('|'); return `<li class="flex items-center gap-2">${climaTag(c)} <span class="text-danube">${iconeInst(inst)}</span><span class="font-semibold">${n}× ${inst}</span></li>`; }).join('')}</ul>`
-    : '<p class="text-sm text-muted">Nenhuma lavoura coberta por clima ainda. Coloque um prédio de clima e lavouras dentro do quadrado pontilhado.</p>')
-    + (mistos ? `<p class="mt-2 text-xs font-semibold text-err">${mistos} lavoura(s) pegam dois climas ao mesmo tempo e não contam. Afaste um dos prédios.</p>` : '')
-    + (semClima ? `<p class="mt-2 text-xs text-muted">${semClima} lavoura(s) fora de qualquer clima: plantam só o que não pede clima.</p>` : '')
-    + `<p class="mt-3 border-t border-line pt-3 text-sm">Com este layout o plano rende <strong class="font-mono">${fmt(ganhoAtual)}</strong> ${MOEDA[cfg.objetivo]}/h. As lavouras que você não colocou aqui continuam no plano, só sem clima.</p>`;
-  $('pecas').innerHTML = pecas.length ? pecas.map((p, i) => `<li class="flex items-center gap-2"><span class="text-danube">${iconeInst(TIPOS[p.tipo].nome)}</span><span class="flex-1">${TIPOS[p.tipo].nome}${p.modo ? ` · ${CLIMA[p.modo][0]}` : ''} <span class="font-mono text-xs text-muted">(${p.x}, ${p.y})</span></span>
-    <button type="button" data-remover="${i}" class="cursor-pointer rounded-full px-2 text-xs font-semibold text-err hover:bg-[#FBEDEF]" aria-label="Remover">remover</button></li>`).join('')
-    : '<li class="text-muted">Nenhuma peça.</li>';
+function voltar(de: string[], para: string[]) {
+  if (!de.length) return;
+  para.push(codifica(pecas));
+  pecas = decodifica(de.pop()!, cfg.rv);
+  selecionada = null;
+  mudouLayout();
 }
-
 function mudouLayout() {
   montarPaleta();
   atualizar();
   umaVez('homeland_layout_usado');
 }
 
+function montarPaleta() {
+  const q = semAcento($<HTMLInputElement>('busca-peca').value.trim());
+  $('paleta').innerHTML = CATEGORIAS.map(([cat, nome, cor]) => {
+    const itens = Object.entries(TIPOS).filter(([, t]) => t.categoria === cat && (!q || semAcento(t.nome).includes(q)));
+    if (!itens.length) return '';
+    return `<div><div class="mb-1.5 flex items-center gap-2"><span class="h-2.5 w-2.5 rounded-sm" style="background:${cor}"></span><span class="rotulo text-[11px]">${nome}</span></div>
+      <ul class="grid grid-cols-1 gap-1.5 sm:grid-cols-2 xl:grid-cols-1">${itens.map(([cod, t]) => {
+        const lim = limite(cod), n = usadas(cod);
+        const motivo = lim === 0 ? `libera no RV ${libera(cod)}` : n >= lim ? `no máximo do RV ${cfg.rv}` : `${fmt(t.w, 2)}×${fmt(t.h, 2)} tiles`;
+        return `<li><button type="button" data-ferramenta="${cod}" aria-pressed="${ferramenta === cod}" ${lim === 0 || n >= lim ? 'disabled' : ''}
+          data-umami-event="homeland_layout_ferramenta" data-umami-event-peca="${cod}"
+          class="flex w-full cursor-pointer items-center gap-2.5 rounded-xl border border-line px-2 py-1.5 text-left transition-colors hover:border-danube disabled:cursor-not-allowed disabled:opacity-45 aria-pressed:border-casal aria-pressed:bg-casal-50">
+          <span class="grid h-8 w-8 shrink-0 place-items-center rounded-lg text-ink" style="background:${cor}">${iconeInst(t.nome)}</span>
+          <span class="min-w-0 flex-1 leading-tight"><span class="block truncate text-[13px] font-semibold">${t.nome}</span><span class="block text-[11px] text-muted">${motivo}</span></span>
+          <span class="shrink-0 font-mono text-[11px] ${n >= lim && lim ? 'text-ink' : 'text-muted'}">${n}/${lim}</span></button></li>`;
+      }).join('')}</ul></div>`;
+  }).join('') || '<p class="text-sm text-muted">Nenhuma construção com esse nome.</p>';
+  $<HTMLButtonElement>('desfazer').disabled = !historico.length;
+  $<HTMLButtonElement>('refazer').disabled = !futuro.length;
+}
+$('paleta').addEventListener('click', (ev) => {
+  const b = (ev.target as HTMLElement).closest<HTMLButtonElement>('[data-ferramenta]');
+  if (!b || b.disabled) return;
+  ferramenta = ferramenta === b.dataset.ferramenta ? null : b.dataset.ferramenta!;
+  selecionada = null;
+  montarPaleta();
+  desenhar();
+});
+$('busca-peca').addEventListener('input', montarPaleta);
+$('desfazer').addEventListener('click', () => voltar(historico, futuro));
+$('refazer').addEventListener('click', () => voltar(futuro, historico));
+$<HTMLSelectElement>('lote-foco').addEventListener('change', (ev) => {
+  const v = (ev.target as HTMLSelectElement).value;
+  visao = v ? 'lote' : 'abertos';
+  if (v) loteFoco = Number(v);
+  document.querySelectorAll('[data-visao]').forEach((x) => x.setAttribute('aria-pressed', String(!v && (x as HTMLElement).dataset.visao === 'abertos')));
+  desenhar();
+});
+document.querySelectorAll<HTMLElement>('[data-visao]').forEach((b) => b.addEventListener('click', () => {
+  visao = b.dataset.visao as typeof visao;
+  document.querySelectorAll('[data-visao]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  desenhar();
+}));
+
+/** O que cada peça faz no plano: lavoura coberta recebe as colheitas de clima do grupo dela; o resto, na ordem. */
+function rotulosDoPlano(): Map<Peca, string> {
+  const saida = new Map<Peca, string>();
+  const cl = climas(pecas);
+  const fila = new Map<string, string[]>();
+  for (const l of ultimoPlano?.linhas ?? []) {
+    const k = `${l.r.instalacao}|${l.grupo ?? ''}`;
+    fila.set(k, [...(fila.get(k) ?? []), ...Array(l.unidades).fill(l.r.nome)]);
+  }
+  const ordem = [...pecas].sort((a, b) => (cl.get(b)?.length ?? 0) - (cl.get(a)?.length ?? 0));
+  for (const p of ordem) {
+    if (ehClima(p)) continue;
+    const nome = TIPOS[p.tipo].nome, grupo = (cl.get(p) ?? []).join('+');
+    const receita = fila.get(`${nome}|${grupo}`)?.shift() ?? fila.get(`${nome}|`)?.shift();
+    if (receita) saida.set(p, receita);
+  }
+  return saida;
+}
+
+function desenhar() {
+  const abertos = lotesAbertos(cfg.rv);
+  const foco = LOTES[loteFoco - 1];
+  const selLote = $<HTMLSelectElement>('lote-foco');
+  selLote.innerHTML = `<option value="">Ver um lote de perto…</option>${abertos.map((l) => `<option value="${l.n}" ${visao === 'lote' && l.n === loteFoco ? 'selected' : ''}>Lote ${l.n}</option>`).join('')}`;
+  if (visao === 'lote' && foco && foco.rv <= cfg.rv) caixa = { x: foco.x - 0.5, y: foco.y - 0.5, w: foco.w + 1, h: foco.h + 1 };
+  else if (visao === 'tudo' || !abertos.length) caixa = { x: 0, y: 0, w: LARGURA, h: ALTURA };
+  else {
+    const x1 = Math.min(...abertos.map((l) => l.x)), y1 = Math.min(...abertos.map((l) => l.y));
+    const x2 = Math.max(...abertos.map((l) => l.x + l.w)), y2 = Math.max(...abertos.map((l) => l.y + l.h));
+    caixa = { x: x1 - 0.5, y: y1 - 0.5, w: x2 - x1 + 1, h: y2 - y1 + 1 };
+  }
+  svg.setAttribute('viewBox', `${caixa.x} ${caixa.y} ${caixa.w} ${caixa.h}`);
+  const cl = climas(pecas);
+  const rotulos = rotulosDoPlano();
+  const partes: string[] = [`<defs>
+    <pattern id="grade" width="1" height="1" patternUnits="userSpaceOnUse"><path d="M1 0H0V1" fill="none" stroke="#D4E6F4" stroke-width="0.04"/></pattern>
+    <pattern id="fechado" width="1.2" height="1.2" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="1.2" height="1.2" fill="#EDF3F8"/><line x1="0" y1="0" x2="0" y2="1.2" stroke="#D4E6F4" stroke-width="0.35"/></pattern></defs>`];
+  for (const l of LOTES) {
+    const aberto = l.rv <= cfg.rv;
+    partes.push(`<rect x="${l.x}" y="${l.y}" width="${l.w}" height="${l.h}" fill="${aberto ? '#F8FCFF' : 'url(#fechado)'}"/>`);
+    if (aberto) partes.push(`<rect x="${l.x}" y="${l.y}" width="${l.w}" height="${l.h}" fill="url(#grade)"/>`);
+    partes.push(`<rect x="${l.x}" y="${l.y}" width="${l.w}" height="${l.h}" fill="none" stroke="${aberto ? '#A9CAE6' : '#D4E6F4'}" stroke-width="0.12"/>`);
+    partes.push(`<text x="${l.x + 0.5}" y="${l.y + 1.1}" font-size="0.75" font-weight="700" fill="${aberto ? '#6195C3' : '#A9CAE6'}" font-family="Plus Jakarta Sans, sans-serif">Lote ${l.n}${aberto ? '' : ` · RV ${l.rv}`}</text>`);
+  }
+  for (const p of pecas.filter(ehClima)) {
+    const c = cobertura(p), cor = CLIMA[p.modo!]?.[1] ?? '#ccc';
+    partes.push(`<rect x="${c.x1}" y="${c.y1}" width="${c.x2 - c.x1}" height="${c.y2 - c.y1}" fill="${cor}" fill-opacity="0.16" stroke="${cor}" stroke-width="0.08" stroke-dasharray="0.3 0.2" pointer-events="none"/>`);
+  }
+  for (const p of pecas) {
+    const t = TIPOS[p.tipo], { w, h } = lados(p);
+    const modos = ehClima(p) ? [p.modo!] : cl.get(p) ?? [];
+    const cor = modos.length ? CLIMA[modos[0]][1] : COR_CATEGORIA[t.categoria] ?? '#fff';
+    const lado = Math.min(w, h);
+    const icone = Math.min(lado * 0.55, 2.2);
+    const rot = rotulos.get(p);
+    const cabeTexto = w >= 1.9 && h >= 1.9 && rot;
+    const iy = cabeTexto ? p.y + h / 2 - icone * 0.72 : p.y + (h - icone) / 2;
+    partes.push(`<g data-peca class="cursor-grab">
+      <rect x="${p.x + 0.05}" y="${p.y + 0.05}" width="${w - 0.1}" height="${h - 0.1}" rx="0.3" fill="${cor}" stroke="#286464" stroke-width="0.08"/>
+      ${modos.length > 1 ? `<rect x="${p.x + w - 0.75}" y="${p.y + 0.2}" width="0.5" height="0.5" rx="0.1" fill="${CLIMA[modos[1]][1]}" stroke="#286464" stroke-width="0.05"/>` : ''}
+      ${iconeNoMapa(t.nome, p.x + (w - icone) / 2, iy, icone, '#15393A')}
+      ${cabeTexto ? `<text x="${p.x + w / 2}" y="${p.y + h / 2 + icone * 0.62}" text-anchor="middle" font-size="${Math.min(0.5, w / 6)}" font-weight="700" fill="#15393A" font-family="Plus Jakarta Sans, sans-serif" pointer-events="none">${rot!.length > w * 3.4 ? `${rot!.slice(0, Math.floor(w * 3.4) - 1)}…` : rot}</text>` : ''}
+      <title>${t.nome}${p.modo ? ` · ${CLIMA[p.modo][0]}` : ''}${rot ? ` · produz ${rot}` : ''}</title></g>`);
+    if (p === selecionada) partes.push(`<rect x="${p.x - 0.18}" y="${p.y - 0.18}" width="${w + 0.36}" height="${h + 0.36}" rx="0.4" fill="none" stroke="#15393A" stroke-width="0.14" stroke-dasharray="0.45 0.3" pointer-events="none"/>`);
+  }
+  if (fantasma) {
+    const { w, h } = lados(fantasma), ok = cabe(pecas, fantasma, cfg.rv) && usadas(fantasma.tipo) < limite(fantasma.tipo);
+    partes.push(`<rect x="${fantasma.x}" y="${fantasma.y}" width="${w}" height="${h}" rx="0.3" fill="${ok ? '#2F8F6B' : '#C94B5F'}" fill-opacity="0.25" stroke="${ok ? '#2F8F6B' : '#C94B5F'}" stroke-width="0.1" pointer-events="none"/>`);
+  }
+  svg.innerHTML = partes.join('');
+  svg.setAttribute('aria-label', `Mapa do Homeland: ${abertos.length} lotes abertos, ${pecas.length} construções`);
+
+  // Números do layout.
+  const area = abertos.length * LOTE.w * LOTE.h;
+  const usada = pecas.reduce((s, p) => { const { w, h } = lados(p); return s + w * h; }, 0);
+  const custo = abertos.reduce((s, l) => s + l.custo, 0);
+  $('numeros-layout').innerHTML = [
+    card('Lotes abertos', `${abertos.length}<span class="text-lg text-muted"> / 16</span>`, abertos.length < 16 ? `o lote ${abertos.length + 1} abre no RV ${abertos.length + 1}` : 'todos abertos'),
+    card('Construções', String(pecas.length), `${pecas.filter(ehClima).length} de clima`),
+    card('Área usada', `${fmt((usada / Math.max(1, area)) * 100)}%`, `${fmt(usada, 1)} de ${fmt(area)} tiles`),
+    card('Custo dos lotes', fmt(custo), 'Home Coin, somando os abertos'),
+  ].join('');
+  $('legenda').innerHTML = CATEGORIAS.map(([, nome, cor]) => `<li class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm border border-casal/30" style="background:${cor}"></span>${nome}</li>`).join('')
+    + Object.entries(CLIMA).map(([, [nome, cor]]) => `<li class="flex items-center gap-1.5"><span class="h-2.5 w-2.5 rounded-sm" style="background:${cor}"></span>${nome}</li>`).join('');
+
+  // Peça selecionada.
+  const sel = $('selecionada');
+  sel.hidden = !selecionada;
+  if (selecionada) {
+    const p = selecionada, t = TIPOS[p.tipo], { w, h } = lados(p), lote = loteDe(p);
+    const modos = cl.get(p) ?? [];
+    sel.innerHTML = `<div class="flex flex-wrap items-center gap-3">
+      <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl text-ink" style="background:${COR_CATEGORIA[t.categoria]}">${iconeInst(t.nome, 'h-5 w-5')}</span>
+      <div class="min-w-0 flex-1"><p class="font-display text-lg font-semibold leading-tight">${t.nome}</p>
+        <p class="text-xs text-muted">${fmt(w, 2)}×${fmt(h, 2)} tiles${lote ? ` · lote ${lote.n}` : ''}${rotulos.get(p) ? ` · produz <strong class="text-ink">${rotulos.get(p)}</strong>` : ''}${modos.length ? ` · clima ${modos.map((m) => CLIMA[m][0]).join(' + ')}` : ''}</p></div>
+      <div class="flex flex-wrap gap-2">
+        ${t.climas ? t.climas.map((m) => `<button type="button" data-acao="modo" data-modo="${m}" aria-pressed="${p.modo === m}" class="cursor-pointer rounded-full border px-3 py-1.5 text-xs font-semibold text-ink aria-pressed:ring-2 aria-pressed:ring-casal" style="background:${CLIMA[m][1]}">${CLIMA[m][0]}</button>`).join('') : ''}
+        ${t.gira ? '<button type="button" data-acao="girar" class="btn h-9 px-4 text-sm">Girar (R)</button>' : ''}
+        <button type="button" data-acao="duplicar" class="btn h-9 px-4 text-sm">Duplicar (D)</button>
+        <button type="button" data-acao="remover" class="btn h-9 px-4 text-sm text-err">Remover</button>
+      </div></div>`;
+  }
+
+  // Cobertura e lista.
+  const cob = cobertos(pecas);
+  const semClima = [...cl.entries()].filter(([p, m]) => !m.length && ['fa', 'wo', 'ts', 'sh', 'fw'].includes(p.tipo)).length;
+  $('cobertura').innerHTML = (Object.keys(cob).length
+    ? `<ul class="space-y-1.5 text-sm">${Object.entries(cob).map(([k, n]) => { const [inst, c] = k.split('|'); return `<li class="flex items-center gap-2">${c.split('+').map(climaTag).join('')} <span class="text-danube">${iconeInst(inst)}</span><span class="font-semibold">${n}× ${inst}</span></li>`; }).join('')}</ul>`
+    : '<p class="text-sm text-muted">Nenhuma construção coberta por clima ainda. Coloque um prédio de clima e lavouras dentro do quadrado pontilhado, ou use o layout automático.</p>')
+    + (semClima ? `<p class="mt-2 text-xs text-muted">${semClima} lavoura(s) fora de qualquer clima: plantam só o que não pede clima.</p>` : '')
+    + `<p class="mt-3 border-t border-line pt-3 text-sm">Com este layout o plano rende <strong class="font-mono">${fmt(ultimoGanho)}</strong> ${MOEDA[cfg.objetivo]}/h. Construções que você não colocou continuam no plano, só sem clima.</p>`;
+  $('pecas').innerHTML = pecas.length ? pecas.map((p, i) => `<li class="flex items-center gap-2"><button type="button" data-escolher="${i}" class="flex min-w-0 flex-1 cursor-pointer items-center gap-2 rounded-lg px-1 text-left hover:bg-danube-50 ${p === selecionada ? 'bg-casal-50' : ''}">
+      <span class="text-danube">${iconeInst(TIPOS[p.tipo].nome)}</span><span class="min-w-0 flex-1 truncate">${TIPOS[p.tipo].nome}${p.modo ? ` · ${CLIMA[p.modo][0]}` : ''}${rotulos.get(p) ? ` · <span class="text-muted">${rotulos.get(p)}</span>` : ''}</span>
+      <span class="font-mono text-xs text-muted">lote ${loteDe(p)?.n ?? '?'}</span></button>
+    <button type="button" data-remover="${i}" class="cursor-pointer rounded-full px-2 text-xs font-semibold text-err hover:bg-[#FBEDEF]" aria-label="Remover ${TIPOS[p.tipo].nome}">remover</button></li>`).join('')
+    : '<li class="text-muted">Nenhuma peça.</li>';
+}
+
+// Primeira posição livre perto de `p` (para duplicar e para colar ao lado).
+function vagaPerto(p: Peca): Peca | null {
+  for (let raio = 1; raio < 30; raio++)
+    for (const [dx, dy] of [[raio, 0], [0, raio], [-raio, 0], [0, -raio], [raio, raio], [-raio, raio], [raio, -raio], [-raio, -raio]]) {
+      const q = { ...p, x: p.x + dx * Math.ceil(lados(p).w), y: p.y + dy * Math.ceil(lados(p).h) };
+      if (cabe(pecas, q, cfg.rv)) return q;
+    }
+  return null;
+}
+function acao(nome: string, extra?: string) {
+  const p = selecionada;
+  if (!p) return;
+  if (nome === 'remover') mudar(() => { pecas = pecas.filter((x) => x !== p); selecionada = null; });
+  else if (nome === 'girar' && TIPOS[p.tipo].gira) {
+    const girada = { ...p, r: !p.r };
+    if (cabe(pecas, girada, cfg.rv, p)) mudar(() => { p.r = !p.r; if (!p.r) delete p.r; });
+    else $('auto-msg').textContent = 'Não dá para girar aqui: bate em outra construção ou sai do terreno.';
+  } else if (nome === 'duplicar') {
+    if (usadas(p.tipo) >= limite(p.tipo)) { $('auto-msg').textContent = `Já tem ${usadas(p.tipo)}/${limite(p.tipo)} ${TIPOS[p.tipo].nome} no RV ${cfg.rv}.`; return; }
+    const q = vagaPerto(p);
+    if (q) mudar(() => { pecas.push(q); selecionada = q; });
+  } else if (nome === 'modo' && extra) mudar(() => { p.modo = extra; });
+}
+$('selecionada').addEventListener('click', (ev) => {
+  const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-acao]');
+  if (b) acao(b.dataset.acao!, b.dataset.modo);
+});
+
 svg.addEventListener('pointerdown', (ev) => {
+  svg.focus({ preventScroll: true });
   const { x, y } = ponto(ev);
   const alvo = pecaEm(x, y);
-  if (ferramenta === 'apagar') {
-    if (alvo) { pecas = pecas.filter((p) => p !== alvo); mudouLayout(); }
-    return;
-  }
   if (alvo) {
-    arrasto = { p: alvo, dx: x - alvo.x, dy: y - alvo.y, moveu: false, ox: alvo.x, oy: alvo.y };
+    selecionada = alvo;
+    arrasto = { p: alvo, dx: x - alvo.x, dy: y - alvo.y, moveu: false, antes: codifica(pecas) };
     svg.setPointerCapture(ev.pointerId);
+    desenhar();
     return;
   }
-  if (ferramenta && fantasma && cabe(pecas, fantasma) && usadas(ferramenta) < limite(ferramenta)) {
-    pecas.push({ ...fantasma });
-    mudouLayout();
+  if (ferramenta && fantasma && cabe(pecas, fantasma, cfg.rv) && usadas(ferramenta) < limite(ferramenta)) {
+    const nova = { ...fantasma };
+    mudar(() => { pecas.push(nova); selecionada = nova; });
+    if (usadas(ferramenta) >= limite(ferramenta)) { ferramenta = null; fantasma = null; montarPaleta(); }
+    return;
   }
+  selecionada = null;
+  desenhar();
 });
 svg.addEventListener('pointermove', (ev) => {
   const { x, y } = ponto(ev);
   if (arrasto) {
-    const lado = TIPOS[arrasto.p.tipo].lado;
-    const nx = Math.round(x - arrasto.dx), ny = Math.round(y - arrasto.dy);
-    const novo = { ...arrasto.p, x: Math.max(0, Math.min(LARGURA - lado, nx)), y: Math.max(0, Math.min(ALTURA - lado, ny)) };
-    if ((novo.x !== arrasto.p.x || novo.y !== arrasto.p.y) && cabe(pecas, novo, arrasto.p)) {
+    const novo = { ...arrasto.p, x: Math.round(x - arrasto.dx), y: Math.round(y - arrasto.dy) };
+    if ((novo.x !== arrasto.p.x || novo.y !== arrasto.p.y) && cabe(pecas, novo, cfg.rv, arrasto.p)) {
       arrasto.p.x = novo.x; arrasto.p.y = novo.y; arrasto.moveu = true;
       desenhar();
     }
     return;
   }
-  if (ferramenta && ferramenta !== 'apagar' && !pecaEm(x, y)) {
+  if (ferramenta && !pecaEm(x, y)) {
     const t = TIPOS[ferramenta];
-    fantasma = { tipo: ferramenta, x: Math.max(0, Math.min(LARGURA - t.lado, Math.round(x - t.lado / 2))), y: Math.max(0, Math.min(ALTURA - t.lado, Math.round(y - t.lado / 2))), ...(t.climas && { modo: t.climas[0] }) };
+    fantasma = { tipo: ferramenta, x: Math.round(x - t.w / 2), y: Math.round(y - t.h / 2), ...(t.climas && { modo: t.climas[0] }) };
   } else fantasma = null;
   desenhar();
 });
-svg.addEventListener('pointerleave', () => { fantasma = null; desenhar(); });
+svg.addEventListener('pointerleave', () => { if (fantasma) { fantasma = null; desenhar(); } });
 svg.addEventListener('pointerup', () => {
   if (!arrasto) return;
-  const { p, moveu } = arrasto;
+  const { moveu, antes } = arrasto;
   arrasto = null;
-  // Clique sem arrastar num prédio de clima: alterna o modo (Quente ⇄ Escaldante, Fresco ⇄ Congelante).
-  if (!moveu && ehClima(p) && TIPOS[p.tipo].climas!.length > 1) {
-    const ms = TIPOS[p.tipo].climas!;
-    p.modo = ms[(ms.indexOf(p.modo!) + 1) % ms.length];
-  }
-  if (moveu || ehClima(p)) mudouLayout();
+  if (moveu) { historico.push(antes); futuro = []; mudouLayout(); }
 });
+
+// Teclado no mapa (e Ctrl+Z em qualquer lugar da aba, fora de campos de texto).
+document.addEventListener('keydown', (ev) => {
+  if (aba !== 'layout' || (ev.target as Element)?.closest?.('input, select, textarea')) return;
+  const mod = ev.ctrlKey || ev.metaKey;
+  if (mod && ev.key.toLowerCase() === 'z') { ev.preventDefault(); ev.shiftKey ? voltar(futuro, historico) : voltar(historico, futuro); return; }
+  if (mod && ev.key.toLowerCase() === 'y') { ev.preventDefault(); voltar(futuro, historico); return; }
+  if (ev.key === 'Escape') { selecionada = null; ferramenta = null; fantasma = null; montarPaleta(); desenhar(); return; }
+  const p = selecionada;
+  if (!p) return;
+  const passo = ev.shiftKey ? 5 : 1;
+  const d2 = { ArrowLeft: [-passo, 0], ArrowRight: [passo, 0], ArrowUp: [0, -passo], ArrowDown: [0, passo] }[ev.key];
+  if (d2) {
+    ev.preventDefault();
+    const novo = { ...p, x: p.x + d2[0], y: p.y + d2[1] };
+    if (cabe(pecas, novo, cfg.rv, p)) mudar(() => { p.x = novo.x; p.y = novo.y; });
+  } else if (ev.key === 'Delete' || ev.key === 'Backspace') { ev.preventDefault(); acao('remover'); }
+  else if (ev.key.toLowerCase() === 'r') acao('girar');
+  else if (ev.key.toLowerCase() === 'd') acao('duplicar');
+});
+
 $('pecas').addEventListener('click', (ev) => {
-  const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-remover]');
-  if (!b) return;
-  pecas.splice(Number(b.dataset.remover), 1);
-  mudouLayout();
+  const rem = (ev.target as HTMLElement).closest<HTMLElement>('[data-remover]');
+  if (rem) { const alvo = pecas[Number(rem.dataset.remover)]; mudar(() => { pecas = pecas.filter((x) => x !== alvo); if (selecionada === alvo) selecionada = null; }); return; }
+  const esc = (ev.target as HTMLElement).closest<HTMLElement>('[data-escolher]');
+  if (esc) { selecionada = pecas[Number(esc.dataset.escolher)]; desenhar(); }
 });
-$('limpar-layout').addEventListener('click', () => { pecas = []; mudouLayout(); });
+$('limpar-layout').addEventListener('click', () => { if (pecas.length) mudar(() => { pecas = []; selecionada = null; }); });
 
 // Automático: testa cada combinação de modo de clima e de divisão das lavouras entre os prédios, fica com a que rende mais.
+// Processadores, mina e o que mais você já posicionou ficam onde estão.
 $('auto').addEventListener('click', () => {
   const botao = $<HTMLButtonElement>('auto');
   botao.disabled = true;
@@ -331,19 +532,21 @@ $('auto').addEventListener('click', () => {
   // Deixa o navegador pintar o "Montando…" antes da conta.
   setTimeout(() => { try { montarAutomatico(); } finally { botao.disabled = false; } }, 30);
 });
+const AUTO = ['fa', 'wo', 'ts', 'sh', 'fw', 'hf', 'cu', 'sl'];
 function montarAutomatico() {
   const predios = (['hf', 'cu', 'sl'] as const).filter((t) => limite(t) > 0);
   if (!predios.length) {
-    $('auto-msg').textContent = `Os prédios de clima liberam no RV ${Object.values(porNome.get('Heat Furnace')!.niveis)[0]}.`;
+    $('auto-msg').textContent = `Os prédios de clima liberam no RV ${libera('hf')}.`;
     return;
   }
+  const fixas = pecas.filter((p) => !AUTO.includes(p.tipo));
   const quantos = Object.fromEntries(['fa', 'wo', 'ts', 'sh', 'fw'].map((t) => [t, limite(t)]));
   const modos = predios.reduce<string[][]>((acc, t) => acc.flatMap((m) => TIPOS[t].climas!.map((c) => [...m, c])), [[]]);
   const n = predios.length;
   const fatias = [Array(n).fill(1 / n), ...predios.map((_, i) => predios.map((__, j) => (j === i ? 1 : 0))),
     ...(n > 1 ? predios.map((_, i) => predios.map((__, j) => (j === i ? 0.5 : 0.5 / (n - 1)))) : [])];
   // Compara todas pela versão contínua (1 ms cada) e resolve exato só as 8 melhores: mesmo resultado que testar tudo, bem mais rápido.
-  const tentativas = modos.flatMap((ms) => fatias.map((f) => montaAuto(predios.map((t, i) => ({ tipo: t, modo: ms[i] })), quantos, f)))
+  const tentativas = modos.flatMap((ms) => fatias.map((f) => montaAuto(predios.map((t, i) => ({ tipo: t, modo: ms[i] })), quantos, f, cfg.rv, fixas)))
     .map((pecasT) => ({ pecas: pecasT, estimativa: otimiza(d, { ...cfg, cobertos: cobertos(pecasT) }, { relaxado: true }).ganhoHora }))
     .sort((a, b) => b.estimativa - a.estimativa).slice(0, 8);
   let melhor: { pecas: Peca[]; ganho: number } | null = null;
@@ -352,9 +555,8 @@ function montarAutomatico() {
     if (!melhor || ganho > melhor.ganho + 0.5) melhor = { pecas: t.pecas, ganho };
   }
   const antes = otimiza(d, cfg).ganhoHora;
-  pecas = melhor!.pecas;
+  mudar(() => { pecas = melhor!.pecas; selecionada = null; });
   $('auto-msg').textContent = `Testei ${modos.length * fatias.length} combinações. ${melhor!.ganho > antes + 0.5 ? `+${fmt(melhor!.ganho - antes)}/h em relação ao layout anterior.` : 'O layout anterior já era tão bom quanto.'}`;
-  mudouLayout();
 }
 
 // ---------- receitas ----------
@@ -413,12 +615,14 @@ document.querySelectorAll<HTMLElement>('[data-aba]').forEach((b) => b.addEventLi
 
 let rodando = 0;
 let ultimoGanho = 0;
+let ultimoPlano: Plano | null = null;
 function atualizar() {
   cfg.cobertos = cobertos(pecas);
   cancelAnimationFrame(rodando);
   rodando = requestAnimationFrame(() => {
     const p = otimiza(d, cfg);
     ultimoGanho = p.ganhoHora;
+    ultimoPlano = p;
     mostrarPlano(p);
     mostrarNiveis(p.ganhoHora);
     mostrarReceitas();

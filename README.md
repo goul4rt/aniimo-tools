@@ -60,6 +60,7 @@ docs/adr/        decisões e escopo
 
 - `data/aniimos.json` é atualizado todo dia (09:00 UTC) pela Action `update-data`. Ela só faz commit quando algo mudou, e o commit dispara o deploy. Se a coleta falhar, o site segue com os dados anteriores.
 - Tabela de tipos, códigos, Resonance e times prontos são conferidos à mão. Cada arquivo guarda as fontes e a data da conferência, e as páginas citam as fontes.
+- Grade de lotes, tamanhos das construções, clima gradual e habilidades de trabalho dos Aniimo (`data/homeland-hideout.json`) vêm do [Hideout Guides](https://www.hideoutgacha.com/games/aniimo/homeland-layout), com permissão dos mantenedores. Para atualizar: `node scripts/homeland-hideout.cjs`.
 - Homeland (`data/homeland.json`) vem do [aniimax](https://github.com/ae-bii/aniimax) (MIT, © aebii), convertido por `scripts/homeland.ts`. Para atualizar: `git clone https://github.com/ae-bii/aniimax /tmp/aniimax && node scripts/homeland.ts /tmp/aniimax`. A licença deles vai junto no JSON e em `data/homeland.LICENSE`.
 - Os times prontos (`data/times.json`) são validados no build: se um Aniimo ou forma sumir da wiki, o build falha apontando o time.
 

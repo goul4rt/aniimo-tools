@@ -2,6 +2,10 @@
 import Base from '../layouts/Base.astro';
 import { icone } from '../scripts/icones.ts';
 import dados from '../../data/homeland.json';
+import { aniimos } from '../data.ts';
+
+// Nome EN (como nos dados de Homeland) → nome oficial em PT e id, para a equipe citar Aniimo em PT e marcar os da coleção.
+const nomesPt = Object.fromEntries(aniimos.map((a) => [a.nome.en, [a.nome.pt, a.id]]));
 
 const receitas = dados.receitas.length;
 const instalacoes = dados.instalacoes.filter((f) => f.tipo !== 'clima').length;
@@ -34,7 +38,7 @@ const ABAS = [['plano', 'Plano'], ['layout', 'Layout de clima'], ['receitas', 'R
   </div>
 
   <!-- Configuração: vale para todas as abas -->
-  <form id="config" class="card mt-4 grid gap-4 p-4 sm:grid-cols-2 lg:grid-cols-4" onsubmit="return false">
+  <form id="config" class="card mt-4 grid grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:grid-cols-4" onsubmit="return false">
     <label class="flex flex-col gap-1.5">
       <span class="rotulo text-xs">Nível do Homeland (RV)</span>
       <select name="rv" class="campo">{Array.from({ length: 20 }, (_, i) => <option value={i + 1}>RV {i + 1}</option>)}</select>
@@ -65,14 +69,14 @@ const ABAS = [['plano', 'Plano'], ['layout', 'Layout de clima'], ['receitas', 'R
         <p class="text-sm text-muted">Coloque quantas você tem e em que nível. Instalação que o RV ainda não libera fica travada.</p>
         <button id="restaurar" type="button" data-umami-event="homeland_restaurar" class="btn h-9 text-sm">Voltar ao máximo do RV</button>
       </div>
-      <div id="tabela-instalacoes" class="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3"></div>
-      <div id="tabela-modulos" class="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-4"></div>
+      <div id="tabela-instalacoes" class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3"></div>
+      <div id="tabela-modulos" class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4"></div>
     </details>
   </form>
 
   <section id="painel-plano" role="tabpanel" aria-labelledby="aba-plano" data-painel="plano" class="mt-4 space-y-4">
-    <div id="resumo" class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4"></div>
-    <div class="grid gap-4 lg:grid-cols-[1fr_22rem]">
+    <div id="resumo" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"></div>
+    <div class="grid grid-cols-1 gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
       <div class="card overflow-hidden">
         <h2 class="border-b border-line px-4 py-3 text-lg font-semibold">O que cada instalação produz</h2>
         <div id="plano" class="overflow-x-auto"></div>
@@ -86,27 +90,48 @@ const ABAS = [['plano', 'Plano'], ['layout', 'Layout de clima'], ['receitas', 'R
   </section>
 
   <section id="painel-layout" role="tabpanel" aria-labelledby="aba-layout" data-painel="layout" hidden class="mt-4 space-y-4">
-    <div class="card p-4">
-      <p class="text-sm text-muted">
-        Algumas colheitas só crescem num clima (Quente, Escaldante, Fresco, Congelante ou Adequado). Cada prédio de clima é 2×2 e cobre um quadrado 9×9
-        ao redor dele. Posicione as lavouras e os prédios: os lotes cobertos entram no plano na hora.
+    <div class="card flex flex-wrap items-center justify-between gap-3 p-4">
+      <p class="max-w-3xl text-sm text-muted">
+        A grade real do jogo: 16 lotes de 20×15, e o lote N abre no RV N. Algumas colheitas pedem clima: cada prédio de clima cobre 9×9 ao redor.
+        Perto do clima pedido ainda rende (80% a um passo, 50% a dois). O que você posiciona aqui entra no plano na hora.
       </p>
-      <div class="mt-3 flex flex-wrap items-center gap-2">
+      <div class="flex flex-wrap items-center gap-2">
         <button id="auto" type="button" data-umami-event="homeland_layout_auto" class="btn btn-primario h-9 gap-2 text-sm"><Fragment set:html={icone('brilho')} />Montar layout automático</button>
         <span id="auto-msg" class="text-xs text-muted" aria-live="polite"></span>
       </div>
-      <div id="paleta" class="mt-3 flex flex-wrap gap-2"></div>
-      <p class="mt-2 text-xs text-danube-700">Clique no mapa para colocar. Arraste para mover. Clique num prédio de clima para trocar o modo. Use "Apagar" e clique na peça para remover.</p>
     </div>
-    <div class="card overflow-x-auto p-2">
-      <svg id="mapa" class="block w-full min-w-[42rem] touch-none select-none" role="img" aria-label="Mapa do layout do Homeland"></svg>
-    </div>
-    <div class="grid gap-4 md:grid-cols-2">
-      <div class="card p-4"><h2 class="text-lg font-semibold">Cobertura</h2><div id="cobertura" class="mt-3"></div></div>
-      <div class="card p-4">
-        <div class="flex items-center justify-between gap-2"><h2 class="text-lg font-semibold">Peças</h2><button id="limpar-layout" type="button" data-umami-event="homeland_layout_limpar" class="btn h-9 text-sm">Limpar layout</button></div>
-        <ul id="pecas" class="mt-3 max-h-64 space-y-1 overflow-y-auto text-sm"></ul>
+    <div id="numeros-layout" class="grid grid-cols-2 gap-3 lg:grid-cols-4"></div>
+    <div class="grid grid-cols-1 gap-4 xl:grid-cols-[minmax(0,1fr)_20rem] xl:items-start">
+      <div class="min-w-0 space-y-3">
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="desfazer" type="button" title="Desfazer (Ctrl+Z)" data-umami-event="homeland_layout_desfazer" class="btn h-9 px-4 text-sm" disabled>Desfazer</button>
+          <button id="refazer" type="button" title="Refazer (Ctrl+Shift+Z)" data-umami-event="homeland_layout_refazer" class="btn h-9 px-4 text-sm" disabled>Refazer</button>
+          <div role="group" aria-label="Visão" class="flex gap-1 rounded-full bg-danube-100 p-1 text-xs font-semibold">
+            <button type="button" data-visao="abertos" aria-pressed="true" class="cursor-pointer rounded-full px-3 py-1.5 text-danube-700 aria-pressed:bg-white aria-pressed:text-ink">Terreno aberto</button>
+            <button type="button" data-visao="tudo" aria-pressed="false" class="cursor-pointer rounded-full px-3 py-1.5 text-danube-700 aria-pressed:bg-white aria-pressed:text-ink">Os 16 lotes</button>
+          </div>
+          <select id="lote-foco" aria-label="Ver um lote de perto" class="campo h-9 px-3 text-xs font-semibold"></select>
+          <button id="limpar-layout" type="button" data-umami-event="homeland_layout_limpar" class="btn ml-auto h-9 px-4 text-sm">Limpar layout</button>
+        </div>
+        <div class="card overflow-x-auto p-2">
+          <svg id="mapa" tabindex="0" class="block w-full min-w-[40rem] touch-none select-none outline-none focus-visible:ring-2 focus-visible:ring-danube" role="img" aria-label="Mapa do Homeland"></svg>
+        </div>
+        <p class="text-xs text-danube-700">
+          Escolha uma construção na lista e clique no mapa. Clique numa peça para selecionar e arraste para mover.
+          Teclado: setas movem (Shift = 5 tiles), <kbd>R</kbd> gira, <kbd>D</kbd> duplica, <kbd>Del</kbd> remove, <kbd>Esc</kbd> solta, <kbd>Ctrl+Z</kbd> desfaz.
+        </p>
+        <div id="selecionada" class="card p-4" hidden></div>
+        <ul id="legenda" class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted"></ul>
       </div>
+      <aside class="card space-y-3 p-4 xl:sticky xl:top-4">
+        <h2 class="text-lg font-semibold">Construções</h2>
+        <input id="busca-peca" type="search" placeholder="Buscar construção" autocomplete="off" aria-label="Buscar construção" class="campo h-10 w-full text-sm" />
+        <div id="paleta" class="max-h-[60vh] space-y-4 overflow-y-auto pr-1"></div>
+      </aside>
+    </div>
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div class="card p-4"><h2 class="text-lg font-semibold">Cobertura de clima</h2><div id="cobertura" class="mt-3"></div></div>
+      <div class="card p-4"><h2 class="text-lg font-semibold">Peças no mapa</h2><ul id="pecas" class="mt-3 max-h-64 space-y-1 overflow-y-auto text-sm"></ul></div>
     </div>
   </section>
 
@@ -133,6 +158,7 @@ const ABAS = [['plano', 'Plano'], ['layout', 'Layout de clima'], ['receitas', 'R
       no jogo ficam de fora, a não ser que você marque a opção. Achou um número diferente no jogo? <a class="underline" href="https://github.com/goul4rt/aniimo-tools/issues/new">Avise</a>.
     </p>
   </div>
+  <script type="application/json" id="nomes-pt" set:html={JSON.stringify(nomesPt).replaceAll('<', '\\u003c')} />
 </Base>
 
 <script>
