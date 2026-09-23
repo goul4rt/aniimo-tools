@@ -68,13 +68,16 @@ const nav = [
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    {/* data-domains: só conta no domínio próprio (localhost e pages.dev ficam de fora). */}
-    {UMAMI_ID && <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id={UMAMI_ID} data-domains="aniimo.ogoulart.dev"></script>}
+    {/* Umami: só conta no domínio próprio; ignora ?t=/?c= e #âncoras (senão cada time vira uma "página"); coleta Web Vitals; respeita Do Not Track. */}
+    {UMAMI_ID && (
+      <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id={UMAMI_ID} data-domains="aniimo.ogoulart.dev"
+        data-exclude-search="true" data-exclude-hash="true" data-performance="true" data-do-not-track="true"></script>
+    )}
   </head>
   <body class="flex min-h-screen flex-col antialiased">
     <header class="bg-casal">
       <nav class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-4 py-3 sm:px-6">
-        <a href="/" class="flex items-center gap-2.5 text-white hover:text-white">
+        <a href="/" data-umami-event="nav" data-umami-event-destino="inicio" class="flex items-center gap-2.5 text-white hover:text-white">
           <img src="/favicon.svg" alt="" width="32" height="32" />
           <span class="font-display text-xl font-semibold">Aniimo Tools</span>
         </a>
@@ -82,7 +85,7 @@ const nav = [
           {nav.map(([href, label]) => {
             const atual = Astro.url.pathname.startsWith(href);
             return (
-              <a href={href} aria-current={atual ? 'page' : undefined}
+              <a href={href} aria-current={atual ? 'page' : undefined} data-umami-event="nav" data-umami-event-destino={label}
                 class:list={['rounded-full px-3.5 py-2 hover:bg-zumthor/15 hover:text-white', atual ? 'bg-zumthor/15 text-white' : 'text-zumthor/85']}>{label}</a>
             );
           })}
@@ -95,13 +98,21 @@ const nav = [
     <footer class="border-t border-danube-100">
       <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-x-2 gap-y-2 px-4 py-5 text-sm text-muted sm:px-6">
         <span>Fan-site não-oficial. Aniimo e todos os assets são © Pawprint Studio. Sem afiliação.</span>
-        <a href="/creditos/" class="text-casal underline">Créditos e dados</a>
-        <a href="https://ko-fi.com/ogoul4rt" target="_blank" rel="noopener"
+        <a href="/creditos/" data-umami-event="rodape_creditos" class="text-casal underline">Créditos e dados</a>
+        <a href="https://ko-fi.com/ogoul4rt" target="_blank" rel="noopener" data-umami-event="kofi"
           class="inline-flex items-center gap-1.5 rounded-full bg-[#F48DB8]/20 px-3 py-1 font-semibold text-casal no-underline hover:bg-[#F48DB8]/35 hover:text-casal sm:ml-auto">
           <svg class="h-4 w-4 text-[#C94B7F]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7Z"/></svg>
           Curtiu? Apoie no Ko-fi
         </a>
       </div>
     </footer>
+    <script>
+      // Qualquer link para fora do site (wiki, fontes, GitHub…) vira "link_externo" com o destino, sem marcar um por um.
+      document.addEventListener('click', (ev) => {
+        const a = (ev.target as HTMLElement).closest?.<HTMLAnchorElement>('a[href^="http"]');
+        if (!a || a.host === location.host || a.hasAttribute('data-umami-event')) return;
+        (window as unknown as { umami?: { track: (n: string, d: object) => void } }).umami?.track('link_externo', { destino: a.host, pagina: location.pathname });
+      });
+    </script>
   </body>
 </html>

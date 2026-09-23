@@ -27,7 +27,7 @@ const total = aniimos.reduce((n, a) => n + a.formas.length, 0);
       <li data-busca={semAcento(`${a.id} ${a.nome.pt} ${a.nome.en}`)} class="card flex gap-3 p-3">
         <img src={base(a).imagem} alt="" width="48" height="48" loading="lazy" decoding="async" class="h-12 w-12 shrink-0 rounded-2xl bg-danube-100 object-contain" onerror="this.style.visibility='hidden'" />
         <div class="min-w-0">
-          <a href={`/aniilog/${a.slug}/`} class="font-semibold hover:underline">{a.nome.pt}</a>
+          <a href={`/aniilog/${a.slug}/`} data-umami-event="colecao_abrir_aniimo" data-umami-event-aniimo={a.slug} class="font-semibold hover:underline">{a.nome.pt}</a>
           <span class="text-xs text-danube-700">#{a.id}</span>
           <div class="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm">
             {a.formas.map((f) => (
@@ -81,8 +81,8 @@ const total = aniimos.reduce((n, a) => n + a.formas.length, 0);
 
   aplica(carrega());
   $('lista').addEventListener('change', () => { salva(); atualiza(); umaVez('colecao_marcada'); });
-  $('busca').addEventListener('input', filtra);
-  $('faltando').addEventListener('change', filtra);
+  $('busca').addEventListener('input', () => { filtra(); umaVez('colecao_busca'); });
+  $('faltando').addEventListener('change', () => { filtra(); evento('colecao_so_falta', { ligado: ($('faltando') as HTMLInputElement).checked }); });
 
   $('exportar').addEventListener('click', () => {
     evento('colecao_exportada', { formas: caixas.filter((c) => c.checked).length });

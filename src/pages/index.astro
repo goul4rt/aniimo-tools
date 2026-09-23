@@ -33,7 +33,7 @@ const cards = [
   </header>
   <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {cards.map(([href, titulo, texto]) => (
-      <a href={href} class="card flex flex-col gap-2 p-6">
+      <a href={href} data-umami-event="home_card" data-umami-event-ferramenta={titulo} class="card flex flex-col gap-2 p-6">
         <span class="flex items-center justify-between gap-2">
           <h2 class="text-xl font-semibold">{titulo}</h2>
           <span class="text-lg text-danube" aria-hidden="true">→</span>

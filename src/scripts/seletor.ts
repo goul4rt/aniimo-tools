@@ -2,6 +2,7 @@
 // que no Chrome/macOS abre um popup escuro do sistema, só com o texto e sem imagem.
 import { COR, ELEMENTO } from '../rotulos.ts';
 import type { Elemento } from '../types.ts';
+import { evento } from './evento.ts';
 
 export type Opcao = { slug: string; nome: string; en: string; imagem: string; elementos: string[] };
 
@@ -36,6 +37,7 @@ export function seletor(input: HTMLInputElement, opcoes: Opcao[], escolhe: (slug
   limpar.type = 'button';
   limpar.hidden = true;
   limpar.setAttribute('aria-label', 'Limpar');
+  limpar.dataset.umamiEvent = 'seletor_limpar';
   limpar.className = 'absolute top-1/2 right-2 grid h-7 w-7 -translate-y-1/2 cursor-pointer place-items-center rounded-full text-lg leading-none text-muted hover:bg-danube-100 hover:text-ink';
   limpar.textContent = '×';
 
@@ -87,6 +89,8 @@ export function seletor(input: HTMLInputElement, opcoes: Opcao[], escolhe: (slug
     limpar.hidden = !o;
     fecha();
     if (avisa) escolhe(o?.slug ?? null);
+    // Qual Aniimo as pessoas escolhem no montador/comparador (não conta o preenchimento vindo do link).
+    if (avisa && o) evento('aniimo_escolhido', { aniimo: o.slug, pagina: location.pathname });
   }
 
   input.addEventListener('focus', () => { input.select(); abre(); });
@@ -132,7 +136,7 @@ export function seletor(input: HTMLInputElement, opcoes: Opcao[], escolhe: (slug
 /** Pílulas de forma no lugar do <select>: só aparecem quando o Aniimo tem mais de uma forma. */
 export function pilulas(box: HTMLElement, formas: { chave: string; nome: string }[], atual: string, escolhe: (chave: string) => void) {
   box.innerHTML = formas.length < 2 ? '' : formas.map((f) =>
-    `<button type="button" data-chave="${esc(f.chave)}" aria-pressed="${f.chave === atual}"
+    `<button type="button" data-chave="${esc(f.chave)}" data-umami-event="forma_trocada" data-umami-event-forma="${esc(f.chave)}" aria-pressed="${f.chave === atual}"
       class="cursor-pointer rounded-full border px-3 py-1 text-xs font-semibold transition-colors ${f.chave === atual
         ? 'border-casal bg-casal text-white'
         : 'border-danube-100 bg-white text-casal hover:border-danube'}">${esc(f.nome)}</button>`).join('');

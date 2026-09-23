@@ -35,10 +35,10 @@ const dados = {
   <div class="flex flex-wrap items-end justify-between gap-4">
     <div>
       <h1 class="text-4xl">Montador de time</h1>
-      <p class="mt-1 text-muted">Escolha até 4 Aniimo, ou <a href="#prontos" class="font-semibold text-casal underline">comece de um time pronto</a>. O link da página guarda o time.</p>
+      <p class="mt-1 text-muted">Escolha até 4 Aniimo, ou <a href="#prontos" data-umami-event="time_ir_prontos" class="font-semibold text-casal underline">comece de um time pronto</a>. O link da página guarda o time.</p>
     </div>
     <div class="flex flex-wrap gap-2">
-      <button id="limpar" type="button" class="btn" disabled>Limpar time</button>
+      <button id="limpar" type="button" data-umami-event="time_limpar" class="btn" disabled>Limpar time</button>
       <button id="compartilhar" type="button" class="btn btn-primario gap-2" disabled>
         <Fragment set:html={icone('compartilhar')} /><span data-rotulo>Compartilhar time</span>
       </button>
@@ -101,7 +101,7 @@ const dados = {
       <div class="flex flex-wrap items-center gap-2">
         <div id="filtro-nivel" role="group" aria-label="Nível" class="flex gap-1 rounded-full bg-danube-100 p-1 text-sm font-semibold">
           {[['', 'Todos'], ...Object.entries(NIVEL)].map(([v, r], i) => (
-            <button type="button" data-nivel={v} aria-pressed={i === 0 ? 'true' : 'false'}
+            <button type="button" data-nivel={v} data-umami-event="time_prontos_nivel" data-umami-event-nivel={r} aria-pressed={i === 0 ? 'true' : 'false'}
               class="cursor-pointer rounded-full px-3.5 py-1.5 text-danube-700 aria-pressed:bg-white aria-pressed:text-ink">{r}</button>
           ))}
         </div>
@@ -251,6 +251,8 @@ const dados = {
     return m.chave === 'prismana-form' ? 'prismana' : a.formas[0].chave === m.chave ? 'basica' : 'regional';
   };
   [soColecao, formasSugestao].forEach((el) => el.addEventListener('change', () => { document.getElementById('sugestoes')!.innerHTML = ''; }));
+  formasSugestao.addEventListener('change', () => evento('time_sugestao_formas', { formas: formasSugestao.value }));
+  soColecao.addEventListener('change', () => evento('time_sugestao_colecao', { ligado: soColecao.checked }));
   const rotulo = botao.querySelector('[data-rotulo]')!;
   function atualiza() {
     analisa();
@@ -328,10 +330,9 @@ const dados = {
     nivel.querySelectorAll('[data-nivel]').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
     filtraProntos();
   });
-  filtroEl.addEventListener('change', filtraProntos);
+  filtroEl.addEventListener('change', () => { filtraProntos(); evento('time_prontos_elemento', { elemento: filtroEl.value || 'todos' }); });
 
   limpar.addEventListener('click', () => {
-    evento('time_limpo');
     campos.forEach((c, i) => { c.define(''); preenche(i, undefined); });
     atualiza();
   });

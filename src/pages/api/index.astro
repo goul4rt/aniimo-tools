@@ -35,7 +35,7 @@ const campos = [
   <ul class="mt-3 space-y-3">
     {rotas.map(([r, d]) => (
       <li>
-        <a class="font-mono text-danube-700 underline break-all" href={r}>{site}{r}</a>
+        <a class="font-mono text-danube-700 underline break-all" data-umami-event="api_rota" data-umami-event-rota={r} href={r}>{site}{r}</a>
         <p class="text-sm text-muted">{d}</p>
       </li>
     ))}

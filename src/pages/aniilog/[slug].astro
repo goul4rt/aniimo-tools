@@ -31,7 +31,7 @@ const descricao = resto > 20 ? `${inicio} ${lore}` : inicio;
   title={`${a.nome.pt} (${a.nome.en}) · Aniilog`}
   description={descricao}
 >
-  <a href="/aniilog/" class="text-sm text-muted hover:text-danube">← Aniilog</a>
+  <a href="/aniilog/" data-umami-event="aniimo_voltar" class="text-sm text-muted hover:text-danube">← Aniilog</a>
 
   <header class="mt-4">
     <p class="font-mono text-sm font-semibold text-danube">#{a.id}</p>
@@ -40,15 +40,15 @@ const descricao = resto > 20 ? `${inicio} ${lore}` : inicio;
     <p class="mt-3 max-w-2xl text-ink">{a.desc.pt}</p>
     {(vemDe.length > 0 || evolui.length > 0) && (
       <p class="mt-3 text-sm text-muted">
-        {vemDe.length > 0 && <>Evolui de {vemDe.map((x, i) => <>{i > 0 && ', '}<a class="underline hover:text-danube" href={`/aniilog/${x.slug}/`}>{x.nome.pt}</a></>)}. </>}
-        {evolui.length > 0 && <>Evolui para {evolui.map((x, i) => <>{i > 0 && ', '}<a class="underline hover:text-danube" href={`/aniilog/${x.slug}/`}>{x.nome.pt}</a></>)}.</>}
+        {vemDe.length > 0 && <>Evolui de {vemDe.map((x, i) => <>{i > 0 && ', '}<a class="underline hover:text-danube" data-umami-event="aniimo_evolucao" data-umami-event-para={x.slug} href={`/aniilog/${x.slug}/`}>{x.nome.pt}</a></>)}. </>}
+        {evolui.length > 0 && <>Evolui para {evolui.map((x, i) => <>{i > 0 && ', '}<a class="underline hover:text-danube" data-umami-event="aniimo_evolucao" data-umami-event-para={x.slug} href={`/aniilog/${x.slug}/`}>{x.nome.pt}</a></>)}.</>}
       </p>
     )}
   </header>
 
   {a.formas.length > 1 && (
     <nav class="mt-6 flex flex-wrap gap-2 text-sm" aria-label="Formas">
-      {a.formas.map((f) => <a href={`#${f.chave}`} class="chip">{f.nome.pt}</a>)}
+      {a.formas.map((f) => <a href={`#${f.chave}`} data-umami-event="aniimo_forma" data-umami-event-forma={f.chave} class="chip">{f.nome.pt}</a>)}
     </nav>
   )}
 

@@ -27,7 +27,7 @@ const pecas = aniimos.flatMap((a) =>
   </div>
 
   <ol id="tiers" class="card mt-6 divide-y divide-line overflow-hidden" aria-label="Tiers"></ol>
-  <button id="nova-tier" type="button" class="btn mt-3">+ Nova tier</button>
+  <button id="nova-tier" type="button" data-umami-event="tier_nova" class="btn mt-3">+ Nova tier</button>
 
   <section class="mt-8" aria-labelledby="titulo-banco">
     <div class="flex flex-wrap items-end justify-between gap-3">
@@ -72,8 +72,8 @@ const pecas = aniimos.flatMap((a) =>
     <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-2">
       <span class="text-sm text-muted">Mover <strong id="mover-nome" class="text-ink"></strong> para:</span>
       <div id="mover-tiers" class="flex flex-wrap gap-1.5"></div>
-      <button type="button" data-para="banco" class="chip cursor-pointer">Tirar da lista</button>
-      <button type="button" data-para="cancelar" class="ml-auto cursor-pointer text-sm font-semibold text-muted hover:text-ink">Cancelar</button>
+      <button type="button" data-para="banco" data-umami-event="tier_mover" data-umami-event-para="fora" class="chip cursor-pointer">Tirar da lista</button>
+      <button type="button" data-para="cancelar" data-umami-event="tier_mover_cancelar" class="ml-auto cursor-pointer text-sm font-semibold text-muted hover:text-ink">Cancelar</button>
     </div>
   </div>
 </Base>
@@ -122,7 +122,7 @@ const pecas = aniimos.flatMap((a) =>
 
   // ---------- tiers ----------
   const botaoIcone = (acao: string, rotulo: string, svg: string) =>
-    `<button type="button" data-acao="${acao}" aria-label="${rotulo}" title="${rotulo}" class="grid h-7 w-7 cursor-pointer place-items-center rounded-full text-muted hover:bg-danube-100 hover:text-ink"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${svg}</svg></button>`;
+    `<button type="button" data-acao="${acao}" data-umami-event="tier_linha" data-umami-event-acao="${acao}" aria-label="${rotulo}" title="${rotulo}" class="grid h-7 w-7 cursor-pointer place-items-center rounded-full text-muted hover:bg-danube-100 hover:text-ink"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${svg}</svg></button>`;
 
   function criaTier(t: Tier) {
     const li = document.createElement('li');
@@ -201,7 +201,7 @@ const pecas = aniimos.flatMap((a) =>
     $('contagem').textContent = String(n);
     $('vazio').hidden = n > 0;
   }
-  form.addEventListener('input', filtra);
+  form.addEventListener('input', () => { filtra(); umaVez('tier_filtro'); });
 
   // ---------- mover: arrastar (mouse) ----------
   let arrastada: HTMLElement | null = null;
@@ -246,8 +246,9 @@ const pecas = aniimos.flatMap((a) =>
     barra.hidden = !p;
     if (!p) return;
     $('mover-nome').textContent = p.dataset.nome!;
+    const esc = (x: string) => x.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
     $('mover-tiers').innerHTML = retrato().map((t, i) =>
-      `<button type="button" data-para="${i}" class="h-9 min-w-9 cursor-pointer rounded-full px-3 font-display font-semibold text-ink" style="background:${t.cor}">${t.nome.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`) || '—'}</button>`).join('');
+      `<button type="button" data-para="${i}" data-umami-event="tier_mover" data-umami-event-para="${esc(t.nome) || '—'}" class="h-9 min-w-9 cursor-pointer rounded-full px-3 font-display font-semibold text-ink" style="background:${t.cor}">${esc(t.nome) || '—'}</button>`).join('');
   }
   function moverPara(zona: HTMLElement, antes?: Element | null) {
     if (!selecionada) return;
