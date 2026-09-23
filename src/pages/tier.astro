@@ -1,0 +1,283 @@
+---
+import Base from '../layouts/Base.astro';
+import { aniimos } from '../data.ts';
+import { ELEMENTO, ESTAGIO } from '../rotulos.ts';
+
+const semAcento = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+// Uma peça por forma. "Básica" = a primeira forma do Aniimo (dois não têm "Forma Básica" na wiki).
+const pecas = aniimos.flatMap((a) =>
+  a.formas.map((f, i) => ({
+    k: `${a.id}/${f.chave}`,
+    a, f,
+    tipo: f.chave === 'prismana-form' ? 'prismana' : i === 0 ? 'basica' : 'regional',
+    busca: semAcento([a.nome.pt, a.nome.en, f.nome.pt, ...f.elementos.map((e) => ELEMENTO[e])].join(' ')),
+  })),
+);
+---
+
+<Base title="Tier list · Aniimo Tools" description="Monte sua tier list de Aniimo: arraste os Aniimo para SSS, SS, S, A…, renomeie as tiers e filtre por elemento, estágio e formas Prismana.">
+  <div class="flex flex-wrap items-end justify-between gap-4">
+    <div>
+      <h1 class="text-4xl">Tier list</h1>
+      <p class="mt-1 max-w-2xl text-muted">
+        Arraste os Aniimo para as tiers, ou toque em um e escolha a tier. Clique no nome de uma tier para renomear. Fica salvo neste navegador.
+      </p>
+    </div>
+    <button id="recomecar" type="button" class="btn">Recomeçar</button>
+  </div>
+
+  <ol id="tiers" class="card mt-6 divide-y divide-line overflow-hidden" aria-label="Tiers"></ol>
+  <button id="nova-tier" type="button" class="btn mt-3">+ Nova tier</button>
+
+  <section class="mt-8" aria-labelledby="titulo-banco">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <h2 id="titulo-banco" class="text-2xl font-semibold">Aniimo <span id="contagem" class="font-mono text-base font-semibold text-danube"></span></h2>
+    </div>
+    <form id="filtros" class="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" onsubmit="return false">
+      <input name="q" type="search" placeholder="Buscar nome ou elemento" autocomplete="off" aria-label="Buscar" class="campo" />
+      <select name="tipo" aria-label="Formas" class="campo">
+        <option value="basica">Formas básicas</option>
+        <option value="prismana">Só Prismana</option>
+        <option value="regional">Formas regionais</option>
+        <option value="">Todas as formas</option>
+      </select>
+      <select name="el" aria-label="Elemento" class="campo">
+        <option value="">Todos os elementos</option>
+        {Object.entries(ELEMENTO).map(([k, v]) => <option value={k}>{v}</option>)}
+      </select>
+      <select name="es" aria-label="Estágio" class="campo">
+        <option value="">Todos os estágios</option>
+        {Object.entries(ESTAGIO).map(([k, v]) => <option value={k}>{v}</option>)}
+      </select>
+    </form>
+
+    <ul id="banco" data-zona="banco" class="card mt-3 flex min-h-28 flex-wrap content-start gap-2 p-3" aria-label="Aniimo fora da tier list">
+      {pecas.map(({ k, a, f, tipo, busca }, i) => (
+        <li data-k={k} data-ordem={i} data-tipo={tipo} data-el={f.elementos.join(' ')} data-es={f.estagio} data-busca={busca}
+          data-nome={`${a.nome.pt} · ${f.nome.pt}`} draggable="true" tabindex="0" role="button"
+          title={`${a.nome.pt} · ${f.nome.pt}`}
+          class:list={['peca relative w-[72px] cursor-grab touch-manipulation select-none rounded-xl bg-danube-50 p-1 ring-2 ring-transparent', tipo === 'prismana' && 'prismana']}>
+          <img src={f.imagem} alt="" width="64" height="64" loading="lazy" decoding="async"
+            class="pointer-events-none h-16 w-16 rounded-lg bg-danube-100 object-contain" onerror="this.style.visibility='hidden'" />
+          <span class="pointer-events-none mt-0.5 block truncate text-center text-[10px] leading-tight font-semibold text-ink">{a.nome.pt}</span>
+          {tipo !== 'basica' && <span class="pointer-events-none block truncate text-center text-[9px] leading-tight text-muted">{f.nome.pt.replace(/^Forma (de )?/i, '')}</span>}
+        </li>
+      ))}
+    </ul>
+    <p id="vazio" hidden class="mt-3 text-sm text-muted">Nenhum Aniimo com esses filtros fora da tier list.</p>
+  </section>
+
+  <!-- Barra de "mover para": aparece com uma peça selecionada (toque/teclado; no celular não tem arrastar). -->
+  <div id="mover" hidden class="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 px-4 py-3 shadow-[0_-8px_24px_-12px_rgb(21_57_58/.3)] backdrop-blur">
+    <div class="mx-auto flex max-w-6xl flex-wrap items-center gap-2">
+      <span class="text-sm text-muted">Mover <strong id="mover-nome" class="text-ink"></strong> para:</span>
+      <div id="mover-tiers" class="flex flex-wrap gap-1.5"></div>
+      <button type="button" data-para="banco" class="chip cursor-pointer">Tirar da lista</button>
+      <button type="button" data-para="cancelar" class="ml-auto cursor-pointer text-sm font-semibold text-muted hover:text-ink">Cancelar</button>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .peca.prismana { background: linear-gradient(135deg, #7FD6F5, #A7B8F7 45%, #F48DB8 80%, #FFB37A); }
+  .peca.selecionada { --tw-ring-color: var(--color-casal); transform: translateY(-2px); }
+  .peca.arrastando { opacity: .4; }
+  [data-zona].alvo { background: var(--color-danube-50); }
+</style>
+
+<script>
+  const CHAVE = 'aniimo-tier-v1';
+  // Cores inspiradas no acento Twining do guia, da tier mais alta para a mais baixa.
+  const CORES = ['#F48DB8', '#F7A28C', '#FFB37A', '#FFD37A', '#BFE3A0', '#7FD6F5', '#A7B8F7', '#C9D3DE'];
+  const PADRAO = ['SSS', 'SS', 'S', 'A', 'B', 'C', 'D'];
+  type Tier = { nome: string; cor: string; itens: string[] };
+
+  const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
+  const lista = $('tiers');
+  const banco = $('banco');
+  const form = $<HTMLFormElement>('filtros');
+  const pecas = new Map([...banco.querySelectorAll<HTMLElement>('[data-k]')].map((p) => [p.dataset.k!, p]));
+  let selecionada: HTMLElement | null = null;
+
+  // ---------- estado: o DOM é a fonte da verdade; o localStorage é só um retrato dele ----------
+  const linhas = () => [...lista.querySelectorAll<HTMLElement>(':scope > li')];
+  const zonaDe = (li: HTMLElement) => li.querySelector<HTMLElement>('[data-zona]')!;
+  const retrato = (): Tier[] => linhas().map((li) => ({
+    nome: li.querySelector('input')!.value,
+    cor: li.dataset.cor!,
+    itens: [...zonaDe(li).children].map((p) => (p as HTMLElement).dataset.k!),
+  }));
+  function salva() {
+    try { localStorage.setItem(CHAVE, JSON.stringify(retrato())); } catch { /* aba anônima: segue sem salvar */ }
+    filtra();
+  }
+  function carrega(): Tier[] {
+    try {
+      const t = JSON.parse(localStorage.getItem(CHAVE) ?? 'null');
+      if (Array.isArray(t) && t.every((x) => typeof x?.nome === 'string' && Array.isArray(x.itens))) return t;
+    } catch { /* ignora e usa o padrão */ }
+    return PADRAO.map((nome, i) => ({ nome, cor: CORES[i], itens: [] }));
+  }
+
+  // ---------- tiers ----------
+  const botaoIcone = (acao: string, rotulo: string, svg: string) =>
+    `<button type="button" data-acao="${acao}" aria-label="${rotulo}" title="${rotulo}" class="grid h-7 w-7 cursor-pointer place-items-center rounded-full text-muted hover:bg-danube-100 hover:text-ink"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${svg}</svg></button>`;
+
+  function criaTier(t: Tier) {
+    const li = document.createElement('li');
+    li.className = 'flex min-h-24';
+    li.dataset.cor = t.cor;
+    li.innerHTML = `
+      <label class="grid w-20 shrink-0 place-items-center p-1 sm:w-28" style="background:${t.cor}">
+        <input value="" maxlength="16" aria-label="Nome da tier"
+          class="w-full bg-transparent text-center font-display text-2xl font-semibold text-ink outline-none placeholder:text-ink/40 focus:rounded-lg focus:bg-white/50 sm:text-3xl" />
+      </label>
+      <ul data-zona="tier" tabindex="0" aria-label="Aniimo nesta tier" class="flex min-w-0 flex-1 flex-wrap content-start gap-2 p-2 transition-colors"></ul>
+      <div class="flex shrink-0 flex-col justify-center gap-0.5 border-l border-line bg-danube-50 px-1">
+        ${botaoIcone('subir', 'Subir tier', '<path d="m18 15-6-6-6 6"/>')}
+        ${botaoIcone('descer', 'Descer tier', '<path d="m6 9 6 6 6-6"/>')}
+        ${botaoIcone('apagar', 'Apagar tier (os Aniimo voltam para baixo)', '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>')}
+      </div>`;
+    const input = li.querySelector('input')!;
+    input.value = t.nome;
+    input.placeholder = 'Tier';
+    for (const k of t.itens) { const p = pecas.get(k); if (p) zonaDe(li).append(p); }
+    lista.append(li);
+    return li;
+  }
+
+  lista.addEventListener('input', salva);
+  lista.addEventListener('click', (ev) => {
+    const b = (ev.target as HTMLElement).closest<HTMLElement>('[data-acao]');
+    if (!b) return;
+    const li = b.closest('li')!;
+    if (b.dataset.acao === 'subir') li.previousElementSibling?.before(li);
+    if (b.dataset.acao === 'descer') li.nextElementSibling?.after(li);
+    if (b.dataset.acao === 'apagar') { [...zonaDe(li).children].forEach((p) => devolve(p as HTMLElement)); li.remove(); }
+    salva();
+  });
+  $('nova-tier').addEventListener('click', () => {
+    const li = criaTier({ nome: '', cor: CORES[linhas().length % CORES.length], itens: [] });
+    li.querySelector('input')!.focus();
+    salva();
+  });
+
+  // "Recomeçar" apaga tudo: pede um segundo clique em vez de um confirm() bloqueante.
+  let armado = 0;
+  $('recomecar').addEventListener('click', (ev) => {
+    const b = ev.currentTarget as HTMLButtonElement;
+    if (!armado) {
+      b.textContent = 'Clique de novo para apagar tudo';
+      armado = window.setTimeout(() => { armado = 0; b.textContent = 'Recomeçar'; }, 3000);
+      return;
+    }
+    clearTimeout(armado); armado = 0; b.textContent = 'Recomeçar';
+    linhas().forEach((li) => { [...zonaDe(li).children].forEach((p) => devolve(p as HTMLElement)); li.remove(); });
+    PADRAO.forEach((nome, i) => criaTier({ nome, cor: CORES[i], itens: [] }));
+    salva();
+  });
+
+  // ---------- banco + filtros ----------
+  // De volta ao banco, a peça reassume a posição original (ordem da Aniilog).
+  function devolve(p: HTMLElement) {
+    const n = Number(p.dataset.ordem);
+    const depois = [...banco.children].find((x) => Number((x as HTMLElement).dataset.ordem) > n);
+    banco.insertBefore(p, depois ?? null);
+  }
+  const semAcento = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
+  function filtra() {
+    const f = new FormData(form);
+    const q = semAcento(String(f.get('q')));
+    const [tipo, el, es] = ['tipo', 'el', 'es'].map((k) => String(f.get(k)));
+    let n = 0;
+    for (const p of banco.children as HTMLCollectionOf<HTMLElement>) {
+      const ok = (!q || p.dataset.busca!.includes(q)) && (!tipo || p.dataset.tipo === tipo)
+        && (!el || p.dataset.el!.split(' ').includes(el)) && (!es || p.dataset.es === es);
+      p.hidden = !ok;
+      if (ok) n++;
+    }
+    $('contagem').textContent = String(n);
+    $('vazio').hidden = n > 0;
+  }
+  form.addEventListener('input', filtra);
+
+  // ---------- mover: arrastar (mouse) ----------
+  let arrastada: HTMLElement | null = null;
+  document.addEventListener('dragstart', (ev) => {
+    const p = (ev.target as HTMLElement).closest?.<HTMLElement>('[data-k]');
+    if (!p) return;
+    arrastada = p;
+    ev.dataTransfer!.effectAllowed = 'move';
+    ev.dataTransfer!.setData('text/plain', p.dataset.k!);
+    requestAnimationFrame(() => p.classList.add('arrastando'));
+  });
+  document.addEventListener('dragend', () => {
+    arrastada?.classList.remove('arrastando');
+    arrastada = null;
+    document.querySelectorAll('.alvo').forEach((z) => z.classList.remove('alvo'));
+    salva();
+  });
+  document.addEventListener('dragover', (ev) => {
+    const zona = (ev.target as HTMLElement).closest?.<HTMLElement>('[data-zona]');
+    if (!arrastada || !zona) return;
+    ev.preventDefault();
+    document.querySelectorAll('.alvo').forEach((z) => z !== zona && z.classList.remove('alvo'));
+    zona.classList.add('alvo');
+    if (zona === banco) { if (arrastada.parentElement !== banco) devolve(arrastada); return; }
+    // Posição dentro da tier: antes da primeira peça que fica depois do cursor (funciona com quebra de linha).
+    const depois = [...zona.children].find((el) => {
+      if (el === arrastada) return false;
+      const r = el.getBoundingClientRect();
+      return ev.clientY < r.top || (ev.clientY < r.bottom && ev.clientX < r.left + r.width / 2);
+    });
+    if (depois !== arrastada.nextElementSibling || arrastada.parentElement !== zona) zona.insertBefore(arrastada, depois ?? null);
+  });
+  document.addEventListener('drop', (ev) => { if (arrastada) ev.preventDefault(); });
+
+  // ---------- mover: tocar/teclado ----------
+  const barra = $('mover');
+  function seleciona(p: HTMLElement | null) {
+    selecionada?.classList.remove('selecionada');
+    selecionada = p;
+    p?.classList.add('selecionada');
+    barra.hidden = !p;
+    if (!p) return;
+    $('mover-nome').textContent = p.dataset.nome!;
+    $('mover-tiers').innerHTML = retrato().map((t, i) =>
+      `<button type="button" data-para="${i}" class="h-9 min-w-9 cursor-pointer rounded-full px-3 font-display font-semibold text-ink" style="background:${t.cor}">${t.nome.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`) || '—'}</button>`).join('');
+  }
+  function moverPara(zona: HTMLElement, antes?: Element | null) {
+    if (!selecionada) return;
+    if (zona === banco) devolve(selecionada); else zona.insertBefore(selecionada, antes ?? null);
+    selecionada.focus();
+    seleciona(null);
+    salva();
+  }
+  barra.addEventListener('click', (ev) => {
+    const para = (ev.target as HTMLElement).closest<HTMLElement>('[data-para]')?.dataset.para;
+    if (para === 'cancelar') seleciona(null);
+    else if (para === 'banco') moverPara(banco);
+    else if (para) moverPara(zonaDe(linhas()[Number(para)]));
+  });
+  // Com uma peça selecionada: tocar noutra peça põe antes dela; tocar numa área vazia da tier põe no fim.
+  document.addEventListener('click', (ev) => {
+    const alvo = ev.target as HTMLElement;
+    if (barra.contains(alvo)) return;
+    const p = alvo.closest<HTMLElement>('[data-k]');
+    const zona = alvo.closest<HTMLElement>('[data-zona]');
+    if (p && (!selecionada || p === selecionada)) return seleciona(p === selecionada ? null : p);
+    if (p && selecionada) return moverPara(p.parentElement as HTMLElement, p.parentElement === banco ? null : p);
+    if (zona && selecionada) return moverPara(zona);
+  });
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape') return seleciona(null);
+    const el = ev.target as HTMLElement;
+    if ((ev.key === 'Enter' || ev.key === ' ') && (el.matches('[data-k]') || el.matches('[data-zona]'))) {
+      ev.preventDefault();
+      el.click();
+    }
+  });
+
+  carrega().forEach((t, i) => criaTier({ ...t, cor: t.cor ?? CORES[i % CORES.length] }));
+  filtra();
+</script>

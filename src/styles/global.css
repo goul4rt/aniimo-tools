@@ -1,1 +1,75 @@
 @import "tailwindcss";
+
+/* Guia de estilo Aniimo Tools v1.0: Danube (ação), Casal (profunda), Zumthor (fundo). */
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fredoka', ui-rounded, 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-zumthor: #EDF7FF;
+  --color-danube-50: #F5FAFF;
+  --color-danube-100: #D4E6F4;
+  --color-danube-200: #A9CAE6;
+  --color-danube: #6195C3;
+  --color-danube-600: #4A7DAB;
+  --color-danube-700: #36628A;
+  --color-danube-900: #244463;
+  --color-casal-50: #E3F1F0;
+  --color-casal-100: #BCDAD9;
+  --color-casal-200: #7FB1B0;
+  --color-casal-400: #3E8584;
+  --color-casal: #286464;
+  --color-casal-700: #1D4B4B;
+  --color-casal-900: #15393A;
+
+  --color-ink: #15393A;
+  --color-muted: #3E6566;
+  --color-line: #E3EEF7;
+  --color-ok: #2F8F6B;
+  --color-warn: #D08A1F;
+  --color-err: #C94B5F;
+}
+
+@layer base {
+  body { background: var(--color-zumthor); color: var(--color-ink); }
+  h1, h2, h3 { font-family: var(--font-display); color: var(--color-ink); }
+  h1 { font-weight: 600; line-height: 1.1; }
+  a { text-underline-offset: 3px; }
+  a:hover { color: var(--color-danube); }
+  :focus-visible { outline: 2px solid var(--color-danube); outline-offset: 2px; }
+  input[type=checkbox] { accent-color: var(--color-casal); width: 1rem; height: 1rem; }
+}
+
+@layer components {
+  .card { background: #fff; border: 1px solid var(--color-line); border-radius: 20px; }
+  a.card { transition: transform .15s, border-color .15s; }
+  a.card:hover { transform: translateY(-3px); border-color: var(--color-danube-200); color: inherit; }
+
+  .campo {
+    height: 44px; padding: 0 16px; background: #fff; color: var(--color-ink);
+    border: 1.5px solid var(--color-danube-100); border-radius: 14px; outline: none;
+  }
+  .campo:focus { border-color: var(--color-danube); box-shadow: 0 0 0 4px rgb(97 149 195 / .2); }
+  .campo:disabled { background: var(--color-danube-50); color: var(--color-muted); }
+
+  .btn {
+    display: inline-flex; align-items: center; height: 44px; padding: 0 20px; border-radius: 999px;
+    border: 1.5px solid var(--color-danube-200); background: #fff; color: var(--color-casal);
+    font-weight: 600; cursor: pointer;
+  }
+  .btn:hover { border-color: var(--color-danube); color: var(--color-casal); }
+  .btn:disabled { opacity: .5; cursor: not-allowed; border-color: var(--color-danube-100); }
+  .btn-primario { background: var(--color-casal); border-color: var(--color-casal); color: #fff; }
+  .btn-primario:hover { background: var(--color-casal-700); border-color: var(--color-casal-700); color: #fff; }
+
+  .chip {
+    display: inline-block; padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    background: #fff; color: var(--color-casal); border: 1px solid var(--color-danube-100);
+  }
+  a.chip:hover { border-color: var(--color-danube); color: var(--color-casal); }
+
+  .rotulo { font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--color-casal); }
+
+  /* Acento "Twining" do logo: uso raro (progresso, destaque). Nunca como fundo de texto. */
+  .bg-twining { background: linear-gradient(90deg, #7FD6F5, #A7B8F7 45%, #F48DB8 80%, #FFB37A); }
+}

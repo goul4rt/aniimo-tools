@@ -13,9 +13,11 @@
     "data": "node scripts/fetch-wiki.ts && node scripts/normalize.ts"
   },
   "dependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.4",
     "devalue": "^6.0.2",
+    "satori": "^0.33.5",
     "tailwindcss": "^4.3.3"
   },
   "allowScripts": {

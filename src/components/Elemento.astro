@@ -5,4 +5,4 @@ import type { Elemento } from '../types.ts';
 const { e } = Astro.props as { e: Elemento };
 ---
 
-<span class:list={['rounded px-1.5 py-0.5 text-xs font-medium', COR[e]]}>{ELEMENTO[e]}</span>
+<span class:list={['rounded-full px-2.5 py-0.5 text-xs font-semibold', COR[e]]}>{ELEMENTO[e]}</span>

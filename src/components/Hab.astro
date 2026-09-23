@@ -5,14 +5,14 @@ const { h } = Astro.props as { h: Habilidade };
 ---
 
 <li class="flex gap-3">
-  <img src={h.icone} alt="" width="40" height="40" loading="lazy" decoding="async" class="h-10 w-10 shrink-0 rounded bg-slate-800" onerror="this.style.visibility='hidden'" />
+  <img src={h.icone} alt="" width="40" height="40" loading="lazy" decoding="async" class="h-10 w-10 shrink-0 rounded-2xl bg-danube-100" onerror="this.style.visibility='hidden'" />
   <div>
-    <p class="font-medium">
+    <p class="font-semibold">
       {h.nome.pt}
-      {h.nome.pt !== h.nome.en && <span class="text-xs font-normal text-slate-500"> · {h.nome.en}</span>}
-      {h.poder != null && h.poder > 0 && <span class="ml-2 text-xs font-normal text-slate-400">Poder {h.poder}</span>}
-      {h.custo != null && h.custo > 0 && <span class="ml-2 text-xs font-normal text-slate-400">Custo {h.custo}</span>}
+      {h.nome.pt !== h.nome.en && <span class="text-xs font-normal text-danube-700"> · {h.nome.en}</span>}
+      {h.poder != null && h.poder > 0 && <span class="ml-2 text-xs font-normal text-muted">Poder {h.poder}</span>}
+      {h.custo != null && h.custo > 0 && <span class="ml-2 text-xs font-normal text-muted">Custo {h.custo}</span>}
     </p>
-    <p class="text-sm text-slate-300">{h.desc.pt}</p>
+    <p class="text-sm text-ink">{h.desc.pt}</p>
   </div>
 </li>

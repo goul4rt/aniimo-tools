@@ -1,0 +1,218 @@
+{
+  "conferidoEm": "2026-09-23",
+  "fontes": [
+    "https://game8.co/games/Aniimo/archives/best-teams",
+    "https://www.hideoutguides.com/aniimo/team-composition"
+  ],
+  "nota": "Composições dos guias da comunidade; as notas são resumos nossos. Membro com \"fora\" ainda não está na wiki oficial e o slot fica livre ao carregar.",
+  "times": [
+    {
+      "nome": "Iniciante: Sagrado",
+      "nivel": "iniciante",
+      "elemento": "holy",
+      "fonte": 1,
+      "nota": "Fácil de montar no começo. Turbo abre com bônus de dano, Hélion bate e Géli cura.",
+      "membros": [
+        { "slug": "helion", "papel": "dps" },
+        { "slug": "geli", "papel": "heal" },
+        { "slug": "turbo", "papel": "sup" },
+        { "papel": "flex" }
+      ]
+    },
+    {
+      "nome": "Iniciante: Fogo",
+      "nivel": "iniciante",
+      "elemento": "fire",
+      "fonte": 1,
+      "nota": "Serve para combate e exploração. Lavazar quebra, Labaruivo finaliza com o golpe carregado.",
+      "membros": [
+        { "slug": "labaruivo", "papel": "dps" },
+        { "slug": "geli", "papel": "heal" },
+        { "slug": "lavazar", "papel": "break" },
+        { "papel": "flex" }
+      ]
+    },
+    {
+      "nome": "Iniciante: Trevas",
+      "nivel": "iniciante",
+      "elemento": "dark",
+      "fonte": 1,
+      "nota": "Odoran marca, Ervassom junta os inimigos e recupera energia, Esteláris e o clone dela fazem o dano.",
+      "membros": [
+        { "slug": "estelaris", "papel": "dps" },
+        { "slug": "odoran", "papel": "sup" },
+        { "slug": "ervassom", "papel": "energy" },
+        { "papel": "flex" }
+      ]
+    },
+    {
+      "nome": "Trevas à distância",
+      "nivel": "avancado",
+      "elemento": "dark",
+      "fonte": 0,
+      "nota": "O clone de Esteláris copia ataques e skills, então aproveita em dobro os bônus de Odoran.",
+      "membros": [
+        { "slug": "estelaris", "papel": "dps" },
+        { "slug": "guerronio", "papel": "break" },
+        { "slug": "odoran", "papel": "sup" },
+        { "fora": "Hexxin", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Trevas corpo a corpo",
+      "nivel": "avancado",
+      "elemento": "dark",
+      "fonte": 0,
+      "nota": "Peônio brilha contra inimigos quebrados; Ignitis é alternativa para finalizar alvos com pouca vida.",
+      "membros": [
+        { "slug": "peonio", "papel": "dps" },
+        { "slug": "guerronio", "papel": "break" },
+        { "slug": "odoran", "papel": "sup" },
+        { "fora": "Hexxin", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Sagrado",
+      "nivel": "avancado",
+      "elemento": "holy",
+      "fonte": 0,
+      "nota": "Lunara ou Hélion no dano. Sem Géli Prismana, Turbo cobre com escudos no lugar da cura.",
+      "membros": [
+        { "slug": "lunara", "papel": "dps" },
+        { "slug": "guerronio", "papel": "break" },
+        { "slug": "geli", "forma": "prismana-form", "papel": "heal" },
+        { "slug": "borbossono", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Fogo",
+      "nivel": "avancado",
+      "elemento": "fire",
+      "fonte": 0,
+      "nota": "Magmarex espalha o debuff de Fogo, Flamérion recarrega a energia e Infergon consome tudo em rajada.",
+      "membros": [
+        { "slug": "infergon", "papel": "dps" },
+        { "slug": "magmarex", "papel": "break" },
+        { "slug": "geli", "forma": "prismana-form", "papel": "heal" },
+        { "slug": "flamerion", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Gelo",
+      "nivel": "avancado",
+      "elemento": "ice",
+      "fonte": 0,
+      "nota": "Geligarra aplica o debuff de Gelo e quebra; Gelispada consome o debuff com crítico alto.",
+      "membros": [
+        { "slug": "gelispada", "papel": "dps" },
+        { "slug": "geligarra", "papel": "break" },
+        { "slug": "geli", "forma": "prismana-form", "papel": "heal" },
+        { "slug": "borbossono", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Vento",
+      "nivel": "avancado",
+      "elemento": "wind",
+      "fonte": 0,
+      "nota": "Os três bônus de movimento da família (Piu, Trombico, Tubico) se somam para a Bicorneta voar e bater.",
+      "membros": [
+        { "slug": "bicorneta", "papel": "dps" },
+        { "slug": "tubico", "papel": "break" },
+        { "slug": "trombico", "papel": "sup" },
+        { "slug": "piu", "papel": "sup" }
+      ]
+    },
+    {
+      "nome": "Água",
+      "nivel": "avancado",
+      "elemento": "water",
+      "fonte": 0,
+      "nota": "Musculontra e Erlath deixam poças no chão; fique perto delas ao usar as skills de Conchastro.",
+      "membros": [
+        { "slug": "conchastro", "papel": "dps" },
+        { "slug": "musculontra", "papel": "break" },
+        { "slug": "geli", "forma": "prismana-form", "papel": "heal" },
+        { "slug": "erlath", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Elétrico à distância",
+      "nivel": "avancado",
+      "elemento": "electric",
+      "fonte": 0,
+      "nota": "Pelirraio quebra rápido; com os bônus de Luminela e Gingo, Fenjuba acumula carga e explode.",
+      "membros": [
+        { "slug": "fenjuba", "papel": "dps" },
+        { "slug": "pelirraio", "papel": "break" },
+        { "slug": "luminela", "papel": "sup" },
+        { "slug": "gingo", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Grama corpo a corpo",
+      "nivel": "avancado",
+      "elemento": "grass",
+      "fonte": 0,
+      "nota": "Espilâmina bate com vários golpes e contra-ataques; Florecanta entra logo antes da quebra.",
+      "membros": [
+        { "slug": "espilamina", "papel": "dps" },
+        { "slug": "rugissauro", "papel": "break" },
+        { "slug": "florecanta", "papel": "sup" },
+        { "slug": "borbossono", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Grama à distância",
+      "nivel": "avancado",
+      "elemento": "grass",
+      "fonte": 0,
+      "nota": "Folhesim existe para fortalecer a Irisal e criar gramado embaixo dela a cada skill.",
+      "membros": [
+        { "slug": "irisal", "papel": "dps" },
+        { "slug": "tubero", "papel": "break" },
+        { "slug": "folhesim", "papel": "energy" },
+        { "slug": "borbossono", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Rocha",
+      "nivel": "avancado",
+      "elemento": "rock",
+      "fonte": 0,
+      "nota": "Use as skills dos outros três antes de trocar para Ferurso, que precisa de tempo para acumular fúria.",
+      "membros": [
+        { "slug": "ferurso", "papel": "dps" },
+        { "slug": "geospina", "papel": "break" },
+        { "slug": "baialita", "papel": "sup" },
+        { "slug": "borbossono", "papel": "energy" }
+      ]
+    },
+    {
+      "nome": "Endgame: Elétrico em rajada",
+      "nivel": "endgame",
+      "elemento": "electric",
+      "fonte": 1,
+      "nota": "Pelirraio quebra, Luminela e Dançauro acumulam bônus, e Fulminte descarrega tudo com o inimigo parado.",
+      "membros": [
+        { "slug": "fulminte", "papel": "dps" },
+        { "slug": "pelirraio", "papel": "break" },
+        { "slug": "luminela", "papel": "sup" },
+        { "slug": "dancauro", "papel": "sup" }
+      ]
+    },
+    {
+      "nome": "Endgame: Água equilibrada",
+      "nivel": "endgame",
+      "elemento": "water",
+      "fonte": 1,
+      "nota": "Musculontra e Marilontra mantêm as poças; depois da quebra, Géli dá bônus e Conchastro bate.",
+      "membros": [
+        { "slug": "conchastro", "papel": "dps" },
+        { "slug": "musculontra", "papel": "break" },
+        { "slug": "marilontra", "papel": "sup" },
+        { "slug": "geli", "forma": "prismana-form", "papel": "heal" }
+      ]
+    }
+  ]
+}

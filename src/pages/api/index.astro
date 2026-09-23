@@ -25,8 +25,8 @@ const campos = [
 ---
 
 <Base title="API pública · Aniimo Tools" description="API JSON aberta com os dados de Aniimo em português e inglês: Aniimo, formas, stats, skills, tipos e códigos.">
-  <h1 class="text-3xl font-bold">API pública</h1>
-  <p class="mt-2 max-w-2xl text-slate-300">
+  <h1 class="text-4xl">API pública</h1>
+  <p class="mt-2 max-w-2xl text-ink">
     JSON estático, sem chave e sem limite, com CORS liberado. Atualizado uma vez por dia a partir da wiki oficial.
     Use à vontade em bots, planilhas e sites. Só pedimos um link de volta para <a class="underline" href="/">aniimo.ogoulart.dev</a>.
   </p>
@@ -35,23 +35,23 @@ const campos = [
   <ul class="mt-3 space-y-3">
     {rotas.map(([r, d]) => (
       <li>
-        <a class="font-mono text-sky-400 underline break-all" href={r}>{site}{r}</a>
-        <p class="text-sm text-slate-400">{d}</p>
+        <a class="font-mono text-danube-700 underline break-all" href={r}>{site}{r}</a>
+        <p class="text-sm text-muted">{d}</p>
       </li>
     ))}
   </ul>
 
   <h2 class="mt-8 text-xl font-semibold">Campos de um Aniimo</h2>
   <dl class="mt-3 grid gap-x-4 gap-y-2 text-sm sm:grid-cols-[10rem_1fr]">
-    {campos.map(([c, d]) => (<><dt class="font-mono text-slate-200">{c}</dt><dd class="text-slate-400">{d}</dd></>))}
+    {campos.map(([c, d]) => (<><dt class="font-mono text-ink">{c}</dt><dd class="text-muted">{d}</dd></>))}
   </dl>
 
   <h2 class="mt-8 text-xl font-semibold">Exemplo</h2>
-  <pre class="mt-3 overflow-x-auto rounded bg-slate-900 p-3 text-xs ring-1 ring-slate-800"><code>{`const r = await fetch('${site}/api/v1/aniimos/${ex.slug}.json');
+  <pre class="mt-3 overflow-x-auto card p-4 text-xs"><code>{`const r = await fetch('${site}/api/v1/aniimos/${ex.slug}.json');
 const a = await r.json();
 console.log(a.nome.pt, a.formas[0].stats.atk); // ${ex.nome.pt} ${ex.formas[0].stats.atk}`}</code></pre>
 
-  <p class="mt-8 text-xs text-slate-500">
+  <p class="mt-8 text-xs text-danube-700">
     Os dados vêm da wiki oficial de Aniimo. Aniimo, nomes, textos e imagens são © Pawprint Studio; as URLs de imagem apontam para o CDN oficial.
     A versão <code>v1</code> não muda de formato sem aviso; mudanças que quebram vão para <code>v2</code>.
     O código-fonte e o histórico dos dados estão no <a class="underline" href="https://github.com/goul4rt/aniimo-tools">GitHub</a>.

@@ -9,30 +9,33 @@ const data = new Date(dados.conferidoEm + 'T12:00').toLocaleDateString('pt-BR');
 ---
 
 <Base title="Códigos de resgate · Aniimo Tools" description={`${ativos.length} códigos de resgate de Aniimo ativos, conferidos em ${data}. Toque para copiar.`}>
-  <h1 class="text-3xl font-bold">Códigos de resgate</h1>
-  <p class="mt-1 text-slate-400">{ativos.length} ativos, conferidos em {data}. Toque no código para copiar.</p>
-  <p class="mt-3 text-sm text-slate-300">
+  <h1 class="text-4xl">Códigos de resgate</h1>
+  <p class="mt-1 text-muted">{ativos.length} ativos, conferidos em {data}. Toque no código para copiar.</p>
+  <p class="mt-3 text-sm text-ink">
     No jogo: <strong>Configurações → Conta → Resgatar código</strong>. Os códigos diferenciam maiúsculas de minúsculas.
   </p>
 
-  <ul class="mt-6 grid gap-2 sm:grid-cols-2">
+  <ul class="mt-6 grid gap-3 sm:grid-cols-2">
     {ativos.map((c) => (
-      <li class="rounded-lg bg-slate-900 p-3 ring-1 ring-slate-800">
-        <button type="button" data-copiar={c.codigo} class="w-full text-left">
-          <span class="font-mono text-lg">{c.codigo}</span>
-          <span data-ok class="ml-2 text-xs text-green-400" hidden>copiado</span>
+      <li>
+        <button type="button" data-copiar={c.codigo}
+          class="card flex w-full cursor-pointer items-center justify-between gap-4 py-3.5 pr-4 pl-5 text-left transition-colors hover:border-danube">
+          <span class="min-w-0">
+            <span class="block font-mono text-lg font-semibold break-all">{c.codigo}</span>
+            <span class="text-sm text-muted">{c.recompensas ?? 'Recompensa varia entre fontes'}</span>
+          </span>
+          <span data-rotulo class="shrink-0 rounded-full bg-danube-600 px-4 py-2 text-sm font-bold text-white" aria-live="polite">Copiar</span>
         </button>
-        <p class="text-sm text-slate-400">{c.recompensas ?? 'Recompensa varia entre fontes'}</p>
       </li>
     ))}
   </ul>
 
-  <h2 class="mt-8 text-lg font-semibold text-slate-400">Expirados</h2>
-  <ul class="mt-2 space-y-1 text-sm text-slate-500">
+  <h2 class="mt-8 text-lg font-semibold text-muted">Expirados</h2>
+  <ul class="mt-2 space-y-1 text-sm text-danube-700">
     {expirados.map((c) => <li><span class="font-mono line-through">{c.codigo}</span>{c.recompensas && ` · ${c.recompensas}`}</li>)}
   </ul>
 
-  <p class="mt-8 text-xs text-slate-500">
+  <p class="mt-8 text-xs text-danube-700">
     Conferido em {dados.fontes.map((f, i) => <>{i > 0 && ' e '}<a class="underline" href={f}>{new URL(f).hostname}</a></>)}. {dados.nota}
     Código não funcionou? <a class="underline" href="https://github.com/goul4rt/aniimo-tools/issues/new">Avise</a>.
   </p>
@@ -42,9 +45,10 @@ const data = new Date(dados.conferidoEm + 'T12:00').toLocaleDateString('pt-BR');
   document.querySelectorAll<HTMLButtonElement>('[data-copiar]').forEach((b) =>
     b.addEventListener('click', async () => {
       await navigator.clipboard.writeText(b.dataset.copiar!);
-      const ok = b.querySelector<HTMLElement>('[data-ok]')!;
-      ok.hidden = false;
-      setTimeout(() => (ok.hidden = true), 1500);
+      const r = b.querySelector<HTMLElement>('[data-rotulo]')!;
+      r.textContent = 'Copiado';
+      r.classList.replace('bg-danube-600', 'bg-ok');
+      setTimeout(() => { r.textContent = 'Copiar'; r.classList.replace('bg-ok', 'bg-danube-600'); }, 1500);
     }),
   );
 </script>

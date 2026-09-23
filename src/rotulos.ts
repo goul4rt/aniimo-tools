@@ -16,7 +16,7 @@ export const STAT = { hp: 'PV', atk: 'ATQ', brk: 'QUEBRA', pdef: 'DEF F.', mdef:
 
 // Cor por elemento, só para os chips da interface.
 export const COR: Record<Elemento, string> = {
-  fire: 'bg-orange-600', water: 'bg-sky-600', grass: 'bg-green-600', electric: 'bg-yellow-500 text-slate-900',
-  ice: 'bg-cyan-400 text-slate-900', rock: 'bg-amber-800', wind: 'bg-teal-500 text-slate-900',
-  holy: 'bg-amber-200 text-slate-900', dark: 'bg-violet-800',
+  fire: 'bg-orange-600 text-white', water: 'bg-sky-600 text-white', grass: 'bg-green-600 text-white', electric: 'bg-yellow-500 text-ink',
+  ice: 'bg-cyan-400 text-ink', rock: 'bg-amber-800 text-white', wind: 'bg-teal-500 text-ink',
+  holy: 'bg-amber-200 text-ink', dark: 'bg-violet-800 text-white',
 };
