@@ -3,7 +3,8 @@ import '../styles/global.css';
 import { porSlug } from '../data.ts';
 import { PAGINAS, ogDe } from '../paginas.ts';
 import { UMAMI_ID } from '../metricas.ts';
-import { ArrowLeftRight, BookOpen, Bookmark, ChevronDown, CircleCheck, Gift, House, LayoutGrid, Library, ListOrdered, Menu, Sparkles, Users } from 'lucide-static';
+import { ChevronDown, Menu } from 'lucide-static';
+import { codigos, grupos, miolo, principais } from '../nav.ts';
 
 interface Props {
   title: string;
@@ -29,17 +30,9 @@ const jsonLd = rota === '/'
       '@context': 'https://schema.org', '@type': 'BreadcrumbList',
       itemListElement: migalhas.map(([u, nome], i) => ({ '@type': 'ListItem', position: i + 1, name: nome, item: new URL(u, Astro.site).href })),
     };
-// Menu (variante D): os mais usados à vista; o resto num painel "Ferramentas" em grupos, com uma linha dizendo o que cada um faz.
-// No celular só aparece o ☰, e o painel inclui também os principais.
-const principais = [['/aniilog/', 'Aniilog', 'Todos os Aniimo, stats e formas', Library], ['/tipos/', 'Tipos', 'Quem bate forte em quem', LayoutGrid], ['/time/', 'Time', 'Cobertura, fraquezas e sugestão', Users]];
-const grupos: [string, string[][]][] = [
-  ['Batalha', [['/time/', 'Montar time', 'Cobertura e sugestão', Users], ['/times/', 'Times prontos', 'Da comunidade, prontos', Bookmark], ['/comparar/', 'Comparar', 'Stats lado a lado', ArrowLeftRight]]],
-  ['Coleção', [['/colecao/', 'Minha coleção', 'Marque o que você já tem', CircleCheck], ['/tier/', 'Tier list', 'Monte do SSS ao D', ListOrdered]]],
-  ['Guias e progresso', [['/guias/', 'Guias rápidos', 'Formas, caça e elementos', BookOpen], ['/homeland/', 'Homeland', 'Produção, equipe e layout', House], ['/evolucao/', 'Resonance', 'Custo até cada estágio', Sparkles]]],
-];
+// Menu: os principais à vista; o resto num painel "Ferramentas" em grupos (listas em src/nav.ts). No celular só aparece o ☰.
 const naRota = (href: string) => rota.startsWith(href);
 const noPainel = grupos.some(([, itens]) => itens.some(([h]) => h !== '/time/' && naRota(h)));
-const miolo = (svg: string) => svg.slice(svg.indexOf('>') + 1, svg.lastIndexOf('</svg>'));
 ---
 
 <html lang="pt-BR">
@@ -97,7 +90,7 @@ const miolo = (svg: string) => svg.slice(svg.indexOf('>') + 1, svg.lastIndexOf('
             </summary>
             <div class="fixed inset-x-3 top-16 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto rounded-[20px] border border-line bg-white p-2 whitespace-normal text-ink shadow-[0_12px_32px_-8px_rgb(21_57_58/.3)] md:absolute md:inset-x-auto md:top-full md:right-0 md:mt-2 md:w-[740px]">
               <div class="grid gap-1 md:grid-cols-3">
-                {[['Principais', [...principais.slice(0, 2), ['/codigos/', 'Códigos', 'Códigos de resgate ativos', Gift]]] as [string, string[][]], ...grupos].map(([grupo, itens], g) => (
+                {[['Principais', [...principais.slice(0, 2), codigos]] as (typeof grupos)[number], ...grupos].map(([grupo, itens], g) => (
                   <div class:list={[g === 0 && 'md:hidden']}>
                     <p class="px-3 pt-2 pb-1 text-[11px] font-bold tracking-wider text-danube uppercase">{grupo}</p>
                     {itens.map(([href, label, desc, ic]) => (

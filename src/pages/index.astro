@@ -1,48 +1,93 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icone from '../components/IconeElemento.astro';
 import { aniimos } from '../data.ts';
-import codigos from '../../data/codigos.json';
+import codigosDados from '../../data/codigos.json';
+import { ELEMENTO } from '../rotulos.ts';
+import { codigos, grupos, miolo, principais } from '../nav.ts';
+import mascote from '../og/mascote.png';
+import type { Elemento } from '../types.ts';
 
-const formas = aniimos.reduce((n, a) => n + a.formas.length, 0);
-const ativos = codigos.codigos.filter((c) => c.ativo).length;
-const cards = [
-  ['/aniilog/', 'Aniilog', `${aniimos.length} Aniimo e ${formas} formas: stats, skills, traços e onde encontrar.`],
-  ['/tipos/', 'Tabela de tipos', 'Escolha o elemento do inimigo e veja quem ataca bem e quem resiste.'],
-  ['/guias/', 'Guias rápidos', 'Onde achar cada Aniimo, Prismana, Sparklin, Umbra e Alfa, caça com Insígnia de Prata e o diagrama de elementos.'],
-  ['/codigos/', 'Códigos de resgate', `${ativos} códigos ativos, com botão de copiar.`],
-  ['/colecao/', 'Minha coleção', 'Marque as formas que você já tem, incluindo Prismana. Exporta e importa.'],
-  ['/time/', 'Montador de time', 'Cobertura de elementos, fraquezas em comum e funções do seu time de 4.'],
-  ['/times/', 'Times prontos', 'Composições dos guias da comunidade, do iniciante ao endgame, prontas para abrir no montador.'],
-  ['/comparar/', 'Comparar stats', 'Até 3 Aniimo ou formas lado a lado.'],
-  ['/tier/', 'Tier list', 'Monte sua tier list de SSS a D, com nomes de tier editáveis e filtro de Prismana.'],
-  ['/homeland/', 'Otimizador de Homeland', 'O que cada instalação deve produzir para render mais Home Coin, a equipe de Aniimo e o layout de clima.'],
-  ['/evolucao/', 'Planejador de Resonance', 'Quanto Dewdrop, pedras e Cristal de Onifonte até o estágio que você quer.'],
-  ['/api/', 'API pública', 'Todos os dados em JSON aberto, para bots e outros sites.'],
-];
+const ativos = codigosDados.codigos.filter((c) => c.ativo);
+const destaque = ativos.slice(0, 3);
+const els = Object.keys(ELEMENTO) as Elemento[];
+// Busca do topo: mesmo combobox do montador de time; escolher leva para a página do Aniimo.
+const opcoes = aniimos.map((a) => ({
+  slug: a.slug, nome: a.nome.pt, en: a.nome.en, imagem: a.formas[0].imagem,
+  elementos: [...new Set(a.formas.flatMap((f) => f.elementos))],
+}));
+const tagline = 'Tudo de Aniimo em português: Aniilog, tipos, times e códigos. Os dados vêm da wiki oficial e são atualizados todo dia.';
+const icone = (svg: string, cls = 'h-5 w-5') => `<svg class="${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${miolo(svg)}</svg>`;
 ---
 
 <Base title="Aniimo Tools · ferramentas de Aniimo em português" description={`Aniilog com ${aniimos.length} Aniimo, tabela de tipos, montador de time, tier list e códigos de resgate. Tudo em português, com dados da wiki oficial.`}>
-  <header class="relative overflow-hidden rounded-[28px] bg-casal px-6 py-12 text-white sm:px-10 sm:py-16">
-    <!-- ponytail: sem arte do jogo no hero; o site não hospeda assets (ver /creditos). -->
+  <header class="relative overflow-hidden rounded-[28px] bg-casal px-6 py-10 text-white sm:px-10 sm:py-12">
     <div class="bg-twining pointer-events-none absolute -top-24 -right-16 h-72 w-72 rounded-full opacity-60 blur-3xl"></div>
     <div class="bg-twining pointer-events-none absolute -bottom-32 left-1/3 h-64 w-64 rounded-full opacity-30 blur-3xl"></div>
-    <div class="relative max-w-2xl">
-      <span class="rounded-full bg-casal-900/60 px-3 py-1 font-mono text-xs tracking-widest text-zumthor uppercase">{aniimos.length} Aniimo · {ativos} códigos ativos</span>
-      <h1 class="mt-4 text-5xl text-white sm:text-6xl">Aniimo Tools</h1>
-      <p class="mt-3 text-lg text-zumthor">
-        Ferramentas de Aniimo em português, com os nomes oficiais do jogo e dados atualizados todo dia a partir da wiki oficial.
-      </p>
+    <div class="relative grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_auto]">
+      <div class="max-w-2xl">
+        <span class="rounded-full bg-casal-900/60 px-3 py-1 font-mono text-xs tracking-widest text-zumthor uppercase">{aniimos.length} Aniimo · {ativos.length} códigos ativos</span>
+        <h1 class="mt-4 text-5xl text-white sm:text-6xl">Aniimo Tools</h1>
+        <p class="mt-3 text-lg text-zumthor">{tagline}</p>
+        <div class="mt-6 max-w-lg text-ink"><input data-busca placeholder="Buscar um Aniimo" aria-label="Buscar um Aniimo" class="campo h-12 w-full border-white text-base" /></div>
+      </div>
+      <img src={mascote.src} alt="" width="170" height="187" class="mascote mx-auto hidden h-[187px] w-[170px] md:block [image-rendering:pixelated]" />
     </div>
   </header>
-  <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    {cards.map(([href, titulo, texto]) => (
-      <a href={href} data-umami-event="home_card" data-umami-event-ferramenta={titulo} class="card flex flex-col gap-2 p-6">
-        <span class="flex items-center justify-between gap-2">
-          <h2 class="text-xl font-semibold">{titulo}</h2>
-          <span class="text-lg text-danube" aria-hidden="true">→</span>
-        </span>
-        <p class="text-[15px] leading-relaxed text-muted">{texto}</p>
-      </a>
-    ))}
+  <div class="mt-6 flex flex-wrap items-center gap-2">
+    <span class="mr-1 text-sm font-semibold text-muted">Aniimo por elemento:</span>
+    {els.map((e) => <a href={`/aniilog/?el=${e}`} title={`Aniimo de ${ELEMENTO[e]}`} data-umami-event="home_elemento" data-umami-event-elemento={e} class="rounded-full transition-transform hover:-translate-y-0.5"><Icone e={e} tam={36} /><span class="sr-only">{ELEMENTO[e]}</span></a>)}
   </div>
+  <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <div class="grid min-w-0 gap-6 sm:grid-cols-2">
+      {[['Principais', [...principais.slice(0, 2)]] as (typeof grupos)[number], ...grupos].map(([g, itens]) => (
+        <section class="min-w-0">
+          <h2 class="rotulo text-xs">{g}</h2>
+          <ul class="mt-2 space-y-2">
+            {itens.map(([h, n, d, ic]) => (
+              <li><a href={h} data-umami-event="home_card" data-umami-event-ferramenta={n} class="card flex items-center gap-3 p-3">
+                <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-casal-50 text-casal" set:html={icone(ic)} />
+                <span class="leading-tight"><span class="block font-display font-semibold">{n}</span><span class="text-xs text-muted">{d}</span></span>
+              </a></li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+    <aside class="card order-first h-fit min-w-0 p-5 lg:order-none">
+      <h2 class="flex items-center gap-2 text-lg font-semibold"><span class="text-casal" set:html={icone(codigos[3])} />Códigos ativos</h2>
+      <p class="mt-1 text-xs text-muted">Toque para copiar. No jogo: Configurações → Conta → Resgatar código.</p>
+      <ul class="mt-3 space-y-2">{destaque.map((c) => (
+        <li><button type="button" data-copiar={c.codigo} class="flex w-full cursor-pointer items-center justify-between gap-2 rounded-xl border border-line px-3 py-2 text-left hover:border-danube">
+          <span class="min-w-0"><span class="block truncate font-mono font-semibold">{c.codigo}</span>{c.recompensas && <span class="block truncate text-xs text-muted">{c.recompensas}</span>}</span>
+          <span data-rotulo class="shrink-0 text-xs font-bold text-danube-600">Copiar</span>
+        </button></li>
+      ))}</ul>
+      <a href="/codigos/" class="mt-3 inline-block text-sm font-semibold text-casal underline">Ver os {ativos.length} códigos</a>
+    </aside>
+  </div>
+
+  <script type="application/json" id="opcoes" set:html={JSON.stringify(opcoes).replaceAll('<', '\\u003c')} />
 </Base>
+
+<style>
+  .mascote { animation: flutua 3.2s ease-in-out infinite; }
+  @keyframes flutua { 50% { transform: translateY(-8px); } }
+  @media (prefers-reduced-motion: reduce) { .mascote { animation: none; } }
+</style>
+
+<script>
+  import { evento } from '../scripts/evento.ts';
+  import { seletor, type Opcao } from '../scripts/seletor.ts';
+  const opcoes = JSON.parse(document.getElementById('opcoes')!.textContent!) as Opcao[];
+  seletor(document.querySelector<HTMLInputElement>('[data-busca]')!, opcoes, (slug) => { if (slug) location.href = `/aniilog/${slug}/`; });
+
+  document.querySelectorAll<HTMLButtonElement>('[data-copiar]').forEach((b) =>
+    b.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(b.dataset.copiar!);
+      evento('codigo_copiado', { codigo: b.dataset.copiar, pagina: 'home' });
+      const r = b.querySelector<HTMLElement>('[data-rotulo]')!;
+      r.textContent = 'Copiado';
+      setTimeout(() => (r.textContent = 'Copiar'), 1500);
+    }));
+</script>

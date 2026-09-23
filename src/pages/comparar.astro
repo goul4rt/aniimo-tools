@@ -20,7 +20,7 @@ const dados = {
   <div class="mt-6 grid gap-3 sm:grid-cols-3">
     {[0, 1, 2].map((i) => (
       <div data-slot={i} class="card flex flex-col gap-3 p-4">
-        <div class="relative mx-auto aspect-square w-full max-w-40">
+        <div class="relative mx-auto aspect-square w-full max-w-24 sm:max-w-40">
           <div data-vazio class="grid h-full w-full place-items-center rounded-2xl border-2 border-dashed border-danube-200 font-display text-4xl font-semibold text-danube-200">{i + 1}</div>
           <img data-img alt="" hidden class="absolute inset-0 h-full w-full rounded-2xl bg-danube-100 object-contain" />
         </div>

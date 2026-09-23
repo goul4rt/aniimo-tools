@@ -83,5 +83,10 @@ const itens = aniimos.map((a) => {
     vazio.classList.toggle('hidden', n > 0);
   }
   form.addEventListener('input', () => { filtra(); umaVez('aniilog_filtrado'); });
+  // Links da home chegam com ?el=fire ou ?q=nome já filtrados.
+  const url = new URLSearchParams(location.search);
+  if (url.get('q')) form.q.value = url.get('q')!;
+  const radio = form.querySelector<HTMLInputElement>(`input[name=el][value="${CSS.escape(url.get('el') ?? '')}"]`);
+  if (radio) radio.checked = true; // propriedade, não clique: não dispara o evento de métrica
   filtra();
 </script>
