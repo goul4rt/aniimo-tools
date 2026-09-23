@@ -17,6 +17,8 @@ const FONTES = [
   { name: 'Jakarta', data: fonte('plus-jakarta-sans-latin-700-normal'), weight: 700 as const },
 ];
 const LOGO = `data:image/svg+xml;base64,${readFileSync('public/favicon.svg').toString('base64')}`;
+// Mascote: fan-art em pixel art (não é asset oficial), fundo removido.
+const MASCOTE = `data:image/png;base64,${readFileSync('src/og/mascote.png').toString('base64')}`;
 const TWINING = 'linear-gradient(135deg, #7FD6F5, #A7B8F7 45%, #F48DB8 80%, #FFB37A)';
 // Mesmas cores dos chips de elemento do site (rotulos.ts), em hex.
 const COR: Record<Elemento, [string, string]> = {
@@ -29,13 +31,13 @@ type No = { type: string; props: Record<string, unknown> };
 const h = (type: string, style: Record<string, unknown>, ...children: (No | string | false)[]): No =>
   ({ type, props: { style: { display: 'flex', ...style }, children: children.filter((c) => c !== false) } });
 
-// A patinha do logo, grande, no canto direito.
-const pata = (escala: number, opacidade: number) => {
-  const c = (x: number, y: number, r: number) =>
-    h('div', { position: 'absolute', left: x * escala - r * escala, top: y * escala - r * escala, width: r * 2 * escala, height: r * 2 * escala, borderRadius: 9999, backgroundImage: TWINING });
-  return h('div', { position: 'absolute', right: -40, bottom: -60, width: 560 * escala, height: 560 * escala, opacity: opacidade },
-    c(280, 330, 170), c(110, 130, 72), c(280, 70, 72), c(450, 130, 72));
-};
+// Brilho rosa/azul desfocado no canto superior direito (acento Twining).
+const brilho = h('div', {
+  position: 'absolute', right: -220, top: -260, width: 800, height: 800, borderRadius: 9999,
+  backgroundImage: 'radial-gradient(circle, rgba(244,141,184,.5) 0%, rgba(167,184,247,.3) 40%, rgba(40,100,100,0) 70%)',
+});
+const mascote = h('div', { position: 'absolute', right: 56, bottom: 40 },
+  { type: 'img', props: { src: MASCOTE, width: 437, height: 480 } });
 
 const cabecalho = h('div', { alignItems: 'center', gap: 16 },
   { type: 'img', props: { src: LOGO, width: 56, height: 56 } },
@@ -49,8 +51,9 @@ const moldura = (...filhos: No[]) =>
 
 function paginaOg(p: Pagina, rota: string) {
   return moldura(
-    pata(1, 0.95),
-    h('div', { position: 'absolute', top: 0, left: 0, width: 780, height: 630, padding: '64px 72px 72px', flexDirection: 'column', justifyContent: 'space-between' },
+    brilho,
+    mascote,
+    h('div', { position: 'absolute', top: 0, left: 0, width: 720, height: 630, padding: '64px 72px 72px', flexDirection: 'column', justifyContent: 'space-between' },
       cabecalho,
       h('div', { flexDirection: 'column', gap: 20 },
         h('div', { fontWeight: 700, fontSize: 22, letterSpacing: 3, color: '#A9CAE6' }, rota === '/' ? 'PARA A COMUNIDADE BR' : 'FERRAMENTA'),
@@ -71,7 +74,7 @@ function aniimoOg(a: Aniimo) {
       h('div', { flex: 1, height: 14, borderRadius: 9999, backgroundColor: '#E3EEF7' },
         h('div', { width: `${Math.min(100, (f.stats[k] / 160) * 100)}%`, height: 14, borderRadius: 9999, backgroundColor: '#6195C3' })));
   return moldura(
-    pata(0.7, 0.35),
+    brilho,
     h('div', { position: 'absolute', top: 0, left: 0, width: 1200, height: 630, padding: '64px 72px 72px', gap: 48 },
       h('div', { width: 564, flexDirection: 'column', justifyContent: 'space-between' },
         cabecalho,
