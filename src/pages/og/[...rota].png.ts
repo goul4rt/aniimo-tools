@@ -16,10 +16,11 @@ const FONTES = [
   { name: 'Jakarta', data: fonte('plus-jakarta-sans-latin-500-normal'), weight: 500 as const },
   { name: 'Jakarta', data: fonte('plus-jakarta-sans-latin-700-normal'), weight: 700 as const },
 ];
-const LOGO = `data:image/svg+xml;base64,${readFileSync('public/favicon.svg').toString('base64')}`;
 // Mascote: fan-art em pixel art (não é asset oficial), fundo removido.
 const MASCOTE = `data:image/png;base64,${readFileSync('src/og/mascote.png').toString('base64')}`;
-const TWINING = 'linear-gradient(135deg, #7FD6F5, #A7B8F7 45%, #F48DB8 80%, #FFB37A)';
+// Tema "menta": fundo casal-50, brilho pêssego e barra nas cores do mascote (folha → mel → laranja).
+const FUNDO = '#E3F1F0';
+const BARRA = 'linear-gradient(90deg, #8CC63F, #FFC857 50%, #F7931E)';
 // Mesmas cores dos chips de elemento do site (rotulos.ts), em hex.
 const COR: Record<Elemento, [string, string]> = {
   fire: ['#EA580C', '#fff'], water: ['#0284C7', '#fff'], grass: ['#16A34A', '#fff'], electric: ['#EAB308', '#15393A'],
@@ -31,34 +32,35 @@ type No = { type: string; props: Record<string, unknown> };
 const h = (type: string, style: Record<string, unknown>, ...children: (No | string | false)[]): No =>
   ({ type, props: { style: { display: 'flex', ...style }, children: children.filter((c) => c !== false) } });
 
-// Brilho rosa/azul desfocado no canto superior direito (acento Twining).
+// Brilho pêssego desfocado no canto superior direito.
 const brilho = h('div', {
-  position: 'absolute', right: -220, top: -260, width: 800, height: 800, borderRadius: 9999,
-  backgroundImage: 'radial-gradient(circle, rgba(244,141,184,.5) 0%, rgba(167,184,247,.3) 40%, rgba(40,100,100,0) 70%)',
+  position: 'absolute', right: -120, top: -120, width: 720, height: 720, borderRadius: 9999,
+  backgroundImage: 'radial-gradient(circle, rgba(255,179,122,.5) 0%, rgba(255,214,150,.3) 40%, rgba(227,241,240,0) 70%)',
 });
-const mascote = h('div', { position: 'absolute', right: 56, bottom: 40 },
-  { type: 'img', props: { src: MASCOTE, width: 437, height: 480 } });
+// Mascote com sombra no "chão".
+const mascote = [
+  h('div', { position: 'absolute', right: 150, bottom: 92, width: 250, height: 36, borderRadius: 9999,
+    backgroundImage: 'radial-gradient(ellipse, rgba(29,75,75,.18) 0%, rgba(227,241,240,0) 70%)' }),
+  h('div', { position: 'absolute', right: 120, top: 150 }, { type: 'img', props: { src: MASCOTE, width: 310, height: 340 } }),
+];
 
-const cabecalho = h('div', { alignItems: 'center', gap: 16 },
-  { type: 'img', props: { src: LOGO, width: 56, height: 56 } },
-  h('div', { fontFamily: 'Fredoka', fontSize: 34, color: '#fff' }, 'Aniimo Tools'));
-
-const rodape = h('div', { fontFamily: 'Jakarta', fontWeight: 700, fontSize: 24, color: '#A9CAE6' }, 'aniimo.ogoulart.dev');
+const cabecalho = h('div', { fontFamily: 'Fredoka', fontSize: 34, color: '#286464' }, 'Aniimo Tools');
+const rodape = h('div', { fontFamily: 'Jakarta', fontWeight: 700, fontSize: 24, color: '#286464' }, 'aniimo.ogoulart.dev');
 const moldura = (...filhos: No[]) =>
-  h('div', { width: 1200, height: 630, position: 'relative', backgroundColor: '#286464', fontFamily: 'Jakarta', overflow: 'hidden' },
+  h('div', { width: 1200, height: 630, position: 'relative', backgroundColor: FUNDO, fontFamily: 'Jakarta', overflow: 'hidden' },
     ...filhos,
-    h('div', { position: 'absolute', left: 0, right: 0, bottom: 0, height: 14, backgroundImage: TWINING }));
+    h('div', { position: 'absolute', left: 0, right: 0, bottom: 0, height: 14, backgroundImage: BARRA }));
 
 function paginaOg(p: Pagina, rota: string) {
   return moldura(
     brilho,
-    mascote,
-    h('div', { position: 'absolute', top: 0, left: 0, width: 720, height: 630, padding: '64px 72px 72px', flexDirection: 'column', justifyContent: 'space-between' },
+    ...mascote,
+    h('div', { position: 'absolute', top: 0, left: 0, width: 760, height: 630, padding: '64px 72px 72px', flexDirection: 'column', justifyContent: 'space-between' },
       cabecalho,
       h('div', { flexDirection: 'column', gap: 20 },
-        h('div', { fontWeight: 700, fontSize: 22, letterSpacing: 3, color: '#A9CAE6' }, rota === '/' ? 'PARA A COMUNIDADE BR' : 'FERRAMENTA'),
-        h('div', { fontFamily: 'Fredoka', fontSize: p.titulo.length > 12 ? 72 : 92, lineHeight: 1.02, color: '#fff' }, p.titulo),
-        h('div', { fontSize: 30, lineHeight: 1.35, color: '#EDF7FF' }, p.sub)),
+        h('div', { fontWeight: 700, fontSize: 22, letterSpacing: 3, color: '#3E8584' }, rota === '/' ? 'PARA A COMUNIDADE BR' : 'FERRAMENTA'),
+        h('div', { fontFamily: 'Fredoka', fontSize: p.titulo.length > 12 ? 72 : 92, lineHeight: 1.02, color: '#15393A' }, p.titulo),
+        h('div', { fontSize: 30, lineHeight: 1.35, color: '#3E6566' }, p.sub)),
       rodape));
 }
 
@@ -79,15 +81,15 @@ function aniimoOg(a: Aniimo) {
       h('div', { width: 564, flexDirection: 'column', justifyContent: 'space-between' },
         cabecalho,
         h('div', { flexDirection: 'column', gap: 18 },
-          h('div', { fontWeight: 700, fontSize: 22, letterSpacing: 3, color: '#A9CAE6' },
+          h('div', { fontWeight: 700, fontSize: 22, letterSpacing: 3, color: '#3E8584' },
             `ANIILOG · #${a.id} · ${(ESTAGIO[f.estagio] ?? `Estágio ${f.estagio}`).toUpperCase()}`),
-          h('div', { fontFamily: 'Fredoka', fontSize: a.nome.pt.length > 16 ? 64 : a.nome.pt.length > 11 ? 80 : 96, lineHeight: 1, color: '#fff' }, a.nome.pt),
-          h('div', { fontSize: 30, color: '#EDF7FF' }, `${a.nome.en}${a.formas.length > 1 ? ` · ${a.formas.length} formas` : ''}`),
+          h('div', { fontFamily: 'Fredoka', fontSize: a.nome.pt.length > 16 ? 64 : a.nome.pt.length > 11 ? 80 : 96, lineHeight: 1, color: '#15393A' }, a.nome.pt),
+          h('div', { fontSize: 30, color: '#3E6566' }, `${a.nome.en}${a.formas.length > 1 ? ` · ${a.formas.length} formas` : ''}`),
           h('div', { gap: 10, flexWrap: 'wrap', marginTop: 6 },
             ...els.map((e) => chip(ELEMENTO[e], COR[e])),
-            ...f.papeis.map((p) => chip(PAPEL[p], ['#E3F1F0', '#286464'])))),
+            ...f.papeis.map((p) => chip(PAPEL[p], ['#fff', '#286464'])))),
         rodape),
-      h('div', { width: 440, alignSelf: 'center', flexDirection: 'column', gap: 18, padding: 36, borderRadius: 32, backgroundColor: '#fff' },
+      h('div', { width: 440, alignSelf: 'center', flexDirection: 'column', gap: 18, padding: 36, borderRadius: 32, backgroundColor: '#fff', border: '2px solid #BCDAD9', boxShadow: '0 20px 40px rgba(29,75,75,.12)' },
         h('div', { fontFamily: 'Fredoka', fontSize: 30, color: '#15393A' }, 'Stats base'),
         ...(['hp', 'atk', 'brk', 'pdef', 'mdef', 'regen'] as const).map(barra),
         h('div', { justifyContent: 'space-between', borderTop: '2px solid #E3EEF7', paddingTop: 16, fontWeight: 700, fontSize: 24, color: '#15393A' },
