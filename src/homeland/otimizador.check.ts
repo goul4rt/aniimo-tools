@@ -38,6 +38,14 @@ assert.ok(rv12.linhas.some((l) => l.r.tipo === 'processador'), 'RV 12 sem proces
 assert.ok(rv12.linhas.some((l) => l.r.insumos.some(([i]) => i === 'lemon')) && rv12.linhas.some((l) => l.r.id === 'quick_lemon'), 'quick_lemon não abastece lemon');
 for (const l of rv12.linhas) assert.ok(l.uso > 0 && l.uso <= 1 + 1e-9, `uso fora de 0–1: ${l.r.id}`);
 
+// Tempo: o RV 10 com layout de clima levava ~2 s por plano e o layout automático travava o navegador (14 s).
+import { cobertos as cobre, montaAuto } from './layout.ts';
+const c10 = { ...padrao(d, 10), cobertos: cobre(montaAuto([{ tipo: 'hf', modo: 'Scorching' }, { tipo: 'cu', modo: 'Cool' }, { tipo: 'sl', modo: 'Adequate' }], { fa: 20, wo: 10, ts: 1, sh: 1, fw: 0 }, [1 / 3, 1 / 3, 1 / 3])) };
+const t10 = performance.now();
+const p10 = otimiza(d, c10);
+melhorias(d, c10, p10.ganhoHora);
+assert.ok(performance.now() - t10 < 1000, `RV 10 lento: ${(performance.now() - t10).toFixed(0)} ms`);
+
 // Melhorias: com tudo no teto do RV só sobra subir de RV; tirando uma Farmland, ela volta como sugestão.
 const cheio = padrao(d, 8);
 const m1 = melhorias(d, cheio, otimiza(d, cheio).ganhoHora);

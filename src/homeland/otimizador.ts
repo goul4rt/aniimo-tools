@@ -102,9 +102,16 @@ export type Plano = {
 
 const itemMoeda = (r: Receita) => r.moeda;
 
-export function otimiza(d: Dados, cfg: Config): Plano {
+/**
+ * `relaxado`: sem a exigência de máquinas inteiras. É instantâneo e serve para comparar muitas alternativas
+ * (layout automático); o plano mostrado ao jogador sempre vem da versão inteira.
+ */
+export type Opcoes = { relaxado?: boolean; tolerancia?: number; timeout?: number };
+
+export function otimiza(d: Dados, cfg: Config, op: Opcoes = {}): Plano {
   const variaveis = new Map<string, Coefficients>();
   const usaveis = d.receitas.filter((r) => !bloqueio(d, r, cfg));
+  const porChave = new Map(usaveis.map((r) => [`x:${r.instalacao}/${r.id}`, r]));
   const porId = new Map(d.receitas.map((r) => [r.id, r]));
 
   // Duas variáveis por receita: x = máquinas/lotes dedicados (inteiro) e y = ciclos por hora (contínuo, até x × velocidade).
@@ -136,10 +143,28 @@ export function otimiza(d: Dados, cfg: Config): Plano {
     if (k.startsWith('cap:')) restricoes[k] = { max: 0 };
   }
 
-  const sol = solve(
-    { direction: 'maximize', objective: 'ganho', constraints: restricoes, variables: variaveis, integers: [...variaveis.keys()].filter((k) => k.startsWith('x:')) },
-    { timeout: 4000 },
-  );
+  // Lotes de lavoura (até 42) como inteiros explodem a busca (RV 10 levava segundos). Duas fases:
+  // 1) lavouras contínuas, máquinas inteiras; 2) cada lavoura presa entre o piso e o teto da fase 1, tudo inteiro.
+  // A fase 2 é uma busca pequena e o resultado continua em lotes inteiros, como no jogo.
+  const xs = [...variaveis.keys()].filter((k) => k.startsWith('x:'));
+  const ehLavoura = (k: string) => { const r = porChave.get(k); return r?.tipo === 'lavoura'; };
+  const modelo = (integers: string[], extra: Record<string, { min?: number; max?: number }> = {}) =>
+    ({ direction: 'maximize' as const, objective: 'ganho', constraints: { ...restricoes, ...extra }, variables: variaveis, integers });
+  const opts = { timeout: op.timeout ?? 1500, tolerance: op.tolerancia ?? 0 };
+  let sol = solve(modelo(op.relaxado ? [] : xs.filter((k) => !ehLavoura(k))), opts);
+  if (!op.relaxado && sol.status !== 'infeasible') {
+    const v1 = new Map(sol.variables);
+    const faixas: Record<string, { min: number; max: number }> = {};
+    for (const k of xs.filter(ehLavoura)) {
+      const v = v1.get(k) ?? 0;
+      variaveis.get(k)![`fixo:${k}`] = 1;
+      faixas[`fixo:${k}`] = { min: Math.floor(v + 1e-6), max: Math.ceil(v - 1e-6) };
+    }
+    const sol2 = solve(modelo(xs, faixas), opts);
+    // Se a fase 2 não achar nada (raro), usa a fase 1 arredondando as lavouras para baixo, que é sempre viável.
+    if (sol2.status === 'optimal' || (sol2.status === 'timedout' && sol2.variables.length)) sol = sol2;
+    else sol = solve(modelo(xs, Object.fromEntries(Object.entries(faixas).map(([k, f]) => [k, { min: f.min, max: f.min }]))), opts);
+  }
   const valores = new Map(sol.variables);
   const linhas: Linha[] = [];
   const subprodutos: Record<string, number> = {};

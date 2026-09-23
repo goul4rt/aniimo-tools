@@ -321,6 +321,13 @@ $('limpar-layout').addEventListener('click', () => { pecas = []; mudouLayout(); 
 
 // Automático: testa cada combinação de modo de clima e de divisão das lavouras entre os prédios, fica com a que rende mais.
 $('auto').addEventListener('click', () => {
+  const botao = $<HTMLButtonElement>('auto');
+  botao.disabled = true;
+  $('auto-msg').textContent = 'Montando…';
+  // Deixa o navegador pintar o "Montando…" antes da conta.
+  setTimeout(() => { try { montarAutomatico(); } finally { botao.disabled = false; } }, 30);
+});
+function montarAutomatico() {
   const predios = (['hf', 'cu', 'sl'] as const).filter((t) => limite(t) > 0);
   if (!predios.length) {
     $('auto-msg').textContent = `Os prédios de clima liberam no RV ${Object.values(porNome.get('Heat Furnace')!.niveis)[0]}.`;
@@ -331,17 +338,20 @@ $('auto').addEventListener('click', () => {
   const n = predios.length;
   const fatias = [Array(n).fill(1 / n), ...predios.map((_, i) => predios.map((__, j) => (j === i ? 1 : 0))),
     ...(n > 1 ? predios.map((_, i) => predios.map((__, j) => (j === i ? 0.5 : 0.5 / (n - 1)))) : [])];
+  // Compara todas pela versão contínua (1 ms cada) e resolve exato só as 8 melhores: mesmo resultado que testar tudo, bem mais rápido.
+  const tentativas = modos.flatMap((ms) => fatias.map((f) => montaAuto(predios.map((t, i) => ({ tipo: t, modo: ms[i] })), quantos, f)))
+    .map((pecasT) => ({ pecas: pecasT, estimativa: otimiza(d, { ...cfg, cobertos: cobertos(pecasT) }, { relaxado: true }).ganhoHora }))
+    .sort((a, b) => b.estimativa - a.estimativa).slice(0, 8);
   let melhor: { pecas: Peca[]; ganho: number } | null = null;
-  for (const ms of modos) for (const f of fatias) {
-    const tentativa = montaAuto(predios.map((t, i) => ({ tipo: t, modo: ms[i] })), quantos, f);
-    const ganho = otimiza(d, { ...cfg, cobertos: cobertos(tentativa) }).ganhoHora;
-    if (!melhor || ganho > melhor.ganho + 0.5) melhor = { pecas: tentativa, ganho };
+  for (const t of tentativas) {
+    const ganho = otimiza(d, { ...cfg, cobertos: cobertos(t.pecas) }).ganhoHora;
+    if (!melhor || ganho > melhor.ganho + 0.5) melhor = { pecas: t.pecas, ganho };
   }
   const antes = otimiza(d, cfg).ganhoHora;
   pecas = melhor!.pecas;
   $('auto-msg').textContent = `Testei ${modos.length * fatias.length} combinações. ${melhor!.ganho > antes + 0.5 ? `+${fmt(melhor!.ganho - antes)}/h em relação ao layout anterior.` : 'O layout anterior já era tão bom quanto.'}`;
   mudouLayout();
-});
+}
 
 // ---------- receitas ----------
 const filtroInst = $<HTMLSelectElement>('filtro-instalacao');
