@@ -1,0 +1,96 @@
+---
+import Base from '../layouts/Base.astro';
+import { aniimos } from '../data.ts';
+import { STAT } from '../rotulos.ts';
+
+const dados = {
+  aniimos: aniimos.map((a) => ({
+    slug: a.slug, nome: a.nome.pt, en: a.nome.en,
+    formas: a.formas.map((f) => ({ chave: f.chave, nome: f.nome.pt, stats: f.stats, imagem: f.imagem })),
+  })),
+  STAT,
+};
+---
+
+<Base title="Comparar stats · Aniimo Tools" description="Compare os stats de até 3 Aniimo ou formas lado a lado: PV, ATQ, QUEBRA, DEF F., DEF M. e REGEN.">
+  <h1 class="text-3xl font-bold">Comparar stats</h1>
+  <p class="mt-1 text-slate-400">Escolha até 3 Aniimo ou formas. O maior valor de cada stat fica destacado. O link guarda a comparação.</p>
+
+  <datalist id="nomes">
+    {aniimos.map((a) => <option value={a.nome.pt}>{a.nome.en}</option>)}
+  </datalist>
+
+  <div class="mt-6 grid gap-3 sm:grid-cols-3">
+    {[0, 1, 2].map((i) => (
+      <div data-slot={i} class="space-y-2 rounded-lg bg-slate-900 p-3 ring-1 ring-slate-800">
+        <input data-nome list="nomes" placeholder={`Aniimo ${i + 1}`} autocomplete="off" aria-label={`Aniimo ${i + 1}`}
+          class="w-full rounded bg-slate-950 px-2 py-1.5 ring-1 ring-slate-700" />
+        <select data-forma aria-label={`Forma do Aniimo ${i + 1}`} class="w-full rounded bg-slate-950 px-2 py-1.5 ring-1 ring-slate-700" disabled></select>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-6 overflow-x-auto">
+    <table id="tabela" class="w-full text-sm"></table>
+  </div>
+
+  <script type="application/json" id="dados" set:html={JSON.stringify(dados).replaceAll('<', '\\u003c')} />
+</Base>
+
+<script>
+  type F = { chave: string; nome: string; stats: Record<string, number>; imagem: string };
+  type A = { slug: string; nome: string; en: string; formas: F[] };
+  const D = JSON.parse(document.getElementById('dados')!.textContent!) as { aniimos: A[]; STAT: Record<string, string> };
+  // Nomes vêm da wiki (fonte externa): escapar antes de ir para innerHTML.
+  const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+  const semAcento = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().trim();
+  const acha = (txt: string) => D.aniimos.find((a) => [a.nome, a.en, a.slug].some((n) => semAcento(n) === semAcento(txt)));
+  const slots = [...document.querySelectorAll<HTMLElement>('[data-slot]')];
+  const sel: ({ a: A; f: F } | null)[] = [null, null, null];
+  const MAX = 160; // ponytail: mesma escala fixa do Aniilog
+
+  function preenche(i: number, a: A | undefined, chave?: string) {
+    const s = slots[i].querySelector<HTMLSelectElement>('[data-forma]')!;
+    if (!a) { sel[i] = null; s.innerHTML = ''; s.disabled = true; return; }
+    s.innerHTML = a.formas.map((f) => `<option value="${esc(f.chave)}">${esc(f.nome)}</option>`).join('');
+    s.disabled = a.formas.length < 2;
+    s.value = a.formas.some((f) => f.chave === chave) ? chave! : a.formas[0].chave;
+    sel[i] = { a, f: a.formas.find((f) => f.chave === s.value)! };
+  }
+
+  function desenha() {
+    const cols = sel.filter(Boolean) as { a: A; f: F }[];
+    const t = document.getElementById('tabela')!;
+    if (!cols.length) { t.innerHTML = ''; return; }
+    const cab = cols.map((c) =>
+      `<th class="p-2 text-left align-bottom font-medium"><img src="${esc(c.f.imagem)}" alt="" class="h-16 w-16 rounded bg-slate-800 object-contain" onerror="this.style.visibility='hidden'" />
+       <a class="hover:underline" href="/aniilog/${esc(c.a.slug)}/#${esc(c.f.chave)}">${esc(c.a.nome)}</a><br><span class="text-xs text-slate-400">${esc(c.f.nome)}</span></th>`).join('');
+    const linhas = Object.keys(D.STAT).map((k) => {
+      const vals = cols.map((c) => c.f.stats[k]);
+      const top = Math.max(...vals);
+      return `<tr class="border-t border-slate-800"><th class="p-2 text-left font-normal text-slate-400">${D.STAT[k]}</th>${vals.map((v) => {
+        const destaque = cols.length > 1 && v === top ? 'text-green-400 font-semibold' : '';
+        const barra = k === 'total' ? '' : `<div class="mt-1 h-1.5 rounded bg-sky-500" style="width:${Math.min(100, (v / MAX) * 100)}%"></div>`;
+        return `<td class="p-2 tabular-nums ${destaque}">${v}${barra}</td>`;
+      }).join('')}</tr>`;
+    }).join('');
+    t.innerHTML = `<thead><tr><th></th>${cab}</tr></thead><tbody>${linhas}</tbody>`;
+    const c = sel.map((m) => (m ? `${m.a.slug}:${m.f.chave}` : '')).join(',');
+    history.replaceState(null, '', cols.length ? `?c=${c}` : location.pathname);
+  }
+
+  slots.forEach((s, i) => {
+    const nome = s.querySelector<HTMLInputElement>('[data-nome]')!;
+    nome.addEventListener('input', () => { const a = acha(nome.value); if (a || !nome.value) { preenche(i, a); desenha(); } });
+    s.querySelector('[data-forma]')!.addEventListener('change', (ev) => { preenche(i, sel[i]?.a, (ev.target as HTMLSelectElement).value); desenha(); });
+  });
+
+  (new URLSearchParams(location.search).get('c') ?? '').split(',').slice(0, 3).forEach((p, i) => {
+    const [slug, chave] = p.split(':');
+    const a = D.aniimos.find((x) => x.slug === slug);
+    if (!a) return;
+    slots[i].querySelector<HTMLInputElement>('[data-nome]')!.value = a.nome;
+    preenche(i, a, chave);
+  });
+  desenha();
+</script>

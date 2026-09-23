@@ -231,7 +231,8 @@ Primeiros passos, em ordem:
 - [x] Fase 2 (parcial): /colecao (localStorage + exportar/importar) e /time (4 slots, time salvo na URL para compartilhar)
 - [x] Fase 3 (parcial): API estática em /api/v1 com CORS e documentação em /api
 - [ ] Planejador de evolução e Resonance: depende do parser da tabela HTML da Resonance e de itens.json
-- [ ] Bot de Discord e comparador de stats
+- [x] Comparador de stats (/comparar, até 3, salvo na URL)
+- [ ] Bot de Discord
 - [ ] Divulgar nos canais em português do Discord oficial, em comunidades BR no Reddit e em grupos de Telegram/WhatsApp; pedir relatos de erro nos dados
 
 ## Consequências, riscos e gatilhos de revisão
