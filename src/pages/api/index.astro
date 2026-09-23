@@ -1,0 +1,58 @@
+---
+import Base from '../../layouts/Base.astro';
+import { aniimos } from '../../data.ts';
+
+const site = 'https://aniimo.ogoulart.dev';
+const ex = aniimos[0];
+const rotas = [
+  ['/api/v1/aniimos.json', `Todos os ${aniimos.length} Aniimo, com formas, stats, skills, traços e locais.`],
+  [`/api/v1/aniimos/${ex.slug}.json`, 'Um Aniimo pelo slug (o mesmo da URL do Aniilog).'],
+  ['/api/v1/elementos.json', 'Tabela de tipos: quem causa 1,6× e 0,625× em quem, com as divergências entre fontes.'],
+  ['/api/v1/codigos.json', 'Códigos de resgate ativos e expirados.'],
+];
+const campos = [
+  ['id', 'Número na wiki oficial ("001").'],
+  ['slug', 'Nome PT sem acentos. Não muda depois de criado, mesmo se a tradução mudar.'],
+  ['nome, desc', '{ pt, en }, textos oficiais.'],
+  ['evoluiPara', 'Slugs dos Aniimo para os quais este evolui.'],
+  ['formas[]', 'Cada forma completa: chave, nome, estagio (1 Lumin, 2 Gamma, 3 Nova), elementos, papeis, stats, skills, traits, locais, imagem.'],
+  ['stats', '{ hp, atk, brk, pdef, mdef, regen, total }, com os nomes exibidos no jogo.'],
+  ['elementos', 'fire, water, grass, electric, ice, rock, wind, holy, dark.'],
+  ['papeis', 'dps, break, sup, heal, energy (REGEN).'],
+  ['coletadoEm', 'Quando o registro mudou pela última vez na wiki (ISO 8601).'],
+];
+---
+
+<Base title="API pública · Aniimo Tools" description="API JSON aberta com os dados de Aniimo em português e inglês: Aniimo, formas, stats, skills, tipos e códigos.">
+  <h1 class="text-3xl font-bold">API pública</h1>
+  <p class="mt-2 max-w-2xl text-slate-300">
+    JSON estático, sem chave e sem limite, com CORS liberado. Atualizado uma vez por dia a partir da wiki oficial.
+    Use à vontade em bots, planilhas e sites. Só pedimos um link de volta para <a class="underline" href="/">aniimo.ogoulart.dev</a>.
+  </p>
+
+  <h2 class="mt-8 text-xl font-semibold">Rotas</h2>
+  <ul class="mt-3 space-y-3">
+    {rotas.map(([r, d]) => (
+      <li>
+        <a class="font-mono text-sky-400 underline break-all" href={r}>{site}{r}</a>
+        <p class="text-sm text-slate-400">{d}</p>
+      </li>
+    ))}
+  </ul>
+
+  <h2 class="mt-8 text-xl font-semibold">Campos de um Aniimo</h2>
+  <dl class="mt-3 grid gap-x-4 gap-y-2 text-sm sm:grid-cols-[10rem_1fr]">
+    {campos.map(([c, d]) => (<><dt class="font-mono text-slate-200">{c}</dt><dd class="text-slate-400">{d}</dd></>))}
+  </dl>
+
+  <h2 class="mt-8 text-xl font-semibold">Exemplo</h2>
+  <pre class="mt-3 overflow-x-auto rounded bg-slate-900 p-3 text-xs ring-1 ring-slate-800"><code>{`const r = await fetch('${site}/api/v1/aniimos/${ex.slug}.json');
+const a = await r.json();
+console.log(a.nome.pt, a.formas[0].stats.atk); // ${ex.nome.pt} ${ex.formas[0].stats.atk}`}</code></pre>
+
+  <p class="mt-8 text-xs text-slate-500">
+    Os dados vêm da wiki oficial de Aniimo. Aniimo, nomes, textos e imagens são © Pawprint Studio; as URLs de imagem apontam para o CDN oficial.
+    A versão <code>v1</code> não muda de formato sem aviso; mudanças que quebram vão para <code>v2</code>.
+    O código-fonte e o histórico dos dados estão no <a class="underline" href="https://github.com/goul4rt/aniimo-tools">GitHub</a>.
+  </p>
+</Base>

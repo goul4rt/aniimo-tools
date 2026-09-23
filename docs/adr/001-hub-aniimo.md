@@ -228,6 +228,10 @@ Primeiros passos, em ordem:
 - [x] Construir /aniilog e /aniilog/[slug]
 - [x] Montar `elementos.json` e construir /tipos. A wiki oficial não publica a tabela: matriz da comunidade cruzada em 3 fontes, com 6 divergências exibidas na página. Falta conferir no jogo
 - [x] Construir /codigos a partir de `codigos.json` (2 fontes; recompensa só quando concordam)
+- [x] Fase 2 (parcial): /colecao (localStorage + exportar/importar) e /time (4 slots, time salvo na URL para compartilhar)
+- [x] Fase 3 (parcial): API estática em /api/v1 com CORS e documentação em /api
+- [ ] Planejador de evolução e Resonance: depende do parser da tabela HTML da Resonance e de itens.json
+- [ ] Bot de Discord e comparador de stats
 - [ ] Divulgar nos canais em português do Discord oficial, em comunidades BR no Reddit e em grupos de Telegram/WhatsApp; pedir relatos de erro nos dados
 
 ## Consequências, riscos e gatilhos de revisão
