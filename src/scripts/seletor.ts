@@ -4,7 +4,7 @@ import { COR, COR_HEX, ELEMENTO, mioloIcone } from '../rotulos.ts';
 import type { Elemento } from '../types.ts';
 import { evento } from './evento.ts';
 
-export type Opcao = { slug: string; nome: string; en: string; imagem: string; elementos: string[] };
+export type Opcao = { slug: string; nome: string; en: string; imagem: string; elementos: string[]; grupo?: string };
 
 // Nomes vêm da wiki (fonte externa): escapar antes de ir para innerHTML.
 export const esc = (s: string) => s.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
@@ -21,10 +21,15 @@ export const iconeEl = (e: string, tam = 32, apagado = false) => {
 
 let n = 0;
 
-/** Liga o combobox a um <input>. `escolhe` recebe o slug escolhido, ou null quando o campo é limpo. */
-export function seletor(input: HTMLInputElement, opcoes: Opcao[], escolhe: (slug: string | null) => void) {
+/** Liga o combobox a um <input>. `escolhe` recebe o slug escolhido, ou null quando o campo é limpo.
+ *  `grupos` (chave → título, na ordem de exibição) separa a lista pelo `grupo` de cada opção; o título também entra na busca. */
+export function seletor(input: HTMLInputElement, opcoes: Opcao[], escolhe: (slug: string | null) => void, grupos?: Record<string, string>) {
   const id = `seletor-${n++}`;
-  const busca = new Map(opcoes.map((o) => [o.slug, semAcento([o.nome, o.en, o.slug, ...o.elementos.map((e) => ELEMENTO[e as Elemento])].join(' '))]));
+  if (grupos) {
+    const ordem = Object.keys(grupos);
+    opcoes = [...opcoes].sort((a, b) => ordem.indexOf(a.grupo!) - ordem.indexOf(b.grupo!));
+  }
+  const busca = new Map(opcoes.map((o) => [o.slug, semAcento([o.nome, o.en, o.slug, grupos?.[o.grupo!] ?? '', ...o.elementos.map((e) => ELEMENTO[e as Elemento])].join(' '))]));
   let atual: Opcao | undefined;
   let visiveis: Opcao[] = [];
   let ativo = -1;
@@ -52,15 +57,15 @@ export function seletor(input: HTMLInputElement, opcoes: Opcao[], escolhe: (slug
   lista.id = id;
   lista.hidden = true;
   lista.setAttribute('role', 'listbox');
-  lista.className = 'absolute inset-x-0 top-full z-20 mt-2 max-h-80 overflow-y-auto overscroll-contain rounded-2xl border border-line bg-white p-1.5 shadow-[0_12px_32px_-8px_rgb(21_57_58/.25)]';
+  lista.className = 'absolute inset-x-0 top-full z-20 mt-2 max-h-80 overflow-x-hidden overflow-y-auto overscroll-contain rounded-2xl border border-line bg-white p-1.5 shadow-[0_12px_32px_-8px_rgb(21_57_58/.25)]';
   caixa.append(limpar, lista);
 
   const marca = (i: number) => {
     ativo = i;
-    [...lista.children].forEach((li, j) => li.setAttribute('aria-selected', String(j === i)));
+    lista.querySelectorAll('[role=option]').forEach((li, j) => li.setAttribute('aria-selected', String(j === i)));
     if (i < 0) return input.removeAttribute('aria-activedescendant');
     input.setAttribute('aria-activedescendant', `${id}-${i}`);
-    lista.children[i].scrollIntoView({ block: 'nearest' });
+    document.getElementById(`${id}-${i}`)!.scrollIntoView({ block: 'nearest' });
   };
 
   function abre() {
@@ -68,15 +73,18 @@ export function seletor(input: HTMLInputElement, opcoes: Opcao[], escolhe: (slug
     // Com um Aniimo já escolhido, abrir de novo mostra todos (o texto no campo é o nome dele, não uma busca).
     visiveis = !q || q === semAcento(atual?.nome ?? '') ? opcoes : opcoes.filter((o) => busca.get(o.slug)!.includes(q));
     lista.innerHTML = visiveis.length
-      ? visiveis.map((o, i) => `
+      ? visiveis.map((o, i) => (grupos && o.grupo !== visiveis[i - 1]?.grupo
+          ? `<li role="presentation" class="sticky -top-1.5 z-10 bg-white px-2 pt-2.5 pb-1 text-[11px] font-bold tracking-wide text-muted uppercase">${esc(grupos[o.grupo!] ?? '')}</li>`
+          : '') + `
         <li id="${id}-${i}" role="option" aria-selected="false" data-i="${i}"
           class="flex cursor-pointer items-center gap-3 rounded-xl px-2 py-1.5 aria-selected:bg-danube-50 ${o.slug === atual?.slug ? 'font-semibold' : ''}">
           <img src="${esc(o.imagem)}" alt="" loading="lazy" width="40" height="40" class="h-10 w-10 shrink-0 rounded-xl bg-danube-100 object-contain" onerror="this.style.visibility='hidden'" />
           <span class="min-w-0 flex-1 leading-tight">
             <span class="block truncate font-display text-[15px] font-semibold text-ink">${esc(o.nome)}</span>
-            <span class="block truncate text-xs text-muted">${esc(o.en)}</span>
+            <span class="flex items-center gap-1.5 text-xs text-muted"><span class="truncate">${esc(o.en)}</span>
+              <span class="flex shrink-0 gap-0.5 sm:hidden">${o.elementos.map((e) => iconeEl(e, 16)).join('')}</span></span>
           </span>
-          <span class="flex shrink-0 gap-1">${o.elementos.map(chip).join('')}</span>
+          <span class="hidden shrink-0 gap-1 sm:flex">${o.elementos.map(chip).join('')}</span>
         </li>`).join('')
       : '<li class="px-3 py-2 text-sm text-muted">Nenhum Aniimo com esse nome.</li>';
     lista.hidden = false;

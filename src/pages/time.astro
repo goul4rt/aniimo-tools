@@ -31,13 +31,13 @@ const dados = {
 
   <div id="slots" class="mt-6 grid gap-3 sm:grid-cols-2">
     {[0, 1, 2, 3].map((i) => (
-      <div data-slot={i} class="card flex gap-4 p-4">
-        <div class="relative h-24 w-24 shrink-0">
+      <div data-slot={i} class="card flex gap-3 p-3 sm:gap-4 sm:p-4">
+        <div class="relative h-16 w-16 shrink-0 sm:h-24 sm:w-24">
           <div data-vazio class="grid h-full w-full place-items-center rounded-2xl border-2 border-dashed border-danube-200 font-display text-3xl font-semibold text-danube-200">{i + 1}</div>
           <img data-img alt="" width="96" height="96" hidden class="absolute inset-0 h-full w-full rounded-2xl bg-danube-100 object-contain" />
         </div>
         <div class="min-w-0 flex-1 space-y-2.5">
-          <input data-nome placeholder="Buscar Aniimo ou elemento" aria-label={`Aniimo ${i + 1}`} class="w-full campo" />
+          <input data-nome placeholder="Buscar Aniimo" aria-label={`Aniimo ${i + 1}`} class="w-full campo" />
           <div data-formas class="flex flex-wrap gap-1.5" aria-label={`Forma do Aniimo ${i + 1}`}></div>
           <div data-chips class="flex flex-wrap gap-1"></div>
         </div>
@@ -93,7 +93,10 @@ const dados = {
   const opcoes = D.aniimos.map((a) => ({
     slug: a.slug, nome: a.nome, en: a.en, imagem: a.formas[0].imagem,
     elementos: [...new Set(a.formas.flatMap((f) => f.elementos))],
+    grupo: a.formas[0].papeis[0], // ponytail: hoje todo Aniimo tem uma função só, igual em todas as formas
   }));
+  // Lista do seletor separada por função, nesta ordem (ninguém decora a função de cada Aniimo).
+  const grupos = Object.fromEntries(['dps', 'heal', 'energy', 'sup', 'break'].map((p) => [p, D.PAPEL[p]]));
   const els = Object.keys(D.ataque);
   const slots = [...document.querySelectorAll<HTMLElement>('[data-slot]')];
   const time: ({ a: A; f: F } | null)[] = [null, null, null, null];
@@ -210,7 +213,7 @@ const dados = {
     seletor(s.querySelector<HTMLInputElement>('[data-nome]')!, opcoes, (slug) => {
       preenche(i, D.aniimos.find((a) => a.slug === slug));
       atualiza();
-    }));
+    }, grupos));
 
   // Restaura o time do link (?t=slug:forma,slug:forma,...).
   (new URLSearchParams(location.search).get('t') ?? '').split(',').slice(0, 4).forEach((p, i) => {
