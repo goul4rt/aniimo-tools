@@ -3,6 +3,7 @@ titulo: 'Caça: como capturar o exemplar certo'
 resumo: Capturar é fácil. Difícil é capturar o exemplar certo, aí a captura vira caça.
 autor: Comunidade
 categoria: guia
+capa: /uploads/blog/aniimo-gelo-lago.jpg
 publicadoEm: 2026-09-25
 ---
 

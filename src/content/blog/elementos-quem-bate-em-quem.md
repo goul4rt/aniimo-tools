@@ -3,6 +3,7 @@ titulo: 'Elementos: quem bate forte em quem'
 resumo: Sagrado e Trevas são fortes um contra o outro. Veja a lista rápida dos outros 7 elementos.
 autor: Comunidade
 categoria: guia
+capa: /uploads/blog/aniimo-libelula-flores.jpg
 publicadoEm: 2026-09-25
 ---
 

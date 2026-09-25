@@ -3,6 +3,7 @@ titulo: Bem-vindo ao Blog do Aniimo Tools
 resumo: Post de exemplo. Edite ou apague pelo editor em /admin.
 autor: Equipe Aniimo Tools
 categoria: aviso
+capa: /uploads/blog/aniimo-xbox-showcase.jpg
 destaque: true
 publicadoEm: 2026-09-25
 ---
