@@ -13,7 +13,7 @@ Este é um post de exemplo. Quem tiver acesso pode editar ou apagar este texto e
 
 Cada post vira uma página em `/blog/<slug>/`. No editor você escolhe a categoria, a capa (opcional) e se o post aparece em destaque.
 
-> **Dica:** um bloco de citação como este vira um destaque visual no post — bom para avisos e dicas rápidas.
+> **Dica:** um bloco de citação como este vira um destaque visual no post, bom para avisos e dicas rápidas.
 
 ## Campos do post
 
