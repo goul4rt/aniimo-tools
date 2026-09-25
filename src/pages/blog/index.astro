@@ -52,13 +52,13 @@ const itens = resto.map(item);
       </a>
     )}
 
-    <div class="flex flex-wrap gap-2">
-      <button type="button" data-cat="" aria-pressed="true" class="chip cursor-pointer aria-pressed:ring-2 aria-pressed:ring-casal aria-pressed:ring-offset-1">
+    <div id="filtroCats" class="flex flex-wrap gap-2" data-cores={JSON.stringify(Object.fromEntries(cats.map((k) => [k, CATEGORIA[k].fg])))}>
+      <button type="button" data-cat="" aria-pressed="true" style="background:#286464;color:#fff;border:1px solid transparent" class="cursor-pointer rounded-full px-3.5 py-2 text-sm font-semibold">
         Todos <span class="font-mono text-[11px] opacity-70">{todos.length}</span>
       </button>
       {cats.map((k) => (
-        <button type="button" data-cat={k} aria-pressed="false" style={`background:${CATEGORIA[k].bg};color:${CATEGORIA[k].fg}`}
-          class="cursor-pointer rounded-full border-0 px-3.5 py-2 text-sm font-semibold aria-pressed:ring-2 aria-pressed:ring-casal-700 aria-pressed:ring-offset-1">
+        <button type="button" data-cat={k} aria-pressed="false" style={`background:#fff;color:${CATEGORIA[k].fg};border:1px solid var(--color-danube-100)`}
+          class="cursor-pointer rounded-full px-3.5 py-2 text-sm font-semibold">
           {CATEGORIA[k].nome} <span class="font-mono text-[11px] opacity-70">{todos.filter((p) => p.data.categoria === k).length}</span>
         </button>
       ))}
@@ -92,7 +92,9 @@ const itens = resto.map(item);
 <script>
   import { evento, umaVez } from '../../scripts/evento.ts';
   const busca = document.querySelector<HTMLInputElement>('[name=q]')!;
-  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-cat]')];
+  const filtroCats = document.getElementById('filtroCats')!;
+  const cores = JSON.parse(filtroCats.dataset.cores!) as Record<string, string>;
+  const chips = [...filtroCats.querySelectorAll<HTMLButtonElement>('[data-cat]')];
   const itens = [...document.querySelectorAll<HTMLLIElement>('#lista > li')];
   const destaque = document.getElementById('destaque');
   const vazio = document.getElementById('vazio')!;
@@ -112,7 +114,15 @@ const itens = resto.map(item);
   }
   chips.forEach((b) => b.addEventListener('click', () => {
     cat = b.dataset.cat!;
-    chips.forEach((c) => c.setAttribute('aria-pressed', String(c === b)));
+    chips.forEach((c) => {
+      const k = c.dataset.cat!;
+      const on = c === b;
+      c.setAttribute('aria-pressed', String(on));
+      const fg = k ? cores[k] : '#286464';
+      c.style.background = on ? fg : '#fff';
+      c.style.color = on ? '#fff' : fg;
+      c.style.borderColor = on ? 'transparent' : 'var(--color-danube-100)';
+    });
     filtra();
     evento('blog_filtro', { categoria: cat || 'todos' });
   }));
