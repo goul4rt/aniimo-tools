@@ -3,6 +3,8 @@ backend:
   repo: goul4rt/aniimo-tools
   branch: main
   base_url: https://sveltia-cms-auth.extremeplays4.workers.dev
+  # Repositório é público: pede só acesso a repos públicos, não "repo" completo (público+privado).
+  auth_scope: public_repo
 
 media_folder: public/uploads/blog
 public_folder: /uploads/blog
