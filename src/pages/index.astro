@@ -7,6 +7,12 @@ import { ELEMENTO } from '../rotulos.ts';
 import { codigos, grupos, miolo, principais } from '../nav.ts';
 import mascote from '../og/mascote.png';
 import type { Elemento } from '../types.ts';
+import { getCollection } from 'astro:content';
+import { CATEGORIA, destacado, porData } from '../blog.ts';
+
+const posts = (await getCollection('blog')).sort(porData);
+const featBlog = posts.length > 0 ? destacado(posts) : undefined;
+const ladoBlog = posts.filter((p) => p.id !== featBlog?.id).slice(0, 2);
 
 const ativos = codigosDados.codigos.filter((c) => c.ativo);
 const destaque = ativos.slice(0, 3);
@@ -38,6 +44,39 @@ const icone = (svg: string, cls = 'h-5 w-5') => `<svg class="${cls}" viewBox="0 
     <span class="mr-1 text-sm font-semibold text-muted">Aniimo por elemento:</span>
     {els.map((e) => <a href={`/aniilog/?el=${e}`} title={`Aniimo de ${ELEMENTO[e]}`} data-umami-event="home_elemento" data-umami-event-elemento={e} class="rounded-full transition-transform hover:-translate-y-0.5"><Icone e={e} tam={36} /><span class="sr-only">{ELEMENTO[e]}</span></a>)}
   </div>
+
+  {featBlog && (
+    <div class="card mt-6 flex flex-col gap-4 p-6">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <h2 class="text-2xl">Do blog</h2>
+        <a href="/blog/" class="text-sm font-bold text-casal">Ver todos os posts →</a>
+      </div>
+      <div class="flex flex-wrap gap-3.5">
+        <a href={`/blog/${featBlog.id}/`} data-umami-event="home_blog" data-umami-event-post={featBlog.id}
+          class="relative flex min-h-[220px] flex-[2_1_360px] items-end overflow-hidden rounded-2xl" style={`background:${CATEGORIA[featBlog.data.categoria].tinta}`}>
+          {featBlog.data.capa && <img src={featBlog.data.capa} alt="" class="absolute inset-0 h-full w-full object-cover" />}
+          <div class="absolute inset-0 bg-gradient-to-t from-casal-900/90 to-transparent"></div>
+          <div class="relative flex flex-col gap-2 p-5">
+            <span class="self-start rounded-full bg-white px-2.5 py-0.5 text-[11px] font-bold text-casal">{CATEGORIA[featBlog.data.categoria].nome}</span>
+            <strong class="font-display text-2xl leading-tight font-semibold text-white">{featBlog.data.titulo}</strong>
+          </div>
+        </a>
+        {ladoBlog.length > 0 && (
+          <div class="flex flex-[1_1_240px] flex-col gap-3.5">
+            {ladoBlog.map((p) => (
+              <a href={`/blog/${p.id}/`} data-umami-event="home_blog" data-umami-event-post={p.id} class="flex flex-1 flex-col justify-end gap-2 rounded-2xl p-4"
+                style={`background:${CATEGORIA[p.data.categoria].tinta}`}>
+                <span class="text-[11px] font-bold tracking-wide uppercase" style={`color:${CATEGORIA[p.data.categoria].fg}`}>{CATEGORIA[p.data.categoria].nome}</span>
+                <strong class="font-display text-lg leading-tight font-semibold text-ink">{p.data.titulo}</strong>
+                <span class="font-mono text-[11px] text-muted">{p.data.publicadoEm.toLocaleDateString('pt-BR')}</span>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )}
+
   <div class="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
     <div class="grid min-w-0 gap-6 sm:grid-cols-2">
       {[['Principais', [...principais.slice(0, 2)]] as (typeof grupos)[number], ...grupos].map(([g, itens]) => (

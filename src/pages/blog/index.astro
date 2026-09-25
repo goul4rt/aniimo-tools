@@ -1,27 +1,120 @@
 ---
 import Base from '../../layouts/Base.astro';
+import SeloCategoria from '../../components/SeloCategoria.astro';
 import { getCollection } from 'astro:content';
+import { CATEGORIA, type Categoria, destacado, leitura, porData } from '../../blog.ts';
 
-const posts = (await getCollection('blog')).sort((a, b) => b.data.publicadoEm.getTime() - a.data.publicadoEm.getTime());
+const todos = (await getCollection('blog')).sort(porData);
+const feat = todos.length > 0 ? destacado(todos) : undefined;
+const resto = todos.filter((p) => p.id !== feat?.id);
+const cats = Object.keys(CATEGORIA) as Categoria[];
+
+const item = (p: (typeof todos)[number]) => ({
+  p,
+  data: p.data.publicadoEm.toLocaleDateString('pt-BR'),
+  leitura: leitura(p.body ?? ''),
+  busca: `${p.data.titulo} ${p.data.resumo}`.toLowerCase(),
+});
+const featItem = feat && item(feat);
+const itens = resto.map(item);
 ---
 
 <Base title="Blog · Aniimo Tools" description="Guias e novidades de Aniimo escritos pela comunidade, em português.">
-  <h1 class="text-4xl">Blog</h1>
-  <p class="mt-1 text-muted">Guias e novidades escritos pela comunidade.</p>
+  <form id="filtros" onsubmit="return false" class="flex flex-col gap-6">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h1 class="text-4xl">Blog</h1>
+        <p class="mt-1 text-muted">Guias e novidades escritos pela comunidade.</p>
+      </div>
+      <input name="q" type="search" placeholder="Buscar no blog" autocomplete="off" class="campo w-full sm:w-72" />
+    </div>
 
-  <ul class="mt-6 grid gap-3 sm:grid-cols-2">
-    {posts.map((p) => (
-      <li>
-        <a href={`/blog/${p.id}/`} data-umami-event="blog_abrir" data-umami-event-post={p.id} class="card block h-full p-4">
-          <p class="text-xs text-muted">{p.data.publicadoEm.toLocaleDateString('pt-BR')}</p>
-          <h2 class="mt-1 text-lg font-semibold">{p.data.titulo}</h2>
-          <p class="mt-1 text-sm text-muted">{p.data.resumo}</p>
-          {p.data.tags.length > 0 && (
-            <div class="mt-3 flex flex-wrap gap-1">{p.data.tags.map((t) => <span class="chip">{t}</span>)}</div>
-          )}
-        </a>
-      </li>
-    ))}
-  </ul>
-  {posts.length === 0 && <p class="mt-6 text-muted">Nenhum post ainda.</p>}
+    {featItem && (
+      <a href={`/blog/${featItem.p.id}/`} id="destaque" data-umami-event="blog_abrir" data-umami-event-post={featItem.p.id}
+        class="card grid overflow-hidden sm:grid-cols-2" style="border-radius:28px">
+        <div class="relative min-h-[220px]" style={`background:${CATEGORIA[featItem.p.data.categoria].tinta}`}>
+          {featItem.p.data.capa && <img src={featItem.p.data.capa} alt="" class="absolute inset-0 h-full w-full object-cover" />}
+          <span class="absolute top-4 left-4 rounded-full bg-casal-900 px-3 py-1.5 font-mono text-[11px] tracking-widest text-white uppercase">Em destaque</span>
+        </div>
+        <div class="flex flex-col justify-center gap-3 p-8">
+          <div class="flex flex-wrap items-center gap-2.5">
+            <SeloCategoria c={featItem.p.data.categoria} />
+            <span class="font-mono text-xs text-muted">{featItem.data} · {featItem.leitura}</span>
+          </div>
+          <h2 class="text-pretty font-display text-[28px] leading-tight font-semibold text-ink sm:text-[34px]">{featItem.p.data.titulo}</h2>
+          <p class="text-pretty text-base leading-snug text-muted">{featItem.p.data.resumo}</p>
+          <div class="mt-1 flex items-center gap-2.5">
+            <span class="grid h-8 w-8 place-items-center rounded-full bg-danube-100 text-sm font-bold text-casal">{featItem.p.data.autor[0]}</span>
+            <span class="text-sm font-semibold text-ink">{featItem.p.data.autor}</span>
+            <span class="ml-auto text-sm font-bold text-casal">Ler post →</span>
+          </div>
+        </div>
+      </a>
+    )}
+
+    <div class="flex flex-wrap gap-2">
+      <button type="button" data-cat="" aria-pressed="true" class="chip cursor-pointer aria-pressed:ring-2 aria-pressed:ring-casal aria-pressed:ring-offset-1">
+        Todos <span class="font-mono text-[11px] opacity-70">{todos.length}</span>
+      </button>
+      {cats.map((k) => (
+        <button type="button" data-cat={k} aria-pressed="false" style={`background:${CATEGORIA[k].bg};color:${CATEGORIA[k].fg}`}
+          class="cursor-pointer rounded-full border-0 px-3.5 py-2 text-sm font-semibold aria-pressed:ring-2 aria-pressed:ring-casal-700 aria-pressed:ring-offset-1">
+          {CATEGORIA[k].nome} <span class="font-mono text-[11px] opacity-70">{todos.filter((p) => p.data.categoria === k).length}</span>
+        </button>
+      ))}
+    </div>
+
+    <ul id="lista" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {itens.map(({ p, data, leitura, busca }) => (
+        <li data-cat={p.data.categoria} data-busca={busca}>
+          <a href={`/blog/${p.id}/`} data-umami-event="blog_abrir" data-umami-event-post={p.id} class="card block h-full overflow-hidden">
+            <div class="relative aspect-video" style={`background:${CATEGORIA[p.data.categoria].tinta}`}>
+              {p.data.capa
+                ? <img src={p.data.capa} alt="" class="absolute inset-0 h-full w-full object-cover" />
+                : <span class="absolute inset-0 flex items-end p-3.5 font-display text-xl leading-tight font-semibold" style={`color:${CATEGORIA[p.data.categoria].fg}`}>{CATEGORIA[p.data.categoria].nome}</span>}
+            </div>
+            <div class="flex flex-col gap-2 p-4">
+              <div class="flex flex-wrap items-center gap-2">
+                <SeloCategoria c={p.data.categoria} class="px-2.5 py-0.5 text-[11px]" />
+                <span class="font-mono text-[11px] text-muted">{data} · {leitura}</span>
+              </div>
+              <strong class="font-display text-lg leading-tight font-semibold text-ink">{p.data.titulo}</strong>
+              <p class="text-sm leading-snug text-muted">{p.data.resumo}</p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <p id="vazio" hidden class="py-10 text-center text-muted">Nenhum post encontrado.</p>
+  </form>
 </Base>
+
+<script>
+  import { evento, umaVez } from '../../scripts/evento.ts';
+  const busca = document.querySelector<HTMLInputElement>('[name=q]')!;
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-cat]')];
+  const itens = [...document.querySelectorAll<HTMLLIElement>('#lista > li')];
+  const destaque = document.getElementById('destaque');
+  const vazio = document.getElementById('vazio')!;
+  let cat = '';
+
+  function filtra() {
+    const q = busca.value.trim().toLowerCase();
+    const filtrando = !!cat || !!q;
+    let n = 0;
+    for (const li of itens) {
+      const ok = (!cat || li.dataset.cat === cat) && (!q || li.dataset.busca!.includes(q));
+      li.hidden = !ok;
+      if (ok) n++;
+    }
+    vazio.hidden = n > 0;
+    if (destaque) destaque.hidden = filtrando;
+  }
+  chips.forEach((b) => b.addEventListener('click', () => {
+    cat = b.dataset.cat!;
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c === b)));
+    filtra();
+    evento('blog_filtro', { categoria: cat || 'todos' });
+  }));
+  busca.addEventListener('input', () => { filtra(); umaVez('blog_busca'); });
+</script>

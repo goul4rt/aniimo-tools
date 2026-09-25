@@ -1,0 +1,8 @@
+---
+import { CATEGORIA, type Categoria } from '../blog.ts';
+
+const { c, class: cls = 'px-3 py-0.5 text-xs' } = Astro.props as { c: Categoria; class?: string };
+const cat = CATEGORIA[c];
+---
+
+<span style={`background:${cat.bg};color:${cat.fg}`} class:list={['inline-block rounded-full font-bold', cls]}>{cat.nome}</span>

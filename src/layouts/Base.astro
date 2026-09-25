@@ -5,7 +5,8 @@ import { porSlug } from '../data.ts';
 import { PAGINAS, ogDe } from '../paginas.ts';
 import { UMAMI_ID } from '../metricas.ts';
 import { ChevronDown, Menu } from 'lucide-static';
-import { codigos, grupos, miolo, principais } from '../nav.ts';
+import { blog, codigos, grupos, miolo, principais } from '../nav.ts';
+import { temPostRecente } from '../blog.ts';
 
 interface Props {
   title: string;
@@ -20,8 +21,9 @@ const canonical = new URL(rota, Astro.site);
 // Toda página precisa estar em src/paginas.ts (imagem OG + sitemap). Esquecer quebra a build aqui.
 const slug = rota.match(/^\/aniilog\/([^/]+)\/$/)?.[1];
 const aniimo = slug ? porSlug.get(slug) : undefined;
+const posts = await getCollection('blog');
 const slugPost = rota.match(/^\/blog\/([^/]+)\/$/)?.[1];
-const post = slugPost ? (await getCollection('blog')).find((p) => p.id === slugPost) : undefined;
+const post = slugPost ? posts.find((p) => p.id === slugPost) : undefined;
 if (!PAGINAS[rota] && !aniimo && !post) throw new Error(`Página ${rota} fora de src/paginas.ts: registre para ter imagem OG e entrar no sitemap.`);
 const og = new URL(ogDe(rota), Astro.site);
 const ogAlt = aniimo ? `${aniimo.nome.pt}: stats base e elementos, no Aniilog do Aniimo Tools`
@@ -38,6 +40,7 @@ const jsonLd = rota === '/'
 // Menu: os principais à vista; o resto num painel "Ferramentas" em grupos (listas em src/nav.ts). No celular só aparece o ☰.
 const naRota = (href: string) => rota.startsWith(href);
 const noPainel = grupos.some(([, itens]) => itens.some(([h]) => h !== '/time/' && naRota(h)));
+const blogRecente = temPostRecente(posts);
 ---
 
 <html lang="pt-BR">
@@ -95,7 +98,7 @@ const noPainel = grupos.some(([, itens]) => itens.some(([h]) => h !== '/time/' &
             </summary>
             <div class="fixed inset-x-3 top-16 z-50 max-h-[calc(100vh-5rem)] overflow-y-auto rounded-[20px] border border-line bg-white p-2 whitespace-normal text-ink shadow-[0_12px_32px_-8px_rgb(21_57_58/.3)] md:absolute md:inset-x-auto md:top-full md:right-0 md:mt-2 md:w-[740px]">
               <div class="grid gap-1 md:grid-cols-3">
-                {[['Principais', [...principais.slice(0, 2), codigos]] as (typeof grupos)[number], ...grupos].map(([grupo, itens], g) => (
+                {[['Principais', [...principais.slice(0, 2), blog, codigos]] as (typeof grupos)[number], ...grupos].map(([grupo, itens], g) => (
                   <div class:list={[g === 0 && 'md:hidden']}>
                     <p class="px-3 pt-2 pb-1 text-[11px] font-bold tracking-wider text-danube uppercase">{grupo}</p>
                     {itens.map(([href, label, desc, ic]) => (
@@ -112,6 +115,10 @@ const noPainel = grupos.some(([, itens]) => itens.some(([h]) => h !== '/time/' &
               </div>
             </div>
           </details>
+          <a href="/blog/" aria-current={naRota('/blog/') ? 'page' : undefined} data-umami-event="nav" data-umami-event-destino="Blog"
+            class:list={['hidden items-center gap-1.5 rounded-full px-3.5 py-2 hover:bg-zumthor/15 hover:text-white md:inline-flex', naRota('/blog/') ? 'bg-zumthor/15 text-white' : 'text-zumthor/85']}>
+            Blog{blogRecente && <span class="h-[7px] w-[7px] rounded-full bg-[#F48DB8]" aria-hidden="true" />}
+          </a>
           <a href="/codigos/" aria-current={naRota('/codigos/') ? 'page' : undefined} data-umami-event="nav" data-umami-event-destino="Códigos"
             class:list={['hidden rounded-full px-3.5 py-2 hover:bg-zumthor/15 hover:text-white md:inline', naRota('/codigos/') ? 'bg-zumthor/15 text-white' : 'text-zumthor/85']}>Códigos</a>
         </div>

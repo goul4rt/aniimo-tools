@@ -83,6 +83,10 @@
   .post img { margin-top: 1.5em; border-radius: 16px; }
   .post strong { font-weight: 700; color: var(--color-ink); }
   .post code { background: var(--color-danube-50); padding: 2px 6px; border-radius: 6px; font-family: var(--font-mono); font-size: .875em; }
+  /* Bloco de citação (`> texto`) vira o destaque "Dica" do design, sem precisar de sintaxe própria no editor. */
+  .post blockquote { margin: 1.5em 0 0; padding: 18px 22px; border-radius: 18px; background: var(--color-casal-50); color: var(--color-casal-700); }
+  .post blockquote p { margin: 0; }
+  .post blockquote p + p { margin-top: .5em; }
 
   /* Acento "Twining" do logo: uso raro (progresso, destaque). Nunca como fundo de texto. */
   .bg-twining { background: linear-gradient(90deg, #7FD6F5, #A7B8F7 45%, #F48DB8 80%, #FFB37A); }

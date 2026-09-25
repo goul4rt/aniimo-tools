@@ -18,7 +18,10 @@ collections:
     slug: '{{slug}}'
     fields:
       - { label: Título, name: titulo, widget: string }
-      - { label: Resumo, name: resumo, widget: text }
+      - { label: Resumo, name: resumo, widget: text, hint: 'Uma frase. Aparece no card e abaixo do título.' }
+      - { label: Autor, name: autor, widget: string, default: Comunidade }
+      - { label: Categoria, name: categoria, widget: select, options: [aviso, guia, time, update] }
+      - { label: Capa, name: capa, widget: image, required: false, hint: 'Opcional. Sem imagem, o card usa a cor da categoria.' }
+      - { label: Destaque, name: destaque, widget: boolean, default: false, hint: 'Liga o post no topo do blog e no bloco da home.' }
       - { label: Publicado em, name: publicadoEm, widget: datetime, format: 'YYYY-MM-DD' }
-      - { label: Tags, name: tags, widget: list, default: [] }
       - { label: Conteúdo, name: body, widget: markdown }

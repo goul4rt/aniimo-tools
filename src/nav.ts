@@ -9,11 +9,12 @@ export const principais: Link[] = [
   ['/time/', 'Time', 'Cobertura, fraquezas e sugestão', Users],
 ];
 export const codigos: Link = ['/codigos/', 'Códigos', 'Códigos de resgate ativos', Gift];
+export const blog: Link = ['/blog/', 'Blog', 'Guias e novidades da comunidade', Newspaper];
 
 export const grupos: [string, Link[]][] = [
   ['Batalha', [['/time/', 'Montar time', 'Cobertura e sugestão', Users], ['/times/', 'Times prontos', 'Da comunidade, prontos', Bookmark], ['/comparar/', 'Comparar', 'Stats lado a lado', ArrowLeftRight]]],
   ['Coleção', [['/colecao/', 'Minha coleção', 'Marque o que você já tem', CircleCheck], ['/tier/', 'Tier list', 'Monte do SSS ao D', ListOrdered]]],
-  ['Guias e progresso', [['/guias/', 'Guias rápidos', 'Formas, caça e elementos', BookOpen], ['/homeland/', 'Homeland', 'Produção, equipe e layout', House], ['/evolucao/', 'Resonance', 'Custo até cada estágio', Sparkles], ['/blog/', 'Blog', 'Guias da comunidade', Newspaper]]],
+  ['Guias e progresso', [['/guias/', 'Guias rápidos', 'Formas, caça e elementos', BookOpen], ['/homeland/', 'Homeland', 'Produção, equipe e layout', House], ['/evolucao/', 'Resonance', 'Custo até cada estágio', Sparkles]]],
 ];
 
 /** Só os <path> de um ícone do lucide-static, para montar o <svg> em volta. */
