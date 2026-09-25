@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: goul4rt/aniimo-tools
+  branch: main
+  base_url: https://sveltia-cms-auth.extremeplays4.workers.dev
+
+media_folder: public/uploads/blog
+public_folder: /uploads/blog
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: Post
+    folder: src/content/blog
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - { label: Título, name: titulo, widget: string }
+      - { label: Resumo, name: resumo, widget: text }
+      - { label: Publicado em, name: publicadoEm, widget: datetime, format: 'YYYY-MM-DD' }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Conteúdo, name: body, widget: markdown }

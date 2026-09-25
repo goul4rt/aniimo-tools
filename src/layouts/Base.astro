@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { getCollection } from 'astro:content';
 import { porSlug } from '../data.ts';
 import { PAGINAS, ogDe } from '../paginas.ts';
 import { UMAMI_ID } from '../metricas.ts';
@@ -19,11 +20,15 @@ const canonical = new URL(rota, Astro.site);
 // Toda página precisa estar em src/paginas.ts (imagem OG + sitemap). Esquecer quebra a build aqui.
 const slug = rota.match(/^\/aniilog\/([^/]+)\/$/)?.[1];
 const aniimo = slug ? porSlug.get(slug) : undefined;
-if (!PAGINAS[rota] && !aniimo) throw new Error(`Página ${rota} fora de src/paginas.ts: registre para ter imagem OG e entrar no sitemap.`);
+const slugPost = rota.match(/^\/blog\/([^/]+)\/$/)?.[1];
+const post = slugPost ? (await getCollection('blog')).find((p) => p.id === slugPost) : undefined;
+if (!PAGINAS[rota] && !aniimo && !post) throw new Error(`Página ${rota} fora de src/paginas.ts: registre para ter imagem OG e entrar no sitemap.`);
 const og = new URL(ogDe(rota), Astro.site);
-const ogAlt = aniimo ? `${aniimo.nome.pt}: stats base e elementos, no Aniilog do Aniimo Tools` : `${PAGINAS[rota].titulo}: ${PAGINAS[rota].sub}`;
-// Dados estruturados: WebSite na home; nas outras, a trilha Início › Página (› Aniimo).
-const migalhas = [['/', 'Início'], ...(rota === '/' ? [] : aniimo ? [['/aniilog/', 'Aniilog'], [rota, aniimo.nome.pt]] : [[rota, PAGINAS[rota].nome]])];
+const ogAlt = aniimo ? `${aniimo.nome.pt}: stats base e elementos, no Aniilog do Aniimo Tools`
+  : post ? `${post.data.titulo}, no Blog do Aniimo Tools`
+  : `${PAGINAS[rota].titulo}: ${PAGINAS[rota].sub}`;
+// Dados estruturados: WebSite na home; nas outras, a trilha Início › Página (› Aniimo/Post).
+const migalhas = [['/', 'Início'], ...(rota === '/' ? [] : aniimo ? [['/aniilog/', 'Aniilog'], [rota, aniimo.nome.pt]] : post ? [['/blog/', 'Blog'], [rota, post.data.titulo]] : [[rota, PAGINAS[rota].nome]])];
 const jsonLd = rota === '/'
   ? { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Aniimo Tools', url: Astro.site!.href, inLanguage: 'pt-BR', description }
   : {
@@ -45,7 +50,7 @@ const noPainel = grupos.some(([, itens]) => itens.some(([h]) => h !== '/time/' &
     {erro ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta property="og:type" content={aniimo ? 'article' : 'website'} />
+    <meta property="og:type" content={aniimo || post ? 'article' : 'website'} />
     <meta property="og:site_name" content="Aniimo Tools" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:url" content={canonical} />

@@ -4,6 +4,7 @@ import type { APIRoute, GetStaticPaths } from 'astro';
 import { readFileSync } from 'node:fs';
 import satori from 'satori';
 import { Resvg } from '@resvg/resvg-js';
+import { getCollection } from 'astro:content';
 import { aniimos } from '../../data.ts';
 import { PAGINAS, ogDe, type Pagina } from '../../paginas.ts';
 import { COR_HEX as COR, ELEMENTO, ESTAGIO, PAPEL, STAT } from '../../rotulos.ts';
@@ -91,10 +92,17 @@ function aniimoOg(a: Aniimo) {
           h('div', {}, 'Total'), h('div', {}, String(f.stats.total))))));
 }
 
-export const getStaticPaths = (() => [
-  ...Object.entries(PAGINAS).map(([rota, p]) => ({ params: { rota: ogDe(rota).slice(4, -4) }, props: { no: paginaOg(p, rota) } })),
-  ...aniimos.map((a) => ({ params: { rota: ogDe(`/aniilog/${a.slug}/`).slice(4, -4) }, props: { no: aniimoOg(a) } })),
-]) satisfies GetStaticPaths;
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog');
+  return [
+    ...Object.entries(PAGINAS).map(([rota, p]) => ({ params: { rota: ogDe(rota).slice(4, -4) }, props: { no: paginaOg(p, rota) } })),
+    ...aniimos.map((a) => ({ params: { rota: ogDe(`/aniilog/${a.slug}/`).slice(4, -4) }, props: { no: aniimoOg(a) } })),
+    ...posts.map((post) => {
+      const rota = `/blog/${post.id}/`;
+      return { params: { rota: ogDe(rota).slice(4, -4) }, props: { no: paginaOg({ nome: post.data.titulo, titulo: post.data.titulo, sub: post.data.resumo }, rota) } };
+    }),
+  ];
+}) satisfies GetStaticPaths;
 
 export const GET: APIRoute = async ({ props }) => {
   const svg = await satori(props.no as never, { width: 1200, height: 630, fonts: FONTES });

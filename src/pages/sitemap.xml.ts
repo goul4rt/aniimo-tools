@@ -1,10 +1,13 @@
 // Sitemap a partir de src/paginas.ts; as fichas do Aniilog levam a data da última mudança na wiki.
 import type { APIRoute } from 'astro';
+import { getCollection } from 'astro:content';
 import { porSlug } from '../data.ts';
 import { rotas } from '../paginas.ts';
 
-export const GET: APIRoute = ({ site }) => {
-  const urls = rotas.map((r) => {
+export const GET: APIRoute = async ({ site }) => {
+  const posts = await getCollection('blog');
+  const todas = [...rotas, ...posts.map((p) => `/blog/${p.id}/`)];
+  const urls = todas.map((r) => {
     const a = porSlug.get(r.match(/^\/aniilog\/([^/]+)\/$/)?.[1] ?? '');
     const lastmod = a ? `<lastmod>${a.coletadoEm.slice(0, 10)}</lastmod>` : '';
     return `<url><loc>${new URL(r, site).href}</loc>${lastmod}</url>`;

@@ -16,6 +16,7 @@ export const PAGINAS: Record<string, Pagina> = {
   '/comparar/': { nome: 'Comparar', titulo: 'Comparar stats', sub: 'Até 3 Aniimo ou formas lado a lado.' },
   '/tier/': { nome: 'Tier list', titulo: 'Tier list', sub: 'Monte sua tier list de SSS a D, com filtro de Prismana.' },
   '/homeland/': { nome: 'Homeland', titulo: 'Otimizador de Homeland', sub: 'O que cada instalação deve produzir, a equipe certa e o layout de clima, com link para compartilhar.' },
+  '/blog/': { nome: 'Blog', titulo: 'Blog', sub: 'Guias e novidades de Aniimo escritos pela comunidade.' },
   '/evolucao/': { nome: 'Resonance', titulo: 'Planejador de Resonance', sub: 'Quanto Dewdrop, pedras e Cristal de Onifonte até o estágio que você quer.' },
   '/api/': { nome: 'API', titulo: 'API pública', sub: 'Todos os dados de Aniimo em JSON aberto, para bots e sites.' },
   '/creditos/': { nome: 'Créditos', titulo: 'Créditos e dados', sub: 'De onde vêm os dados do Aniimo Tools e como falar com a gente.' },
